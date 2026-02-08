@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Phone, Mail, CheckCircle, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
+import { useRef } from "react";
+import { Phone, Mail, MapPin, Clock, CheckCircle } from "lucide-react";
+
+/*
+ * CONTACT SECTION
+ * Native HTML form for GHL tracking compatibility
+ * Honeypot spam protection included
+ */
 
 export default function ContactSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const promises = [
     "I answer my own phone.",
@@ -19,170 +20,178 @@ export default function ContactSection() {
     "I'm building this for the long haul.",
   ];
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    toast.success("Message sent!", {
-      description: "I'll get back to you within 24 hours. Talk soon!",
-    });
-    
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
-  };
+  const contactInfo = [
+    { icon: Phone, label: "Phone", value: "(417) 595-6484", href: "tel:+14175956484" },
+    { icon: Mail, label: "Email", value: "ceo@civiveunlimited.com", href: "mailto:ceo@civiveunlimited.com" },
+    { icon: MapPin, label: "Location", value: "Springfield, MO", href: null },
+    { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
+  ];
 
   return (
     <section id="contact" className="relative py-24 overflow-hidden" ref={ref}>
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
-          {/* My Promise */}
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span className="gradient-text">Let's Build Your Growth System</span>
+          </h2>
+          <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
+            Tell us about your business and we'll show you exactly how we'd grow it. No pressure. No BS. Just a real conversation about results.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+          {/* Left: Contact Info + Promise */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-2 space-y-6"
           >
-            <h2 className="font-['Syne'] text-3xl sm:text-4xl font-bold mb-6">
-              <span className="gradient-text">My Promise to You</span>
-            </h2>
-            
-            <p className="font-['Space_Grotesk'] text-muted-foreground text-lg mb-8 leading-relaxed">
-              I'm not a faceless agency. I'm a builder who's obsessed with helping businesses win. 
-              When you work with Civive Unlimited, you work directly with me.
-            </p>
-
-            <div className="space-y-4 mb-8">
-              {promises.map((promise, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                  className="flex items-center gap-3"
-                >
-                  <CheckCircle className="w-5 h-5 text-[oklch(0.75_0.18_220)] flex-shrink-0" />
-                  <span className="font-['Space_Grotesk'] text-foreground">
-                    {promise}
-                  </span>
-                </motion.div>
-              ))}
+            {/* Contact Details */}
+            <div className="glass-card p-6 sm:p-8">
+              <h3 className="font-['Syne'] text-xl font-bold text-foreground mb-6">
+                Get In Touch
+              </h3>
+              <div className="space-y-5">
+                {contactInfo.map((item, index) => (
+                  <div key={index} className="flex items-center gap-4">
+                    <div className="p-2.5 rounded-lg bg-gradient-to-br from-[oklch(0.75_0.18_220)/0.15] to-[oklch(0.55_0.25_300)/0.15]">
+                      <item.icon className="w-5 h-5 text-[oklch(0.75_0.18_220)]" />
+                    </div>
+                    <div>
+                      <div className="font-['Space_Grotesk'] text-xs text-muted-foreground">
+                        {item.label}
+                      </div>
+                      {item.href ? (
+                        <a href={item.href} className="font-['Space_Grotesk'] text-sm text-foreground hover:text-[oklch(0.75_0.18_220)] transition-colors">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <span className="font-['Space_Grotesk'] text-sm text-foreground">{item.value}</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="glass-card p-6 mb-8">
-              <p className="font-['Space_Grotesk'] text-muted-foreground text-sm mb-4">
-                I'm currently accepting <span className="text-[oklch(0.55_0.25_300)] font-semibold">2-3 new clients per month</span> to 
-                ensure every partner gets my full attention.
-              </p>
+            {/* My Promise */}
+            <div className="glass-card p-6">
+              <h4 className="font-['Syne'] font-bold text-foreground mb-4">My Promise</h4>
               <div className="space-y-3">
-                <a 
-                  href="tel:417-952-6436"
-                  className="flex items-center gap-3 text-foreground hover:text-[oklch(0.75_0.18_220)] transition-colors"
-                >
-                  <Phone className="w-5 h-5" />
-                  <span className="font-['Space_Grotesk']">417-952-6436</span>
-                </a>
-                <a 
-                  href="mailto:ceo@civiveunlimited.com"
-                  className="flex items-center gap-3 text-foreground hover:text-[oklch(0.75_0.18_220)] transition-colors"
-                >
-                  <Mail className="w-5 h-5" />
-                  <span className="font-['Space_Grotesk']">ceo@civiveunlimited.com</span>
-                </a>
+                {promises.map((promise, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-[oklch(0.65_0.20_180)] flex-shrink-0" />
+                    <span className="font-['Space_Grotesk'] text-sm text-foreground/80">{promise}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Right: Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="lg:col-span-3"
           >
-            <div className="glass-card p-8">
-              <h3 className="font-['Syne'] text-2xl font-bold text-foreground mb-2">
-                Let's Talk
-              </h3>
-              <p className="font-['Space_Grotesk'] text-muted-foreground mb-6">
-                Tell me about your business and what you're looking to achieve.
-              </p>
+            <div className="glass-card p-6 sm:p-8">
+              <form
+                action="https://services.leadconnectorhq.com/funnels/submit"
+                method="POST"
+                className="space-y-5"
+              >
+                {/* Honeypot */}
+                <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-2 block">
-                      Your Name
+                    <label htmlFor="name" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                      Full Name *
                     </label>
-                    <Input
-                      required
-                      placeholder="John Smith"
-                      className="bg-background/50 border-border/50 focus:border-[oklch(0.75_0.18_220)]"
+                    <input
+                      type="text" id="name" name="full_name" required placeholder="John Smith"
+                      className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                     />
                   </div>
                   <div>
-                    <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-2 block">
-                      Business Name
+                    <label htmlFor="business" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                      Business Name *
                     </label>
-                    <Input
-                      required
-                      placeholder="Smith's HVAC"
-                      className="bg-background/50 border-border/50 focus:border-[oklch(0.75_0.18_220)]"
+                    <input
+                      type="text" id="business" name="company_name" required placeholder="Smith's HVAC"
+                      className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                     />
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-2 block">
-                      Email
+                    <label htmlFor="email" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                      Email *
                     </label>
-                    <Input
-                      type="email"
-                      required
-                      placeholder="john@smithshvac.com"
-                      className="bg-background/50 border-border/50 focus:border-[oklch(0.75_0.18_220)]"
+                    <input
+                      type="email" id="email" name="email" required placeholder="john@smithshvac.com"
+                      className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                     />
                   </div>
                   <div>
-                    <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-2 block">
+                    <label htmlFor="phone" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
                       Phone
                     </label>
-                    <Input
-                      type="tel"
-                      required
-                      placeholder="(555) 123-4567"
-                      className="bg-background/50 border-border/50 focus:border-[oklch(0.75_0.18_220)]"
+                    <input
+                      type="tel" id="phone" name="phone" placeholder="(417) 555-1234"
+                      className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-2 block">
-                    What's your biggest challenge right now?
+                  <label htmlFor="service" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                    What are you interested in?
                   </label>
-                  <Textarea
-                    required
-                    placeholder="Tell me about your business, your goals, and what's holding you back..."
-                    rows={4}
-                    className="bg-background/50 border-border/50 focus:border-[oklch(0.75_0.18_220)] resize-none"
+                  <select
+                    id="service" name="service_interest"
+                    className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
+                  >
+                    <option value="">Select a service...</option>
+                    <option value="foundation">Foundation Plan ($197/mo)</option>
+                    <option value="growth">Growth System ($997/mo)</option>
+                    <option value="ai-search">AI Search Domination ($1,497/mo)</option>
+                    <option value="domination">Market Domination ($2,497/mo)</option>
+                    <option value="audit">Free Business Audit</option>
+                    <option value="other">Something Else</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                    Tell us about your business
+                  </label>
+                  <textarea
+                    id="message" name="message" rows={4}
+                    placeholder="What's your biggest challenge right now? What would success look like in 90 days?"
+                    className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all resize-none"
                   />
                 </div>
 
-                <Button
+                <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold py-6 text-lg"
+                  className="w-full magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold py-4 rounded-lg transition-all text-base"
                 >
-                  {isSubmitting ? (
-                    "Sending..."
-                  ) : (
-                    <>
-                      Send Message
-                      <Send className="ml-2 w-5 h-5" />
-                    </>
-                  )}
-                </Button>
+                  Get My Free Growth Plan
+                </button>
+
+                <p className="text-center font-['Space_Grotesk'] text-xs text-muted-foreground">
+                  No spam. No pressure. Just a real conversation about growing your business.
+                </p>
               </form>
             </div>
           </motion.div>

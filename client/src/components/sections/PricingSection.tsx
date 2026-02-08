@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Check, Star, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Check, Star, Zap, Crown, Rocket } from "lucide-react";
+
+/*
+ * 4-TIER HIGH-TICKET PRICING
+ * Foundation → Growth System → AI Search Domination → Market Domination
+ * Growth System is the "popular" anchor
+ */
 
 export default function PricingSection() {
   const ref = useRef(null);
@@ -10,81 +15,100 @@ export default function PricingSection() {
 
   const tiers = [
     {
-      name: "Starter",
-      description: "Pick any 2 services from our menu",
-      setup: "$197",
-      setupOriginal: null,
-      monthly: "$147",
-      features: [
-        "Choose ANY 2 services",
-        "Basic CRM access",
-        "Email support",
-        "Monthly check-in call",
-      ],
-      cta: "Get Started",
-      popular: false,
-    },
-    {
       name: "Foundation",
-      description: "The 'Never Miss a Lead' suite",
+      icon: Zap,
+      tagline: "Get Found. Get Calls.",
       setup: "$497",
-      setupOriginal: null,
-      monthly: "$297",
-      features: [
-        "AI Web Chat",
-        "Missed Call Text-Back",
-        "Google Business Integration",
-        "Full CRM access",
-        "Review Automation",
-        "Priority email support",
-      ],
-      cta: "Get Started",
+      monthly: "$197",
+      period: "/mo",
       popular: false,
+      color: "border-[oklch(0.75_0.18_220)/0.3]",
+      buttonClass: "bg-secondary/50 hover:bg-secondary text-foreground",
+      features: [
+        "Custom AI Website",
+        "Google Business Optimization",
+        "70+ Listing Sync",
+        "Missed-Call Text Back",
+        "Basic Review Automation",
+        "CRM Setup",
+        "Monthly Performance Report",
+      ],
+      bestFor: "New businesses that need a professional online presence fast.",
     },
     {
-      name: "Growth",
-      description: "Full lead gen + automation",
+      name: "Growth System",
+      icon: Rocket,
+      tagline: "The Full AI Workforce",
       setup: "$997",
-      setupOriginal: null,
-      monthly: "$497",
+      monthly: "$997",
+      period: "/mo",
+      popular: true,
+      color: "border-[oklch(0.75_0.18_220)]",
+      buttonClass: "bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] text-white hover:opacity-90",
       features: [
         "Everything in Foundation",
-        "AI Voice Agent",
-        "Social Media Posting",
-        "Facebook/Instagram Ads",
-        "Google Ads Management",
+        "24/7 AI Voice Receptionist",
+        "AI Web Chat Widget",
+        "Unified Inbox (SMS, Email, Social)",
         "Pipeline Automation",
-        "2-Way SMS",
-        "Weekly strategy calls",
+        "Text-to-Pay Invoicing",
+        "Smart Appointment Reminders",
+        "Social Media Posting",
+        "Database Reactivation Campaign",
+        "Weekly Strategy Calls",
+        "Dedicated Account Manager",
       ],
-      cta: "Get Started",
-      popular: true,
+      bestFor: "Businesses ready to automate lead capture and conversion.",
     },
     {
-      name: "Custom",
-      description: "Multi-location, advanced needs",
-      setup: "Custom",
-      setupOriginal: null,
-      monthly: "$997+",
-      features: [
-        "Everything in Growth",
-        "Multi-location support",
-        "Custom integrations",
-        "Dedicated account manager",
-        "Priority support",
-        "Custom reporting",
-      ],
-      cta: "Contact Us",
+      name: "AI Search Domination",
+      icon: Star,
+      tagline: "Own the AI Answer",
+      setup: "$2,497",
+      monthly: "$1,497",
+      period: "/mo",
       popular: false,
+      color: "border-[oklch(0.55_0.25_300)/0.5]",
+      buttonClass: "bg-gradient-to-r from-[oklch(0.55_0.25_300)] to-[oklch(0.45_0.22_280)] text-white hover:opacity-90",
+      features: [
+        "Everything in Growth System",
+        "AI Search Optimization (AIO)",
+        "Schema Markup & Structured Data",
+        "Google AI Overview Targeting",
+        "ChatGPT & Perplexity Optimization",
+        "Voice Search Optimization (Siri/Alexa)",
+        "Authority Content Strategy",
+        "Competitor AI Search Monitoring",
+        "Monthly AI Search Ranking Report",
+        "Priority Support",
+      ],
+      bestFor: "Businesses that want to dominate AI-powered search results.",
+    },
+    {
+      name: "Market Domination",
+      icon: Crown,
+      tagline: "Total Market Control",
+      setup: "$4,997",
+      monthly: "$2,497",
+      period: "/mo",
+      popular: false,
+      color: "border-[oklch(0.75_0.20_60)/0.4]",
+      buttonClass: "bg-gradient-to-r from-[oklch(0.75_0.20_60)] to-[oklch(0.65_0.22_40)] text-white hover:opacity-90",
+      features: [
+        "Everything in AI Search Domination",
+        "Facebook & Instagram Ad Management",
+        "Google Ads Management",
+        "Custom Funnel Building",
+        "Advanced Workflow Automation",
+        "Multi-Location Support",
+        "White-Glove Onboarding",
+        "Bi-Weekly Strategy Sessions",
+        "Dedicated Slack Channel",
+        "Custom Integrations",
+      ],
+      bestFor: "Businesses ready to own their entire local market.",
     },
   ];
-
-  const scrollToContact = () => {
-    const element = document.querySelector("#contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section id="pricing" className="relative py-24 overflow-hidden" ref={ref}>
@@ -94,104 +118,106 @@ export default function PricingSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+          className="text-center mb-16"
         >
           <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">No Corporate BS. Just Results.</span>
+            <span className="gradient-text">Choose Your Growth Path</span>
           </h2>
           <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
-            Transparent pricing. No hidden fees. Cancel anytime.
+            Every plan includes the full GoHighLevel platform. No hidden fees. No long-term contracts. Cancel anytime.
           </p>
         </motion.div>
 
-        {/* Founding Partner Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="max-w-3xl mx-auto mb-12"
-        >
-          <div className="glass-card p-6 text-center border-[oklch(0.55_0.25_300)/0.5]">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <Star className="w-5 h-5 text-[oklch(0.55_0.25_300)]" />
-              <span className="font-['Syne'] font-bold text-[oklch(0.55_0.25_300)]">
-                FOUNDING PARTNER DEAL
-              </span>
-              <Star className="w-5 h-5 text-[oklch(0.55_0.25_300)]" />
-            </div>
-            <p className="font-['Space_Grotesk'] text-foreground">
-              <span className="font-bold">50% off all setup fees</span> for our first 10 partners.
-              <br />
-              <span className="text-muted-foreground text-sm">
-                Lock in your rate for life. Prices will increase after launch.
-              </span>
-            </p>
-          </div>
-        </motion.div>
-
         {/* Pricing Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {tiers.map((tier, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-              className={`glass-card p-6 sm:p-8 relative ${
-                tier.popular ? "ring-2 ring-[oklch(0.55_0.25_300)]" : ""
+              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
+              className={`glass-card p-6 sm:p-8 relative ${tier.color} ${
+                tier.popular ? "ring-2 ring-[oklch(0.75_0.18_220)] scale-[1.02]" : ""
               }`}
             >
+              {/* Popular Badge */}
               {tier.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] text-white text-xs font-['Space_Grotesk'] font-semibold px-3 py-1 rounded-full">
-                    RECOMMENDED
-                  </span>
+                  <div className="px-4 py-1 rounded-full bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] text-white text-xs font-['Space_Grotesk'] font-bold">
+                    MOST POPULAR
+                  </div>
                 </div>
               )}
 
+              {/* Tier Header */}
               <div className="text-center mb-6">
-                <h3 className="font-['Syne'] text-xl font-bold text-foreground mb-1">
+                <tier.icon className="w-8 h-8 text-[oklch(0.75_0.18_220)] mx-auto mb-3" />
+                <h3 className="font-['Syne'] text-xl font-bold text-foreground">
                   {tier.name}
                 </h3>
-                <p className="font-['Space_Grotesk'] text-sm text-muted-foreground">
-                  {tier.description}
+                <p className="font-['Space_Grotesk'] text-sm text-muted-foreground mt-1">
+                  {tier.tagline}
                 </p>
               </div>
 
-              <div className="text-center mb-6">
-                <div className="font-['JetBrains_Mono'] text-3xl font-bold gradient-text">
-                  {tier.monthly}
-                  <span className="text-sm text-muted-foreground font-normal">/mo</span>
+              {/* Pricing */}
+              <div className="text-center mb-6 pb-6 border-b border-border/30">
+                <div className="font-['Space_Grotesk'] text-xs text-muted-foreground mb-1">
+                  Setup: {tier.setup}
                 </div>
-                <div className="font-['Space_Grotesk'] text-sm text-muted-foreground mt-1">
-                  {tier.setup} setup
+                <div className="flex items-end justify-center gap-1">
+                  <span className="font-['Syne'] text-4xl font-bold gradient-text">
+                    {tier.monthly}
+                  </span>
+                  <span className="font-['Space_Grotesk'] text-muted-foreground text-sm mb-1">
+                    {tier.period}
+                  </span>
                 </div>
               </div>
 
-              <ul className="space-y-3 mb-8">
+              {/* Features */}
+              <div className="space-y-3 mb-6">
                 {tier.features.map((feature, fIndex) => (
-                  <li key={fIndex} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-[oklch(0.75_0.18_220)] mt-0.5 flex-shrink-0" />
-                    <span className="font-['Space_Grotesk'] text-sm text-muted-foreground">
+                  <div key={fIndex} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[oklch(0.65_0.20_180)] flex-shrink-0 mt-0.5" />
+                    <span className="font-['Space_Grotesk'] text-sm text-foreground/80">
                       {feature}
                     </span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
 
-              <Button
-                onClick={scrollToContact}
-                className={`w-full magnetic-btn font-['Space_Grotesk'] font-semibold ${
-                  tier.popular
-                    ? "bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white"
-                    : "bg-secondary hover:bg-secondary/80"
-                }`}
+              {/* Best For */}
+              <p className="font-['Space_Grotesk'] text-xs text-muted-foreground italic mb-6">
+                Best for: {tier.bestFor}
+              </p>
+
+              {/* CTA Button */}
+              <a
+                href="#contact"
+                className={`block w-full text-center magnetic-btn font-['Space_Grotesk'] font-semibold py-3 rounded-lg transition-all ${tier.buttonClass}`}
               >
-                {tier.cta}
-              </Button>
+                Get Started
+              </a>
             </motion.div>
           ))}
         </div>
+
+        {/* Founding Partner Note */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="text-center mt-12"
+        >
+          <div className="inline-flex items-center gap-2 glass-card px-6 py-3">
+            <Star className="w-4 h-4 text-[oklch(0.75_0.20_60)]" />
+            <span className="font-['Space_Grotesk'] text-sm text-foreground">
+              <strong>Founding Partner Discount:</strong> First 5 clients lock in these rates for life.
+            </span>
+            <Star className="w-4 h-4 text-[oklch(0.75_0.20_60)]" />
+          </div>
+        </motion.div>
       </div>
 
       {/* Section Divider */}

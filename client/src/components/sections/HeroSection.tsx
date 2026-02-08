@@ -1,29 +1,42 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, Radar, Phone } from "lucide-react";
 
-export default function HeroSection() {
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+interface HeroSectionProps {
+  onOpenSpyModal: () => void;
+}
+
+export default function HeroSection({ onOpenSpyModal }: HeroSectionProps) {
+  const scrollToContact = () => {
+    const element = document.querySelector("#contact");
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 pb-16 overflow-hidden">
-      {/* Hero Background Image Overlay */}
-      <div 
-        className="absolute inset-0 opacity-20"
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
+      </div>
+
+      {/* Animated grid lines */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: `url('https://private-us-east-1.manuscdn.com/sessionFile/J3m67B7PrlBhxWTfJXdOiD/sandbox/V1gqjDxB005ARii1hcDsca-img-1_1770181400000_na1fn_aGVyby1iZw.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvSjNtNjdCN1BybEJoeFdUZkpYZE9pRC9zYW5kYm94L1YxZ3FqRHhCMDA1QVJpaTFoY0RzY2EtaW1nLTFfMTc3MDE4MTQwMDAwMF9uYTFmbl9hR1Z5YnkxaVp3LmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=ptFmdK3zSDhgNS-4jNCIzxeTwB6HUiwqNBNm-dLHTtLV84xB0MLcWthm228DjDYaDu9fYzW9cI0B47Y-uxl2nvTHUUW-~HLai3~Cce8NiVLflEFS7q0V8MV9p7fxbUyTcK6IaWBsEFA5yT05mqHICI~sPpuxGaXF9nkLjkFbKYfB6pP63gKx7QI-MMfUJFX~tKlbT8XpDxqJ9hmyAqJzVZC5t-jZOFT7IrG40Aa1LUmu-6GLgmmvFJ3CIQDlLiW~pZme9TBiSnz6RRaadP1qlYspMDmbIMJAeWH2ZVKKKdfsBg0tAdNjY7dd59M7ODtzHxoK8fEX6FeynBVtm7PIlQ__')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundImage: `linear-gradient(oklch(0.75 0.18 220) 1px, transparent 1px), linear-gradient(90deg, oklch(0.75 0.18 220) 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
         }}
       />
-      
+
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -31,105 +44,98 @@ export default function HeroSection() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8"
           >
-            <Zap className="w-4 h-4 text-[oklch(0.75_0.18_220)]" />
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[oklch(0.65_0.20_180)] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[oklch(0.65_0.20_180)]" />
+            </span>
             <span className="text-sm font-['Space_Grotesk'] text-muted-foreground">
-              AI-Powered Business Solutions
+              Now Accepting Founding Partners
             </span>
           </motion.div>
 
-          {/* Main Headline */}
+          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-['Syne'] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="font-['Syne'] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6"
           >
-            Stop Working{" "}
-            <span className="text-muted-foreground italic">for</span> Your Business.
+            <span className="text-foreground">Stop Losing Leads.</span>
             <br />
-            <span className="gradient-text text-glow-blue">Start Scaling with AI.</span>
+            <span className="gradient-text text-glow-blue">Start Dominating.</span>
           </motion.h1>
 
           {/* Subheadline */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-['Space_Grotesk'] text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed"
+            className="font-['Space_Grotesk'] text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            We give small businesses the "Unfair Advantage" they deserve. Custom AI websites, 
-            automated lead systems, and ads that actually talk to your customers.
+            We install AI-powered infrastructure that captures every lead, converts
+            calls 24/7, and scales your business on autopilot. Built on the same
+            platform used by 1.4 million businesses.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button
-              onClick={() => scrollToSection("#contact")}
-              size="lg"
-              className="magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold px-8 py-6 text-lg group"
+            <button
+              onClick={onOpenSpyModal}
+              className="w-full sm:w-auto magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold text-base py-4 px-8 rounded-lg transition-all flex items-center justify-center gap-2"
             >
-              Get Your Unfair Advantage
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            
-            <Button
-              onClick={() => scrollToSection("#free-tools")}
-              variant="outline"
-              size="lg"
-              className="magnetic-btn border-[oklch(0.75_0.18_220)/0.5] hover:border-[oklch(0.75_0.18_220)] hover:bg-[oklch(0.75_0.18_220)/0.1] font-['Space_Grotesk'] font-semibold px-8 py-6 text-lg"
+              <Radar className="w-5 h-5" />
+              Spy on Your Competitors
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={scrollToContact}
+              className="w-full sm:w-auto magnetic-btn bg-secondary/50 hover:bg-secondary text-foreground font-['Space_Grotesk'] font-semibold text-base py-4 px-8 rounded-lg transition-all flex items-center justify-center gap-2 border border-border/50"
             >
-              Get Your Free Business Audit
-            </Button>
+              <Phone className="w-5 h-5" />
+              Book a Free Call
+            </button>
           </motion.div>
 
-          {/* Trust Indicators */}
+          {/* Social Proof */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-16 pt-8 border-t border-border/30"
+            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-muted-foreground"
           >
-            <p className="text-sm text-muted-foreground mb-4 font-['Space_Grotesk']">
-              Built for businesses that refuse to be limited
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-8 text-muted-foreground/60">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[oklch(0.75_0.18_220)]" />
-                <span className="text-sm font-['Space_Grotesk']">24/7 AI Support</span>
+            <div className="flex items-center gap-2">
+              <div className="flex -space-x-2">
+                {[1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    className="w-8 h-8 rounded-full bg-gradient-to-br from-[oklch(0.75_0.18_220)/0.3] to-[oklch(0.55_0.25_300)/0.3] border-2 border-background flex items-center justify-center"
+                  >
+                    <span className="text-xs font-bold text-foreground/60">
+                      {i}
+                    </span>
+                  </div>
+                ))}
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[oklch(0.55_0.25_300)]" />
-                <span className="text-sm font-['Space_Grotesk']">Results in 30 Days</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[oklch(0.65_0.20_260)]" />
-                <span className="text-sm font-['Space_Grotesk']">No Long-Term Contracts</span>
-              </div>
+              <span className="font-['Space_Grotesk'] text-sm">
+                <strong className="text-foreground">3 spots left</strong> at
+                founding rates
+              </span>
             </div>
+            <div className="hidden sm:block w-px h-4 bg-border/50" />
+            <span className="font-['Space_Grotesk'] text-sm">
+              Springfield, MO & Nationwide
+            </span>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-      >
-        <motion.div
-          className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2"
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <div className="w-1.5 h-1.5 rounded-full bg-[oklch(0.75_0.18_220)]" />
-        </motion.div>
-      </motion.div>
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 }
