@@ -78,8 +78,8 @@ export default function Footer() {
           <div>
             <h4 className="font-['Syne'] font-bold text-foreground mb-4">Contact</h4>
             <div className="space-y-3">
-              <a href="tel:+14175956484" className="flex items-center gap-2 font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors">
-                <Phone className="w-4 h-4" /> (417) 595-6484
+              <a href="tel:+14179526436" className="flex items-center gap-2 font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Phone className="w-4 h-4" /> (417) 952-6436
               </a>
               <a href="mailto:ceo@civiveunlimited.com" className="flex items-center gap-2 font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors">
                 <Mail className="w-4 h-4" /> ceo@civiveunlimited.com

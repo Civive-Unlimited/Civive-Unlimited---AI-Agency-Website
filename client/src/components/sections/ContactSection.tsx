@@ -26,7 +26,7 @@ export default function ContactSection() {
   ];
 
   const contactInfo = [
-    { icon: Phone, label: "Phone", value: "(417) 595-6484", href: "tel:+14175956484" },
+    { icon: Phone, label: "Phone", value: "(417) 952-6436", href: "tel:+14179526436" },
     { icon: Mail, label: "Email", value: "ceo@civiveunlimited.com", href: "mailto:ceo@civiveunlimited.com" },
     { icon: MapPin, label: "Location", value: "Springfield, MO", href: null },
     { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
@@ -53,10 +53,10 @@ export default function ContactSection() {
         form.reset();
         setSmsConsent(false);
       } else {
-        toast.error("Something went wrong. Please try calling us directly at (417) 595-6484.");
+        toast.error("Something went wrong. Please try calling us directly at (417) 952-6436.");
       }
     } catch {
-      toast.error("Network error. Please try calling us directly at (417) 595-6484.");
+      toast.error("Network error. Please try calling us directly at (417) 952-6436.");
     } finally {
       setIsSubmitting(false);
     }
@@ -202,7 +202,7 @@ export default function ContactSection() {
                         Phone
                       </label>
                       <input
-                        type="tel" id="phone" name="phone" placeholder="(417) 555-1234"
+                        type="tel" id="phone" name="phone" placeholder="(417) 952-6436"
                         className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                       />
                     </div>
