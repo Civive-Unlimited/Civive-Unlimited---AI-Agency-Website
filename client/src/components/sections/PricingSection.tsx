@@ -136,9 +136,8 @@ export default function PricingSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-              className={`glass-card p-6 sm:p-8 relative ${tier.color} ${
-                tier.popular ? "ring-2 ring-[oklch(0.75_0.18_220)] scale-[1.02]" : ""
-              }`}
+              className={`glass-card p-6 sm:p-8 relative ${tier.color} ${tier.popular ? "ring-2 ring-[oklch(0.75_0.18_220)] scale-[1.02]" : ""
+                }`}
             >
               {/* Popular Badge */}
               {tier.popular && (
@@ -195,6 +194,10 @@ export default function PricingSection() {
               {/* CTA Button */}
               <a
                 href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
                 className={`block w-full text-center magnetic-btn font-['Space_Grotesk'] font-semibold py-3 rounded-lg transition-all ${tier.buttonClass}`}
               >
                 Get Started

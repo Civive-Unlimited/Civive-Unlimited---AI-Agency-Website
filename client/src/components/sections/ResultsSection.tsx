@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Users, Phone, Building2, Youtube, Linkedin, Twitter } from "lucide-react";
+import { Users, Phone, Building2, Youtube, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function ResultsSection() {
@@ -9,9 +9,9 @@ export default function ResultsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const counters = [
-    { icon: Users, value: "0", label: "Leads Captured", suffix: "+" },
-    { icon: Phone, value: "0", label: "AI Calls Answered", suffix: "+" },
-    { icon: Building2, value: "0", label: "Partner Businesses", suffix: "" },
+    { icon: Users, value: "—", label: "Leads Captured", suffix: "", subtext: "Launching Q1 2026" },
+    { icon: Phone, value: "—", label: "AI Calls Answered", suffix: "", subtext: "Launching Q1 2026" },
+    { icon: Building2, value: "5", label: "Founding Partner Spots", suffix: "", subtext: "3 Remaining" },
   ];
 
   const partnerSlots = [
@@ -23,7 +23,6 @@ export default function ResultsSection() {
   const socialLinks = [
     { icon: Youtube, href: "https://www.youtube.com/@CiviveUnlimited", label: "YouTube" },
     { icon: Twitter, href: "https://x.com/civiveunltd", label: "X (Twitter)" },
-    { icon: Linkedin, href: "#", label: "LinkedIn (Coming Soon)" },
   ];
 
   return (
@@ -58,9 +57,14 @@ export default function ResultsSection() {
               <div className="font-['JetBrains_Mono'] text-4xl sm:text-5xl font-bold gradient-text mb-2">
                 {counter.value}{counter.suffix}
               </div>
-              <div className="font-['Space_Grotesk'] text-muted-foreground">
+              <div className="font-['Space_Grotesk'] text-foreground/80 font-medium">
                 {counter.label}
               </div>
+              {counter.subtext && (
+                <div className="font-['Space_Grotesk'] text-xs text-muted-foreground mt-1">
+                  {counter.subtext}
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
