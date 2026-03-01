@@ -203,8 +203,12 @@ export default function ContactSection() {
                       </label>
                       <input
                         type="tel" id="phone" name="phone" placeholder="(417) 952-6436"
+                        required={smsConsent}
                         className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                       />
+                      <p className="mt-1.5 font-['Space_Grotesk'] text-xs text-muted-foreground">
+                        Add a mobile number if you want SMS updates about your audit request and appointments.
+                      </p>
                     </div>
                   </div>
 
@@ -237,7 +241,7 @@ export default function ContactSection() {
                     />
                   </div>
 
-                  {/* SMS Consent — Required for A2P 10DLC compliance */}
+                  {/* SMS Consent â€” Required for A2P 10DLC compliance */}
                   <div className="flex items-start gap-3">
                     <input
                       type="checkbox"
@@ -248,8 +252,8 @@ export default function ContactSection() {
                       className="mt-1 h-4 w-4 rounded border-border/50 bg-secondary/30 text-[oklch(0.75_0.18_220)] focus:ring-[oklch(0.75_0.18_220)/0.5] flex-shrink-0"
                     />
                     <label htmlFor="sms_consent" className="font-['Space_Grotesk'] text-xs text-muted-foreground leading-relaxed">
-                      I consent to receive text messages from Civive Unlimited at the phone number provided. Msg & data rates may apply. Msg frequency varies. Reply STOP to opt out, HELP for help. View our{" "}
-                      <a href="/privacy" className="text-[oklch(0.75_0.18_220)] hover:underline">Privacy Policy</a>{" "}& {" "}
+                      By checking this box, I agree to receive conversational SMS from Civive Unlimited about my audit request, appointments, and service updates at the phone number provided. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. View our{" "}
+                      <a href="/privacy" className="text-[oklch(0.75_0.18_220)] hover:underline">Privacy Policy</a>{" "}and{" "}
                       <a href="/terms" className="text-[oklch(0.75_0.18_220)] hover:underline">Terms of Service</a>.
                     </label>
                   </div>
