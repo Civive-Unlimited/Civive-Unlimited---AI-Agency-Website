@@ -1,0 +1,4 @@
+interface:
+  display_name: "Senior CTO COO Operator"
+  short_description: "Senior product build, deploy, and recovery operator"
+  default_prompt: "Use $senior-cto-coo-operator to build, harden, deploy, or recover this product with full validation and rollback discipline."
