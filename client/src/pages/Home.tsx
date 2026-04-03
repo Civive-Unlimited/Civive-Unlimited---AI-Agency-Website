@@ -10,7 +10,9 @@ export default function Home() {
       <div id="how-it-works">
         <ResultsSection />
       </div>
-      <FAQSection />
+      <div id="faq">
+        <FAQSection />
+      </div>
       <ContactSection />
     </>
   );

@@ -3,10 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#ai-search", label: "AI Search" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#story", label: "Our Story" },
+  { href: "#how-it-works", label: "How It Works" },
+  { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -95,7 +93,7 @@ export default function Navigation() {
                 }}
                 className="magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold text-sm py-2.5 px-6 rounded-lg transition-all"
               >
-                Free Audit
+                Book a demo
               </a>
             </div>
 
@@ -149,7 +147,7 @@ export default function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.1 }}
               >
-                Free Audit
+                Book a demo
               </motion.a>
             </div>
           </motion.div>
