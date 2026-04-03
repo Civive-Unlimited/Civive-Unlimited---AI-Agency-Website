@@ -73,10 +73,10 @@ export default function ContactSection() {
           className="text-center mb-16"
         >
           <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Let's Build Your Growth System</span>
+            <span className="gradient-text">Book a demo</span>
           </h2>
           <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
-            Tell us about your business and we'll show you exactly how we'd grow it. No pressure. No BS. Just a real conversation about results.
+            Tell us about your business and we'll show you how an AI receptionist can help you answer more calls, capture more leads, and book more appointments.
           </p>
         </motion.div>
 
@@ -207,7 +207,7 @@ export default function ContactSection() {
                         className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                       />
                       <p className="mt-1.5 font-['Space_Grotesk'] text-xs text-muted-foreground">
-                        Add a mobile number if you want SMS updates about your audit request and appointments.
+                        Add a mobile number if you want SMS updates about your demo request and appointments.
                       </p>
                     </div>
                   </div>
@@ -220,13 +220,11 @@ export default function ContactSection() {
                       id="service" name="service_interest"
                       className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                     >
-                      <option value="">Select a service...</option>
-                      <option value="foundation">Foundation Plan ($197/mo)</option>
-                      <option value="growth">Growth System ($997/mo)</option>
-                      <option value="ai-search">AI Search Domination ($1,497/mo)</option>
-                      <option value="domination">Market Domination ($2,497/mo)</option>
-                      <option value="audit">Free Business Audit</option>
-                      <option value="other">Something Else</option>
+                      <option value="">Select an option...</option>
+                      <option value="ai-receptionist">AI Receptionist</option>
+                      <option value="missed-call-recovery">Missed Call Recovery</option>
+                      <option value="lead-follow-up">Lead Follow Up</option>
+                      <option value="not-sure-yet">Not Sure Yet</option>
                     </select>
                   </div>
 
@@ -252,7 +250,7 @@ export default function ContactSection() {
                       className="mt-1 h-4 w-4 rounded border-border/50 bg-secondary/30 text-[oklch(0.75_0.18_220)] focus:ring-[oklch(0.75_0.18_220)/0.5] flex-shrink-0"
                     />
                     <label htmlFor="sms_consent" className="font-['Space_Grotesk'] text-xs text-muted-foreground leading-relaxed">
-                      By checking this box, I agree to receive conversational SMS from Civive Unlimited about my audit request, appointments, and service updates at the phone number provided. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. View our{" "}
+                      By checking this box, I agree to receive conversational SMS from Civive Unlimited about my demo request, appointments, and service updates at the phone number provided. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. View our{" "}
                       <a href="/privacy" className="text-[oklch(0.75_0.18_220)] hover:underline">Privacy Policy</a>{" "}and{" "}
                       <a href="/terms" className="text-[oklch(0.75_0.18_220)] hover:underline">Terms of Service</a>.
                     </label>
@@ -269,12 +267,12 @@ export default function ContactSection() {
                         Sending...
                       </>
                     ) : (
-                      "Get My Free Growth Plan"
+                      "Book My Demo"
                     )}
                   </button>
 
                   <p className="text-center font-['Space_Grotesk'] text-xs text-muted-foreground">
-                    No spam. No pressure. Just a real conversation about growing your business.
+                    No spam. No pressure. Just a real conversation about how an AI receptionist could fit your business.
                   </p>
                 </form>
               )}
