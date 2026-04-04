@@ -7,9 +7,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <div id="how-it-works">
-        <ResultsSection />
-      </div>
+      <ResultsSection />
       <div id="faq">
         <FAQSection />
       </div>
