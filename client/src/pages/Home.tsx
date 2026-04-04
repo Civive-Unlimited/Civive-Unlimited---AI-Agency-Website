@@ -5,11 +5,11 @@ import ResultsSection from "@/components/sections/ResultsSection";
 
 export default function Home() {
   return (
-    <>
+    <div className="homepage-shell">
       <HeroSection />
       <ResultsSection />
       <FAQSection />
       <ContactSection />
-    </>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { ChevronDown, MessageSquareText, ShieldCheck } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useRef, useState } from "react";
 
 const faqs = [
@@ -56,67 +56,47 @@ export default function FAQSection() {
       className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
       ref={ref}
     >
-      <div className="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.10),transparent_62%)] blur-3xl" />
-
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-4xl text-center"
+          transition={{ duration: 0.5 }}
+          className="mx-auto max-w-3xl text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/45 bg-background/30 px-4 py-2 shadow-[0_10px_28px_rgba(0,0,0,0.14)] backdrop-blur-2xl">
-            <MessageSquareText className="h-4 w-4 text-[oklch(0.75_0.18_220)]" />
-            <span className="font-['Space_Grotesk'] text-sm text-foreground/80">
-              Practical questions, clear answers
-            </span>
-          </div>
-
-          <h2 className="mt-6 font-['Syne'] text-3xl font-bold sm:text-4xl md:text-5xl">
-            <span className="gradient-text">Questions? Answers.</span>
+          <p className="homepage-eyebrow">FAQ</p>
+          <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
+            Questions? Answers.
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl font-['Space_Grotesk'] text-lg leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             Everything you need to know before booking a demo.
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-14 max-w-4xl space-y-4">
+        <div className="mx-auto mt-14 max-w-4xl divide-y divide-border/25 rounded-[1.6rem] border border-border/30 bg-[rgba(11,14,22,0.78)] shadow-[0_16px_40px_rgba(0,0,0,0.16)]">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
               <motion.div
                 key={faq.question}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
-                className={`relative overflow-hidden rounded-[1.5rem] border backdrop-blur-2xl transition-all duration-300 ${
-                  isOpen
-                    ? "border-[oklch(0.75_0.18_220)/0.32] bg-[linear-gradient(145deg,rgba(25,39,68,0.22),rgba(14,18,30,0.88))] shadow-[0_16px_42px_rgba(0,0,0,0.18)]"
-                    : "border-border/40 bg-background/24 hover:border-[oklch(0.75_0.18_220)/0.25]"
-                }`}
+                transition={{ duration: 0.45, delay: 0.08 + index * 0.04 }}
+                className={isOpen ? "bg-white/[0.02]" : ""}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between gap-5 px-6 py-6 text-left transition-colors hover:bg-white/[0.015] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.75_0.18_220)/0.28] sm:px-7"
+                  className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left transition-colors hover:bg-white/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.75_0.18_220)/0.28] sm:px-7 sm:py-6"
                 >
                   <div className="min-w-0">
-                    <div className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                      Question {index + 1}
-                    </div>
-                    <span className="mt-2 block font-['Syne'] text-xl font-semibold text-foreground sm:text-[1.35rem]">
+                    <span className="block text-lg font-medium leading-snug text-foreground sm:text-xl">
                       {faq.question}
                     </span>
                   </div>
-                  <span
-                    className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-[1rem] border transition-all duration-300 ${
-                      isOpen
-                        ? "border-[oklch(0.75_0.18_220)/0.32] bg-[oklch(0.75_0.18_220)/0.10]"
-                        : "border-border/35 bg-background/24"
-                    }`}
-                  >
+
+                  <span className="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-border/30 bg-background/70 text-[oklch(0.75_0.18_220)]">
                     <ChevronDown
-                      className={`h-5 w-5 text-[oklch(0.75_0.18_220)] transition-transform duration-300 ${
+                      className={`h-5 w-5 transition-transform duration-200 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                     />
@@ -129,35 +109,30 @@ export default function FAQSection() {
                     height: isOpen ? "auto" : 0,
                     opacity: isOpen ? 1 : 0,
                   }}
-                  transition={{ duration: 0.28 }}
+                  transition={{ duration: 0.24 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-6 pb-6 sm:px-7 sm:pb-7">
-                    <div className="h-px w-full bg-gradient-to-r from-[oklch(0.75_0.18_220)/0.28] via-border/30 to-transparent" />
-                    <p className="mt-5 max-w-[42rem] font-['Space_Grotesk'] text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
-                      {faq.answer}
-                    </p>
-                  </div>
+                  <p className="max-w-[42rem] px-5 pb-5 text-sm leading-relaxed text-muted-foreground sm:px-7 sm:pb-6 sm:text-[0.96rem]">
+                    {faq.answer}
+                  </p>
                 </motion.div>
               </motion.div>
             );
           })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, delay: 0.42 }}
-          className="mx-auto mt-10 flex max-w-4xl items-center justify-center gap-3 rounded-full border border-border/40 bg-background/22 px-5 py-3 text-center shadow-[0_10px_28px_rgba(0,0,0,0.12)] backdrop-blur-2xl"
+          transition={{ duration: 0.45, delay: 0.28 }}
+          className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
         >
-          <ShieldCheck className="h-4 w-4 flex-shrink-0 text-[oklch(0.65_0.20_180)]" />
-          <span className="font-['Space_Grotesk'] text-sm text-foreground/78">
-            If you have a workflow question that is specific to your business, bring it to the demo and we&apos;ll walk through it directly.
-          </span>
-        </motion.div>
+          If you have a workflow question that is specific to your business, bring it to
+          the demo and we&apos;ll walk through it directly.
+        </motion.p>
       </div>
 
-      <div className="section-divider mt-24" />
+      <div className="homepage-section-divider" />
     </section>
   );
 }

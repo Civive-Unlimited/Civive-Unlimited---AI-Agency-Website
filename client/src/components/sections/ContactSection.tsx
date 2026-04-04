@@ -1,42 +1,17 @@
 import { motion, useInView } from "framer-motion";
-import {
-  CalendarCheck2,
-  CheckCircle,
-  Clock,
-  Loader2,
-  Mail,
-  MapPin,
-  Phone,
-  Sparkles,
-} from "lucide-react";
+import { CheckCircle, Loader2, Mail, Phone } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 
-/*
- * CONTACT SECTION
- * Native HTML form for GHL tracking compatibility
- * Honeypot spam protection included
- * SMS consent checkbox for A2P 10DLC compliance
- */
-
-const reassuranceItems = [
-  "We build it around your business.",
-  "We keep the setup practical and simple.",
-  "We focus on lead response and booked appointments.",
-  "We only recommend what makes sense for your business.",
-];
-
-const expectationItems = [
-  "We review how your calls are handled now.",
-  "We map where missed leads are slipping away.",
-  "We show how the AI receptionist fits your workflow.",
+const nextSteps = [
+  "We look at how calls are handled now.",
+  "We show where leads are slipping away.",
+  "We map the best fit for your booking flow.",
 ];
 
 const contactInfo = [
   { icon: Phone, label: "Phone", value: "(417) 952-6436", href: "tel:+14179526436" },
   { icon: Mail, label: "Email", value: "ceo@civiveunlimited.com", href: "mailto:ceo@civiveunlimited.com" },
-  { icon: MapPin, label: "Location", value: "Springfield, MO", href: null },
-  { icon: Clock, label: "Fast follow up", value: "Demo requests reviewed quickly", href: null },
 ];
 
 export default function ContactSection() {
@@ -82,274 +57,208 @@ export default function ContactSection() {
       className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
       ref={ref}
     >
-      <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.12),transparent_60%)] blur-3xl" />
-
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-4xl text-center"
+          transition={{ duration: 0.5 }}
+          className="mx-auto max-w-3xl text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/45 bg-background/30 px-4 py-2 shadow-[0_10px_28px_rgba(0,0,0,0.14)] backdrop-blur-2xl">
-            <Sparkles className="h-4 w-4 text-[oklch(0.75_0.18_220)]" />
-            <span className="font-['Space_Grotesk'] text-sm text-foreground/80">
-              Final step
-            </span>
-          </div>
-          <h2 className="mt-6 font-['Syne'] text-3xl font-bold sm:text-4xl md:text-5xl">
-            <span className="gradient-text">Book a demo</span>
+          <p className="homepage-eyebrow">Book a demo</p>
+          <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
+            See how the receptionist fits your business.
           </h2>
-          <p className="mx-auto mt-5 max-w-3xl font-['Space_Grotesk'] text-lg leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
             Tell us about your business and we&apos;ll show you how an AI receptionist can
             help you answer faster, capture more leads, and keep more appointments moving.
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-[0.86fr_1.14fr]">
+        <div className="mx-auto mt-14 grid max-w-6xl gap-8 lg:grid-cols-[0.78fr_1.22fr]">
           <motion.div
-            initial={{ opacity: 0, x: -26 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.08 }}
-            className="space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: 0.08 }}
+            className="max-w-md"
           >
-            <div className="rounded-[1.85rem] border border-border/40 bg-[linear-gradient(145deg,rgba(18,24,38,0.88),rgba(12,16,28,0.94))] p-6 shadow-[0_18px_56px_rgba(0,0,0,0.18)] backdrop-blur-2xl sm:p-7">
-              <div className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                What to expect
-              </div>
-              <h3 className="mt-3 font-['Syne'] text-2xl font-bold text-foreground">
-                A clear walkthrough, not a vague sales call
-              </h3>
-              <p className="mt-4 font-['Space_Grotesk'] text-sm leading-relaxed text-muted-foreground">
-                We keep the demo practical. You&apos;ll see where calls are being missed, how the
-                receptionist flow works, and what the next setup path would actually look like.
-              </p>
+            <p className="homepage-eyebrow">What happens next</p>
+            <h3 className="mt-4 text-2xl font-semibold text-foreground">
+              A direct demo, built around real call flow.
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              We keep this practical. The goal is to show where response speed,
+              lead capture, and booking flow can be tightened without adding more chaos.
+            </p>
 
-              <div className="mt-6 space-y-3">
-                {expectationItems.map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.45, delay: 0.14 + index * 0.06 }}
-                    className="flex items-start gap-3 rounded-[1.15rem] border border-border/32 bg-background/18 px-4 py-3"
-                  >
-                    <CalendarCheck2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[oklch(0.75_0.18_220)]" />
-                    <span className="font-['Space_Grotesk'] text-sm text-foreground/82">
-                      {item}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+            <div className="mt-8 space-y-3">
+              {nextSteps.map((item) => (
+                <div key={item} className="flex items-start gap-3 text-sm leading-relaxed text-foreground/82">
+                  <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-[oklch(0.65_0.20_180)]" />
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
 
-            <div className="rounded-[1.85rem] border border-border/40 bg-background/24 p-6 shadow-[0_16px_46px_rgba(0,0,0,0.14)] backdrop-blur-2xl sm:p-7">
-              <h3 className="font-['Syne'] text-xl font-bold text-foreground">Get In Touch</h3>
-              <div className="mt-6 grid gap-4">
-                {contactInfo.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 rounded-[1.15rem] border border-border/32 bg-background/18 px-4 py-4">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-[1rem] bg-gradient-to-br from-[oklch(0.75_0.18_220)/0.15] to-[oklch(0.55_0.25_300)/0.15]">
-                      <item.icon className="h-5 w-5 text-[oklch(0.75_0.18_220)]" />
-                    </div>
-                    <div>
-                      <div className="font-['Space_Grotesk'] text-xs text-muted-foreground">
-                        {item.label}
-                      </div>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          className="font-['Space_Grotesk'] text-sm text-foreground transition-colors hover:text-[oklch(0.75_0.18_220)]"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <span className="font-['Space_Grotesk'] text-sm text-foreground">
-                          {item.value}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-[1.85rem] border border-border/40 bg-background/20 p-6 shadow-[0_16px_46px_rgba(0,0,0,0.12)] backdrop-blur-2xl sm:p-7">
-              <div className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                Why this stays focused
-              </div>
-              <div className="mt-5 grid gap-3">
-                {reassuranceItems.map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.45, delay: 0.22 + index * 0.05 }}
-                    className="flex items-start gap-3"
+            <div className="mt-10 space-y-4 border-t border-border/25 pt-8">
+              {contactInfo.map((item) => (
+                <div key={item.label}>
+                  <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                    {item.label}
+                  </p>
+                  <a
+                    href={item.href}
+                    className="mt-1 inline-flex text-sm text-foreground transition-colors hover:text-[oklch(0.75_0.18_220)]"
                   >
-                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-[oklch(0.65_0.20_180)]" />
-                    <span className="font-['Space_Grotesk'] text-sm text-foreground/80">
-                      {item}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+                    {item.value}
+                  </a>
+                </div>
+              ))}
+              <p className="text-sm text-muted-foreground">Fast follow up on demo requests.</p>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 26 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.65, delay: 0.12 }}
-            className="relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: 0.12 }}
+            className="homepage-panel rounded-[1.65rem] p-6 sm:p-7"
           >
-            <div className="pointer-events-none absolute -inset-5 rounded-[1.95rem] bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.16),transparent_58%)] blur-3xl" />
-
-            <div className="relative rounded-[1.9rem] border border-border/45 bg-background/28 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.28)] backdrop-blur-2xl sm:p-7">
-              {isSubmitted ? (
-                <div className="py-14 text-center">
-                  <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[oklch(0.65_0.20_180)/0.2] to-[oklch(0.55_0.25_300)/0.2]">
-                    <CheckCircle className="h-8 w-8 text-[oklch(0.65_0.20_180)]" />
-                  </div>
-                  <div className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                    Demo request received
-                  </div>
-                  <h3 className="mt-3 font-['Syne'] text-3xl font-bold text-foreground">
-                    You&apos;re in
-                  </h3>
-                  <p className="mx-auto mt-4 max-w-md font-['Space_Grotesk'] text-muted-foreground">
-                    Your demo request is in. We&apos;ll follow up soon, and you can call directly if
-                    you want to move faster.
-                  </p>
-                  <button
-                    onClick={() => setIsSubmitted(false)}
-                    className="magnetic-btn mt-8 rounded-xl bg-background/24 px-6 py-3 font-['Space_Grotesk'] font-semibold text-foreground backdrop-blur-xl transition-all hover:bg-background/34"
-                  >
-                    Send Another Message
-                  </button>
+            {isSubmitted ? (
+              <div className="py-12 text-center">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[oklch(0.65_0.20_180)/0.12] text-[oklch(0.65_0.20_180)]">
+                  <CheckCircle className="h-7 w-7" />
                 </div>
-              ) : (
-                <>
-                  <div className="mb-7 flex flex-col gap-4 border-b border-border/35 pb-6 sm:flex-row sm:items-end sm:justify-between">
+                <h3 className="mt-5 text-3xl font-semibold text-foreground">You&apos;re in</h3>
+                <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+                  Your demo request is in. We&apos;ll follow up soon, and you can call directly if
+                  you want to move faster.
+                </p>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="homepage-outline-button magnetic-btn mt-8 rounded-xl px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-white/[0.04]"
+                >
+                  Send Another Message
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="border-b border-border/30 pb-5">
+                  <h3 className="text-2xl font-semibold text-foreground">
+                    Book My Demo
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Focused on calls, lead capture, and booking flow.
+                  </p>
+                </div>
+
+                <form
+                  action="https://services.leadconnectorhq.com/funnels/submit"
+                  method="POST"
+                  onSubmit={handleSubmit}
+                  className="mt-6 space-y-5"
+                >
+                  <input
+                    type="text"
+                    name="_honey"
+                    style={{ display: "none" }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
-                      <div className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                        Demo request
-                      </div>
-                      <h3 className="mt-3 font-['Syne'] text-2xl font-bold text-foreground sm:text-[2rem]">
-                        See how the receptionist would fit your business
-                      </h3>
-                    </div>
-                    <div className="rounded-full border border-border/40 bg-background/24 px-3 py-2 font-['Space_Grotesk'] text-xs text-foreground/75 shadow-[0_8px_24px_rgba(0,0,0,0.10)] backdrop-blur-xl">
-                      Focused on calls, lead capture, and booking flow
-                    </div>
-                  </div>
-
-                  <form
-                    action="https://services.leadconnectorhq.com/funnels/submit"
-                    method="POST"
-                    onSubmit={handleSubmit}
-                    className="space-y-5"
-                  >
-                    <input
-                      type="text"
-                      name="_honey"
-                      style={{ display: "none" }}
-                      tabIndex={-1}
-                      autoComplete="off"
-                    />
-
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="name" className="mb-1.5 block font-['Space_Grotesk'] text-sm text-foreground">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="full_name"
-                          required
-                          placeholder="John Smith"
-                          className="w-full rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="business" className="mb-1.5 block font-['Space_Grotesk'] text-sm text-foreground">
-                          Business Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="business"
-                          name="company_name"
-                          required
-                          placeholder="Smith's HVAC"
-                          className="w-full rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="email" className="mb-1.5 block font-['Space_Grotesk'] text-sm text-foreground">
-                          Email *
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          required
-                          placeholder="john@smithshvac.com"
-                          className="w-full rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="phone" className="mb-1.5 block font-['Space_Grotesk'] text-sm text-foreground">
-                          Phone
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          placeholder="(417) 952-6436"
-                          required={smsConsent}
-                          className="w-full rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
-                        />
-                        <p className="mt-1.5 font-['Space_Grotesk'] text-xs text-muted-foreground">
-                          Add a mobile number for quick SMS updates about your demo request and appointments.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="service" className="mb-1.5 block font-['Space_Grotesk'] text-sm text-foreground">
-                        What matters most right now?
+                      <label htmlFor="name" className="mb-1.5 block text-sm text-foreground">
+                        Full Name *
                       </label>
-                      <select
-                        id="service"
-                        name="service_interest"
-                        className="w-full rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
-                      >
-                        <option value="">Select an option...</option>
-                        <option value="never-miss-calls">Never miss calls</option>
-                        <option value="faster-lead-follow-up">Faster lead follow-up</option>
-                        <option value="more-booked-appointments">More booked appointments</option>
-                        <option value="after-hours-coverage">After-hours coverage</option>
-                        <option value="not-sure-yet">Not sure yet</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="mb-1.5 block font-['Space_Grotesk'] text-sm text-foreground">
-                        Tell us about your business
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={4}
-                        placeholder="What happens when a lead calls and your team cannot answer right away?"
-                        className="w-full resize-none rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                      <input
+                        type="text"
+                        id="name"
+                        name="full_name"
+                        required
+                        placeholder="John Smith"
+                        className="w-full rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
                       />
                     </div>
+                    <div>
+                      <label htmlFor="business" className="mb-1.5 block text-sm text-foreground">
+                        Business Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="business"
+                        name="company_name"
+                        required
+                        placeholder="Smith's HVAC"
+                        className="w-full rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                      />
+                    </div>
+                  </div>
 
-                    <div className="flex items-start gap-3 rounded-[1.15rem] border border-border/32 bg-background/18 p-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="email" className="mb-1.5 block text-sm text-foreground">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="john@smithshvac.com"
+                        className="w-full rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className="mb-1.5 block text-sm text-foreground">
+                        Phone
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="(417) 952-6436"
+                        required={smsConsent}
+                        className="w-full rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                      />
+                      <p className="mt-1.5 text-xs text-muted-foreground">
+                        Add a mobile number for quick SMS updates about your demo request and appointments.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="service" className="mb-1.5 block text-sm text-foreground">
+                      What matters most right now?
+                    </label>
+                    <select
+                      id="service"
+                      name="service_interest"
+                      className="w-full rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                    >
+                      <option value="">Select an option...</option>
+                      <option value="never-miss-calls">Never miss calls</option>
+                      <option value="faster-lead-follow-up">Faster lead follow-up</option>
+                      <option value="more-booked-appointments">More booked appointments</option>
+                      <option value="after-hours-coverage">After-hours coverage</option>
+                      <option value="not-sure-yet">Not sure yet</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="mb-1.5 block text-sm text-foreground">
+                      Tell us about your business
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      placeholder="What happens when a lead calls and your team cannot answer right away?"
+                      className="w-full resize-none rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                    />
+                  </div>
+
+                  <div className="rounded-[1.1rem] border border-border/28 bg-white/[0.02] p-4">
+                    <div className="flex items-start gap-3">
                       <input
                         type="checkbox"
                         id="sms_consent"
@@ -358,8 +267,12 @@ export default function ContactSection() {
                         onChange={(e) => setSmsConsent(e.target.checked)}
                         className="mt-1 h-4 w-4 flex-shrink-0 rounded border-border/50 bg-secondary/30 text-[oklch(0.75_0.18_220)] focus:ring-[oklch(0.75_0.18_220)/0.5]"
                       />
-                      <label htmlFor="sms_consent" className="font-['Space_Grotesk'] text-xs leading-relaxed text-muted-foreground">
-                        By checking this box, I agree to receive conversational SMS from Civive Unlimited about my demo request, appointments, and service updates at the phone number provided. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. View our{" "}
+                      <label htmlFor="sms_consent" className="text-xs leading-relaxed text-muted-foreground">
+                        By checking this box, I agree to receive conversational SMS from
+                        Civive Unlimited about my demo request, appointments, and service
+                        updates at the phone number provided. Message frequency varies. Msg
+                        & data rates may apply. Reply STOP to opt out or HELP for help.
+                        Consent is not a condition of purchase. View our{" "}
                         <a href="/privacy" className="text-[oklch(0.75_0.18_220)] hover:underline">
                           Privacy Policy
                         </a>{" "}
@@ -370,29 +283,29 @@ export default function ContactSection() {
                         .
                       </label>
                     </div>
+                  </div>
 
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="magnetic-btn flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] py-4 font-['Space_Grotesk'] text-base font-semibold text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-all hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="h-5 w-5 animate-spin" />
-                          Sending...
-                        </>
-                      ) : (
-                        "Book My Demo"
-                      )}
-                    </button>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="homepage-primary-button magnetic-btn flex w-full items-center justify-center gap-2 rounded-xl py-4 text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="h-5 w-5 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      "Book My Demo"
+                    )}
+                  </button>
 
-                    <p className="text-center font-['Space_Grotesk'] text-xs text-muted-foreground">
-                      No fluff. Just a clear look at how the receptionist could fit your business.
-                    </p>
-                  </form>
-                </>
-              )}
-            </div>
+                  <p className="text-center text-sm text-muted-foreground">
+                    No fluff. Just a clear look at how the receptionist could fit your business.
+                  </p>
+                </form>
+              </>
+            )}
           </motion.div>
         </div>
       </div>

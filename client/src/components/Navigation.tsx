@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -18,10 +18,11 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isMobileMenuOpen]);
 
   const scrollToSection = (href: string) => {
@@ -35,21 +36,20 @@ export default function Navigation() {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "border-b border-border/40 bg-background/72 py-3 shadow-[0_10px_36px_rgba(0,0,0,0.22)] backdrop-blur-2xl"
+            ? "border-b border-border/25 bg-background/88 py-3 backdrop-blur-md"
             : "bg-transparent py-4"
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
             <a
               href="#"
-              className="flex items-center gap-3 group"
+              className="group flex items-center gap-3"
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
@@ -58,16 +58,15 @@ export default function Navigation() {
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663329647955/sAkXjyNGjbClshEs.jpg"
                 alt="Civive Unlimited"
-                className="h-9 w-9 rounded-lg object-cover transition-transform group-hover:scale-105"
+                className="h-9 w-9 rounded-lg object-cover transition-transform group-hover:scale-[1.02]"
                 loading="lazy"
               />
-              <span className="font-['Syne'] font-bold text-lg tracking-tight gradient-text hidden sm:block">
+              <span className="hidden text-base font-semibold tracking-[-0.02em] text-foreground sm:block">
                 CIVIVE UNLIMITED
               </span>
             </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden items-center gap-6 md:flex">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -76,30 +75,28 @@ export default function Navigation() {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="text-muted-foreground hover:text-foreground transition-colors font-['Space_Grotesk'] text-sm tracking-wide"
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {link.label}
                 </a>
               ))}
             </div>
 
-            {/* CTA Button */}
-            <div className="hidden md:flex items-center">
+            <div className="hidden md:flex">
               <a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("#contact");
                 }}
-                className="magnetic-btn rounded-xl bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] px-6 py-2.5 font-['Space_Grotesk'] text-sm font-semibold text-white transition-all hover:opacity-90"
+                className="homepage-primary-button magnetic-btn rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
               >
                 Book a demo
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 text-foreground rounded-lg hover:bg-secondary/50 transition-colors"
+              className="rounded-lg p-2 text-foreground transition-colors hover:bg-secondary/40 md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
@@ -110,16 +107,15 @@ export default function Navigation() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 bg-background/96 backdrop-blur-md md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="flex flex-col items-center justify-center h-full gap-8 pt-16">
+            <div className="flex h-full flex-col items-center justify-center gap-7 pt-16">
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.href}
@@ -128,24 +124,25 @@ export default function Navigation() {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="text-2xl font-['Syne'] font-bold text-foreground hover:text-[oklch(0.75_0.18_220)] transition-colors"
-                  initial={{ opacity: 0, y: 20 }}
+                  className="text-2xl font-semibold text-foreground transition-colors hover:text-[oklch(0.75_0.18_220)]"
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.08 }}
                 >
                   {link.label}
                 </motion.a>
               ))}
+
               <motion.a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection("#contact");
                 }}
-                className="magnetic-btn mt-4 w-64 rounded-xl bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] py-4 text-center font-['Space_Grotesk'] text-lg font-semibold text-white transition-all hover:opacity-90"
-                initial={{ opacity: 0, y: 20 }}
+                className="homepage-primary-button magnetic-btn mt-3 w-64 rounded-xl py-4 text-center text-base font-semibold text-white transition-opacity hover:opacity-90"
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.1 }}
+                transition={{ delay: navLinks.length * 0.08 }}
               >
                 Book a demo
               </motion.a>
