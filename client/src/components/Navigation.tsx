@@ -37,7 +37,7 @@ export default function Navigation() {
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-background/80 backdrop-blur-xl border-b border-border/50 py-3"
+            ? "border-b border-border/40 bg-background/72 py-3 shadow-[0_10px_36px_rgba(0,0,0,0.22)] backdrop-blur-2xl"
             : "bg-transparent py-4"
         }`}
         initial={{ y: -100 }}
@@ -91,7 +91,7 @@ export default function Navigation() {
                   e.preventDefault();
                   scrollToSection("#contact");
                 }}
-                className="magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold text-sm py-2.5 px-6 rounded-lg transition-all"
+                className="magnetic-btn rounded-xl bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] px-6 py-2.5 font-['Space_Grotesk'] text-sm font-semibold text-white transition-all hover:opacity-90"
               >
                 Book a demo
               </a>
@@ -142,7 +142,7 @@ export default function Navigation() {
                   e.preventDefault();
                   scrollToSection("#contact");
                 }}
-                className="mt-4 w-64 text-center magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold text-lg py-4 rounded-lg transition-all"
+                className="magnetic-btn mt-4 w-64 rounded-xl bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] py-4 text-center font-['Space_Grotesk'] text-lg font-semibold text-white transition-all hover:opacity-90"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.1 }}

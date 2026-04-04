@@ -77,7 +77,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden py-24" ref={ref}>
+    <section id="contact" className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
       <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.12),transparent_60%)] blur-3xl" />
 
       <div className="container relative z-10 mx-auto px-4">
@@ -87,13 +87,13 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-4xl text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/35 px-4 py-2 backdrop-blur-xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border/45 bg-background/30 px-4 py-2 shadow-[0_10px_28px_rgba(0,0,0,0.14)] backdrop-blur-2xl">
             <Sparkles className="h-4 w-4 text-[oklch(0.75_0.18_220)]" />
             <span className="font-['Space_Grotesk'] text-sm text-foreground/80">
               Final step
             </span>
           </div>
-          <h2 className="mt-7 font-['Syne'] text-3xl font-bold sm:text-4xl md:text-5xl">
+          <h2 className="mt-6 font-['Syne'] text-3xl font-bold sm:text-4xl md:text-5xl">
             <span className="gradient-text">Book a demo</span>
           </h2>
           <p className="mx-auto mt-5 max-w-3xl font-['Space_Grotesk'] text-lg leading-relaxed text-muted-foreground">
@@ -102,14 +102,14 @@ export default function ContactSection() {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-16 grid max-w-6xl gap-6 lg:grid-cols-[0.86fr_1.14fr]">
+        <div className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-[0.86fr_1.14fr]">
           <motion.div
             initial={{ opacity: 0, x: -26 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.08 }}
             className="space-y-6"
           >
-            <div className="rounded-[1.8rem] border border-border/45 bg-[linear-gradient(145deg,rgba(18,24,38,0.88),rgba(12,16,28,0.94))] p-6 backdrop-blur-2xl sm:p-7">
+            <div className="rounded-[1.85rem] border border-border/40 bg-[linear-gradient(145deg,rgba(18,24,38,0.88),rgba(12,16,28,0.94))] p-6 shadow-[0_18px_56px_rgba(0,0,0,0.18)] backdrop-blur-2xl sm:p-7">
               <div className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
                 What to expect
               </div>
@@ -128,7 +128,7 @@ export default function ContactSection() {
                     initial={{ opacity: 0, y: 16 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.45, delay: 0.14 + index * 0.06 }}
-                    className="flex items-start gap-3 rounded-2xl border border-border/35 bg-background/18 px-4 py-3"
+                    className="flex items-start gap-3 rounded-[1.15rem] border border-border/32 bg-background/18 px-4 py-3"
                   >
                     <CalendarCheck2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[oklch(0.75_0.18_220)]" />
                     <span className="font-['Space_Grotesk'] text-sm text-foreground/82">
@@ -139,12 +139,12 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="rounded-[1.8rem] border border-border/45 bg-background/26 p-6 backdrop-blur-2xl sm:p-7">
+            <div className="rounded-[1.85rem] border border-border/40 bg-background/24 p-6 shadow-[0_16px_46px_rgba(0,0,0,0.14)] backdrop-blur-2xl sm:p-7">
               <h3 className="font-['Syne'] text-xl font-bold text-foreground">Get In Touch</h3>
               <div className="mt-6 grid gap-4">
                 {contactInfo.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 rounded-2xl border border-border/35 bg-background/18 px-4 py-4">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-[oklch(0.75_0.18_220)/0.15] to-[oklch(0.55_0.25_300)/0.15]">
+                  <div key={index} className="flex items-center gap-4 rounded-[1.15rem] border border-border/32 bg-background/18 px-4 py-4">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-[1rem] bg-gradient-to-br from-[oklch(0.75_0.18_220)/0.15] to-[oklch(0.55_0.25_300)/0.15]">
                       <item.icon className="h-5 w-5 text-[oklch(0.75_0.18_220)]" />
                     </div>
                     <div>
@@ -169,7 +169,7 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="rounded-[1.8rem] border border-border/45 bg-background/22 p-6 backdrop-blur-2xl sm:p-7">
+            <div className="rounded-[1.85rem] border border-border/40 bg-background/20 p-6 shadow-[0_16px_46px_rgba(0,0,0,0.12)] backdrop-blur-2xl sm:p-7">
               <div className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
                 Why this stays focused
               </div>
@@ -198,9 +198,9 @@ export default function ContactSection() {
             transition={{ duration: 0.65, delay: 0.12 }}
             className="relative"
           >
-            <div className="pointer-events-none absolute -inset-5 rounded-[2rem] bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.16),transparent_58%)] blur-3xl" />
+            <div className="pointer-events-none absolute -inset-5 rounded-[1.95rem] bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.16),transparent_58%)] blur-3xl" />
 
-            <div className="relative rounded-[1.95rem] border border-border/50 bg-background/30 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.32)] backdrop-blur-2xl sm:p-7">
+            <div className="relative rounded-[1.9rem] border border-border/45 bg-background/28 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.28)] backdrop-blur-2xl sm:p-7">
               {isSubmitted ? (
                 <div className="py-14 text-center">
                   <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[oklch(0.65_0.20_180)/0.2] to-[oklch(0.55_0.25_300)/0.2]">
@@ -218,7 +218,7 @@ export default function ContactSection() {
                   </p>
                   <button
                     onClick={() => setIsSubmitted(false)}
-                    className="magnetic-btn mt-8 rounded-lg bg-secondary/50 px-6 py-3 font-['Space_Grotesk'] font-semibold text-foreground transition-all hover:bg-secondary"
+                    className="magnetic-btn mt-8 rounded-xl bg-background/24 px-6 py-3 font-['Space_Grotesk'] font-semibold text-foreground backdrop-blur-xl transition-all hover:bg-background/34"
                   >
                     Send Another Message
                   </button>
@@ -234,7 +234,7 @@ export default function ContactSection() {
                         See how the receptionist would fit your business
                       </h3>
                     </div>
-                    <div className="rounded-full border border-border/40 bg-background/26 px-3 py-2 font-['Space_Grotesk'] text-xs text-foreground/75">
+                    <div className="rounded-full border border-border/40 bg-background/24 px-3 py-2 font-['Space_Grotesk'] text-xs text-foreground/75 shadow-[0_8px_24px_rgba(0,0,0,0.10)] backdrop-blur-xl">
                       Focused on calls, lead capture, and booking flow
                     </div>
                   </div>
@@ -264,7 +264,7 @@ export default function ContactSection() {
                           name="full_name"
                           required
                           placeholder="John Smith"
-                          className="w-full rounded-lg border border-border/50 bg-secondary/30 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                          className="w-full rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
                         />
                       </div>
                       <div>
@@ -277,7 +277,7 @@ export default function ContactSection() {
                           name="company_name"
                           required
                           placeholder="Smith's HVAC"
-                          className="w-full rounded-lg border border-border/50 bg-secondary/30 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                          className="w-full rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
                         />
                       </div>
                     </div>
@@ -293,7 +293,7 @@ export default function ContactSection() {
                           name="email"
                           required
                           placeholder="john@smithshvac.com"
-                          className="w-full rounded-lg border border-border/50 bg-secondary/30 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                          className="w-full rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
                         />
                       </div>
                       <div>
@@ -306,7 +306,7 @@ export default function ContactSection() {
                           name="phone"
                           placeholder="(417) 952-6436"
                           required={smsConsent}
-                          className="w-full rounded-lg border border-border/50 bg-secondary/30 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                          className="w-full rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
                         />
                         <p className="mt-1.5 font-['Space_Grotesk'] text-xs text-muted-foreground">
                           Add a mobile number if you want SMS updates about your demo request and appointments.
@@ -321,7 +321,7 @@ export default function ContactSection() {
                       <select
                         id="service"
                         name="service_interest"
-                        className="w-full rounded-lg border border-border/50 bg-secondary/30 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                        className="w-full rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
                       >
                         <option value="">Select an option...</option>
                         <option value="never-miss-calls">Never miss calls</option>
@@ -341,11 +341,11 @@ export default function ContactSection() {
                         name="message"
                         rows={4}
                         placeholder="What happens when a customer calls and your team cannot answer right away?"
-                        className="w-full resize-none rounded-lg border border-border/50 bg-secondary/30 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                        className="w-full resize-none rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
                       />
                     </div>
 
-                    <div className="flex items-start gap-3 rounded-2xl border border-border/35 bg-background/18 p-4">
+                    <div className="flex items-start gap-3 rounded-[1.15rem] border border-border/32 bg-background/18 p-4">
                       <input
                         type="checkbox"
                         id="sms_consent"
@@ -370,7 +370,7 @@ export default function ContactSection() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="magnetic-btn flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] py-4 font-['Space_Grotesk'] text-base font-semibold text-white transition-all hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="magnetic-btn flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] py-4 font-['Space_Grotesk'] text-base font-semibold text-white shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-all hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <>

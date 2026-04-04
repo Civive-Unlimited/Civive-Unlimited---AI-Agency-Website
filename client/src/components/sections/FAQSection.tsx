@@ -51,7 +51,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative overflow-hidden py-24" ref={ref}>
+    <section id="faq" className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
       <div className="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.10),transparent_62%)] blur-3xl" />
 
       <div className="container relative z-10 mx-auto px-4">
@@ -61,14 +61,14 @@ export default function FAQSection() {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-4xl text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/35 px-4 py-2 backdrop-blur-xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border/45 bg-background/30 px-4 py-2 shadow-[0_10px_28px_rgba(0,0,0,0.14)] backdrop-blur-2xl">
             <MessageSquareText className="h-4 w-4 text-[oklch(0.75_0.18_220)]" />
             <span className="font-['Space_Grotesk'] text-sm text-foreground/80">
               Practical questions, clear answers
             </span>
           </div>
 
-          <h2 className="mt-7 font-['Syne'] text-3xl font-bold sm:text-4xl md:text-5xl">
+          <h2 className="mt-6 font-['Syne'] text-3xl font-bold sm:text-4xl md:text-5xl">
             <span className="gradient-text">Questions? Answers.</span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl font-['Space_Grotesk'] text-lg leading-relaxed text-muted-foreground">
@@ -76,7 +76,7 @@ export default function FAQSection() {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-16 max-w-4xl space-y-4">
+        <div className="mx-auto mt-14 max-w-4xl space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
@@ -86,10 +86,10 @@ export default function FAQSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
-                className={`relative overflow-hidden rounded-[1.6rem] border backdrop-blur-2xl transition-all duration-300 ${
+                className={`relative overflow-hidden rounded-[1.5rem] border backdrop-blur-2xl transition-all duration-300 ${
                   isOpen
-                    ? "border-[oklch(0.75_0.18_220)/0.35] bg-[linear-gradient(145deg,rgba(25,39,68,0.24),rgba(14,18,30,0.90))] shadow-[0_18px_50px_rgba(0,0,0,0.22)]"
-                    : "border-border/45 bg-background/26 hover:border-[oklch(0.75_0.18_220)/0.25]"
+                    ? "border-[oklch(0.75_0.18_220)/0.32] bg-[linear-gradient(145deg,rgba(25,39,68,0.22),rgba(14,18,30,0.88))] shadow-[0_16px_42px_rgba(0,0,0,0.18)]"
+                    : "border-border/40 bg-background/24 hover:border-[oklch(0.75_0.18_220)/0.25]"
                 }`}
               >
                 <button
@@ -105,10 +105,10 @@ export default function FAQSection() {
                     </span>
                   </div>
                   <span
-                    className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl border transition-all duration-300 ${
+                    className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-[1rem] border transition-all duration-300 ${
                       isOpen
-                        ? "border-[oklch(0.75_0.18_220)/0.35] bg-[oklch(0.75_0.18_220)/0.12]"
-                        : "border-border/40 bg-background/28"
+                        ? "border-[oklch(0.75_0.18_220)/0.32] bg-[oklch(0.75_0.18_220)/0.10]"
+                        : "border-border/35 bg-background/24"
                     }`}
                   >
                     <ChevronDown
@@ -144,7 +144,7 @@ export default function FAQSection() {
           initial={{ opacity: 0, y: 18 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, delay: 0.42 }}
-          className="mx-auto mt-10 flex max-w-4xl items-center justify-center gap-3 rounded-full border border-border/45 bg-background/24 px-5 py-3 text-center backdrop-blur-xl"
+          className="mx-auto mt-10 flex max-w-4xl items-center justify-center gap-3 rounded-full border border-border/40 bg-background/22 px-5 py-3 text-center shadow-[0_10px_28px_rgba(0,0,0,0.12)] backdrop-blur-2xl"
         >
           <ShieldCheck className="h-4 w-4 flex-shrink-0 text-[oklch(0.65_0.20_180)]" />
           <span className="font-['Space_Grotesk'] text-sm text-foreground/78">

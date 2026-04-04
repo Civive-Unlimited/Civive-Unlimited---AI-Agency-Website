@@ -66,7 +66,7 @@ export default function ResultsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="how-it-works" className="relative overflow-hidden py-24" ref={ref}>
+    <section id="how-it-works" className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
       <div className="absolute inset-x-0 top-8 h-48 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.12),transparent_58%)] blur-3xl" />
 
       <div className="container relative z-10 mx-auto px-4">
@@ -76,7 +76,7 @@ export default function ResultsSection() {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-4xl text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/35 px-4 py-2 backdrop-blur-xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border/45 bg-background/30 px-4 py-2 shadow-[0_10px_28px_rgba(0,0,0,0.14)] backdrop-blur-2xl">
             <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[oklch(0.65_0.20_180)] opacity-75" />
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[oklch(0.65_0.20_180)]" />
@@ -86,7 +86,7 @@ export default function ResultsSection() {
             </span>
           </div>
 
-          <h2 className="mt-7 font-['Syne'] text-3xl font-bold sm:text-4xl md:text-5xl">
+          <h2 className="mt-6 font-['Syne'] text-3xl font-bold sm:text-4xl md:text-5xl">
             <span className="gradient-text">How it works</span>
           </h2>
           <p className="mx-auto mt-5 max-w-3xl font-['Space_Grotesk'] text-lg leading-relaxed text-muted-foreground">
@@ -96,15 +96,15 @@ export default function ResultsSection() {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-16 grid max-w-6xl gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+        <div className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-[0.92fr_1.08fr]">
           <motion.div
             initial={{ opacity: 0, x: -26 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="rounded-[1.8rem] border border-border/45 bg-background/30 p-6 backdrop-blur-2xl sm:p-7"
+            className="rounded-[1.85rem] border border-border/40 bg-background/26 p-6 shadow-[0_18px_56px_rgba(0,0,0,0.18)] backdrop-blur-2xl sm:p-7"
           >
             <div className="grid gap-6">
-              <div className="rounded-[1.4rem] border border-border/40 bg-[linear-gradient(145deg,rgba(18,24,38,0.88),rgba(12,16,28,0.94))] p-5">
+              <div className="rounded-[1.45rem] border border-border/35 bg-[linear-gradient(145deg,rgba(18,24,38,0.88),rgba(12,16,28,0.94))] p-5 shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
                 <div className="flex items-center gap-3">
                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[oklch(0.55_0.25_300)/0.14]">
                     <Clock3 className="h-5 w-5 text-[oklch(0.75_0.18_220)]" />
@@ -126,7 +126,7 @@ export default function ResultsSection() {
                       initial={{ opacity: 0, y: 16 }}
                       animate={isInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ duration: 0.45, delay: 0.14 + index * 0.05 }}
-                      className="flex items-start gap-3 rounded-2xl border border-border/35 bg-background/20 px-4 py-3"
+                      className="flex items-start gap-3 rounded-[1.15rem] border border-border/32 bg-background/18 px-4 py-3"
                     >
                       <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full bg-[oklch(0.55_0.25_300)]" />
                       <span className="font-['Space_Grotesk'] text-sm leading-relaxed text-foreground/80">
@@ -137,7 +137,7 @@ export default function ResultsSection() {
                 </div>
               </div>
 
-              <div className="rounded-[1.4rem] border border-border/40 bg-background/25 p-5">
+              <div className="rounded-[1.45rem] border border-border/35 bg-background/22 p-5 shadow-[0_12px_30px_rgba(0,0,0,0.10)]">
                 <div className="flex items-center gap-3">
                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[oklch(0.75_0.18_220)/0.14]">
                     <Phone className="h-5 w-5 text-[oklch(0.75_0.18_220)]" />
@@ -159,7 +159,7 @@ export default function ResultsSection() {
                       initial={{ opacity: 0, y: 16 }}
                       animate={isInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ duration: 0.45, delay: 0.2 + index * 0.06 }}
-                      className="rounded-2xl border border-border/35 bg-background/20 px-4 py-4"
+                      className="rounded-[1.15rem] border border-border/32 bg-background/18 px-4 py-4"
                     >
                       <div className="flex items-start gap-3">
                         <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[oklch(0.65_0.20_180)]" />
@@ -178,7 +178,7 @@ export default function ResultsSection() {
             initial={{ opacity: 0, x: 26 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.65, delay: 0.12 }}
-            className="relative rounded-[1.9rem] border border-border/45 bg-background/28 p-6 backdrop-blur-2xl sm:p-7"
+            className="relative rounded-[1.85rem] border border-border/40 bg-background/24 p-6 shadow-[0_18px_56px_rgba(0,0,0,0.18)] backdrop-blur-2xl sm:p-7"
           >
             <div className="pointer-events-none absolute left-[2.35rem] top-24 bottom-28 hidden w-px bg-gradient-to-b from-[oklch(0.75_0.18_220)/0.75] via-[oklch(0.65_0.20_180)/0.35] to-transparent lg:block" />
 
@@ -191,7 +191,7 @@ export default function ResultsSection() {
                   Responsive from the first ring
                 </h3>
               </div>
-              <div className="rounded-full border border-border/45 bg-background/35 px-3 py-2 font-['Space_Grotesk'] text-xs text-foreground/75 backdrop-blur-xl">
+              <div className="rounded-full border border-border/40 bg-background/26 px-3 py-2 font-['Space_Grotesk'] text-xs text-foreground/75 shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-2xl">
                 Built for conversion
               </div>
             </div>
@@ -203,10 +203,10 @@ export default function ResultsSection() {
                   initial={{ opacity: 0, x: 30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.55, delay: 0.24 + index * 0.08 }}
-                  className={`relative rounded-[1.35rem] border border-border/40 p-4 backdrop-blur-xl sm:p-5 ${
+                  className={`relative rounded-[1.25rem] border border-border/34 p-4 shadow-[0_10px_26px_rgba(0,0,0,0.10)] backdrop-blur-2xl sm:p-5 ${
                     index === 1
-                      ? "bg-[linear-gradient(145deg,rgba(32,56,94,0.34),rgba(18,24,38,0.86))] shadow-[0_16px_50px_rgba(0,0,0,0.28)]"
-                      : "bg-background/24"
+                      ? "bg-[linear-gradient(145deg,rgba(32,56,94,0.30),rgba(18,24,38,0.84))] shadow-[0_16px_42px_rgba(0,0,0,0.22)]"
+                      : "bg-background/20"
                   } ${index % 2 === 1 ? "lg:ml-7" : ""}`}
                 >
                   {index < steps.length - 1 && (
@@ -229,7 +229,7 @@ export default function ResultsSection() {
                         <h4 className="font-['Syne'] text-xl font-bold text-foreground">
                           {step.title}
                         </h4>
-                        <span className="rounded-full border border-border/40 bg-background/30 px-2.5 py-1 font-['JetBrains_Mono'] text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                        <span className="rounded-full border border-border/38 bg-background/24 px-2.5 py-1 font-['JetBrains_Mono'] text-[10px] uppercase tracking-[0.18em] text-muted-foreground backdrop-blur-xl">
                           Step {index + 1}
                         </span>
                       </div>
@@ -248,7 +248,7 @@ export default function ResultsSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.46 }}
-          className="mx-auto mt-8 max-w-6xl rounded-[1.8rem] border border-border/45 bg-background/24 p-6 backdrop-blur-2xl sm:p-7"
+          className="mx-auto mt-8 max-w-6xl rounded-[1.85rem] border border-border/40 bg-background/22 p-6 shadow-[0_18px_48px_rgba(0,0,0,0.16)] backdrop-blur-2xl sm:p-7"
         >
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
@@ -272,7 +272,7 @@ export default function ResultsSection() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.45, delay: 0.52 + index * 0.05 }}
-                className="group rounded-2xl border border-border/40 bg-background/22 px-4 py-4 transition-colors hover:border-[oklch(0.75_0.18_220)/0.35]"
+                className="group rounded-[1.15rem] border border-border/36 bg-background/18 px-4 py-4 transition-colors hover:border-[oklch(0.75_0.18_220)/0.35]"
               >
                 <div className="flex items-center gap-3">
                   <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[oklch(0.75_0.18_220)/0.12]">
