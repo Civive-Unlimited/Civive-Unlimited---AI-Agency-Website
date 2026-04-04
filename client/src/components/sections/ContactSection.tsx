@@ -10,7 +10,7 @@ const nextSteps = [
 ];
 
 const contactInfo = [
-  { icon: Phone, label: "Phone", value: "(417) 952-6436", href: "tel:+14179526436" },
+  { icon: Phone, label: "24/7 AI assistant line", value: "(417) 738-5126", href: "tel:+14177385126" },
   { icon: Mail, label: "Email", value: "ceo@civiveunlimited.com", href: "mailto:ceo@civiveunlimited.com" },
 ];
 
@@ -42,10 +42,10 @@ export default function ContactSection() {
         form.reset();
         setSmsConsent(false);
       } else {
-        toast.error("Something went wrong. Please try calling us directly at (417) 952-6436.");
+        toast.error("Something went wrong. Please call or text our AI assistant at (417) 738-5126.");
       }
     } catch {
-      toast.error("Network error. Please try calling us directly at (417) 952-6436.");
+      toast.error("Network error. Please call or text our AI assistant at (417) 738-5126.");
     } finally {
       setIsSubmitting(false);
     }
@@ -219,7 +219,7 @@ export default function ContactSection() {
                         type="tel"
                         id="phone"
                         name="phone"
-                        placeholder="(417) 952-6436"
+                        placeholder="(417) 738-5126"
                         required={smsConsent}
                         className="w-full rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
                       />

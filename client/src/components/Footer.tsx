@@ -78,11 +78,11 @@ export default function Footer() {
             <p className="homepage-eyebrow">Contact</p>
             <div className="mt-5 grid gap-4 text-sm text-muted-foreground">
               <a
-                href="tel:+14179526436"
+                href="tel:+14177385126"
                 className="flex items-center gap-3 transition-colors hover:text-[oklch(0.78_0.08_230)]"
               >
                 <Phone className="h-4 w-4 text-[oklch(0.75_0.18_220)]" />
-                <span>(417) 952-6436</span>
+                <span>(417) 738-5126</span>
               </a>
               <a
                 href="mailto:ceo@civiveunlimited.com"
