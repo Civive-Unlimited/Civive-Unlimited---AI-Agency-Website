@@ -8,9 +8,7 @@ export default function Home() {
     <>
       <HeroSection />
       <ResultsSection />
-      <div id="faq">
-        <FAQSection />
-      </div>
+      <FAQSection />
       <ContactSection />
     </>
   );
