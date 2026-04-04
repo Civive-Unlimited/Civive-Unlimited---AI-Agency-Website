@@ -38,7 +38,7 @@ export default function Navigation() {
       <motion.nav
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "border-b border-border/25 bg-background/88 py-3 backdrop-blur-md"
+            ? "border-b border-[oklch(0.36_0.05_228/0.4)] bg-[linear-gradient(180deg,rgba(6,8,15,0.92),rgba(8,11,20,0.88))] py-3 shadow-[0_12px_30px_rgba(0,0,0,0.18)] backdrop-blur-md"
             : "bg-transparent py-4"
         }`}
         initial={{ y: -100 }}
@@ -58,10 +58,10 @@ export default function Navigation() {
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663329647955/sAkXjyNGjbClshEs.jpg"
                 alt="Civive Unlimited"
-                className="h-9 w-9 rounded-lg object-cover transition-transform group-hover:scale-[1.02]"
+                className="h-9 w-9 rounded-lg border border-[oklch(0.36_0.05_228/0.45)] object-cover transition-transform group-hover:scale-[1.02]"
                 loading="lazy"
               />
-              <span className="hidden text-base font-semibold tracking-[-0.02em] text-foreground sm:block">
+              <span className="hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(164,191,214,0.76))] bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent sm:block">
                 CIVIVE UNLIMITED
               </span>
             </a>
@@ -75,7 +75,7 @@ export default function Navigation() {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="text-sm text-muted-foreground transition-colors hover:text-[oklch(0.78_0.08_230)]"
                 >
                   {link.label}
                 </a>
@@ -96,7 +96,7 @@ export default function Navigation() {
             </div>
 
             <button
-              className="rounded-lg p-2 text-foreground transition-colors hover:bg-secondary/40 md:hidden"
+              className="rounded-lg border border-transparent p-2 text-foreground transition-colors hover:border-[oklch(0.36_0.05_228/0.35)] hover:bg-white/[0.03] md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
@@ -110,7 +110,7 @@ export default function Navigation() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-background/96 backdrop-blur-md md:hidden"
+            className="fixed inset-0 z-40 bg-[linear-gradient(180deg,rgba(6,8,15,0.97),rgba(8,11,20,0.98))] backdrop-blur-md md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

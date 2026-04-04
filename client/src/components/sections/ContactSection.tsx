@@ -57,6 +57,8 @@ export default function ContactSection() {
       className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
       ref={ref}
     >
+      <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.12),transparent_54%)]" />
+      <div className="absolute right-[8%] top-16 h-44 w-44 bg-[radial-gradient(circle,oklch(0.55_0.25_300/0.12),transparent_70%)]" />
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -121,8 +123,9 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.12 }}
-            className="homepage-panel rounded-[1.65rem] p-6 sm:p-7"
+            className="homepage-panel relative overflow-hidden rounded-[1.65rem] p-6 sm:p-7"
           >
+            <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,oklch(0.75_0.18_220/0.78),oklch(0.55_0.25_300/0.52),transparent)]" />
             {isSubmitted ? (
               <div className="py-12 text-center">
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[oklch(0.65_0.20_180)/0.12] text-[oklch(0.65_0.20_180)]">
@@ -176,7 +179,7 @@ export default function ContactSection() {
                         name="full_name"
                         required
                         placeholder="John Smith"
-                        className="w-full rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                        className="w-full rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
                       />
                     </div>
                     <div>
@@ -189,7 +192,7 @@ export default function ContactSection() {
                         name="company_name"
                         required
                         placeholder="Smith's HVAC"
-                        className="w-full rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                        className="w-full rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
                       />
                     </div>
                   </div>
@@ -205,7 +208,7 @@ export default function ContactSection() {
                         name="email"
                         required
                         placeholder="john@smithshvac.com"
-                        className="w-full rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                        className="w-full rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
                       />
                     </div>
                     <div>
@@ -218,7 +221,7 @@ export default function ContactSection() {
                         name="phone"
                         placeholder="(417) 952-6436"
                         required={smsConsent}
-                        className="w-full rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                        className="w-full rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
                       />
                       <p className="mt-1.5 text-xs text-muted-foreground">
                         Add a mobile number for quick SMS updates about your demo request and appointments.
@@ -233,7 +236,7 @@ export default function ContactSection() {
                     <select
                       id="service"
                       name="service_interest"
-                      className="w-full rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                      className="w-full rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
                     >
                       <option value="">Select an option...</option>
                       <option value="never-miss-calls">Never miss calls</option>
@@ -253,11 +256,11 @@ export default function ContactSection() {
                       name="message"
                       rows={4}
                       placeholder="What happens when a lead calls and your team cannot answer right away?"
-                      className="w-full resize-none rounded-xl border border-border/35 bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                      className="w-full resize-none rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
                     />
                   </div>
 
-                  <div className="rounded-[1.1rem] border border-border/28 bg-white/[0.02] p-4">
+                  <div className="rounded-[1.1rem] border border-[oklch(0.30_0.04_230/0.34)] bg-[linear-gradient(180deg,rgba(11,14,24,0.54),rgba(8,11,18,0.6))] p-4">
                     <div className="flex items-start gap-3">
                       <input
                         type="checkbox"
@@ -273,11 +276,11 @@ export default function ContactSection() {
                         updates at the phone number provided. Message frequency varies. Msg
                         & data rates may apply. Reply STOP to opt out or HELP for help.
                         Consent is not a condition of purchase. View our{" "}
-                        <a href="/privacy" className="text-[oklch(0.75_0.18_220)] hover:underline">
+                        <a href="/privacy" className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline">
                           Privacy Policy
                         </a>{" "}
                         and{" "}
-                        <a href="/terms" className="text-[oklch(0.75_0.18_220)] hover:underline">
+                        <a href="/terms" className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline">
                           Terms of Service
                         </a>
                         .
@@ -296,7 +299,7 @@ export default function ContactSection() {
                         Sending...
                       </>
                     ) : (
-                      "Book My Demo"
+                      "Book a demo"
                     )}
                   </button>
 

@@ -69,7 +69,9 @@ export default function ResultsSection() {
       className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
       ref={ref}
     >
-      <div className="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.09),transparent_64%)]" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.11),transparent_62%)]" />
+      <div className="absolute inset-x-0 top-24 h-px opacity-55 homepage-circuit-line" />
+      <div className="absolute left-[10%] top-10 h-36 w-36 bg-[radial-gradient(circle,oklch(0.55_0.25_300/0.08),transparent_70%)]" />
 
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
@@ -111,7 +113,7 @@ export default function ResultsSection() {
                 </div>
               </div>
 
-              <div className="border-t border-border/35 pt-8">
+              <div className="border-t border-[oklch(0.33_0.05_228/0.42)] pt-8">
                 <p className="homepage-eyebrow">The fix</p>
                 <h3 className="mt-3 text-2xl font-semibold text-foreground">
                   A calmer, faster first response.
@@ -123,7 +125,7 @@ export default function ResultsSection() {
                       className={`rounded-xl border px-4 py-3 text-sm text-foreground/84 ${
                         index === 0
                           ? "border-[oklch(0.75_0.18_220)/0.30] bg-[oklch(0.75_0.18_220)/0.08]"
-                          : "border-border/32 bg-white/[0.02]"
+                          : "border-[oklch(0.30_0.04_230/0.34)] bg-[rgba(11,14,24,0.54)]"
                       }`}
                     >
                       {item}
@@ -140,7 +142,7 @@ export default function ResultsSection() {
             transition={{ duration: 0.55, delay: 0.14 }}
             className="homepage-panel rounded-[1.6rem] p-6 sm:p-7"
           >
-            <div className="flex items-end justify-between gap-4 border-b border-border/35 pb-5">
+            <div className="flex items-end justify-between gap-4 border-b border-[oklch(0.33_0.05_228/0.42)] pb-5">
               <div>
                 <p className="homepage-eyebrow">Flow</p>
                 <h3 className="mt-3 text-2xl font-semibold text-foreground">
@@ -153,7 +155,7 @@ export default function ResultsSection() {
             </div>
 
             <div className="relative mt-6">
-              <div className="absolute left-5 top-3 bottom-3 w-px bg-border/35" />
+              <div className="absolute left-5 top-3 bottom-3 w-px bg-[linear-gradient(180deg,oklch(0.75_0.18_220/0.7),oklch(0.55_0.25_300/0.3),transparent)]" />
               <div className="grid gap-6">
                 {steps.map((step, index) => (
                   <motion.div
@@ -163,10 +165,10 @@ export default function ResultsSection() {
                     transition={{ duration: 0.48, delay: 0.18 + index * 0.06 }}
                     className="relative pl-14"
                   >
-                    <span className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full border border-border/35 bg-background text-[oklch(0.75_0.18_220)]">
+                    <span className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full border border-[oklch(0.33_0.05_228/0.42)] bg-[linear-gradient(180deg,rgba(12,15,24,0.96),rgba(8,10,17,0.98))] text-[oklch(0.75_0.18_220)] shadow-[0_0_18px_oklch(0.75_0.18_220/0.08)]">
                       <step.icon className="h-4.5 w-4.5" />
                     </span>
-                    <div className="rounded-[1.15rem] border border-border/32 bg-white/[0.02] px-5 py-4">
+                    <div className="rounded-[1.15rem] border border-[oklch(0.30_0.04_230/0.34)] bg-[linear-gradient(180deg,rgba(11,14,24,0.64),rgba(8,11,18,0.74))] px-5 py-4">
                       <h4 className="text-lg font-medium text-foreground">{step.title}</h4>
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                         {step.description}
@@ -185,7 +187,7 @@ export default function ResultsSection() {
           transition={{ duration: 0.55, delay: 0.2 }}
           className="mx-auto mt-8 max-w-6xl"
         >
-          <div className="border-t border-border/20 pt-8">
+          <div className="border-t border-[oklch(0.33_0.05_228/0.36)] pt-8">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="homepage-eyebrow">Outcomes</p>
@@ -203,7 +205,7 @@ export default function ResultsSection() {
               {outcomes.map((item) => (
                 <div
                   key={item}
-                  className="rounded-xl border border-border/28 bg-white/[0.02] px-4 py-4 text-sm text-foreground/84"
+                  className="rounded-xl border border-[oklch(0.30_0.04_230/0.34)] bg-[linear-gradient(180deg,rgba(10,13,22,0.54),rgba(7,10,17,0.64))] px-4 py-4 text-sm text-foreground/84 transition-colors hover:border-[oklch(0.36_0.07_228/0.48)]"
                 >
                   {item}
                 </div>

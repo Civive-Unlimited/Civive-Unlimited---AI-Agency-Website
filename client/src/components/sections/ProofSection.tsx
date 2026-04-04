@@ -21,6 +21,7 @@ export default function ProofSection() {
 
   return (
     <section className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
+      <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.08),transparent_66%)]" />
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -42,14 +43,14 @@ export default function ProofSection() {
           initial={{ opacity: 0, y: 18 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.08 }}
-          className="mx-auto mt-14 max-w-6xl overflow-hidden rounded-[1.7rem] border border-border/28 bg-[rgba(11,14,22,0.72)]"
+          className="homepage-panel mx-auto mt-14 max-w-6xl overflow-hidden rounded-[1.7rem]"
         >
           <div className="grid lg:grid-cols-3">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.42, delay: 0.12 }}
-              className="px-6 py-7 sm:px-7 sm:py-8 lg:border-r lg:border-border/20"
+              className="px-6 py-7 sm:px-7 sm:py-8 lg:border-r lg:border-[oklch(0.33_0.05_228/0.28)]"
             >
               <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 Testimonial space
@@ -67,7 +68,7 @@ export default function ProofSection() {
               initial={{ opacity: 0, y: 14 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.42, delay: 0.17 }}
-              className="border-t border-border/20 px-6 py-7 sm:px-7 sm:py-8 lg:border-r lg:border-t-0 lg:border-border/20"
+              className="border-t border-[oklch(0.33_0.05_228/0.28)] px-6 py-7 sm:px-7 sm:py-8 lg:border-r lg:border-t-0 lg:border-[oklch(0.33_0.05_228/0.28)]"
             >
               <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 Results space
@@ -81,7 +82,7 @@ export default function ProofSection() {
               initial={{ opacity: 0, y: 14 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.42, delay: 0.22 }}
-              className="border-t border-border/20 px-6 py-7 sm:px-7 sm:py-8 lg:border-t-0"
+              className="border-t border-[oklch(0.33_0.05_228/0.28)] px-6 py-7 sm:px-7 sm:py-8 lg:border-t-0"
             >
               <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 Implementation confidence
@@ -96,7 +97,7 @@ export default function ProofSection() {
                     key={line}
                     className="flex items-center gap-3 text-sm text-foreground/80"
                   >
-                    <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.75_0.18_220)]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.75_0.18_220)] shadow-[0_0_10px_oklch(0.75_0.18_220/0.32)]" />
                     <span>{line}</span>
                   </div>
                 ))}
@@ -109,7 +110,7 @@ export default function ProofSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.45, delay: 0.26 }}
-          className="mx-auto mt-8 flex max-w-4xl flex-col items-center justify-between gap-4 border-t border-border/20 pt-6 text-center sm:flex-row sm:text-left"
+          className="mx-auto mt-8 flex max-w-4xl flex-col items-center justify-between gap-4 border-t border-[oklch(0.33_0.05_228/0.28)] pt-6 text-center sm:flex-row sm:text-left"
         >
           <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
             Want to see what this could look like for your business?
@@ -117,7 +118,7 @@ export default function ProofSection() {
 
           <button
             onClick={scrollToContact}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-border/28 px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-[oklch(0.75_0.18_220)/0.38] hover:text-[oklch(0.75_0.18_220)]"
+            className="homepage-outline-button inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-[oklch(0.75_0.18_220)/0.45] hover:text-[oklch(0.75_0.18_220)]"
           >
             Book a demo
             <ArrowRight className="h-4 w-4" />
