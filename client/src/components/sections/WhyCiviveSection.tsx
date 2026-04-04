@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 
 const supportPoints = [
@@ -24,7 +24,7 @@ export default function WhyCiviveSection() {
     <section className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -38,7 +38,8 @@ export default function WhyCiviveSection() {
               <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
                 We build practical systems that help businesses answer faster, capture
                 more leads, and keep more appointments moving. The goal is not to sound
-                impressive. The goal is to stop lead loss and make the business more responsive.
+                impressive. The goal is to stop lead loss and make the business more
+                responsive.
               </p>
             </motion.div>
 
@@ -46,26 +47,26 @@ export default function WhyCiviveSection() {
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="homepage-panel rounded-[1.6rem] p-6 sm:p-7"
+              className="border-y border-border/20"
             >
-              <div className="grid gap-5">
-                {supportPoints.map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.42, delay: 0.12 + index * 0.05 }}
-                    className={`flex items-center gap-4 pb-5 ${
-                      index < supportPoints.length - 1 ? "border-b border-border/25" : ""
-                    }`}
-                  >
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border/30 bg-white/[0.03] text-[oklch(0.65_0.20_180)]">
-                      <CheckCircle2 className="h-4 w-4" />
-                    </span>
-                    <p className="text-base text-foreground/84">{item}</p>
-                  </motion.div>
-                ))}
-              </div>
+              {supportPoints.map((item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.42, delay: 0.12 + index * 0.05 }}
+                  className={`grid grid-cols-[44px_minmax(0,1fr)] items-start gap-4 py-5 sm:gap-6 sm:py-6 ${
+                    index < supportPoints.length - 1 ? "border-b border-border/20" : ""
+                  }`}
+                >
+                  <span className="text-sm font-medium tracking-[0.14em] text-muted-foreground">
+                    0{index + 1}
+                  </span>
+                  <p className="text-lg font-medium leading-relaxed tracking-[-0.01em] text-foreground/86">
+                    {item}
+                  </p>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
 
@@ -73,22 +74,22 @@ export default function WhyCiviveSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.48, delay: 0.18 }}
-            className="homepage-panel mt-8 rounded-[1.5rem] px-6 py-6 sm:px-7"
+            className="mt-10 border-t border-border/20 pt-8"
           >
-            <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-3xl">
                 <h3 className="text-2xl font-semibold text-foreground">
                   Need more than call handling?
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  Civive Unlimited also builds the systems around it — websites,
+                  Civive Unlimited also builds the systems around it - websites,
                   follow-up automation, CRM workflows, email campaigns, and custom setups.
                 </p>
               </div>
 
               <button
                 onClick={scrollToContact}
-                className="homepage-outline-button magnetic-btn inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-white/[0.04]"
+                className="inline-flex items-center justify-center gap-2 border-b border-border/35 pb-2 text-sm font-medium text-foreground transition-colors hover:border-[oklch(0.75_0.18_220)/0.38] hover:text-[oklch(0.75_0.18_220)]"
               >
                 Ask about additional systems
                 <ArrowRight className="h-4 w-4" />
