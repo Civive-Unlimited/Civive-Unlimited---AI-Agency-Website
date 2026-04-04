@@ -19,17 +19,17 @@ export default function ContactSection() {
   const [smsConsent, setSmsConsent] = useState(false);
 
   const promises = [
-    "I answer my own phone.",
-    "I do the actual work (no outsourcing).",
-    "I only take clients I know I can help.",
-    "I'm building this for the long haul.",
+    "We build it around your business.",
+    "We keep the setup practical and simple.",
+    "We focus on lead response and booked appointments.",
+    "We only recommend what makes sense for your business.",
   ];
 
   const contactInfo = [
     { icon: Phone, label: "Phone", value: "(417) 952-6436", href: "tel:+14179526436" },
     { icon: Mail, label: "Email", value: "ceo@civiveunlimited.com", href: "mailto:ceo@civiveunlimited.com" },
     { icon: MapPin, label: "Location", value: "Springfield, MO", href: null },
-    { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
+    { icon: Clock, label: "Fast follow up", value: "Demo requests reviewed quickly", href: null },
   ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,7 +47,7 @@ export default function ContactSection() {
 
       if (response.ok || response.redirected) {
         setIsSubmitted(true);
-        toast.success("Message sent! We'll get back to you within 24 hours.", {
+        toast.success("Demo request sent. We'll follow up soon.", {
           duration: 6000,
         });
         form.reset();
@@ -147,7 +147,7 @@ export default function ContactSection() {
                     Message Received!
                   </h3>
                   <p className="font-['Space_Grotesk'] text-muted-foreground mb-6">
-                    We'll get back to you within 24 hours. In the meantime, feel free to call us directly.
+                    Your demo request is in. We'll follow up soon, and you can call directly if you want to move faster.
                   </p>
                   <button
                     onClick={() => setIsSubmitted(false)}
