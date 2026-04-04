@@ -77,7 +77,11 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
+    <section
+      id="contact"
+      className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
+      ref={ref}
+    >
       <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.12),transparent_60%)] blur-3xl" />
 
       <div className="container relative z-10 mx-auto px-4">
@@ -309,7 +313,7 @@ export default function ContactSection() {
                           className="w-full rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
                         />
                         <p className="mt-1.5 font-['Space_Grotesk'] text-xs text-muted-foreground">
-                          Add a mobile number if you want SMS updates about your demo request and appointments.
+                          Add a mobile number for quick SMS updates about your demo request and appointments.
                         </p>
                       </div>
                     </div>
@@ -340,7 +344,7 @@ export default function ContactSection() {
                         id="message"
                         name="message"
                         rows={4}
-                        placeholder="What happens when a customer calls and your team cannot answer right away?"
+                        placeholder="What happens when a lead calls and your team cannot answer right away?"
                         className="w-full resize-none rounded-xl border border-border/45 bg-secondary/26 px-4 py-3 font-['Space_Grotesk'] text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5]"
                       />
                     </div>
@@ -383,7 +387,7 @@ export default function ContactSection() {
                     </button>
 
                     <p className="text-center font-['Space_Grotesk'] text-xs text-muted-foreground">
-                      No fluff. No hard pitch. Just a clear look at how the receptionist could fit your business.
+                      No fluff. Just a clear look at how the receptionist could fit your business.
                     </p>
                   </form>
                 </>

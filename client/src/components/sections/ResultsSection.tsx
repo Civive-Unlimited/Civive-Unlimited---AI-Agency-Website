@@ -66,7 +66,11 @@ export default function ResultsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="how-it-works" className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
+    <section
+      id="how-it-works"
+      className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
+      ref={ref}
+    >
       <div className="absolute inset-x-0 top-8 h-48 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.12),transparent_58%)] blur-3xl" />
 
       <div className="container relative z-10 mx-auto px-4">

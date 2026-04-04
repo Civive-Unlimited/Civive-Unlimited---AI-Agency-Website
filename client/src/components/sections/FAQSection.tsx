@@ -51,7 +51,11 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
+    <section
+      id="faq"
+      className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
+      ref={ref}
+    >
       <div className="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.10),transparent_62%)] blur-3xl" />
 
       <div className="container relative z-10 mx-auto px-4">
@@ -94,7 +98,7 @@ export default function FAQSection() {
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between gap-5 px-6 py-6 text-left sm:px-7"
+                  className="flex w-full items-center justify-between gap-5 px-6 py-6 text-left transition-colors hover:bg-white/[0.015] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.75_0.18_220)/0.28] sm:px-7"
                 >
                   <div className="min-w-0">
                     <div className="font-['JetBrains_Mono'] text-[11px] uppercase tracking-[0.18em] text-muted-foreground">

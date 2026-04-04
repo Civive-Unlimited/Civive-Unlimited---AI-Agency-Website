@@ -259,9 +259,10 @@ export default function HeroSection() {
                       transition={{ duration: 0.55, delay: 0.28 + index * 0.1 }}
                       style={{
                         transform: `translateZ(${index === 1 ? 34 : 18}px)`,
-                        marginLeft: index % 2 === 0 ? "0px" : "28px",
                       }}
-                      className="relative rounded-[1.25rem] border border-border/38 bg-background/40 p-4 shadow-[0_10px_28px_rgba(0,0,0,0.12)] backdrop-blur-2xl sm:p-4.5"
+                      className={`relative rounded-[1.25rem] border border-border/38 bg-background/40 p-4 shadow-[0_10px_28px_rgba(0,0,0,0.12)] backdrop-blur-2xl sm:p-4.5 ${
+                        index % 2 === 1 ? "lg:ml-7" : ""
+                      }`}
                     >
                       {index < flowSteps.length - 1 && (
                         <div className="pointer-events-none absolute left-8 top-full h-5 w-px bg-gradient-to-b from-[oklch(0.75_0.18_220)/0.7] to-transparent" />
