@@ -13,7 +13,7 @@ export default function IndustriesSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
+    <section id="industries" className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24" ref={ref}>
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <motion.div

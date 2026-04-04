@@ -21,7 +21,7 @@ export default function WhyCiviveSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
+    <section id="why-civive" className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24" ref={ref}>
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">

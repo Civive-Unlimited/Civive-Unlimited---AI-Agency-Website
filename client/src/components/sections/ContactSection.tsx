@@ -144,7 +144,7 @@ export default function ContactSection() {
               <>
                 <div className="border-b border-border/30 pb-5">
                   <h3 className="text-2xl font-semibold text-foreground">
-                    Book My Demo
+                    Book a demo
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     Focused on calls, lead capture, and booking flow.
@@ -301,7 +301,7 @@ export default function ContactSection() {
                   </button>
 
                   <p className="text-center text-sm text-muted-foreground">
-                    No fluff. Just a clear look at how the receptionist could fit your business.
+                    Clear demo. Practical next steps.
                   </p>
                 </form>
               </>
@@ -309,6 +309,8 @@ export default function ContactSection() {
           </motion.div>
         </div>
       </div>
+
+      <div className="homepage-section-divider" />
     </section>
   );
 }
