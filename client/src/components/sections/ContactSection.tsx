@@ -57,8 +57,8 @@ export default function ContactSection() {
       className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
       ref={ref}
     >
-      <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.12),transparent_54%)]" />
-      <div className="absolute right-[8%] top-16 h-44 w-44 bg-[radial-gradient(circle,oklch(0.55_0.25_300/0.12),transparent_70%)]" />
+      <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_top,oklch(0.55_0.25_300/0.12),transparent_56%)]" />
+      <div className="absolute right-[8%] top-16 h-44 w-44 bg-[radial-gradient(circle,oklch(0.72_0.15_235/0.08),transparent_70%)]" />
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -101,7 +101,7 @@ export default function ContactSection() {
               ))}
             </div>
 
-            <div className="mt-10 space-y-4 border-t border-border/25 pt-8">
+            <div className="mt-10 space-y-4 border-t border-[oklch(0.31_0.05_275/0.18)] pt-8">
               {contactInfo.map((item) => (
                 <div key={item.label}>
                   <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
@@ -125,7 +125,7 @@ export default function ContactSection() {
             transition={{ duration: 0.55, delay: 0.12 }}
             className="homepage-panel relative overflow-hidden rounded-[1.65rem] p-6 sm:p-7"
           >
-            <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,oklch(0.75_0.18_220/0.78),oklch(0.55_0.25_300/0.52),transparent)]" />
+            <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,oklch(0.56_0.16_290/0.72),oklch(0.72_0.15_235/0.42),transparent)]" />
             {isSubmitted ? (
               <div className="py-12 text-center">
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[oklch(0.65_0.20_180)/0.12] text-[oklch(0.65_0.20_180)]">
@@ -145,7 +145,7 @@ export default function ContactSection() {
               </div>
             ) : (
               <>
-                <div className="border-b border-border/30 pb-5">
+                <div className="border-b border-[oklch(0.31_0.05_275/0.18)] pb-5">
                   <h3 className="text-2xl font-semibold text-foreground">
                     Book a demo
                   </h3>
@@ -260,7 +260,7 @@ export default function ContactSection() {
                     />
                   </div>
 
-                  <div className="rounded-[1.1rem] border border-[oklch(0.30_0.04_230/0.34)] bg-[linear-gradient(180deg,rgba(11,14,24,0.54),rgba(8,11,18,0.6))] p-4">
+                  <div className="rounded-[1.1rem] border border-[oklch(0.31_0.05_275/0.22)] bg-[linear-gradient(180deg,rgba(14,13,24,0.44),rgba(8,11,18,0.48))] p-4">
                     <div className="flex items-start gap-3">
                       <input
                         type="checkbox"

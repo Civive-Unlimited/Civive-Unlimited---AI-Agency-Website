@@ -22,7 +22,7 @@ export default function WhyCiviveSection() {
 
   return (
     <section id="why-civive" className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24" ref={ref}>
-      <div className="absolute inset-x-0 top-16 h-px opacity-55 homepage-circuit-line" />
+      <div className="absolute inset-x-0 top-16 h-px opacity-45 homepage-circuit-line" />
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
@@ -48,7 +48,7 @@ export default function WhyCiviveSection() {
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="border-y border-[oklch(0.33_0.05_228/0.32)]"
+              className="border-y border-[oklch(0.31_0.05_275/0.20)]"
             >
               {supportPoints.map((item, index) => (
                 <motion.div
@@ -57,10 +57,10 @@ export default function WhyCiviveSection() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.42, delay: 0.12 + index * 0.05 }}
                   className={`grid grid-cols-[44px_minmax(0,1fr)] items-start gap-4 py-5 sm:gap-6 sm:py-6 ${
-                    index < supportPoints.length - 1 ? "border-b border-[oklch(0.33_0.05_228/0.28)]" : ""
+                    index < supportPoints.length - 1 ? "border-b border-[oklch(0.31_0.05_275/0.16)]" : ""
                   }`}
                 >
-                  <span className="text-sm font-medium tracking-[0.14em] text-[oklch(0.75_0.18_220/0.88)]">
+                  <span className="text-sm font-medium tracking-[0.14em] text-[oklch(0.58_0.16_290/0.92)]">
                     0{index + 1}
                   </span>
                   <p className="text-lg font-medium leading-relaxed tracking-[-0.01em] text-foreground/86">
@@ -75,7 +75,7 @@ export default function WhyCiviveSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.48, delay: 0.18 }}
-            className="mt-10 border-t border-[oklch(0.33_0.05_228/0.32)] pt-8"
+            className="mt-10 border-t border-[oklch(0.31_0.05_275/0.18)] pt-8"
           >
             <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-3xl">
@@ -90,7 +90,7 @@ export default function WhyCiviveSection() {
 
               <button
                 onClick={scrollToContact}
-                className="inline-flex items-center justify-center gap-2 border-b border-[oklch(0.33_0.05_228/0.42)] pb-2 text-sm font-medium text-foreground transition-colors hover:border-[oklch(0.75_0.18_220)/0.5] hover:text-[oklch(0.75_0.18_220)]"
+                className="inline-flex items-center justify-center gap-2 border-b border-[oklch(0.31_0.05_275/0.24)] pb-2 text-sm font-medium text-foreground transition-colors hover:border-[oklch(0.58_0.16_290/0.42)] hover:text-[oklch(0.58_0.16_290)]"
               >
                 Ask about additional systems
                 <ArrowRight className="h-4 w-4" />

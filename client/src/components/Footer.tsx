@@ -36,7 +36,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[oklch(0.33_0.05_228/0.34)] bg-[linear-gradient(180deg,rgba(5,7,13,0.96),rgba(7,9,16,0.99))]">
+    <footer className="border-t border-[oklch(0.31_0.05_275/0.24)] bg-[linear-gradient(180deg,rgba(6,6,12,0.96),rgba(8,8,16,0.99))]">
       <div className="container mx-auto px-4 py-14 sm:py-16">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr_0.9fr] lg:gap-10">
           <div className="max-w-md">
@@ -47,7 +47,7 @@ export default function Footer() {
                 className="h-9 w-9 rounded-lg border border-[oklch(0.36_0.05_228/0.42)] object-cover"
                 loading="lazy"
               />
-              <span className="bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(165,191,214,0.72))] bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent">
+              <span className="bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(192,176,230,0.72))] bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent">
                 CIVIVE UNLIMITED
               </span>
             </div>
@@ -64,7 +64,7 @@ export default function Footer() {
                 <button
                   key={`${link.label}-${link.href}`}
                   onClick={() => navigateTo(link.href)}
-                  className={`w-fit text-left text-sm transition-colors hover:text-[oklch(0.78_0.08_230)] ${
+                  className={`w-fit text-left text-sm transition-colors hover:text-[oklch(0.77_0.08_285)] ${
                     link.secondary ? "text-foreground/68" : "text-muted-foreground"
                   }`}
                 >
@@ -79,14 +79,14 @@ export default function Footer() {
             <div className="mt-5 grid gap-4 text-sm text-muted-foreground">
               <a
                 href="tel:+14177385126"
-                className="flex items-center gap-3 transition-colors hover:text-[oklch(0.78_0.08_230)]"
+                className="flex items-center gap-3 transition-colors hover:text-[oklch(0.77_0.08_285)]"
               >
                 <Phone className="h-4 w-4 text-[oklch(0.75_0.18_220)]" />
                 <span>(417) 738-5126</span>
               </a>
               <a
                 href="mailto:ceo@civiveunlimited.com"
-                className="flex items-center gap-3 transition-colors hover:text-[oklch(0.78_0.08_230)]"
+                className="flex items-center gap-3 transition-colors hover:text-[oklch(0.77_0.08_285)]"
               >
                 <Mail className="h-4 w-4 text-[oklch(0.75_0.18_220)]" />
                 <span>ceo@civiveunlimited.com</span>
@@ -99,12 +99,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-[oklch(0.33_0.05_228/0.28)] pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-[oklch(0.31_0.05_275/0.20)] pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-5">
-            <a href="/privacy" className="transition-colors hover:text-[oklch(0.78_0.08_230)]">
+            <a href="/privacy" className="transition-colors hover:text-[oklch(0.77_0.08_285)]">
               Privacy Policy
             </a>
-            <a href="/terms" className="transition-colors hover:text-[oklch(0.78_0.08_230)]">
+            <a href="/terms" className="transition-colors hover:text-[oklch(0.77_0.08_285)]">
               Terms of Service
             </a>
           </div>

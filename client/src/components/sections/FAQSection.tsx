@@ -56,7 +56,7 @@ export default function FAQSection() {
       className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
       ref={ref}
     >
-      <div className="absolute inset-x-0 top-14 h-px opacity-50 homepage-circuit-line" />
+      <div className="absolute inset-x-0 top-14 h-px opacity-40 homepage-circuit-line" />
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -73,7 +73,7 @@ export default function FAQSection() {
           </p>
         </motion.div>
 
-        <div className="homepage-panel mx-auto mt-14 max-w-4xl divide-y divide-[oklch(0.33_0.05_228/0.28)] rounded-[1.6rem]">
+        <div className="mx-auto mt-14 max-w-4xl divide-y divide-[oklch(0.31_0.05_275/0.16)] border-y border-[oklch(0.31_0.05_275/0.20)]">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
@@ -83,11 +83,11 @@ export default function FAQSection() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.45, delay: 0.08 + index * 0.04 }}
-                className={isOpen ? "bg-[linear-gradient(180deg,rgba(8,14,24,0.44),rgba(10,12,20,0.16))]" : ""}
+                className={isOpen ? "bg-[linear-gradient(180deg,rgba(24,14,34,0.18),rgba(10,12,20,0.04))]" : ""}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left transition-colors hover:bg-white/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.75_0.18_220)/0.28] sm:px-7 sm:py-6"
+                  className="flex w-full items-start justify-between gap-4 px-0 py-5 text-left transition-colors hover:bg-white/[0.015] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.58_0.16_290)/0.22] sm:px-0 sm:py-6"
                 >
                   <div className="min-w-0">
                     <span className="block text-lg font-medium leading-snug text-foreground sm:text-xl">
@@ -95,10 +95,10 @@ export default function FAQSection() {
                     </span>
                   </div>
 
-                  <span className={`mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border bg-[linear-gradient(180deg,rgba(12,15,24,0.94),rgba(8,10,17,0.98))] text-[oklch(0.75_0.18_220)] ${
+                  <span className={`mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border bg-[linear-gradient(180deg,rgba(14,11,24,0.94),rgba(8,10,17,0.98))] text-[oklch(0.58_0.16_290)] ${
                     isOpen
-                      ? "border-[oklch(0.36_0.07_228/0.55)] shadow-[0_0_18px_oklch(0.75_0.18_220/0.12)]"
-                      : "border-[oklch(0.30_0.04_230/0.34)]"
+                      ? "border-[oklch(0.31_0.05_275/0.44)] shadow-[0_0_18px_oklch(0.58_0.16_290/0.10)]"
+                      : "border-[oklch(0.31_0.05_275/0.22)]"
                   }`}>
                     <ChevronDown
                       className={`h-5 w-5 transition-transform duration-200 ${
@@ -117,7 +117,7 @@ export default function FAQSection() {
                   transition={{ duration: 0.24 }}
                   className="overflow-hidden"
                 >
-                  <p className="max-w-[42rem] px-5 pb-5 text-sm leading-relaxed text-muted-foreground sm:px-7 sm:pb-6 sm:text-[0.96rem]">
+                  <p className="max-w-[42rem] px-0 pb-5 text-sm leading-relaxed text-muted-foreground sm:px-0 sm:pb-6 sm:text-[0.96rem]">
                     {faq.answer}
                   </p>
                 </motion.div>

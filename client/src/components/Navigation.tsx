@@ -38,7 +38,7 @@ export default function Navigation() {
       <motion.nav
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "border-b border-[oklch(0.36_0.05_228/0.4)] bg-[linear-gradient(180deg,rgba(6,8,15,0.92),rgba(8,11,20,0.88))] py-3 shadow-[0_12px_30px_rgba(0,0,0,0.18)] backdrop-blur-md"
+            ? "border-b border-[oklch(0.31_0.05_275/0.28)] bg-[linear-gradient(180deg,rgba(8,8,15,0.84),rgba(9,10,18,0.78))] py-3 shadow-[0_10px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm"
             : "bg-transparent py-4"
         }`}
         initial={{ y: -100 }}
@@ -75,7 +75,7 @@ export default function Navigation() {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="text-sm text-muted-foreground transition-colors hover:text-[oklch(0.78_0.08_230)]"
+                  className="text-sm text-muted-foreground transition-colors hover:text-[oklch(0.77_0.08_285)]"
                 >
                   {link.label}
                 </a>
@@ -96,7 +96,7 @@ export default function Navigation() {
             </div>
 
             <button
-              className="rounded-lg border border-transparent p-2 text-foreground transition-colors hover:border-[oklch(0.36_0.05_228/0.35)] hover:bg-white/[0.03] md:hidden"
+              className="rounded-lg border border-transparent p-2 text-foreground transition-colors hover:border-[oklch(0.31_0.05_275/0.28)] hover:bg-white/[0.02] md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
