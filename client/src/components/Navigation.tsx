@@ -38,7 +38,7 @@ export default function Navigation() {
       <motion.nav
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "border-b border-[oklch(0.31_0.05_275/0.28)] bg-[linear-gradient(180deg,rgba(8,8,15,0.84),rgba(9,10,18,0.78))] py-3 shadow-[0_10px_24px_rgba(0,0,0,0.12)] backdrop-blur-sm"
+            ? "border-b border-[oklch(0.31_0.05_275/0.18)] bg-[linear-gradient(180deg,rgba(8,8,15,0.62),rgba(9,10,18,0.48))] py-3 backdrop-blur-sm"
             : "bg-transparent py-4"
         }`}
         initial={{ y: -100 }}

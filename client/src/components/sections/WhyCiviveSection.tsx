@@ -22,10 +22,10 @@ export default function WhyCiviveSection() {
 
   return (
     <section id="why-civive" className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24" ref={ref}>
-      <div className="absolute inset-x-0 top-16 h-px opacity-45 homepage-circuit-line" />
+      <div className="absolute inset-x-0 top-16 h-px opacity-35 homepage-circuit-line" />
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
+          <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-18">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -48,7 +48,7 @@ export default function WhyCiviveSection() {
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="border-y border-[oklch(0.31_0.05_275/0.20)]"
+              className="border-y border-[oklch(0.31_0.05_275/0.16)]"
             >
               {supportPoints.map((item, index) => (
                 <motion.div
@@ -56,14 +56,14 @@ export default function WhyCiviveSection() {
                   initial={{ opacity: 0, y: 14 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.42, delay: 0.12 + index * 0.05 }}
-                  className={`grid grid-cols-[44px_minmax(0,1fr)] items-start gap-4 py-5 sm:gap-6 sm:py-6 ${
-                    index < supportPoints.length - 1 ? "border-b border-[oklch(0.31_0.05_275/0.16)]" : ""
+                  className={`grid grid-cols-[44px_minmax(0,1fr)] items-start gap-4 py-6 sm:gap-6 sm:py-7 ${
+                    index < supportPoints.length - 1 ? "border-b border-[oklch(0.31_0.05_275/0.12)]" : ""
                   }`}
                 >
                   <span className="text-sm font-medium tracking-[0.14em] text-[oklch(0.58_0.16_290/0.92)]">
                     0{index + 1}
                   </span>
-                  <p className="text-lg font-medium leading-relaxed tracking-[-0.01em] text-foreground/86">
+                  <p className="text-xl font-medium leading-relaxed tracking-[-0.02em] text-foreground/84">
                     {item}
                   </p>
                 </motion.div>
@@ -75,7 +75,7 @@ export default function WhyCiviveSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.48, delay: 0.18 }}
-            className="mt-10 border-t border-[oklch(0.31_0.05_275/0.18)] pt-8"
+            className="mt-12 border-t border-[oklch(0.31_0.05_275/0.14)] pt-8"
           >
             <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-3xl">

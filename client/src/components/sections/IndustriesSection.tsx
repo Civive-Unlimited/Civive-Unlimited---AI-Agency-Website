@@ -14,9 +14,9 @@ export default function IndustriesSection() {
 
   return (
     <section id="industries" className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24" ref={ref}>
-      <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,oklch(0.55_0.25_300/0.10),transparent_72%)]" />
+      <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,oklch(0.55_0.25_300/0.08),transparent_72%)]" />
       <div className="container relative z-10 mx-auto px-4">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-18">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -37,7 +37,7 @@ export default function IndustriesSection() {
             initial={{ opacity: 0, y: 18 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="border-y border-[oklch(0.31_0.05_275/0.22)]"
+            className="border-y border-[oklch(0.31_0.05_275/0.16)]"
           >
             {industryRows.map((row, rowIndex) => (
               <motion.div
@@ -46,17 +46,17 @@ export default function IndustriesSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.42, delay: 0.12 + rowIndex * 0.05 }}
                 className={`grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_1px_minmax(0,1fr)] ${
-                  rowIndex < industryRows.length - 1 ? "border-b border-[oklch(0.31_0.05_275/0.18)]" : ""
+                  rowIndex < industryRows.length - 1 ? "border-b border-[oklch(0.31_0.05_275/0.14)]" : ""
                 }`}
               >
-                <div className="py-5 sm:py-6">
-                  <p className="text-lg font-medium tracking-[-0.01em] text-foreground sm:text-[1.15rem]">
+                <div className="py-5 sm:py-7">
+                  <p className="text-xl font-medium tracking-[-0.02em] text-foreground sm:text-[1.3rem]">
                     {row[0]}
                   </p>
                 </div>
-                <div className="hidden bg-[linear-gradient(180deg,transparent,oklch(0.56_0.16_290/0.30),transparent)] sm:block" />
-                <div className="border-t border-[oklch(0.31_0.05_275/0.16)] py-5 sm:border-t-0 sm:py-6 sm:pl-8">
-                  <p className="text-lg font-medium tracking-[-0.01em] text-foreground sm:text-[1.15rem]">
+                <div className="hidden bg-[linear-gradient(180deg,transparent,oklch(0.56_0.16_290/0.18),transparent)] sm:block" />
+                <div className="border-t border-[oklch(0.31_0.05_275/0.14)] py-5 sm:border-t-0 sm:py-7 sm:pl-10">
+                  <p className="text-xl font-medium tracking-[-0.02em] text-foreground sm:text-[1.3rem]">
                     {row[1]}
                   </p>
                 </div>

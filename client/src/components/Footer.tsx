@@ -36,15 +36,15 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[oklch(0.31_0.05_275/0.24)] bg-[linear-gradient(180deg,rgba(6,6,12,0.96),rgba(8,8,16,0.99))]">
-      <div className="container mx-auto px-4 py-14 sm:py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr_0.9fr] lg:gap-10">
-          <div className="max-w-md">
+    <footer className="border-t border-[oklch(0.31_0.05_275/0.16)] bg-[linear-gradient(180deg,rgba(5,5,10,0.96),rgba(7,7,14,0.99))]">
+      <div className="container mx-auto px-4 py-12 sm:py-14">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.85fr_0.85fr] lg:gap-10">
+          <div className="max-w-sm">
             <div className="flex items-center gap-3">
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663329647955/sAkXjyNGjbClshEs.jpg"
                 alt="Civive Unlimited"
-                className="h-9 w-9 rounded-lg border border-[oklch(0.36_0.05_228/0.42)] object-cover"
+                className="h-9 w-9 rounded-lg border border-[oklch(0.31_0.05_275/0.24)] object-cover"
                 loading="lazy"
               />
               <span className="bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(192,176,230,0.72))] bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent">
@@ -57,7 +57,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div>
+          <div className="lg:justify-self-center">
             <p className="homepage-eyebrow">Navigate</p>
             <div className="mt-5 grid gap-3">
               {footerLinks.map((link) => (
@@ -74,7 +74,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
+          <div className="lg:justify-self-end">
             <p className="homepage-eyebrow">Contact</p>
             <div className="mt-5 grid gap-4 text-sm text-muted-foreground">
               <a
@@ -99,7 +99,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-[oklch(0.31_0.05_275/0.20)] pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-[oklch(0.31_0.05_275/0.14)] pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap items-center gap-5">
             <a href="/privacy" className="transition-colors hover:text-[oklch(0.77_0.08_285)]">
               Privacy Policy

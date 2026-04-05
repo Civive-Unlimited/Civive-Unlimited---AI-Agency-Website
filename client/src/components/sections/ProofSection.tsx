@@ -21,7 +21,7 @@ export default function ProofSection() {
 
   return (
     <section className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
-      <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,oklch(0.55_0.25_300/0.08),transparent_68%)]" />
+      <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,oklch(0.55_0.25_300/0.06),transparent_70%)]" />
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -43,14 +43,14 @@ export default function ProofSection() {
           initial={{ opacity: 0, y: 18 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.08 }}
-          className="mx-auto mt-14 max-w-6xl overflow-hidden border-y border-[oklch(0.31_0.05_275/0.20)]"
+          className="mx-auto mt-14 max-w-6xl overflow-hidden border-y border-[oklch(0.31_0.05_275/0.14)]"
         >
           <div className="grid lg:grid-cols-3">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.42, delay: 0.12 }}
-              className="px-0 py-7 sm:py-8 lg:border-r lg:border-[oklch(0.31_0.05_275/0.18)] lg:px-7"
+              className="px-0 py-7 sm:py-9 lg:border-r lg:border-[oklch(0.31_0.05_275/0.14)] lg:px-8"
             >
               <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 Testimonial space
@@ -68,7 +68,7 @@ export default function ProofSection() {
               initial={{ opacity: 0, y: 14 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.42, delay: 0.17 }}
-              className="border-t border-[oklch(0.31_0.05_275/0.18)] px-0 py-7 sm:py-8 lg:border-r lg:border-t-0 lg:border-[oklch(0.31_0.05_275/0.18)] lg:px-7"
+              className="border-t border-[oklch(0.31_0.05_275/0.14)] px-0 py-7 sm:py-9 lg:border-r lg:border-t-0 lg:border-[oklch(0.31_0.05_275/0.14)] lg:px-8"
             >
               <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 Results space
@@ -82,7 +82,7 @@ export default function ProofSection() {
               initial={{ opacity: 0, y: 14 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.42, delay: 0.22 }}
-              className="border-t border-[oklch(0.31_0.05_275/0.18)] px-0 py-7 sm:py-8 lg:border-t-0 lg:px-7"
+              className="border-t border-[oklch(0.31_0.05_275/0.14)] px-0 py-7 sm:py-9 lg:border-t-0 lg:px-8"
             >
               <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 Implementation confidence
@@ -110,7 +110,7 @@ export default function ProofSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.45, delay: 0.26 }}
-          className="mx-auto mt-8 flex max-w-4xl flex-col items-center justify-between gap-4 border-t border-[oklch(0.31_0.05_275/0.18)] pt-6 text-center sm:flex-row sm:text-left"
+          className="mx-auto mt-8 flex max-w-4xl flex-col items-center justify-between gap-4 border-t border-[oklch(0.31_0.05_275/0.14)] pt-6 text-center sm:flex-row sm:text-left"
         >
           <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
             Want to see what this could look like for your business?

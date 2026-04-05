@@ -90,14 +90,15 @@ export default function ResultsSection() {
           </p>
         </motion.div>
 
-        <div className="mx-auto mt-14 grid max-w-6xl gap-10 lg:grid-cols-[0.76fr_1.24fr] lg:gap-14">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.55, delay: 0.08 }}
-            className="border-t border-[oklch(0.31_0.05_275/0.28)] pt-6 sm:pt-8"
-          >
-            <div className="grid gap-8">
+        <div className="mx-auto mt-16 max-w-6xl">
+          <div className="border-t border-[oklch(0.31_0.05_275/0.16)] pt-8 sm:pt-10">
+            <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.55, delay: 0.08 }}
+                className="grid gap-10"
+              >
               <div>
                 <p className="homepage-eyebrow">The problem</p>
                 <h3 className="mt-3 text-2xl font-semibold text-foreground">
@@ -113,7 +114,7 @@ export default function ResultsSection() {
                 </div>
               </div>
 
-              <div className="border-t border-[oklch(0.31_0.05_275/0.20)] pt-8">
+              <div className="border-t border-[oklch(0.31_0.05_275/0.16)] pt-8">
                 <p className="homepage-eyebrow">The fix</p>
                 <h3 className="mt-3 text-2xl font-semibold text-foreground">
                   A calmer, faster first response.
@@ -122,7 +123,7 @@ export default function ResultsSection() {
                   {solutionPoints.map((item, index) => (
                     <div
                       key={item}
-                      className={`border-b px-0 pb-3 text-sm text-foreground/84 ${
+                      className={`border-b px-0 pb-3 text-sm text-foreground/80 ${
                         index === 0
                           ? "border-[oklch(0.72_0.15_235/0.34)] text-[oklch(0.86_0.02_260)]"
                           : "border-[oklch(0.31_0.05_275/0.16)]"
@@ -133,15 +134,14 @@ export default function ResultsSection() {
                   ))}
                 </div>
               </div>
-            </div>
-          </motion.div>
+              </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.55, delay: 0.14 }}
-            className="border-t border-[oklch(0.31_0.05_275/0.28)] pt-6 sm:pt-8"
-          >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.55, delay: 0.14 }}
+                className="border-l-0 lg:border-l lg:border-[oklch(0.31_0.05_275/0.12)] lg:pl-12"
+              >
             <div className="flex items-end justify-between gap-4 border-b border-[oklch(0.31_0.05_275/0.20)] pb-5">
               <div>
                 <p className="homepage-eyebrow">Flow</p>
@@ -168,7 +168,7 @@ export default function ResultsSection() {
                     <span className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full border border-[oklch(0.33_0.05_228/0.42)] bg-[linear-gradient(180deg,rgba(12,15,24,0.96),rgba(8,10,17,0.98))] text-[oklch(0.75_0.18_220)] shadow-[0_0_18px_oklch(0.75_0.18_220/0.08)]">
                       <step.icon className="h-4.5 w-4.5" />
                     </span>
-                    <div className="border-b border-[oklch(0.31_0.05_275/0.16)] px-0 py-1 pb-5">
+                    <div className="border-b border-[oklch(0.31_0.05_275/0.12)] px-0 py-1 pb-5">
                       <h4 className="text-lg font-medium text-foreground">{step.title}</h4>
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                         {step.description}
@@ -178,16 +178,18 @@ export default function ResultsSection() {
                 ))}
               </div>
             </div>
-          </motion.div>
+              </motion.div>
+            </div>
+          </div>
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, delay: 0.2 }}
-          className="mx-auto mt-8 max-w-6xl"
+          className="mx-auto mt-10 max-w-6xl"
         >
-          <div className="border-t border-[oklch(0.31_0.05_275/0.20)] pt-8">
+          <div className="border-t border-[oklch(0.31_0.05_275/0.16)] pt-8">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="homepage-eyebrow">Outcomes</p>
@@ -201,11 +203,11 @@ export default function ResultsSection() {
               </p>
             </div>
 
-            <div className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-7 grid gap-x-8 gap-y-4 sm:grid-cols-2 xl:grid-cols-3">
               {outcomes.map((item) => (
                 <div
                   key={item}
-                  className="border-b border-[oklch(0.31_0.05_275/0.16)] pb-4 text-sm text-foreground/84"
+                  className="border-b border-[oklch(0.31_0.05_275/0.12)] pb-4 text-sm text-foreground/78"
                 >
                   {item}
                 </div>
