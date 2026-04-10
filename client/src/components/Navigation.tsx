@@ -38,7 +38,7 @@ export default function Navigation() {
       <motion.nav
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "border-b border-[oklch(0.31_0.05_275/0.18)] bg-[linear-gradient(180deg,rgba(8,8,15,0.62),rgba(9,10,18,0.48))] py-3 backdrop-blur-sm"
+            ? "border-b border-white/[0.08] bg-[linear-gradient(180deg,rgba(7,7,12,0.78),rgba(7,8,14,0.54))] py-3 backdrop-blur-md"
             : "bg-transparent py-4"
         }`}
         initial={{ y: -100 }}
@@ -58,12 +58,17 @@ export default function Navigation() {
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663329647955/sAkXjyNGjbClshEs.jpg"
                 alt="Civive Unlimited"
-                className="h-9 w-9 rounded-lg border border-[oklch(0.36_0.05_228/0.45)] object-cover transition-transform group-hover:scale-[1.02]"
+                className="h-9 w-9 rounded-xl border border-white/[0.14] object-cover transition-transform group-hover:scale-[1.02]"
                 loading="lazy"
               />
-              <span className="hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(164,191,214,0.76))] bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent sm:block">
-                CIVIVE UNLIMITED
-              </span>
+              <div className="hidden sm:block">
+                <span className="block text-[0.68rem] uppercase tracking-[0.22em] text-white/42">
+                  Civive Unlimited
+                </span>
+                <span className="block text-sm font-medium tracking-[-0.03em] text-white/92">
+                  AI Receptionist
+                </span>
+              </div>
             </a>
 
             <div className="hidden items-center gap-6 md:flex">
@@ -75,7 +80,7 @@ export default function Navigation() {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="text-sm text-muted-foreground transition-colors hover:text-[oklch(0.77_0.08_285)]"
+                  className="text-sm text-white/62 transition-colors hover:text-white"
                 >
                   {link.label}
                 </a>
@@ -89,14 +94,14 @@ export default function Navigation() {
                   e.preventDefault();
                   scrollToSection("#contact");
                 }}
-                className="homepage-primary-button magnetic-btn rounded-xl px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                className="inline-flex items-center rounded-full border border-white/[0.12] bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-white/92 transition-colors hover:bg-white/[0.08]"
               >
                 Book a demo
               </a>
             </div>
 
             <button
-              className="rounded-lg border border-transparent p-2 text-foreground transition-colors hover:border-[oklch(0.31_0.05_275/0.28)] hover:bg-white/[0.02] md:hidden"
+              className="rounded-full border border-white/[0.08] bg-white/[0.03] p-2 text-foreground transition-colors hover:bg-white/[0.08] md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
@@ -110,7 +115,7 @@ export default function Navigation() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-[linear-gradient(180deg,rgba(6,8,15,0.97),rgba(8,11,20,0.98))] backdrop-blur-md md:hidden"
+            className="fixed inset-0 z-40 bg-[linear-gradient(180deg,rgba(6,6,11,0.97),rgba(8,8,14,0.99))] backdrop-blur-md md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -124,7 +129,7 @@ export default function Navigation() {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="text-2xl font-semibold text-foreground transition-colors hover:text-[oklch(0.75_0.18_220)]"
+                  className="text-2xl font-semibold text-foreground transition-colors hover:text-white"
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.08 }}
@@ -139,7 +144,7 @@ export default function Navigation() {
                   e.preventDefault();
                   scrollToSection("#contact");
                 }}
-                className="homepage-primary-button magnetic-btn mt-3 w-64 rounded-xl py-4 text-center text-base font-semibold text-white transition-opacity hover:opacity-90"
+                className="mt-3 w-64 rounded-full border border-white/[0.12] bg-white/[0.05] py-4 text-center text-base font-medium text-white transition-colors hover:bg-white/[0.1]"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.08 }}

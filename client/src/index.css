@@ -3,15 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* 
- * CIVIVE UNLIMITED DESIGN SYSTEM
- * Design Philosophy: Kinetic Industrial Futurism
- * - Weight & Permanence: UI elements feel solid, machined, reliable
- * - Controlled Energy: Motion is purposeful, like hydraulic systems
- * - Depth as Hierarchy: Z-axis layering creates spatial relationships
- * - Contrast as Communication: High contrast demands attention
- */
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -59,7 +50,6 @@
   /* Typography */
   --font-inter: 'Inter', sans-serif;
   --font-inter-tight: 'Inter Tight', sans-serif;
-  --font-syne: 'Syne', sans-serif;
   --font-space: var(--font-inter);
   --font-mono: 'JetBrains Mono', monospace;
 }
@@ -235,7 +225,6 @@
     }
   }
   
-  /* Glassmorphism Card */
   .glass-card {
     background: oklch(0.12 0.015 260 / 0.6);
     backdrop-filter: blur(20px);
@@ -249,7 +238,6 @@
     box-shadow: 0 0 30px oklch(0.75 0.18 220 / 0.15);
   }
   
-  /* Electric Glow Text */
   .text-glow-blue {
     text-shadow: 0 0 20px oklch(0.75 0.18 220 / 0.5),
                  0 0 40px oklch(0.75 0.18 220 / 0.3);
@@ -260,7 +248,6 @@
                  0 0 40px oklch(0.55 0.25 300 / 0.3);
   }
   
-  /* Gradient Text */
   .gradient-text {
     background: linear-gradient(135deg, oklch(0.75 0.18 220), oklch(0.55 0.25 300));
     -webkit-background-clip: text;
@@ -268,7 +255,6 @@
     background-clip: text;
   }
   
-  /* Magnetic Button Base */
   .magnetic-btn {
     position: relative;
     transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
@@ -278,7 +264,6 @@
     transform: translateY(-2px);
   }
   
-  /* Section Divider */
   .section-divider {
     height: 1px;
     background: linear-gradient(90deg, 
@@ -294,10 +279,10 @@
     position: relative;
     isolation: isolate;
     background:
-      radial-gradient(circle at 50% 0%, oklch(0.31 0.10 295 / 0.18), transparent 20%),
-      radial-gradient(circle at 82% 10%, oklch(0.50 0.18 288 / 0.12), transparent 14%),
-      radial-gradient(circle at 18% 18%, oklch(0.20 0.06 238 / 0.08), transparent 18%),
-      linear-gradient(180deg, oklch(0.042 0.014 278), oklch(0.04 0.014 268) 38%, oklch(0.038 0.013 262) 100%);
+      radial-gradient(circle at 50% 0%, oklch(0.31 0.10 295 / 0.16), transparent 18%),
+      radial-gradient(circle at 84% 12%, oklch(0.48 0.17 288 / 0.10), transparent 14%),
+      radial-gradient(circle at 16% 18%, oklch(0.18 0.05 238 / 0.07), transparent 18%),
+      linear-gradient(180deg, oklch(0.035 0.012 278), oklch(0.034 0.012 268) 38%, oklch(0.033 0.011 262) 100%);
   }
 
   .homepage-shell h1,
@@ -321,12 +306,12 @@
 
   .homepage-panel {
     background:
-      linear-gradient(180deg, oklch(0.10 0.02 270 / 0.84), oklch(0.075 0.017 260 / 0.92)),
-      linear-gradient(135deg, oklch(0.55 0.25 300 / 0.03), transparent 38%, oklch(0.75 0.18 220 / 0.02));
-    border: 1px solid oklch(0.28 0.04 272 / 0.28);
+      linear-gradient(180deg, oklch(0.095 0.018 270 / 0.78), oklch(0.072 0.015 260 / 0.88)),
+      linear-gradient(135deg, oklch(0.55 0.25 300 / 0.02), transparent 38%, oklch(0.75 0.18 220 / 0.015));
+    border: 1px solid oklch(0.27 0.04 272 / 0.22);
     box-shadow:
-      inset 0 1px 0 oklch(0.96 0.01 0 / 0.025),
-      0 16px 38px rgba(0, 0, 0, 0.16);
+      inset 0 1px 0 oklch(0.96 0.01 0 / 0.022),
+      0 18px 42px rgba(0, 0, 0, 0.16);
   }
 
   .homepage-panel-muted {
@@ -338,21 +323,21 @@
 
   .homepage-outline-button {
     background:
-      linear-gradient(180deg, oklch(0.095 0.018 266 / 0.46), oklch(0.082 0.015 260 / 0.58));
-    border: 1px solid oklch(0.30 0.045 275 / 0.24);
+      linear-gradient(180deg, oklch(0.09 0.018 266 / 0.38), oklch(0.08 0.015 260 / 0.5));
+    border: 1px solid oklch(0.30 0.045 275 / 0.18);
     box-shadow:
       inset 0 1px 0 oklch(0.88 0.02 240 / 0.03),
-      0 8px 20px rgba(0, 0, 0, 0.08);
+      0 8px 20px rgba(0, 0, 0, 0.06);
   }
 
   .homepage-primary-button {
     background:
-      linear-gradient(135deg, oklch(0.63 0.16 260), oklch(0.58 0.18 282) 45%, oklch(0.54 0.22 300));
+      linear-gradient(135deg, oklch(0.66 0.14 235), oklch(0.58 0.18 282) 52%, oklch(0.54 0.22 300));
     box-shadow:
       inset 0 1px 0 oklch(0.98 0 0 / 0.18),
       0 0 0 1px oklch(0.58 0.16 285 / 0.16),
-      0 12px 24px rgba(0, 0, 0, 0.18),
-      0 0 22px oklch(0.56 0.16 290 / 0.10);
+      0 14px 32px rgba(0, 0, 0, 0.2),
+      0 0 24px oklch(0.56 0.16 290 / 0.1);
   }
 
   .homepage-section-divider {

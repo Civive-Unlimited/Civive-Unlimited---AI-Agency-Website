@@ -54,7 +54,7 @@ export default function ResultsSection() {
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16">
+          <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-18">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -73,11 +73,11 @@ export default function ResultsSection() {
                 momentum at the first point of contact.
               </p>
 
-              <div className="mt-8 space-y-3">
+              <div className="mt-8 space-y-3 border-t border-white/[0.08] pt-6">
                 {responseBreakdowns.map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-3 border-b border-white/[0.08] pb-3 text-sm text-white/74"
+                    className="flex items-center gap-3 border-b border-white/[0.08] pb-3 text-sm text-white/72"
                   >
                     <span className="h-1.5 w-1.5 rounded-full bg-[#8a63ff]" />
                     {item}
@@ -85,11 +85,11 @@ export default function ResultsSection() {
                 ))}
               </div>
 
-              <div className="mt-10 rounded-[1.8rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(14,13,24,0.74),rgba(8,10,18,0.54))] p-6 shadow-[0_20px_70px_rgba(0,0,0,0.24)]">
+              <div className="mt-10 border-t border-white/[0.08] pt-6">
                 <p className="text-[0.68rem] uppercase tracking-[0.22em] text-white/40">
                   The shift
                 </p>
-                <p className="mt-4 text-lg leading-8 text-white/88">
+                <p className="mt-4 max-w-[29rem] text-lg leading-8 text-white/88">
                   From missed calls and scattered follow-up to a calmer, faster front
                   door that keeps more leads moving.
                 </p>
@@ -100,9 +100,9 @@ export default function ResultsSection() {
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.08 }}
-              className="relative"
+              className="relative border-t border-white/[0.08] pt-6 lg:border-l lg:border-t-0 lg:border-white/[0.08] lg:pl-10"
             >
-              <div className="absolute left-[1.15rem] top-3 bottom-24 hidden w-px bg-[linear-gradient(180deg,rgba(138,99,255,0.34),rgba(73,180,255,0.14),transparent)] sm:block" />
+              <div className="absolute left-[1.15rem] top-8 bottom-24 hidden w-px bg-[linear-gradient(180deg,rgba(138,99,255,0.28),rgba(73,180,255,0.12),transparent)] sm:block" />
 
               <div className="space-y-5">
                 {processSteps.map((step, index) => {
@@ -111,12 +111,10 @@ export default function ResultsSection() {
                   return (
                     <div
                       key={step.number}
-                      className="relative overflow-hidden rounded-[1.9rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(16,15,28,0.88),rgba(8,11,18,0.74))] p-6 shadow-[0_24px_90px_rgba(8,8,18,0.26)] sm:p-7"
+                      className="relative border-b border-white/[0.08] pb-5 last:border-b-0"
                     >
-                      <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(138,99,255,0.65),transparent)] opacity-80" />
-
                       <div className="relative flex flex-col gap-5 sm:flex-row sm:items-start">
-                        <div className="flex items-center gap-4 sm:w-[10rem] sm:flex-col sm:items-start sm:gap-5">
+                        <div className="flex items-center gap-4 sm:w-[11rem] sm:flex-col sm:items-start sm:gap-5">
                           <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.10] bg-white/[0.03] text-white/88">
                             <Icon className="h-4.5 w-4.5" />
                           </div>
@@ -150,11 +148,11 @@ export default function ResultsSection() {
                 })}
               </div>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <div className="mt-6 grid gap-3 border-t border-white/[0.08] pt-6 sm:grid-cols-2">
                 {outcomes.map((item) => (
                   <div
                     key={item}
-                    className="rounded-2xl border border-white/[0.08] bg-white/[0.03] px-4 py-4 text-sm text-white/74"
+                    className="border-b border-white/[0.08] pb-3 text-sm text-white/72"
                   >
                     {item}
                   </div>

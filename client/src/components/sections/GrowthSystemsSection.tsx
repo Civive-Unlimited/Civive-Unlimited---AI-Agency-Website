@@ -50,7 +50,7 @@ export default function GrowthSystemsSection() {
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
+          <div className="grid gap-12 lg:grid-cols-[0.84fr_1.16fr] lg:gap-18">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -64,15 +64,16 @@ export default function GrowthSystemsSection() {
               </h2>
 
               <p className="mt-6 max-w-xl text-base leading-7 text-white/72 sm:text-[1.05rem]">
-                The homepage leads with AI receptionist because missed calls and slow response are
-                one of the fastest revenue leaks to fix. Once that front door is tight, Civive can
-                help build the systems around it.
+                The homepage leads with AI receptionist because missed calls and
+                slow response are one of the fastest revenue leaks to fix. Once
+                that front door is tight, Civive can help build the systems
+                around it.
               </p>
 
               <p className="mt-5 max-w-xl text-base leading-7 text-white/62">
-                That includes follow-up automation, CRM workflow cleanup, website conversion
-                improvements, and other practical growth systems that make the whole operation run
-                better.
+                That includes follow-up automation, CRM workflow cleanup, website
+                conversion improvements, and other practical growth systems that
+                make the whole operation run better.
               </p>
 
               <button
@@ -88,12 +89,12 @@ export default function GrowthSystemsSection() {
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.08 }}
-              className="grid gap-4 sm:grid-cols-3"
+              className="border-y border-white/[0.08] sm:grid sm:grid-cols-3 sm:gap-0"
             >
               {systemGroups.map((group) => (
                 <div
                   key={group.title}
-                  className="rounded-[1.6rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(15,14,26,0.82),rgba(8,11,18,0.72))] p-6 shadow-[0_24px_90px_rgba(8,8,18,0.26)]"
+                  className="py-6 sm:border-r sm:border-white/[0.08] sm:px-6 sm:py-8 last:border-r-0"
                 >
                   <p className="text-[0.72rem] uppercase tracking-[0.22em] text-white/42">
                     {group.title}
@@ -103,7 +104,7 @@ export default function GrowthSystemsSection() {
                     {group.items.map((item) => (
                       <li
                         key={item}
-                        className="text-sm leading-6 text-white/76"
+                        className="border-b border-white/[0.08] pb-3 text-sm leading-6 text-white/74 last:border-b-0 last:pb-0"
                       >
                         {item}
                       </li>

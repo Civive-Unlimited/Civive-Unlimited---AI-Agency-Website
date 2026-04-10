@@ -83,7 +83,7 @@ export default function FAQSection() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.45, delay: 0.08 + index * 0.04 }}
-                className={isOpen ? "bg-[linear-gradient(180deg,rgba(18,12,28,0.14),rgba(10,12,20,0.02))]" : ""}
+                className={isOpen ? "bg-[linear-gradient(180deg,rgba(18,12,28,0.1),rgba(10,12,20,0.02))]" : ""}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -95,14 +95,10 @@ export default function FAQSection() {
                     </span>
                   </div>
 
-                  <span className={`mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border bg-[rgba(12,10,20,0.52)] text-[oklch(0.58_0.16_290)] ${
-                    isOpen
-                      ? "border-[oklch(0.31_0.05_275/0.30)]"
-                      : "border-[oklch(0.31_0.05_275/0.16)]"
-                  }`}>
+                  <span className="mt-1 flex flex-shrink-0 items-center justify-center text-white/48">
                     <ChevronDown
                       className={`h-5 w-5 transition-transform duration-200 ${
-                        isOpen ? "rotate-180" : ""
+                        isOpen ? "rotate-180 text-white/76" : ""
                       }`}
                     />
                   </span>

@@ -46,7 +46,7 @@ export default function WhyCiviveSection() {
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
+          <div className="grid gap-12 lg:grid-cols-[0.84fr_1.16fr] lg:gap-18">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -60,14 +60,16 @@ export default function WhyCiviveSection() {
               </h2>
 
               <p className="mt-6 max-w-xl text-base leading-7 text-white/72 sm:text-[1.05rem]">
-                Civive is not built around fluff, fake dashboards, or generic automation talk.
-                The work starts with a practical question: where is revenue leaking out of the
-                first response, and what is the cleanest way to fix it?
+                Civive is not built around fluff, fake dashboards, or generic
+                automation talk. The work starts with a practical question: where
+                is revenue leaking out of the first response, and what is the
+                cleanest way to fix it?
               </p>
 
               <p className="mt-5 max-w-xl text-base leading-7 text-white/62">
-                That is why the offer leads with AI receptionist first. It is one of the fastest,
-                clearest ways to make the business more responsive without adding more chaos.
+                That is why the offer leads with AI receptionist first. It is one
+                of the fastest, clearest ways to make the business more responsive
+                without adding more chaos.
               </p>
 
               <button
@@ -83,24 +85,28 @@ export default function WhyCiviveSection() {
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.08 }}
-              className="grid gap-4 sm:grid-cols-2"
+              className="border-y border-white/[0.08]"
             >
-              {principles.map((item) => (
+              {principles.map((item, index) => (
                 <div
                   key={item.number}
-                  className="rounded-[1.6rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(15,14,26,0.84),rgba(8,11,18,0.72))] p-6 shadow-[0_24px_90px_rgba(8,8,18,0.24)]"
+                  className={`grid gap-4 py-6 sm:grid-cols-[4.5rem_minmax(0,1fr)] sm:gap-6 sm:py-7 ${
+                    index < principles.length - 1 ? "border-b border-white/[0.08]" : ""
+                  }`}
                 >
                   <p className="text-[0.72rem] uppercase tracking-[0.22em] text-white/40">
                     {item.number}
                   </p>
 
-                  <h3 className="mt-4 text-lg font-medium tracking-[-0.02em] text-white/92">
-                    {item.title}
-                  </h3>
+                  <div>
+                    <h3 className="text-xl font-medium tracking-[-0.02em] text-white/92">
+                      {item.title}
+                    </h3>
 
-                  <p className="mt-3 text-sm leading-6 text-white/62">
-                    {item.copy}
-                  </p>
+                    <p className="mt-3 max-w-xl text-sm leading-6 text-white/62">
+                      {item.copy}
+                    </p>
+                  </div>
                 </div>
               ))}
             </motion.div>

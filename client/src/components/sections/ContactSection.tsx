@@ -81,7 +81,7 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.08 }}
-            className="max-w-md"
+            className="max-w-md lg:pt-6"
           >
             <p className="homepage-eyebrow">What happens next</p>
             <h3 className="mt-4 text-2xl font-semibold text-foreground">
@@ -92,7 +92,7 @@ export default function ContactSection() {
               lead capture, and booking flow can be tightened without adding more chaos.
             </p>
 
-            <div className="mt-8 space-y-3">
+            <div className="mt-8 space-y-3 border-t border-white/[0.08] pt-6">
               {nextSteps.map((item) => (
                 <div key={item} className="flex items-start gap-3 text-sm leading-relaxed text-foreground/82">
                   <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-[oklch(0.65_0.20_180)]" />
@@ -101,7 +101,7 @@ export default function ContactSection() {
               ))}
             </div>
 
-            <div className="mt-10 space-y-4 border-t border-[oklch(0.31_0.05_275/0.14)] pt-8">
+            <div className="mt-10 space-y-4 border-t border-white/[0.08] pt-8">
               {contactInfo.map((item) => (
                 <div key={item.label}>
                   <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
@@ -123,7 +123,7 @@ export default function ContactSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.12 }}
-            className="homepage-panel relative overflow-hidden rounded-[1.9rem] p-6 sm:p-8"
+            className="homepage-panel relative overflow-hidden rounded-[2.2rem] p-6 sm:p-8"
           >
             <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,oklch(0.56_0.16_290/0.58),oklch(0.72_0.15_235/0.26),transparent)]" />
             {isSubmitted ? (
@@ -145,7 +145,7 @@ export default function ContactSection() {
               </div>
             ) : (
               <>
-                <div className="border-b border-[oklch(0.31_0.05_275/0.14)] pb-5">
+                <div className="border-b border-white/[0.08] pb-5">
                   <h3 className="text-2xl font-semibold text-foreground">
                     Book a demo
                   </h3>
@@ -179,7 +179,7 @@ export default function ContactSection() {
                         name="full_name"
                         required
                         placeholder="John Smith"
-                        className="w-full rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                       />
                     </div>
                     <div>
@@ -192,7 +192,7 @@ export default function ContactSection() {
                         name="company_name"
                         required
                         placeholder="Smith's HVAC"
-                        className="w-full rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                       />
                     </div>
                   </div>
@@ -208,7 +208,7 @@ export default function ContactSection() {
                         name="email"
                         required
                         placeholder="john@smithshvac.com"
-                        className="w-full rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                       />
                     </div>
                     <div>
@@ -221,7 +221,7 @@ export default function ContactSection() {
                         name="phone"
                         placeholder="(417) 738-5126"
                         required={smsConsent}
-                        className="w-full rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                       />
                       <p className="mt-1.5 text-xs text-muted-foreground">
                         Add a mobile number for quick SMS updates about your demo request and appointments.
@@ -236,7 +236,7 @@ export default function ContactSection() {
                     <select
                       id="service"
                       name="service_interest"
-                      className="w-full rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
+                      className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                     >
                       <option value="">Select an option...</option>
                       <option value="never-miss-calls">Never miss calls</option>
@@ -256,11 +256,11 @@ export default function ContactSection() {
                       name="message"
                       rows={4}
                       placeholder="What happens when a lead calls and your team cannot answer right away?"
-                      className="w-full resize-none rounded-xl border border-[oklch(0.30_0.04_230/0.42)] bg-[linear-gradient(180deg,rgba(9,12,20,0.82),rgba(7,10,17,0.86))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.28]"
+                      className="w-full resize-none rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                     />
                   </div>
 
-                  <div className="rounded-[1.1rem] border border-[oklch(0.31_0.05_275/0.16)] bg-[linear-gradient(180deg,rgba(14,13,24,0.30),rgba(8,11,18,0.36))] p-4">
+                  <div className="rounded-[1.4rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(14,13,24,0.24),rgba(8,11,18,0.3))] p-4">
                     <div className="flex items-start gap-3">
                       <input
                         type="checkbox"

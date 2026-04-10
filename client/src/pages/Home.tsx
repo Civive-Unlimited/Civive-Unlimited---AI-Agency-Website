@@ -9,7 +9,7 @@ import WhyCiviveSection from "@/components/sections/WhyCiviveSection";
 
 export default function Home() {
   return (
-    <main className="relative overflow-hidden">
+    <main className="homepage-shell relative overflow-hidden">
       <HeroSection />
       <ResultsSection />
       <ProofSection />

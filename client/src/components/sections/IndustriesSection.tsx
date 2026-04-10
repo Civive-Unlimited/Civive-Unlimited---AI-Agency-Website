@@ -24,12 +24,15 @@ export default function IndustriesSection() {
             className="max-w-xl"
           >
             <p className="homepage-eyebrow">Built for service businesses</p>
-            <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
+            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-foreground sm:text-4xl md:text-5xl lg:text-[3.15rem]">
               If inbound calls drive revenue, this is built for you.
             </h2>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               From HVAC and plumbing to med spas, real estate teams, and local service
               businesses, the system works anywhere missed calls turn into missed work.
+            </p>
+            <p className="mt-8 text-sm uppercase tracking-[0.18em] text-white/38">
+              Calls matter. Fit is immediate.
             </p>
           </motion.div>
 
@@ -37,7 +40,7 @@ export default function IndustriesSection() {
             initial={{ opacity: 0, y: 18 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="border-y border-[oklch(0.31_0.05_275/0.16)]"
+            className="border-y border-[oklch(0.31_0.05_275/0.14)]"
           >
             {industryRows.map((row, rowIndex) => (
               <motion.div
@@ -49,14 +52,14 @@ export default function IndustriesSection() {
                   rowIndex < industryRows.length - 1 ? "border-b border-[oklch(0.31_0.05_275/0.14)]" : ""
                 }`}
               >
-                <div className="py-5 sm:py-7">
-                  <p className="text-xl font-medium tracking-[-0.02em] text-foreground sm:text-[1.3rem]">
+                <div className="py-6 sm:py-8">
+                  <p className="text-[1.4rem] font-medium tracking-[-0.03em] text-foreground sm:text-[1.7rem]">
                     {row[0]}
                   </p>
                 </div>
                 <div className="hidden bg-[linear-gradient(180deg,transparent,oklch(0.56_0.16_290/0.18),transparent)] sm:block" />
-                <div className="border-t border-[oklch(0.31_0.05_275/0.14)] py-5 sm:border-t-0 sm:py-7 sm:pl-10">
-                  <p className="text-xl font-medium tracking-[-0.02em] text-foreground sm:text-[1.3rem]">
+                <div className="border-t border-[oklch(0.31_0.05_275/0.14)] py-6 sm:border-t-0 sm:py-8 sm:pl-10">
+                  <p className="text-[1.4rem] font-medium tracking-[-0.03em] text-foreground sm:text-[1.7rem]">
                     {row[1]}
                   </p>
                 </div>
