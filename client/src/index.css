@@ -400,20 +400,6 @@ html {
   background: oklch(0.35 0.05 220);
 }
 
-.homepage-shell {
-  font-family: var(--font-inter);
-}
-
-.homepage-shell h1,
-.homepage-shell h2,
-.homepage-shell h3,
-.homepage-shell h4,
-.homepage-shell h5,
-.homepage-shell h6 {
-  font-family: var(--font-inter-tight);
-  letter-spacing: -0.045em;
-}
-
 p {
   letter-spacing: -0.012em;
 }
