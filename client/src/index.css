@@ -60,7 +60,7 @@
   --font-inter: 'Inter', sans-serif;
   --font-inter-tight: 'Inter Tight', sans-serif;
   --font-syne: 'Syne', sans-serif;
-  --font-space: 'Space Grotesk', sans-serif;
+  --font-space: var(--font-inter);
   --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -307,7 +307,7 @@
   .homepage-shell h5,
   .homepage-shell h6 {
     font-family: var(--font-inter-tight);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.045em;
   }
 
   .homepage-eyebrow {
@@ -398,12 +398,6 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.35 0.05 220);
-}
-
-/* Selection color */
-::selection {
-  background: oklch(0.55 0.25 300 / 0.4);
-  color: oklch(0.98 0 0);
 }
 
 .homepage-shell {
