@@ -173,13 +173,19 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-inter);
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01" 1, "cv11" 1, "cv05" 1;
   }
   
   /* Typography Hierarchy */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-inter-tight);
     font-weight: 700;
+    letter-spacing: -0.045em;
   }
   
   /* Monospace for stats and counters */
@@ -305,12 +311,12 @@
   }
 
   .homepage-eyebrow {
-    font-family: var(--font-inter);
-    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: oklch(0.77 0.08 285);
+    color: rgba(183, 173, 255, 0.82);
   }
 
   .homepage-panel {
@@ -398,4 +404,32 @@ html {
 ::selection {
   background: oklch(0.55 0.25 300 / 0.4);
   color: oklch(0.98 0 0);
+}
+
+.homepage-shell {
+  font-family: var(--font-inter);
+}
+
+.homepage-shell h1,
+.homepage-shell h2,
+.homepage-shell h3,
+.homepage-shell h4,
+.homepage-shell h5,
+.homepage-shell h6 {
+  font-family: var(--font-inter-tight);
+  letter-spacing: -0.045em;
+}
+
+p {
+  letter-spacing: -0.012em;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(122, 95, 255, 0.28);
+  color: white;
 }
