@@ -1,12 +1,18 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
-import heroLogo from "@/assets/civive-hero-logo.jpg";
 
 const checklistItems = [
   "Answers 24/7",
   "Captures every lead",
   "Helps book appointments",
   "Works after hours",
+];
+
+const capabilityItems = [
+  "Answers inbound calls",
+  "Captures caller details",
+  "Supports after-hours response",
+  "Helps move leads toward booking",
 ];
 
 const scrollToId = (id: string) => {
@@ -122,19 +128,59 @@ export default function HeroSection() {
             className="mx-auto flex w-full max-w-[640px] items-center justify-center"
           >
             <div className="relative w-full max-w-[560px]">
-              <div className="absolute inset-0 rounded-[2.4rem] bg-[radial-gradient(circle_at_center,rgba(108,80,255,0.16),transparent_46%)] blur-3xl" />
+              <div className="absolute inset-0 rounded-[2.6rem] bg-[radial-gradient(circle_at_center,rgba(108,80,255,0.16),transparent_46%)] blur-3xl" />
               <div className="absolute -left-8 top-1/2 hidden h-px w-20 -translate-y-1/2 bg-[linear-gradient(90deg,transparent,rgba(145,96,255,0.34),transparent)] lg:block" />
               <div className="absolute -right-8 top-1/2 hidden h-px w-20 -translate-y-1/2 bg-[linear-gradient(90deg,transparent,rgba(76,166,255,0.22),transparent)] lg:block" />
 
-              <div className="relative overflow-hidden rounded-[2.4rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(14,13,24,0.42),rgba(8,9,16,0.18))] p-6 shadow-[0_24px_60px_rgba(0,0,0,0.22)] backdrop-blur-[2px] sm:p-8">
+              <div className="relative overflow-hidden rounded-[2.4rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(14,13,24,0.72),rgba(8,9,16,0.40))] p-7 shadow-[0_24px_60px_rgba(0,0,0,0.22)] backdrop-blur-[6px] sm:p-8">
                 <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(145,96,255,0.46),rgba(76,166,255,0.22),transparent)]" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(108,80,255,0.08),transparent_58%)]" />
 
-                <img
-                  src={heroLogo}
-                  alt="Civive Unlimited"
-                  className="relative z-10 mx-auto block w-full max-w-[520px] object-contain"
-                />
+                <div className="relative z-10">
+                  <div className="inline-flex items-center rounded-full border border-white/[0.10] bg-white/[0.04] px-3 py-1 text-[0.7rem] uppercase tracking-[0.22em] text-white/58">
+                    Civive Unlimited
+                  </div>
+
+                  <div className="mt-8">
+                    <p className="text-[2.4rem] font-semibold leading-none tracking-[-0.06em] text-white sm:text-[3.25rem]">
+                      Never miss
+                    </p>
+                    <p className="mt-2 text-[2.4rem] font-semibold leading-none tracking-[-0.06em] text-transparent sm:text-[3.25rem] bg-[linear-gradient(135deg,#90c8ff_0%,#8a63ff_55%,#5ae4ff_100%)] bg-clip-text">
+                      a lead again.
+                    </p>
+                  </div>
+
+                  <p className="mt-6 max-w-[28rem] text-sm leading-7 text-white/64 sm:text-[0.98rem]">
+                    Built to answer, capture, and follow up when your team is
+                    busy, off-site, or unavailable.
+                  </p>
+
+                  <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                    {capabilityItems.map((item, index) => (
+                      <div
+                        key={item}
+                        className="rounded-2xl border border-white/[0.08] bg-white/[0.03] px-4 py-4 text-sm text-white/78"
+                      >
+                        <div
+                          className={`mb-3 h-1 w-10 rounded-full ${
+                            index % 2 === 0 ? "bg-[#8a63ff]" : "bg-[#49b4ff]"
+                          }`}
+                        />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 rounded-2xl border border-[rgba(138,99,255,0.18)] bg-[linear-gradient(180deg,rgba(23,20,40,0.82),rgba(10,12,20,0.62))] px-5 py-4">
+                    <p className="text-[0.68rem] uppercase tracking-[0.22em] text-white/42">
+                      Front-door offer
+                    </p>
+                    <p className="mt-3 text-sm leading-6 text-white/72">
+                      Civive starts with AI receptionist because the first
+                      response is where revenue is either protected or lost.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

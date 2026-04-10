@@ -2,10 +2,28 @@ import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 
-const implementationLines = [
-  "Practical rollout",
+const proofItems = [
+  {
+    eyebrow: "Availability",
+    title: "Answers when your team can’t",
+    copy: "Built to respond when your business is on a job, after hours, or simply unavailable to pick up live.",
+  },
+  {
+    eyebrow: "Capture",
+    title: "Keeps leads from slipping away",
+    copy: "Collects the details needed to keep the opportunity alive instead of letting the call end in silence.",
+  },
+  {
+    eyebrow: "Follow-up",
+    title: "Moves the conversation forward",
+    copy: "Supports a faster next step so more inbound opportunities have a real chance to turn into booked work.",
+  },
+];
+
+const supportLines = [
+  "Built in GoHighLevel",
+  "Shaped around real workflows",
   "Clear handoff logic",
-  "Built around how your team works",
 ];
 
 const scrollToContact = () => {
@@ -21,109 +39,112 @@ export default function ProofSection() {
 
   return (
     <section className="relative overflow-hidden py-20 sm:py-24" ref={ref}>
-      <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,oklch(0.55_0.25_300/0.06),transparent_70%)]" />
+      <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,rgba(123,92,255,0.10),transparent_72%)]" />
+
       <div className="container relative z-10 mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="mx-auto max-w-3xl text-center"
-        >
-          <p className="homepage-eyebrow">Built for real business pressure</p>
-          <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
-            The point is simple: fewer missed opportunities.
-          </h2>
-          <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            When calls are handled quickly and consistently, the business looks more
-            responsive, ad spend works harder, and more appointments keep moving.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.08 }}
-          className="mx-auto mt-14 max-w-6xl overflow-hidden border-y border-[oklch(0.31_0.05_275/0.14)]"
-        >
-          <div className="grid lg:grid-cols-3">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.42, delay: 0.12 }}
-              className="px-0 py-7 sm:py-9 lg:border-r lg:border-[oklch(0.31_0.05_275/0.14)] lg:px-8"
+              transition={{ duration: 0.5 }}
+              className="max-w-xl"
             >
-              <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                Testimonial space
-              </p>
-              <p className="mt-5 text-2xl font-medium leading-tight tracking-[-0.02em] text-foreground">
-                &ldquo;Most businesses do not have a lead problem. They have a response
-                problem.&rdquo;
-              </p>
-              <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                Client proof and case studies can live here as they are added.
-              </p>
-            </motion.div>
+              <p className="homepage-eyebrow">Proof without fluff</p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.42, delay: 0.17 }}
-              className="border-t border-[oklch(0.31_0.05_275/0.14)] px-0 py-7 sm:py-9 lg:border-r lg:border-t-0 lg:border-[oklch(0.31_0.05_275/0.14)] lg:px-8"
-            >
-              <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                Results space
-              </p>
-              <p className="mt-5 max-w-sm text-xl font-medium leading-relaxed tracking-[-0.02em] text-foreground sm:text-2xl">
-                Results snapshots, before-and-after improvements, and booked-appointment wins can live here.
-              </p>
-            </motion.div>
+              <h2 className="mt-4 max-w-lg text-balance text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl lg:text-[3.1rem] lg:leading-[1.03]">
+                The first response decides whether the lead survives.
+              </h2>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.42, delay: 0.22 }}
-              className="border-t border-[oklch(0.31_0.05_275/0.14)] px-0 py-7 sm:py-9 lg:border-t-0 lg:px-8"
-            >
-              <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                Implementation confidence
-              </p>
-              <p className="mt-5 max-w-sm text-xl font-medium leading-relaxed tracking-[-0.02em] text-foreground sm:text-2xl">
-                Built to fit real workflows, not force a generic setup.
+              <p className="mt-6 max-w-xl text-base leading-7 text-white/72 sm:text-[1.05rem]">
+                Civive’s AI receptionist is built to answer, capture, and follow up
+                when your team can’t. The point is not to look technical. The point is
+                to keep real opportunities from disappearing.
               </p>
 
-              <div className="mt-6 space-y-3">
-                {implementationLines.map((line) => (
-                  <div
+              <div className="mt-8 rounded-[1.9rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(15,14,26,0.84),rgba(8,10,18,0.76))] p-6 shadow-[0_24px_90px_rgba(8,8,18,0.30)] backdrop-blur-sm sm:p-7">
+                <p className="text-[0.7rem] uppercase tracking-[0.24em] text-white/42">
+                  Core statement
+                </p>
+
+                <blockquote className="mt-4 text-xl font-medium leading-8 tracking-[-0.02em] text-white/92 sm:text-2xl sm:leading-9">
+                  “Civive’s AI receptionist is built to answer, capture, and follow up when your team can’t.”
+                </blockquote>
+
+                <p className="mt-4 text-sm leading-6 text-white/56">
+                  Performance metrics can be added later once there is enough live data to publish them honestly.
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                {supportLines.map((line) => (
+                  <span
                     key={line}
-                    className="flex items-center gap-3 text-sm text-foreground/80"
+                    className="rounded-full border border-white/[0.10] bg-white/[0.03] px-4 py-2 text-sm text-white/72"
                   >
-                    <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.58_0.16_290)]" />
-                    <span>{line}</span>
-                  </div>
+                    {line}
+                  </span>
                 ))}
+              </div>
+
+              <button
+                onClick={scrollToContact}
+                className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
+              >
+                Book a demo
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.08 }}
+              className="grid gap-4"
+            >
+              {proofItems.map((item, index) => (
+                <div
+                  key={item.title}
+                  className="relative overflow-hidden rounded-[1.8rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(17,16,29,0.88),rgba(8,11,18,0.76))] p-6 shadow-[0_24px_90px_rgba(8,8,18,0.26)]"
+                >
+                  <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(115,109,255,0.7),transparent)] opacity-70" />
+
+                  <p className="text-[0.68rem] uppercase tracking-[0.22em] text-white/40">
+                    {item.eyebrow}
+                  </p>
+
+                  <h3 className="mt-4 text-xl font-medium tracking-[-0.02em] text-white/92">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-3 max-w-xl text-sm leading-6 text-white/62">
+                    {item.copy}
+                  </p>
+
+                  <div
+                    className={`mt-6 h-1 w-16 rounded-full ${
+                      index === 0
+                        ? "bg-[#8a63ff]"
+                        : index === 1
+                          ? "bg-[#49b4ff]"
+                          : "bg-[#7d8cff]"
+                    }`}
+                  />
+                </div>
+              ))}
+
+              <div className="rounded-[1.8rem] border border-[rgba(138,99,255,0.18)] bg-[linear-gradient(180deg,rgba(24,20,44,0.76),rgba(10,12,20,0.88))] p-6">
+                <p className="text-[0.68rem] uppercase tracking-[0.22em] text-white/40">
+                  Why this section works
+                </p>
+
+                <p className="mt-4 max-w-2xl text-sm leading-6 text-white/72">
+                  It shows confidence without fake screenshots, fake dashboards, or made-up percentages.
+                </p>
               </div>
             </motion.div>
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.45, delay: 0.26 }}
-          className="mx-auto mt-8 flex max-w-4xl flex-col items-center justify-between gap-4 border-t border-[oklch(0.31_0.05_275/0.14)] pt-6 text-center sm:flex-row sm:text-left"
-        >
-          <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Want to see what this could look like for your business?
-          </p>
-
-          <button
-            onClick={scrollToContact}
-            className="homepage-outline-button inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-[oklch(0.75_0.18_220)/0.45] hover:text-[oklch(0.75_0.18_220)]"
-          >
-            Book a demo
-            <ArrowRight className="h-4 w-4" />
-          </button>
-        </motion.div>
+        </div>
       </div>
 
       <div className="homepage-section-divider" />
