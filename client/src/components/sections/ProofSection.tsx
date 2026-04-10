@@ -21,9 +21,9 @@ const proofItems = [
 ];
 
 const supportLines = [
-  "Built in GoHighLevel",
-  "Shaped around real workflows",
-  "Clear handoff logic",
+  "Answers around the clock",
+  "Captures leads clearly",
+  "Keeps momentum moving",
 ];
 
 const scrollToContact = () => {
@@ -50,7 +50,7 @@ export default function ProofSection() {
               transition={{ duration: 0.5 }}
               className="max-w-xl"
             >
-              <p className="homepage-eyebrow">Proof without fluff</p>
+              <p className="homepage-eyebrow">Why the first response matters</p>
 
               <h2 className="mt-4 max-w-lg text-balance text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl lg:text-[3.1rem] lg:leading-[1.03]">
                 The first response decides whether the lead survives.
@@ -63,18 +63,10 @@ export default function ProofSection() {
               </p>
 
               <div className="mt-8 border-l border-white/[0.1] pl-6">
-                <p className="text-[0.7rem] uppercase tracking-[0.24em] text-white/42">
-                  Core statement
-                </p>
-
-                <blockquote className="mt-4 text-xl font-medium leading-8 tracking-[-0.02em] text-white/92 sm:text-2xl sm:leading-9">
-                  "Civive&apos;s AI receptionist is built to answer, capture, and follow up when your team cannot."
+                <blockquote className="text-xl font-medium leading-8 tracking-[-0.02em] text-white/92 sm:text-2xl sm:leading-9">
+                  An AI receptionist is not there to sound impressive. It is there
+                  to keep revenue from disappearing when no one picks up.
                 </blockquote>
-
-                <p className="mt-4 text-sm leading-6 text-white/56">
-                  Performance metrics can be added later once there is enough live
-                  data to publish them honestly.
-                </p>
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -135,13 +127,9 @@ export default function ProofSection() {
               </div>
 
               <div className="mt-6 border-t border-white/[0.08] pt-6">
-                <p className="text-[0.68rem] uppercase tracking-[0.22em] text-white/40">
-                  Why this section works
-                </p>
-
-                <p className="mt-4 max-w-2xl text-sm leading-6 text-white/72">
-                  It shows confidence without fake screenshots, fake dashboards, or
-                  made-up percentages.
+                <p className="mt-0 max-w-2xl text-sm leading-6 text-white/72">
+                  More calls get answered, more opportunities stay alive, and the
+                  first impression feels faster, steadier, and more professional.
                 </p>
               </div>
             </motion.div>
