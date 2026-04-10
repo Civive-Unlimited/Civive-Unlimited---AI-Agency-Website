@@ -1,62 +1,42 @@
 import { motion, useInView } from "framer-motion";
-import {
-  CalendarCheck2,
-  CheckCircle2,
-  Clock3,
-  PhoneCall,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, CalendarCheck2, PhoneCall, Sparkles } from "lucide-react";
 import { useRef } from "react";
 
-const problemPoints = [
-  "Missed calls turn into lost opportunities.",
+const responseBreakdowns = [
+  "Missed calls turn into lost revenue.",
+  "Voicemail creates friction for ready buyers.",
   "Slow follow-up weakens trust fast.",
-  "Voicemail creates a dead end for ready buyers.",
-  "Ad spend gets wasted when calls go nowhere.",
-  "A weak first response costs you booked appointments.",
 ];
 
-const solutionPoints = [
-  "AI receptionist answers instantly.",
-  "It captures lead details clearly.",
-  "It keeps the business responsive.",
-  "It helps move people toward booking.",
-];
-
-const steps = [
+const processSteps = [
   {
+    number: "01",
     icon: PhoneCall,
     title: "A lead calls your business",
     description:
-      "A real prospect reaches out when they need service now, often while your team is busy or already with a customer.",
+      "Someone reaches out when they need service now, often while your team is already busy, on-site, or unavailable.",
   },
   {
+    number: "02",
     icon: Sparkles,
-    title: "The AI receptionist answers instantly",
+    title: "The AI receptionist responds instantly",
     description:
-      "Instead of a missed call or voicemail dead end, the caller gets an immediate first response that feels polished and clear.",
+      "Instead of a missed call or voicemail dead end, the caller gets a fast, professional first response that keeps the opportunity alive.",
   },
   {
-    icon: CheckCircle2,
-    title: "It captures the lead and responds professionally",
-    description:
-      "Key details are collected, expectations stay clear, and the conversation keeps moving instead of stalling out.",
-  },
-  {
+    number: "03",
     icon: CalendarCheck2,
-    title: "It helps book the appointment or move the lead to the next step",
+    title: "The lead moves toward the next step",
     description:
-      "Qualified callers get pushed toward booking, routed to the right handoff, or set up for fast follow-up.",
+      "Caller details are captured, expectations stay clear, and the conversation can move toward booking, routing, or fast follow-up.",
   },
 ];
 
 const outcomes = [
-  "Never miss opportunities",
-  "Stay responsive after hours",
-  "Reduce admin load",
-  "Improve customer experience",
-  "Increase booked appointments",
-  "Keep leads from falling through the cracks",
+  "More live opportunities protected",
+  "Fewer leads slipping through the cracks",
+  "Better response without more chaos",
+  "A stronger first impression",
 ];
 
 export default function ResultsSection() {
@@ -69,152 +49,125 @@ export default function ResultsSection() {
       className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
       ref={ref}
     >
-      <div className="absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,oklch(0.75_0.18_220/0.11),transparent_62%)]" />
-      <div className="absolute inset-x-0 top-24 h-px opacity-55 homepage-circuit-line" />
-      <div className="absolute left-[10%] top-10 h-36 w-36 bg-[radial-gradient(circle,oklch(0.55_0.25_300/0.08),transparent_70%)]" />
+      <div className="absolute inset-x-0 top-10 h-px opacity-35 homepage-circuit-line" />
+      <div className="absolute left-[8%] top-28 hidden h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(121,93,255,0.10),transparent_70%)] blur-3xl lg:block" />
 
       <div className="container relative z-10 mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55 }}
-          className="mx-auto max-w-3xl text-center"
-        >
-          <p className="homepage-eyebrow">How it works</p>
-          <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
-            Every call either moves forward or gets lost.
-          </h2>
-          <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            When someone calls your business, your AI receptionist answers instantly,
-            captures the lead, and helps move them toward the next step.
-          </p>
-        </motion.div>
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5 }}
+              className="max-w-xl"
+            >
+              <p className="homepage-eyebrow">How it works</p>
 
-        <div className="mx-auto mt-16 max-w-6xl">
-          <div className="border-t border-[oklch(0.31_0.05_275/0.16)] pt-8 sm:pt-10">
-            <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.55, delay: 0.08 }}
-                className="grid gap-10"
-              >
-              <div>
-                <p className="homepage-eyebrow">The problem</p>
-                <h3 className="mt-3 text-2xl font-semibold text-foreground">
-                  Missed calls quietly drain booked revenue.
-                </h3>
-                <div className="mt-6 space-y-4">
-                  {problemPoints.map((item) => (
-                    <div key={item} className="flex items-start gap-3 text-sm leading-relaxed text-foreground/80">
-                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[oklch(0.55_0.25_300)]" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <h2 className="mt-4 max-w-lg text-balance text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl lg:text-[3.2rem] lg:leading-[1.02]">
+                A better first response changes the whole lead path.
+              </h2>
 
-              <div className="border-t border-[oklch(0.31_0.05_275/0.16)] pt-8">
-                <p className="homepage-eyebrow">The fix</p>
-                <h3 className="mt-3 text-2xl font-semibold text-foreground">
-                  A calmer, faster first response.
-                </h3>
-                <div className="mt-6 grid gap-3">
-                  {solutionPoints.map((item, index) => (
-                    <div
-                      key={item}
-                      className={`border-b px-0 pb-3 text-sm text-foreground/80 ${
-                        index === 0
-                          ? "border-[oklch(0.72_0.15_235/0.34)] text-[oklch(0.86_0.02_260)]"
-                          : "border-[oklch(0.31_0.05_275/0.16)]"
-                      }`}
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              </motion.div>
+              <p className="mt-6 max-w-xl text-base leading-7 text-white/72 sm:text-[1.05rem]">
+                Most service businesses do not need more noise. They need a cleaner
+                way to answer faster, capture more opportunities, and stop losing
+                momentum at the first point of contact.
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.55, delay: 0.14 }}
-                className="border-l-0 lg:border-l lg:border-[oklch(0.31_0.05_275/0.12)] lg:pl-12"
-              >
-            <div className="flex items-end justify-between gap-4 border-b border-[oklch(0.31_0.05_275/0.20)] pb-5">
-              <div>
-                <p className="homepage-eyebrow">Flow</p>
-                <h3 className="mt-3 text-2xl font-semibold text-foreground">
-                  Responsive from the first ring.
-                </h3>
-              </div>
-              <div className="hidden text-sm text-foreground/56 sm:block">
-                One clear system
-              </div>
-            </div>
-
-            <div className="relative mt-6">
-              <div className="absolute left-5 top-3 bottom-3 w-px bg-[linear-gradient(180deg,oklch(0.56_0.16_290/0.65),oklch(0.72_0.15_235/0.20),transparent)]" />
-              <div className="grid gap-6">
-                {steps.map((step, index) => (
-                  <motion.div
-                    key={step.title}
-                    initial={{ opacity: 0, y: 18 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.48, delay: 0.18 + index * 0.06 }}
-                    className="relative pl-14"
+              <div className="mt-8 space-y-3">
+                {responseBreakdowns.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 border-b border-white/[0.08] pb-3 text-sm text-white/74"
                   >
-                    <span className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full border border-[oklch(0.33_0.05_228/0.42)] bg-[linear-gradient(180deg,rgba(12,15,24,0.96),rgba(8,10,17,0.98))] text-[oklch(0.75_0.18_220)] shadow-[0_0_18px_oklch(0.75_0.18_220/0.08)]">
-                      <step.icon className="h-4.5 w-4.5" />
-                    </span>
-                    <div className="border-b border-[oklch(0.31_0.05_275/0.12)] px-0 py-1 pb-5">
-                      <h4 className="text-lg font-medium text-foreground">{step.title}</h4>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                        {step.description}
-                      </p>
-                    </div>
-                  </motion.div>
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#8a63ff]" />
+                    {item}
+                  </div>
                 ))}
               </div>
-            </div>
-              </motion.div>
-            </div>
+
+              <div className="mt-10 rounded-[1.8rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(14,13,24,0.74),rgba(8,10,18,0.54))] p-6 shadow-[0_20px_70px_rgba(0,0,0,0.24)]">
+                <p className="text-[0.68rem] uppercase tracking-[0.22em] text-white/40">
+                  The shift
+                </p>
+                <p className="mt-4 text-lg leading-8 text-white/88">
+                  From missed calls and scattered follow-up to a calmer, faster front
+                  door that keeps more leads moving.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.08 }}
+              className="relative"
+            >
+              <div className="absolute left-[1.15rem] top-3 bottom-24 hidden w-px bg-[linear-gradient(180deg,rgba(138,99,255,0.34),rgba(73,180,255,0.14),transparent)] sm:block" />
+
+              <div className="space-y-5">
+                {processSteps.map((step, index) => {
+                  const Icon = step.icon;
+
+                  return (
+                    <div
+                      key={step.number}
+                      className="relative overflow-hidden rounded-[1.9rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(16,15,28,0.88),rgba(8,11,18,0.74))] p-6 shadow-[0_24px_90px_rgba(8,8,18,0.26)] sm:p-7"
+                    >
+                      <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(138,99,255,0.65),transparent)] opacity-80" />
+
+                      <div className="relative flex flex-col gap-5 sm:flex-row sm:items-start">
+                        <div className="flex items-center gap-4 sm:w-[10rem] sm:flex-col sm:items-start sm:gap-5">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.10] bg-white/[0.03] text-white/88">
+                            <Icon className="h-4.5 w-4.5" />
+                          </div>
+
+                          <div>
+                            <p className="text-[0.68rem] uppercase tracking-[0.22em] text-white/40">
+                              Step {step.number}
+                            </p>
+                            <p className="mt-2 text-sm text-white/56">
+                              {index === 0
+                                ? "Inbound call"
+                                : index === 1
+                                  ? "Immediate response"
+                                  : "Next-step momentum"}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="max-w-xl">
+                          <h3 className="text-xl font-medium tracking-[-0.02em] text-white/92">
+                            {step.title}
+                          </h3>
+
+                          <p className="mt-3 text-sm leading-6 text-white/62 sm:text-[0.98rem]">
+                            {step.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {outcomes.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-white/[0.08] bg-white/[0.03] px-4 py-4 text-sm text-white/74"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 flex items-center gap-2 text-sm font-medium text-white/82">
+                One clear system
+                <ArrowRight className="h-4 w-4" />
+              </div>
+            </motion.div>
           </div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, delay: 0.2 }}
-          className="mx-auto mt-10 max-w-6xl"
-        >
-          <div className="border-t border-[oklch(0.31_0.05_275/0.16)] pt-8">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="homepage-eyebrow">Outcomes</p>
-                <h3 className="mt-3 text-2xl font-semibold text-foreground">
-                  Better lead handling without adding chaos.
-                </h3>
-              </div>
-              <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
-                The goal is simple: stay responsive, protect the demand you already
-                generate, and make it easier for real prospects to take the next step.
-              </p>
-            </div>
-
-            <div className="mt-7 grid gap-x-8 gap-y-4 sm:grid-cols-2 xl:grid-cols-3">
-              {outcomes.map((item) => (
-                <div
-                  key={item}
-                  className="border-b border-[oklch(0.31_0.05_275/0.12)] pb-4 text-sm text-foreground/78"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
 
       <div className="homepage-section-divider" />
