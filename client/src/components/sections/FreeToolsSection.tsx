@@ -13,21 +13,24 @@ export default function FreeToolsSection() {
     {
       icon: Search,
       title: "AI Business Audit",
-      description: "Get a full health report on your online presence in 60 seconds. We'll show you your visibility grade (A-F), where your business info is wrong across the web, which directories you're missing from, and how you stack up against your top 3 local competitors.",
+      description:
+        "Get a full health report on your online presence in 60 seconds. We'll show you your visibility grade (A-F), where your business info is wrong across the web, which directories you're missing from, and how you stack up against your top 3 local competitors.",
       highlight: "Most businesses are shocked by what they find.",
       cta: "Get Your Free Audit",
     },
     {
       icon: ClipboardCheck,
       title: "AI Readiness Quiz",
-      description: "Not sure where to start? Take our 2-minute quiz to discover which AI tools fit your business best and get an estimated ROI based on your industry.",
+      description:
+        "Not sure where to start? Take our 2-minute quiz to discover which AI tools fit your business best and get an estimated ROI based on your industry.",
       highlight: "Personalized recommendations in minutes.",
       cta: "Take the Quiz",
     },
     {
       icon: Calculator,
       title: "Missed Opportunity Calculator",
-      description: "How much money are you leaving on the table? Enter your average job value and we'll show you exactly how much you're losing to missed calls, no-shows, and slow follow-up.",
+      description:
+        "How much money are you leaving on the table? Enter your average job value and we'll show you exactly how much you're losing to missed calls, no-shows, and slow follow-up.",
       highlight: "The numbers might surprise you.",
       cta: "Calculate Your Losses",
     },
@@ -35,12 +38,17 @@ export default function FreeToolsSection() {
 
   const handleToolClick = (toolName: string) => {
     toast.info(`${toolName} - Coming Soon!`, {
-      description: "We're putting the finishing touches on this tool. Leave your email below and we'll notify you when it's ready.",
+      description:
+        "We're putting the finishing touches on this tool. Leave your email below and we'll notify you when it's ready.",
     });
   };
 
   return (
-    <section id="free-tools" className="relative py-24 overflow-hidden" ref={ref}>
+    <section
+      id="free-tools"
+      className="relative py-24 overflow-hidden"
+      ref={ref}
+    >
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -53,7 +61,8 @@ export default function FreeToolsSection() {
             <span className="gradient-text">Not Ready Yet? Start Here.</span>
           </h2>
           <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
-            Free tools to help you understand where you stand and what's possible.
+            Free tools to help you understand where you stand and what's
+            possible.
           </p>
         </motion.div>
 

@@ -31,22 +31,86 @@ export default function GHLShowcaseSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const features = [
-    { icon: Bot, title: "AI Voice Agent", desc: "24/7 phone receptionist that books appointments" },
-    { icon: MessageSquare, title: "AI Web Chat", desc: "Instant answers on your website, always on" },
-    { icon: Phone, title: "Missed-Call Text Back", desc: "Auto-text every missed call in seconds" },
-    { icon: Star, title: "Review Automation", desc: "Generate 5-star reviews on autopilot" },
-    { icon: Calendar, title: "Smart Scheduling", desc: "Online booking with automated reminders" },
-    { icon: CreditCard, title: "Text-to-Pay", desc: "Send invoices, get paid instantly via text" },
-    { icon: BarChart3, title: "Visual Pipeline", desc: "Track every lead from first touch to close" },
-    { icon: Globe, title: "70+ Listing Sync", desc: "Fix your info across Google, Yelp, Bing, Siri" },
-    { icon: Users, title: "Smart CRM", desc: "Every contact, conversation, and deal in one place" },
-    { icon: Mail, title: "Email Campaigns", desc: "Automated nurture sequences that convert" },
-    { icon: Megaphone, title: "Social Planner", desc: "Schedule posts across all platforms" },
-    { icon: Workflow, title: "Workflow Builder", desc: "If-this-then-that automation for your business" },
-    { icon: Bell, title: "Appointment Reminders", desc: "End no-shows with smart SMS reminders" },
-    { icon: FileText, title: "Funnel Builder", desc: "Landing pages that capture and convert" },
-    { icon: Zap, title: "Database Reactivation", desc: "AI calls old leads to generate instant revenue" },
-    { icon: Shield, title: "Reputation Dashboard", desc: "Monitor all reviews across every platform" },
+    {
+      icon: Bot,
+      title: "AI Voice Agent",
+      desc: "24/7 phone receptionist that books appointments",
+    },
+    {
+      icon: MessageSquare,
+      title: "AI Web Chat",
+      desc: "Instant answers on your website, always on",
+    },
+    {
+      icon: Phone,
+      title: "Missed-Call Text Back",
+      desc: "Auto-text every missed call in seconds",
+    },
+    {
+      icon: Star,
+      title: "Review Automation",
+      desc: "Generate 5-star reviews on autopilot",
+    },
+    {
+      icon: Calendar,
+      title: "Smart Scheduling",
+      desc: "Online booking with automated reminders",
+    },
+    {
+      icon: CreditCard,
+      title: "Text-to-Pay",
+      desc: "Send invoices, get paid instantly via text",
+    },
+    {
+      icon: BarChart3,
+      title: "Visual Pipeline",
+      desc: "Track every lead from first touch to close",
+    },
+    {
+      icon: Globe,
+      title: "70+ Listing Sync",
+      desc: "Fix your info across Google, Yelp, Bing, Siri",
+    },
+    {
+      icon: Users,
+      title: "Smart CRM",
+      desc: "Every contact, conversation, and deal in one place",
+    },
+    {
+      icon: Mail,
+      title: "Email Campaigns",
+      desc: "Automated nurture sequences that convert",
+    },
+    {
+      icon: Megaphone,
+      title: "Social Planner",
+      desc: "Schedule posts across all platforms",
+    },
+    {
+      icon: Workflow,
+      title: "Workflow Builder",
+      desc: "If-this-then-that automation for your business",
+    },
+    {
+      icon: Bell,
+      title: "Appointment Reminders",
+      desc: "End no-shows with smart SMS reminders",
+    },
+    {
+      icon: FileText,
+      title: "Funnel Builder",
+      desc: "Landing pages that capture and convert",
+    },
+    {
+      icon: Zap,
+      title: "Database Reactivation",
+      desc: "AI calls old leads to generate instant revenue",
+    },
+    {
+      icon: Shield,
+      title: "Reputation Dashboard",
+      desc: "Monitor all reviews across every platform",
+    },
   ];
 
   return (
@@ -66,10 +130,13 @@ export default function GHLShowcaseSection() {
             </span>
           </div>
           <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">One Platform. Everything You Need.</span>
+            <span className="gradient-text">
+              One Platform. Everything You Need.
+            </span>
           </h2>
           <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-3xl mx-auto">
-            Powered by GoHighLevel, the same platform used by 1.4 million businesses. We configure, customize, and manage it all for you.
+            Powered by GoHighLevel, the same platform used by 1.4 million
+            businesses. We configure, customize, and manage it all for you.
           </p>
         </motion.div>
 

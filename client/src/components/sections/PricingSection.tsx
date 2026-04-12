@@ -44,7 +44,8 @@ export default function PricingSection() {
       period: "/mo",
       popular: true,
       color: "border-[oklch(0.75_0.18_220)]",
-      buttonClass: "bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] text-white hover:opacity-90",
+      buttonClass:
+        "bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] text-white hover:opacity-90",
       features: [
         "Everything in Foundation",
         "24/7 AI Voice Receptionist",
@@ -69,7 +70,8 @@ export default function PricingSection() {
       period: "/mo",
       popular: false,
       color: "border-[oklch(0.55_0.25_300)/0.5]",
-      buttonClass: "bg-gradient-to-r from-[oklch(0.55_0.25_300)] to-[oklch(0.45_0.22_280)] text-white hover:opacity-90",
+      buttonClass:
+        "bg-gradient-to-r from-[oklch(0.55_0.25_300)] to-[oklch(0.45_0.22_280)] text-white hover:opacity-90",
       features: [
         "Everything in Growth System",
         "AI Search Optimization (AIO)",
@@ -93,7 +95,8 @@ export default function PricingSection() {
       period: "/mo",
       popular: false,
       color: "border-[oklch(0.75_0.20_60)/0.4]",
-      buttonClass: "bg-gradient-to-r from-[oklch(0.75_0.20_60)] to-[oklch(0.65_0.22_40)] text-white hover:opacity-90",
+      buttonClass:
+        "bg-gradient-to-r from-[oklch(0.75_0.20_60)] to-[oklch(0.65_0.22_40)] text-white hover:opacity-90",
       features: [
         "Everything in AI Search Domination",
         "Facebook & Instagram Ad Management",
@@ -124,7 +127,8 @@ export default function PricingSection() {
             <span className="gradient-text">Choose Your Growth Path</span>
           </h2>
           <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
-            Every plan includes the full GoHighLevel platform. No hidden fees. No long-term contracts. Cancel anytime.
+            Every plan includes the full GoHighLevel platform. No hidden fees.
+            No long-term contracts. Cancel anytime.
           </p>
         </motion.div>
 
@@ -136,8 +140,11 @@ export default function PricingSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-              className={`glass-card p-6 sm:p-8 relative ${tier.color} ${tier.popular ? "ring-2 ring-[oklch(0.75_0.18_220)] scale-[1.02]" : ""
-                }`}
+              className={`glass-card p-6 sm:p-8 relative ${tier.color} ${
+                tier.popular
+                  ? "ring-2 ring-[oklch(0.75_0.18_220)] scale-[1.02]"
+                  : ""
+              }`}
             >
               {/* Popular Badge */}
               {tier.popular && (
@@ -194,9 +201,11 @@ export default function PricingSection() {
               {/* CTA Button */}
               <a
                 href="#contact"
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
-                  document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+                  document
+                    .querySelector("#contact")
+                    ?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className={`block w-full text-center magnetic-btn font-['Space_Grotesk'] font-semibold py-3 rounded-lg transition-all ${tier.buttonClass}`}
               >
@@ -216,7 +225,8 @@ export default function PricingSection() {
           <div className="inline-flex items-center gap-2 glass-card px-6 py-3">
             <Star className="w-4 h-4 text-[oklch(0.75_0.20_60)]" />
             <span className="font-['Space_Grotesk'] text-sm text-foreground">
-              <strong>Founding Partner Discount:</strong> First 5 clients lock in these rates for life.
+              <strong>Founding Partner Discount:</strong> First 5 clients lock
+              in these rates for life.
             </span>
             <Star className="w-4 h-4 text-[oklch(0.75_0.20_60)]" />
           </div>

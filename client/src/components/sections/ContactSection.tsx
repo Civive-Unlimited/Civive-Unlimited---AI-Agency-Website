@@ -26,10 +26,25 @@ export default function ContactSection() {
   ];
 
   const contactInfo = [
-    { icon: Phone, label: "Phone", value: "(417) 952-6436", href: "tel:+14179526436" },
-    { icon: Mail, label: "Email", value: "ceo@civiveunlimited.com", href: "mailto:ceo@civiveunlimited.com" },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "(417) 952-6436",
+      href: "tel:+14179526436",
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      value: "ceo@civiveunlimited.com",
+      href: "mailto:ceo@civiveunlimited.com",
+    },
     { icon: MapPin, label: "Location", value: "Springfield, MO", href: null },
-    { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
+    {
+      icon: Clock,
+      label: "Response Time",
+      value: "Within 24 hours",
+      href: null,
+    },
   ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -53,10 +68,14 @@ export default function ContactSection() {
         form.reset();
         setSmsConsent(false);
       } else {
-        toast.error("Something went wrong. Please try calling us directly at (417) 952-6436.");
+        toast.error(
+          "Something went wrong. Please try calling us directly at (417) 952-6436."
+        );
       }
     } catch {
-      toast.error("Network error. Please try calling us directly at (417) 952-6436.");
+      toast.error(
+        "Network error. Please try calling us directly at (417) 952-6436."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -73,10 +92,13 @@ export default function ContactSection() {
           className="text-center mb-16"
         >
           <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Let's Build Your Growth System</span>
+            <span className="gradient-text">
+              Let's Build Your Growth System
+            </span>
           </h2>
           <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
-            Tell us about your business and we'll show you exactly how we'd grow it. No pressure. No BS. Just a real conversation about results.
+            Tell us about your business and we'll show you exactly how we'd grow
+            it. No pressure. No BS. Just a real conversation about results.
           </p>
         </motion.div>
 
@@ -104,11 +126,16 @@ export default function ContactSection() {
                         {item.label}
                       </div>
                       {item.href ? (
-                        <a href={item.href} className="font-['Space_Grotesk'] text-sm text-foreground hover:text-[oklch(0.75_0.18_220)] transition-colors">
+                        <a
+                          href={item.href}
+                          className="font-['Space_Grotesk'] text-sm text-foreground hover:text-[oklch(0.75_0.18_220)] transition-colors"
+                        >
                           {item.value}
                         </a>
                       ) : (
-                        <span className="font-['Space_Grotesk'] text-sm text-foreground">{item.value}</span>
+                        <span className="font-['Space_Grotesk'] text-sm text-foreground">
+                          {item.value}
+                        </span>
                       )}
                     </div>
                   </div>
@@ -118,12 +145,16 @@ export default function ContactSection() {
 
             {/* My Promise */}
             <div className="glass-card p-6">
-              <h4 className="font-['Syne'] font-bold text-foreground mb-4">My Promise</h4>
+              <h4 className="font-['Syne'] font-bold text-foreground mb-4">
+                My Promise
+              </h4>
               <div className="space-y-3">
                 {promises.map((promise, index) => (
                   <div key={index} className="flex items-center gap-2">
                     <CheckCircle className="w-4 h-4 text-[oklch(0.65_0.20_180)] flex-shrink-0" />
-                    <span className="font-['Space_Grotesk'] text-sm text-foreground/80">{promise}</span>
+                    <span className="font-['Space_Grotesk'] text-sm text-foreground/80">
+                      {promise}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -147,7 +178,8 @@ export default function ContactSection() {
                     Message Received!
                   </h3>
                   <p className="font-['Space_Grotesk'] text-muted-foreground mb-6">
-                    We'll get back to you within 24 hours. In the meantime, feel free to call us directly.
+                    We'll get back to you within 24 hours. In the meantime, feel
+                    free to call us directly.
                   </p>
                   <button
                     onClick={() => setIsSubmitted(false)}
@@ -164,24 +196,44 @@ export default function ContactSection() {
                   className="space-y-5"
                 >
                   {/* Honeypot */}
-                  <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+                  <input
+                    type="text"
+                    name="_honey"
+                    style={{ display: "none" }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="name" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                      <label
+                        htmlFor="name"
+                        className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5"
+                      >
                         Full Name *
                       </label>
                       <input
-                        type="text" id="name" name="full_name" required placeholder="John Smith"
+                        type="text"
+                        id="name"
+                        name="full_name"
+                        required
+                        placeholder="John Smith"
                         className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                       />
                     </div>
                     <div>
-                      <label htmlFor="business" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                      <label
+                        htmlFor="business"
+                        className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5"
+                      >
                         Business Name *
                       </label>
                       <input
-                        type="text" id="business" name="company_name" required placeholder="Smith's HVAC"
+                        type="text"
+                        id="business"
+                        name="company_name"
+                        required
+                        placeholder="Smith's HVAC"
                         className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                       />
                     </div>
@@ -189,53 +241,82 @@ export default function ContactSection() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="email" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                      <label
+                        htmlFor="email"
+                        className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5"
+                      >
                         Email *
                       </label>
                       <input
-                        type="email" id="email" name="email" required placeholder="john@smithshvac.com"
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="john@smithshvac.com"
                         className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                      <label
+                        htmlFor="phone"
+                        className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5"
+                      >
                         Phone
                       </label>
                       <input
-                        type="tel" id="phone" name="phone" placeholder="(417) 952-6436"
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="(417) 952-6436"
                         required={smsConsent}
                         className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                       />
                       <p className="mt-1.5 font-['Space_Grotesk'] text-xs text-muted-foreground">
-                        Add a mobile number if you want SMS updates about your audit request and appointments.
+                        Add a mobile number if you want SMS updates about your
+                        audit request and appointments.
                       </p>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                    <label
+                      htmlFor="service"
+                      className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5"
+                    >
                       What are you interested in?
                     </label>
                     <select
-                      id="service" name="service_interest"
+                      id="service"
+                      name="service_interest"
                       className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
                     >
                       <option value="">Select a service...</option>
-                      <option value="foundation">Foundation Plan ($197/mo)</option>
+                      <option value="foundation">
+                        Foundation Plan ($197/mo)
+                      </option>
                       <option value="growth">Growth System ($997/mo)</option>
-                      <option value="ai-search">AI Search Domination ($1,497/mo)</option>
-                      <option value="domination">Market Domination ($2,497/mo)</option>
+                      <option value="ai-search">
+                        AI Search Domination ($1,497/mo)
+                      </option>
+                      <option value="domination">
+                        Market Domination ($2,497/mo)
+                      </option>
                       <option value="audit">Free Business Audit</option>
                       <option value="other">Something Else</option>
                     </select>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                    <label
+                      htmlFor="message"
+                      className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5"
+                    >
                       Tell us about your business
                     </label>
                     <textarea
-                      id="message" name="message" rows={4}
+                      id="message"
+                      name="message"
+                      rows={4}
                       placeholder="What's your biggest challenge right now? What would success look like in 90 days?"
                       className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all resize-none"
                     />
@@ -248,13 +329,33 @@ export default function ContactSection() {
                       id="sms_consent"
                       name="sms_consent"
                       checked={smsConsent}
-                      onChange={(e) => setSmsConsent(e.target.checked)}
+                      onChange={e => setSmsConsent(e.target.checked)}
                       className="mt-1 h-4 w-4 rounded border-border/50 bg-secondary/30 text-[oklch(0.75_0.18_220)] focus:ring-[oklch(0.75_0.18_220)/0.5] flex-shrink-0"
                     />
-                    <label htmlFor="sms_consent" className="font-['Space_Grotesk'] text-xs text-muted-foreground leading-relaxed">
-                      By checking this box, I agree to receive conversational SMS from Civive Unlimited about my audit request, appointments, and service updates at the phone number provided. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. View our{" "}
-                      <a href="/privacy" className="text-[oklch(0.75_0.18_220)] hover:underline">Privacy Policy</a>{" "}and{" "}
-                      <a href="/terms" className="text-[oklch(0.75_0.18_220)] hover:underline">Terms of Service</a>.
+                    <label
+                      htmlFor="sms_consent"
+                      className="font-['Space_Grotesk'] text-xs text-muted-foreground leading-relaxed"
+                    >
+                      By checking this box, I agree to receive conversational
+                      SMS from Civive Unlimited about my audit request,
+                      appointments, and service updates at the phone number
+                      provided. Message frequency varies. Msg & data rates may
+                      apply. Reply STOP to opt out or HELP for help. Consent is
+                      not a condition of purchase. View our{" "}
+                      <a
+                        href="/privacy"
+                        className="text-[oklch(0.75_0.18_220)] hover:underline"
+                      >
+                        Privacy Policy
+                      </a>{" "}
+                      and{" "}
+                      <a
+                        href="/terms"
+                        className="text-[oklch(0.75_0.18_220)] hover:underline"
+                      >
+                        Terms of Service
+                      </a>
+                      .
                     </label>
                   </div>
 
@@ -274,7 +375,8 @@ export default function ContactSection() {
                   </button>
 
                   <p className="text-center font-['Space_Grotesk'] text-xs text-muted-foreground">
-                    No spam. No pressure. Just a real conversation about growing your business.
+                    No spam. No pressure. Just a real conversation about growing
+                    your business.
                   </p>
                 </form>
               )}

@@ -6,7 +6,10 @@ interface CompetitorSpyModalProps {
   onClose: () => void;
 }
 
-export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyModalProps) {
+export default function CompetitorSpyModal({
+  isOpen,
+  onClose,
+}: CompetitorSpyModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -55,12 +58,16 @@ export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyMod
 
             {/* Headline */}
             <h2 className="font-['Syne'] text-2xl sm:text-3xl font-bold text-center mb-3">
-              <span className="gradient-text">See Who You Are Competing Against</span>
+              <span className="gradient-text">
+                See Who You Are Competing Against
+              </span>
             </h2>
 
             {/* Body */}
             <p className="font-['Space_Grotesk'] text-muted-foreground text-center text-sm mb-6 leading-relaxed">
-              Our AI scans your local market to reveal exactly where your competitors are stealing your leads. Enter your details to generate the report.
+              Our AI scans your local market to reveal exactly where your
+              competitors are stealing your leads. Enter your details to
+              generate the report.
             </p>
 
             {/* Native HTML Form - NO React handlers */}
@@ -70,7 +77,11 @@ export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyMod
               className="space-y-4"
             >
               {/* Hidden tracking field */}
-              <input type="hidden" name="formId" value="competitor-spy-report" />
+              <input
+                type="hidden"
+                name="formId"
+                value="competitor-spy-report"
+              />
 
               <div>
                 <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-1.5 block">
@@ -127,7 +138,10 @@ export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyMod
 
               <div>
                 <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-1.5 block">
-                  Business Address <span className="text-[oklch(0.55_0.25_300)]">(Required for Local Scan)</span>
+                  Business Address{" "}
+                  <span className="text-[oklch(0.55_0.25_300)]">
+                    (Required for Local Scan)
+                  </span>
                 </label>
                 <input
                   type="text"

@@ -130,7 +130,9 @@ export default function InfrastructureSection() {
             <span className="gradient-text">The AI Infrastructure Stack</span>
           </h2>
           <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-3xl mx-auto">
-            A complete technology platform that captures leads, converts them automatically, and scales your revenue. This isn't marketing—it's infrastructure.
+            A complete technology platform that captures leads, converts them
+            automatically, and scales your revenue. This isn't marketing—it's
+            infrastructure.
           </p>
         </motion.div>
 
@@ -154,7 +156,9 @@ export default function InfrastructureSection() {
 
               {/* Column Header */}
               <div className="mb-6">
-                <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${col.color} mb-3`}>
+                <div
+                  className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${col.color} mb-3`}
+                >
                   <span className="font-['JetBrains_Mono'] text-xs font-bold text-white tracking-wider">
                     {col.title}
                   </span>
@@ -174,7 +178,9 @@ export default function InfrastructureSection() {
                     key={itemIndex}
                     className="flex items-start gap-3 p-3 rounded-lg bg-background/30 hover:bg-background/50 transition-colors group"
                   >
-                    <div className={`p-2 rounded-lg bg-gradient-to-br ${col.color} flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                    <div
+                      className={`p-2 rounded-lg bg-gradient-to-br ${col.color} flex-shrink-0 group-hover:scale-110 transition-transform`}
+                    >
                       <item.icon className="w-4 h-4 text-white" />
                     </div>
                     <div>

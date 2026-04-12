@@ -23,7 +23,9 @@ export default function Navigation() {
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isMobileMenuOpen]);
 
   const scrollToSection = (href: string) => {
@@ -52,7 +54,7 @@ export default function Navigation() {
             <a
               href="#"
               className="flex items-center gap-3 group"
-              onClick={(e) => {
+              onClick={e => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
@@ -70,11 +72,11 @@ export default function Navigation() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
-              {navLinks.map((link) => (
+              {navLinks.map(link => (
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => {
+                  onClick={e => {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
@@ -89,7 +91,7 @@ export default function Navigation() {
             <div className="hidden md:flex items-center">
               <a
                 href="#contact"
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   scrollToSection("#contact");
                 }}
@@ -126,7 +128,7 @@ export default function Navigation() {
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => {
+                  onClick={e => {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
@@ -140,7 +142,7 @@ export default function Navigation() {
               ))}
               <motion.a
                 href="#contact"
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   scrollToSection("#contact");
                 }}

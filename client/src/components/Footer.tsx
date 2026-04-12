@@ -4,7 +4,11 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Youtube, href: "https://www.youtube.com/@CiviveUnlimited", label: "YouTube" },
+    {
+      icon: Youtube,
+      href: "https://www.youtube.com/@CiviveUnlimited",
+      label: "YouTube",
+    },
     { icon: Twitter, href: "https://x.com/civiveunltd", label: "X (Twitter)" },
     { icon: Github, href: "https://github.com/CIVIVEUNLTD", label: "GitHub" },
   ];
@@ -32,11 +36,12 @@ export default function Footer() {
               </span>
             </div>
             <p className="font-['Space_Grotesk'] text-sm text-muted-foreground leading-relaxed">
-              AI-powered growth systems for small businesses. Built by a technician who understands real work.
+              AI-powered growth systems for small businesses. Built by a
+              technician who understands real work.
             </p>
             {/* Social Links */}
             <div className="flex items-center gap-3 mt-4">
-              {socialLinks.map((social) => (
+              {socialLinks.map(social => (
                 <a
                   key={social.label}
                   href={social.href}
@@ -53,7 +58,9 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-['Syne'] font-bold text-foreground mb-4">Quick Links</h4>
+            <h4 className="font-['Syne'] font-bold text-foreground mb-4">
+              Quick Links
+            </h4>
             <div className="space-y-2">
               {[
                 { label: "Services", href: "#services" },
@@ -61,11 +68,14 @@ export default function Footer() {
                 { label: "Pricing", href: "#pricing" },
                 { label: "Our Story", href: "#story" },
                 { label: "Contact", href: "#contact" },
-              ].map((link) => (
+              ].map(link => (
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
+                  onClick={e => {
+                    e.preventDefault();
+                    scrollToSection(link.href);
+                  }}
                   className="block font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {link.label}
@@ -76,12 +86,20 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-['Syne'] font-bold text-foreground mb-4">Contact</h4>
+            <h4 className="font-['Syne'] font-bold text-foreground mb-4">
+              Contact
+            </h4>
             <div className="space-y-3">
-              <a href="tel:+14179526436" className="flex items-center gap-2 font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="tel:+14179526436"
+                className="flex items-center gap-2 font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 <Phone className="w-4 h-4" /> (417) 952-6436
               </a>
-              <a href="mailto:ceo@civiveunlimited.com" className="flex items-center gap-2 font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="mailto:ceo@civiveunlimited.com"
+                className="flex items-center gap-2 font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 <Mail className="w-4 h-4" /> ceo@civiveunlimited.com
               </a>
               <div className="flex items-center gap-2 font-['Space_Grotesk'] text-sm text-muted-foreground">
@@ -92,12 +110,20 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="font-['Syne'] font-bold text-foreground mb-4">Legal</h4>
+            <h4 className="font-['Syne'] font-bold text-foreground mb-4">
+              Legal
+            </h4>
             <div className="space-y-2">
-              <a href="/privacy" className="block font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="/privacy"
+                className="block font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Privacy Policy
               </a>
-              <a href="/terms" className="block font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="/terms"
+                className="block font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Terms of Service
               </a>
             </div>
@@ -110,7 +136,9 @@ export default function Footer() {
             &copy; {currentYear} Civive Unlimited. All rights reserved.
           </p>
           <p className="font-['Syne'] text-xs text-muted-foreground">
-            Built with <span className="text-[oklch(0.55_0.25_300)]">&#9829;</span> in Springfield, Missouri
+            Built with{" "}
+            <span className="text-[oklch(0.55_0.25_300)]">&#9829;</span> in
+            Springfield, Missouri
           </p>
         </div>
       </div>

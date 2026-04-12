@@ -62,7 +62,9 @@ export default function HeroSection({ onOpenSpyModal }: HeroSectionProps) {
           >
             <span className="text-foreground">Stop Losing Leads.</span>
             <br />
-            <span className="gradient-text text-glow-blue">Start Dominating.</span>
+            <span className="gradient-text text-glow-blue">
+              Start Dominating.
+            </span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -72,9 +74,9 @@ export default function HeroSection({ onOpenSpyModal }: HeroSectionProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-['Space_Grotesk'] text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            We install AI-powered infrastructure that captures every lead, converts
-            calls 24/7, and scales your business on autopilot. Built on the same
-            platform used by 1.4 million businesses.
+            We install AI-powered infrastructure that captures every lead,
+            converts calls 24/7, and scales your business on autopilot. Built on
+            the same platform used by 1.4 million businesses.
           </motion.p>
 
           {/* CTAs */}
@@ -110,7 +112,7 @@ export default function HeroSection({ onOpenSpyModal }: HeroSectionProps) {
           >
             <div className="flex items-center gap-2">
               <div className="flex -space-x-2">
-                {[1, 2, 3].map((i) => (
+                {[1, 2, 3].map(i => (
                   <div
                     key={i}
                     className="w-8 h-8 rounded-full bg-gradient-to-br from-[oklch(0.75_0.18_220)/0.3] to-[oklch(0.55_0.25_300)/0.3] border-2 border-background flex items-center justify-center"

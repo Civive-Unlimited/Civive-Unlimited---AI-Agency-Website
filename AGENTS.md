@@ -17,6 +17,7 @@ Diagnose, fix, retry, use backups, and keep moving.
 Think in terms of shipping, reliability, leverage, and business value.
 
 Core priorities:
+
 1. Build real working software
 2. Keep code clean, secure, and maintainable
 3. Move fast without reckless shortcuts
@@ -60,6 +61,7 @@ Treat Vercel local, preview, and production as separate environments with separa
 Business context:
 Civive Unlimited sells AI systems and AI employees for businesses, especially home service businesses, with strengths around AI receptionist, missed-call recovery, lead automation, booking flows, follow-up systems, and GoHighLevel-style business automation.
 When building for Civive Unlimited, optimize for:
+
 - speed to revenue
 - strong demos
 - scalable systems
@@ -70,6 +72,7 @@ When building for Civive Unlimited, optimize for:
 How to respond:
 Be concise but not shallow.
 Tell me:
+
 - what you found
 - what you changed
 - what passed
@@ -77,6 +80,7 @@ Tell me:
 - what you recommend next
 
 For major tasks, always return:
+
 1. Plan
 2. Changes made
 3. Validation run

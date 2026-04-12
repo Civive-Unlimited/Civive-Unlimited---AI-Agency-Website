@@ -52,7 +52,11 @@ export default function AISearchSection() {
   ];
 
   return (
-    <section id="ai-search" className="relative py-24 overflow-hidden" ref={ref}>
+    <section
+      id="ai-search"
+      className="relative py-24 overflow-hidden"
+      ref={ref}
+    >
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -68,12 +72,17 @@ export default function AISearchSection() {
             </span>
           </div>
           <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">AI Search Is Replacing Google.</span>
+            <span className="gradient-text">
+              AI Search Is Replacing Google.
+            </span>
             <br />
             <span className="text-foreground">Is Your Business Ready?</span>
           </h2>
           <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-3xl mx-auto">
-            The way customers find businesses is changing faster than ever. AI-powered search engines are answering questions directly—without sending traffic to your website. If you're not optimized for AI search, you're becoming invisible.
+            The way customers find businesses is changing faster than ever.
+            AI-powered search engines are answering questions directly—without
+            sending traffic to your website. If you're not optimized for AI
+            search, you're becoming invisible.
           </p>
         </motion.div>
 
@@ -90,7 +99,8 @@ export default function AISearchSection() {
               The Threat
             </h3>
             <p className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-6">
-              Most businesses don't realize they're already losing customers to AI search:
+              Most businesses don't realize they're already losing customers to
+              AI search:
             </p>
             <div className="space-y-4">
               {threats.map((threat, index) => (
@@ -105,7 +115,8 @@ export default function AISearchSection() {
 
             <div className="mt-6 p-4 rounded-lg bg-[oklch(0.65_0.22_25)/0.1] border border-[oklch(0.65_0.22_25)/0.2]">
               <p className="font-['Space_Grotesk'] text-sm text-foreground/90 font-semibold">
-                Bottom line: If AI can't read your business data, AI can't recommend your business.
+                Bottom line: If AI can't read your business data, AI can't
+                recommend your business.
               </p>
             </div>
           </motion.div>
@@ -149,7 +160,8 @@ export default function AISearchSection() {
                 </span>
               </div>
               <p className="font-['Space_Grotesk'] text-xs text-muted-foreground">
-                When someone asks ChatGPT, Google, or Siri "Who's the best [your service] near me?"—your business is the answer.
+                When someone asks ChatGPT, Google, or Siri "Who's the best [your
+                service] near me?"—your business is the answer.
               </p>
             </div>
           </motion.div>

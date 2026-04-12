@@ -28,15 +28,15 @@ export default function StorySection() {
   return (
     <section id="story" className="relative py-24 overflow-hidden" ref={ref}>
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: `url('https://private-us-east-1.manuscdn.com/sessionFile/J3m67B7PrlBhxWTfJXdOiD/sandbox/V1gqjDxB005ARii1hcDsca-img-3_1770181410000_na1fn_c3Rvcnktc2VjdGlvbi1iZw.jpg?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvSjNtNjdCN1BybEJoeFdUZkpYZE9pRC9zYW5kYm94L1YxZ3FqRHhCMDA1QVJpaTFoY0RzY2EtaW1nLTNfMTc3MDE4MTQxMDAwMF9uYTFmbl9jM1J2Y25rdGMyVmpkR2x2YmkxaVp3LmpwZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=Uu7cYSb5RbGdGM8-IPGwxSJT4bDjwb8DwBFL5k~WLxYufmk~E9KvOCXs-uX4rGlFOcoIX0k9mdrsPv7QP21B~tFrd~rvOUD6OXGPCZlVGX1fZbsLxRroddXI6JmS3Uz7Zt6NLjPH-Kgj8g1lzvLBy6f21FQ3yztHeqosy9FRqRIzQr4fdp0wubi6Ah6Tj7HwPZYOOZsHudDRPUHXU6GfBOk0~plvEXuedid1aBGYfJ4R2kVfUCfFcMuFeJleNiY9laO~mkHRBhIGZI4wyb38AoE6xj45zARNSFelsW94rXqSVjDUm5xW~n6C0OBhdCXDz-nBVsDDlwdflni6~EayhA__')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -46,7 +46,9 @@ export default function StorySection() {
           className="text-center mb-16"
         >
           <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">The Architecture of Efficiency</span>
+            <span className="gradient-text">
+              The Architecture of Efficiency
+            </span>
           </h2>
           <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
             25 Years of Wrenches. Now, Algorithms.

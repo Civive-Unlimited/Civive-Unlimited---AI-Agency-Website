@@ -11,28 +11,32 @@ export default function ProcessSection() {
     {
       week: "Week 1",
       title: "The Digital Foundation",
-      description: "We build your AI-powered website and set up your AIO (AI Optimization) so you show up when people ask Siri, ChatGPT, or Google for help.",
+      description:
+        "We build your AI-powered website and set up your AIO (AI Optimization) so you show up when people ask Siri, ChatGPT, or Google for help.",
       icon: Globe,
       color: "from-[oklch(0.75_0.18_220)] to-[oklch(0.65_0.20_240)]",
     },
     {
       week: "Week 2",
       title: "The AI Employee",
-      description: "We deploy your 24/7 AI chatbot and missed-call text-back system. You'll never lose a lead to a missed call again.",
+      description:
+        "We deploy your 24/7 AI chatbot and missed-call text-back system. You'll never lose a lead to a missed call again.",
       icon: Bot,
       color: "from-[oklch(0.65_0.20_260)] to-[oklch(0.55_0.22_280)]",
     },
     {
       week: "Week 3",
       title: "The Growth Engine",
-      description: "We launch your social media automation and ChatGPT-powered ads. Your brand starts showing up everywhere, automatically.",
+      description:
+        "We launch your social media automation and ChatGPT-powered ads. Your brand starts showing up everywhere, automatically.",
       icon: Rocket,
       color: "from-[oklch(0.55_0.25_300)] to-[oklch(0.45_0.22_320)]",
     },
     {
       week: "Week 4",
       title: "The Hand-Off",
-      description: "We train you on the dashboard, show you how to track leads, and set you up for long-term success. You're now running a smarter business.",
+      description:
+        "We train you on the dashboard, show you how to track leads, and set you up for long-term success. You're now running a smarter business.",
       icon: Trophy,
       color: "from-[oklch(0.60_0.18_180)] to-[oklch(0.50_0.16_200)]",
     },
@@ -72,10 +76,14 @@ export default function ProcessSection() {
               }`}
             >
               {/* Content Card */}
-              <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
+              <div
+                className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}
+              >
                 <div className="glass-card p-6 sm:p-8 inline-block text-left">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className={`p-2 rounded-lg bg-gradient-to-br ${step.color}`}>
+                    <div
+                      className={`p-2 rounded-lg bg-gradient-to-br ${step.color}`}
+                    >
                       <step.icon className="w-5 h-5 text-white" />
                     </div>
                     <span className="font-['JetBrains_Mono'] text-sm text-[oklch(0.75_0.18_220)]">

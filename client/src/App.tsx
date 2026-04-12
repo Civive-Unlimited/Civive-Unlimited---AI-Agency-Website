@@ -9,6 +9,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function Router() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Navigation />
           <Router />
           <Footer />
+          <SpeedInsights />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

@@ -40,12 +40,15 @@ export default function WhyAISection() {
         >
           <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
             The Window Is Open.{" "}
-            <span className="text-muted-foreground">But It Won't Stay Open Forever.</span>
+            <span className="text-muted-foreground">
+              But It Won't Stay Open Forever.
+            </span>
           </h2>
           <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-3xl mx-auto leading-relaxed">
-            Right now, AI is the best-kept secret in small business. Your competitors are either 
-            already building this or they're about to. The question isn't "Should I use AI?" 
-            It's "Can I afford to be the last one to start?"
+            Right now, AI is the best-kept secret in small business. Your
+            competitors are either already building this or they're about to.
+            The question isn't "Should I use AI?" It's "Can I afford to be the
+            last one to start?"
           </p>
         </motion.div>
 
@@ -84,7 +87,9 @@ export default function WhyAISection() {
         >
           <p className="font-['Syne'] text-xl sm:text-2xl font-semibold text-foreground">
             You're still early.{" "}
-            <span className="gradient-text">Let's build your advantage before it becomes the baseline.</span>
+            <span className="gradient-text">
+              Let's build your advantage before it becomes the baseline.
+            </span>
           </p>
         </motion.div>
       </div>

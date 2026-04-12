@@ -9,9 +9,27 @@ export default function ResultsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const counters = [
-    { icon: Users, value: "—", label: "Leads Captured", suffix: "", subtext: "Launching Q1 2026" },
-    { icon: Phone, value: "—", label: "AI Calls Answered", suffix: "", subtext: "Launching Q1 2026" },
-    { icon: Building2, value: "5", label: "Founding Partner Spots", suffix: "", subtext: "3 Remaining" },
+    {
+      icon: Users,
+      value: "—",
+      label: "Leads Captured",
+      suffix: "",
+      subtext: "Launching Q1 2026",
+    },
+    {
+      icon: Phone,
+      value: "—",
+      label: "AI Calls Answered",
+      suffix: "",
+      subtext: "Launching Q1 2026",
+    },
+    {
+      icon: Building2,
+      value: "5",
+      label: "Founding Partner Spots",
+      suffix: "",
+      subtext: "3 Remaining",
+    },
   ];
 
   const partnerSlots = [
@@ -21,7 +39,11 @@ export default function ResultsSection() {
   ];
 
   const socialLinks = [
-    { icon: Youtube, href: "https://www.youtube.com/@CiviveUnlimited", label: "YouTube" },
+    {
+      icon: Youtube,
+      href: "https://www.youtube.com/@CiviveUnlimited",
+      label: "YouTube",
+    },
     { icon: Twitter, href: "https://x.com/civiveunltd", label: "X (Twitter)" },
   ];
 
@@ -39,7 +61,8 @@ export default function ResultsSection() {
             <span className="gradient-text">Real Results. Real Time.</span>
           </h2>
           <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
-            We're building in public. Watch the numbers grow as we help businesses scale.
+            We're building in public. Watch the numbers grow as we help
+            businesses scale.
           </p>
         </motion.div>
 
@@ -55,7 +78,8 @@ export default function ResultsSection() {
             >
               <counter.icon className="w-8 h-8 text-[oklch(0.75_0.18_220)] mx-auto mb-4" />
               <div className="font-['JetBrains_Mono'] text-4xl sm:text-5xl font-bold gradient-text mb-2">
-                {counter.value}{counter.suffix}
+                {counter.value}
+                {counter.suffix}
               </div>
               <div className="font-['Space_Grotesk'] text-foreground/80 font-medium">
                 {counter.label}

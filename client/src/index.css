@@ -49,37 +49,37 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  
+
   /* Civive Brand Colors */
   --color-electric-blue: oklch(0.75 0.18 220);
   --color-electric-purple: oklch(0.55 0.25 300);
   --color-chrome: oklch(0.85 0.01 260);
   --color-deep-charcoal: oklch(0.12 0.01 260);
-  
+
   /* Typography */
-  --font-syne: 'Syne', sans-serif;
-  --font-space: 'Space Grotesk', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-syne: "Syne", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 :root {
   /* Civive Brand Primary - Electric Blue */
   --primary: oklch(0.75 0.18 220);
   --primary-foreground: oklch(0.12 0.01 260);
-  
+
   /* Sidebar */
   --sidebar-primary: oklch(0.55 0.25 300);
   --sidebar-primary-foreground: oklch(0.98 0 0);
-  
+
   /* Charts - Blue/Purple gradient */
   --chart-1: oklch(0.75 0.18 220);
-  --chart-2: oklch(0.65 0.20 260);
+  --chart-2: oklch(0.65 0.2 260);
   --chart-3: oklch(0.55 0.25 300);
-  --chart-4: oklch(0.45 0.20 280);
+  --chart-4: oklch(0.45 0.2 280);
   --chart-5: oklch(0.35 0.15 260);
-  
+
   --radius: 0.75rem;
-  
+
   /* Light mode (fallback) */
   --background: oklch(0.98 0 0);
   --foreground: oklch(0.15 0.01 260);
@@ -111,53 +111,53 @@
   /* Electric Blue Primary */
   --primary: oklch(0.75 0.18 220);
   --primary-foreground: oklch(0.12 0.01 260);
-  
+
   /* Electric Purple Sidebar */
   --sidebar-primary: oklch(0.55 0.25 300);
   --sidebar-primary-foreground: oklch(0.98 0 0);
-  
+
   /* Deep Charcoal Background */
   --background: oklch(0.08 0.01 260);
   --foreground: oklch(0.92 0.01 260);
-  
+
   /* Card - Slightly elevated from background */
   --card: oklch(0.12 0.015 260);
   --card-foreground: oklch(0.92 0.01 260);
-  
+
   /* Popover */
   --popover: oklch(0.14 0.015 260);
   --popover-foreground: oklch(0.92 0.01 260);
-  
+
   /* Secondary - Muted surfaces */
   --secondary: oklch(0.18 0.015 260);
   --secondary-foreground: oklch(0.85 0.01 260);
-  
+
   /* Muted - Subtle backgrounds */
-  --muted: oklch(0.20 0.015 260);
+  --muted: oklch(0.2 0.015 260);
   --muted-foreground: oklch(0.65 0.01 260);
-  
+
   /* Accent - Interactive highlights */
   --accent: oklch(0.22 0.02 280);
   --accent-foreground: oklch(0.95 0.01 260);
-  
+
   /* Destructive */
   --destructive: oklch(0.65 0.22 25);
   --destructive-foreground: oklch(0.98 0 0);
-  
+
   /* Borders - Subtle glow effect */
   --border: oklch(0.28 0.03 220);
   --input: oklch(0.22 0.02 260);
   --ring: oklch(0.75 0.18 220);
-  
+
   /* Charts */
   --chart-1: oklch(0.75 0.18 220);
-  --chart-2: oklch(0.65 0.20 260);
+  --chart-2: oklch(0.65 0.2 260);
   --chart-3: oklch(0.55 0.25 300);
-  --chart-4: oklch(0.45 0.20 280);
+  --chart-4: oklch(0.45 0.2 280);
   --chart-5: oklch(0.35 0.15 260);
-  
+
   /* Sidebar */
-  --sidebar: oklch(0.10 0.01 260);
+  --sidebar: oklch(0.1 0.01 260);
   --sidebar-foreground: oklch(0.92 0.01 260);
   --sidebar-accent: oklch(0.18 0.02 280);
   --sidebar-accent-foreground: oklch(0.95 0.01 260);
@@ -171,20 +171,25 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
   }
-  
+
   /* Typography Hierarchy */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Syne', sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Syne", sans-serif;
     font-weight: 700;
   }
-  
+
   /* Monospace for stats and counters */
   .font-mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
   }
-  
+
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
@@ -226,7 +231,7 @@
       max-width: 1400px;
     }
   }
-  
+
   /* Glassmorphism Card */
   .glass-card {
     background: oklch(0.12 0.015 260 / 0.6);
@@ -235,48 +240,55 @@
     border: 1px solid oklch(0.75 0.18 220 / 0.3);
     border-radius: 1rem;
   }
-  
+
   .glass-card:hover {
     border-color: oklch(0.75 0.18 220 / 0.6);
     box-shadow: 0 0 30px oklch(0.75 0.18 220 / 0.15);
   }
-  
+
   /* Electric Glow Text */
   .text-glow-blue {
-    text-shadow: 0 0 20px oklch(0.75 0.18 220 / 0.5),
-                 0 0 40px oklch(0.75 0.18 220 / 0.3);
+    text-shadow:
+      0 0 20px oklch(0.75 0.18 220 / 0.5),
+      0 0 40px oklch(0.75 0.18 220 / 0.3);
   }
-  
+
   .text-glow-purple {
-    text-shadow: 0 0 20px oklch(0.55 0.25 300 / 0.5),
-                 0 0 40px oklch(0.55 0.25 300 / 0.3);
+    text-shadow:
+      0 0 20px oklch(0.55 0.25 300 / 0.5),
+      0 0 40px oklch(0.55 0.25 300 / 0.3);
   }
-  
+
   /* Gradient Text */
   .gradient-text {
-    background: linear-gradient(135deg, oklch(0.75 0.18 220), oklch(0.55 0.25 300));
+    background: linear-gradient(
+      135deg,
+      oklch(0.75 0.18 220),
+      oklch(0.55 0.25 300)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   /* Magnetic Button Base */
   .magnetic-btn {
     position: relative;
     transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   }
-  
+
   .magnetic-btn:hover {
     transform: translateY(-2px);
   }
-  
+
   /* Section Divider */
   .section-divider {
     height: 1px;
-    background: linear-gradient(90deg, 
-      transparent, 
-      oklch(0.75 0.18 220 / 0.5) 20%, 
-      oklch(0.55 0.25 300 / 0.5) 80%, 
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(0.75 0.18 220 / 0.5) 20%,
+      oklch(0.55 0.25 300 / 0.5) 80%,
       transparent
     );
   }
