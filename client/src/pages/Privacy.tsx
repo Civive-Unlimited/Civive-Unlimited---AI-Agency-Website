@@ -36,7 +36,7 @@ export default function Privacy() {
           <h2 className="font-['Syne'] text-xl font-bold text-foreground mt-8">Contact Us</h2>
           <p>If you have questions about this Privacy Policy, contact us at:<br />
           Email: ceo@civiveunlimited.com<br />
-          Phone: (417) 952-6436<br />
+          Phone: (417) 386-2441<br />
           Location: Springfield, Missouri</p>
         </div>
       </div>
