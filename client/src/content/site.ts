@@ -1,6 +1,6 @@
 export const site = {
   name: "Civive Unlimited",
-  domain: "https://civiveunlimited.com",
+  domain: "https://www.civiveunlimited.com",
   email: "ceo@civiveunlimited.com",
   phone: "(417) 386-2441",
   phoneHref: "tel:+14173862441",
