@@ -1,14 +1,8 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-
-const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#ai-search", label: "AI Search" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#story", label: "Our Story" },
-  { href: "#contact", label: "Contact" },
-];
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { MessageCircle, Menu, X } from "lucide-react";
+import civiveLogo from "@/assets/civive-hero-logo.jpg";
+import { navLinks } from "@/content/site";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,88 +14,117 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isMobileMenuOpen]);
 
-  const scrollToSection = (href: string) => {
+  const navigateTo = (href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+
+    if (href.startsWith("/#")) {
+      const sectionId = href.replace("/#", "");
+      if (window.location.pathname === "/") {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+        return;
+      }
     }
+
+    window.location.href = href;
+  };
+
+  const openChat = () => {
+    setIsMobileMenuOpen(false);
+    window.dispatchEvent(new Event("civive:open-chat"));
   };
 
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-background/80 backdrop-blur-xl border-b border-border/50 py-3"
+            ? "border-b border-white/[0.08] bg-[linear-gradient(180deg,rgba(7,7,12,0.82),rgba(7,8,14,0.58))] py-3 backdrop-blur-md"
             : "bg-transparent py-4"
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
             <a
               href="#"
-              className="flex items-center gap-3 group"
+              className="group flex items-center gap-3"
               onClick={(e) => {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                setIsMobileMenuOpen(false);
+                if (window.location.pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                  window.location.href = "/";
+                }
               }}
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663329647955/sAkXjyNGjbClshEs.jpg"
+                src={civiveLogo}
                 alt="Civive Unlimited"
-                className="h-9 w-9 rounded-lg object-cover transition-transform group-hover:scale-105"
+                className="h-9 w-9 rounded-xl border border-white/[0.14] object-cover transition-transform group-hover:scale-[1.02]"
                 loading="lazy"
               />
-              <span className="font-['Syne'] font-bold text-lg tracking-tight gradient-text hidden sm:block">
-                CIVIVE UNLIMITED
-              </span>
+              <div className="hidden sm:block">
+                <span className="block text-[0.68rem] uppercase tracking-[0.22em] text-white/42">
+                  Civive Unlimited
+                </span>
+                <span className="block text-sm font-medium text-white/92">
+                  AI Search Visibility
+                </span>
+              </div>
             </a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden items-center gap-4 md:flex lg:gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(link.href);
+                    navigateTo(link.href);
                   }}
-                  className="text-muted-foreground hover:text-foreground transition-colors font-['Space_Grotesk'] text-sm tracking-wide"
+                  className="whitespace-nowrap text-sm text-white/62 transition-colors hover:text-white"
                 >
                   {link.label}
                 </a>
               ))}
             </div>
 
-            {/* CTA Button */}
-            <div className="hidden md:flex items-center">
+            <div className="hidden items-center gap-2 md:flex">
+              <button
+                type="button"
+                onClick={openChat}
+                className="inline-flex items-center gap-2 whitespace-nowrap rounded-full px-3 py-2.5 text-sm font-medium text-white/72 transition-colors hover:bg-white/[0.05] hover:text-white lg:px-4"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Ask AI
+              </button>
               <a
-                href="#contact"
+                href="/contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("#contact");
+                  navigateTo("/contact");
                 }}
-                className="magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold text-sm py-2.5 px-6 rounded-lg transition-all"
+                className="inline-flex items-center whitespace-nowrap rounded-full border border-white/[0.12] bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-white/92 transition-colors hover:bg-white/[0.08] lg:px-5"
               >
-                Free Audit
+                Get Audit
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 text-foreground rounded-lg hover:bg-secondary/50 transition-colors"
+              className="rounded-full border border-white/[0.08] bg-white/[0.03] p-2 text-foreground transition-colors hover:bg-white/[0.08] md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
@@ -112,45 +135,56 @@ export default function Navigation() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 bg-[linear-gradient(180deg,rgba(6,6,11,0.97),rgba(8,8,14,0.99))] backdrop-blur-md md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="flex flex-col items-center justify-center h-full gap-8 pt-16">
+            <div className="flex h-full flex-col items-center justify-center gap-7 pt-16">
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(link.href);
+                    navigateTo(link.href);
                   }}
-                  className="text-2xl font-['Syne'] font-bold text-foreground hover:text-[oklch(0.75_0.18_220)] transition-colors"
-                  initial={{ opacity: 0, y: 20 }}
+                  className="text-2xl font-semibold text-foreground transition-colors hover:text-white"
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.08 }}
                 >
                   {link.label}
                 </motion.a>
               ))}
+
               <motion.a
-                href="#contact"
+                href="/contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("#contact");
+                  navigateTo("/contact");
                 }}
-                className="mt-4 w-64 text-center magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold text-lg py-4 rounded-lg transition-all"
-                initial={{ opacity: 0, y: 20 }}
+                className="mt-3 w-64 rounded-full border border-white/[0.12] bg-white/[0.05] py-4 text-center text-base font-medium text-white transition-colors hover:bg-white/[0.1]"
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.1 }}
+                transition={{ delay: navLinks.length * 0.08 }}
               >
-                Free Audit
+                Get AI Search Audit
               </motion.a>
+
+              <motion.button
+                type="button"
+                onClick={openChat}
+                className="w-64 rounded-full border border-white/[0.12] bg-white/[0.04] py-4 text-center text-base font-medium text-white/82 transition-colors hover:bg-white/[0.09] hover:text-white"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: (navLinks.length + 1) * 0.08 }}
+              >
+                Ask Civive AI
+              </motion.button>
             </div>
           </motion.div>
         )}

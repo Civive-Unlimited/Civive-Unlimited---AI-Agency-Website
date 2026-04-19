@@ -1,141 +1,164 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Radar, Phone } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
+import civiveHeroLogo from "@/assets/civive-hero-logo.jpg";
 
-interface HeroSectionProps {
-  onOpenSpyModal: () => void;
-}
+const trustItems = [
+  "ChatGPT clarity",
+  "Gemini-ready signals",
+  "Perplexity source footprint",
+  "Google profile alignment",
+];
 
-export default function HeroSection({ onOpenSpyModal }: HeroSectionProps) {
-  const scrollToContact = () => {
-    const element = document.querySelector("#contact");
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-  };
+const featureStripItems = [
+  "ChatGPT",
+  "Gemini",
+  "Perplexity",
+  "Google AI",
+  "Website Messaging",
+  "FAQ Schema",
+  "LocalBusiness Schema",
+  "Reviews",
+  "Google Business Profile",
+  "Social Consistency",
+];
 
+const scrollToId = (id: string) => {
+  const element = document.getElementById(id);
+  if (!element) return;
+
+  const navOffset = 88;
+  const top = element.getBoundingClientRect().top + window.scrollY - navOffset;
+
+  window.scrollTo({
+    top,
+    behavior: "smooth",
+  });
+};
+
+export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background */}
+    <section
+      aria-label="Hero"
+      className="relative overflow-hidden pt-20 sm:pt-28"
+    >
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+        <img
+          src={civiveHeroLogo}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.16] mix-blend-screen [mask-image:linear-gradient(90deg,transparent,black_28%,black_82%,transparent)]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,4,9,0.99),rgba(7,7,13,0.98)_38%,rgba(6,6,11,1)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,4,9,0.96),rgba(4,4,9,0.82)_42%,rgba(4,4,9,0.96)_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-[42rem] bg-[radial-gradient(circle_at_top,rgba(118,79,255,0.16),transparent_52%)]" />
+        <div className="absolute right-[4%] top-[46%] h-[30rem] w-[30rem] bg-[radial-gradient(circle,rgba(76,166,255,0.12),transparent_62%)] blur-3xl" />
+        <div className="absolute left-[6%] top-[58%] h-40 w-40 bg-[radial-gradient(circle,rgba(76,166,255,0.06),transparent_70%)] blur-3xl" />
       </div>
 
-      {/* Animated grid lines */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(oklch(0.75 0.18 220) 1px, transparent 1px), linear-gradient(90deg, oklch(0.75 0.18 220) 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
-      />
+      <div className="absolute inset-0 opacity-[0.012] [background-image:linear-gradient(rgba(156,114,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(156,114,255,0.8)_1px,transparent_1px)] [background-size:132px_132px]" />
+      <div className="absolute left-[5%] right-[5%] top-[14%] hidden h-[72vh] rounded-[3.5rem] border border-white/[0.04] [mask-image:linear-gradient(180deg,transparent,black_14%,black_86%,transparent)] lg:block" />
+      <div className="absolute left-[8%] right-[8%] top-28 hidden h-px bg-[linear-gradient(90deg,transparent,rgba(145,96,255,0.16),transparent)] lg:block" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="py-8 sm:py-14 lg:flex lg:min-h-[calc(100svh-180px)] lg:items-center lg:py-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8"
+            transition={{ duration: 0.55 }}
+            className="w-full max-w-[78rem]"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[oklch(0.65_0.20_180)] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[oklch(0.65_0.20_180)]" />
-            </span>
-            <span className="text-sm font-['Space_Grotesk'] text-muted-foreground">
-              Now Accepting Founding Partners
-            </span>
-          </motion.div>
+            <p className="homepage-eyebrow">
+              AI Search Visibility - ChatGPT - Gemini - Perplexity
+            </p>
 
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-['Syne'] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6"
-          >
-            <span className="text-foreground">Stop Losing Leads.</span>
-            <br />
-            <span className="gradient-text text-glow-blue">Start Dominating.</span>
-          </motion.h1>
-
-          {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-['Space_Grotesk'] text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
-          >
-            We install AI-powered infrastructure that captures every lead, converts
-            calls 24/7, and scales your business on autopilot. Built on the same
-            platform used by 1.4 million businesses.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <button
-              onClick={onOpenSpyModal}
-              className="w-full sm:w-auto magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold text-base py-4 px-8 rounded-lg transition-all flex items-center justify-center gap-2"
-            >
-              <Radar className="w-5 h-5" />
-              Spy on Your Competitors
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <button
-              onClick={scrollToContact}
-              className="w-full sm:w-auto magnetic-btn bg-secondary/50 hover:bg-secondary text-foreground font-['Space_Grotesk'] font-semibold text-base py-4 px-8 rounded-lg transition-all flex items-center justify-center gap-2 border border-border/50"
-            >
-              <Phone className="w-5 h-5" />
-              Book a Free Call
-            </button>
-          </motion.div>
-
-          {/* Social Proof */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-muted-foreground"
-          >
-            <div className="flex items-center gap-2">
-              <div className="flex -space-x-2">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full bg-gradient-to-br from-[oklch(0.75_0.18_220)/0.3] to-[oklch(0.55_0.25_300)/0.3] border-2 border-background flex items-center justify-center"
-                  >
-                    <span className="text-xs font-bold text-foreground/60">
-                      {i}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <span className="font-['Space_Grotesk'] text-sm">
-                <strong className="text-foreground">3 spots left</strong> at
-                founding rates
-              </span>
+            <div className="mt-6 max-w-[72rem] sm:mt-8">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.05 }}
+                className="text-[2.95rem] leading-[0.96] text-white sm:text-[4.8rem] md:text-[5.65rem] lg:text-[6.55rem]"
+              >
+                <span className="block">Your next customer</span>
+                <span className="block italic text-[#19c2ff]">asked ChatGPT</span>
+                <span className="block">who to call.</span>
+                <span className="block italic text-white/36">Did it name you?</span>
+              </motion.h1>
             </div>
-            <div className="hidden sm:block w-px h-4 bg-border/50" />
-            <span className="font-['Space_Grotesk'] text-sm">
-              Springfield, MO & Nationwide
-            </span>
+
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.25 }}
+              className="mt-8 max-w-[38rem] text-base leading-8 text-white/68 sm:mt-10 sm:text-[1.08rem]"
+            >
+              Customers are asking ChatGPT, Gemini, Perplexity, and Google who
+              they should trust. If your website, Google Business Profile,
+              reviews, FAQs, schema, and socials send weak signals, AI search
+              can skip you before the buyer ever sees your name.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.3 }}
+              className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center"
+            >
+              <button
+                onClick={() => scrollToId("contact")}
+                className="homepage-primary-button inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-medium text-white transition-transform duration-200 hover:-translate-y-0.5 sm:w-auto"
+              >
+                <Search className="h-4.5 w-4.5" />
+                Get AI Search Audit
+              </button>
+
+              <button
+                onClick={() => scrollToId("audit-checks")}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full px-2 py-4 text-base font-medium text-white/72 transition-colors hover:text-white sm:w-auto"
+              >
+                See what AI checks
+                <ArrowRight className="h-4.5 w-4.5" />
+              </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.35 }}
+              className="mt-12 hidden max-w-[34rem] gap-x-8 gap-y-4 2xl:grid 2xl:grid-cols-2"
+            >
+              {trustItems.map((item, index) => (
+                <div key={item} className="flex items-center gap-3 text-sm text-white/68">
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full ${
+                      index % 2 === 0 ? "bg-[#49b4ff]" : "bg-[#9b6cff]"
+                    }`}
+                  />
+                  {item}
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </div>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      <div className="relative border-y border-white/[0.08] bg-[rgba(9,9,15,0.48)] py-4">
+        <div className="flex overflow-hidden whitespace-nowrap">
+          <div className="flex min-w-max items-center gap-10 pr-10 [animation:hero-marquee_44s_linear_infinite]">
+            {[...featureStripItems, ...featureStripItems].map((item, index) => (
+              <span
+                key={`${item}-${index}`}
+                className={`text-sm font-medium ${
+                  index % 3 === 1 ? "text-[#19c2ff]/90" : "text-white/62"
+                }`}
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="homepage-section-divider" />
     </section>
   );
 }

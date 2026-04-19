@@ -1,230 +1,231 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import {
+  ArrowRight,
+  Bot,
+  CalendarCheck,
+  Check,
+  MessageSquareText,
+  Sparkles,
+} from "lucide-react";
 import { useRef } from "react";
-import { Check, Star, Zap, Crown, Rocket } from "lucide-react";
 
-/*
- * 4-TIER HIGH-TICKET PRICING
- * Foundation → Growth System → AI Search Domination → Market Domination
- * Growth System is the "popular" anchor
- */
+const checkoutLinks = {
+  launchMonthly: "https://buy.stripe.com/3cI00k5NDa7YdiWcktebu0p",
+  launchAnnual: "https://buy.stripe.com/4gMaEY5ND3JA0waesBebu0q",
+  growthMonthly: "https://buy.stripe.com/00w3cw8ZP3JAdiW709ebu0r",
+  growthAnnual: "https://buy.stripe.com/7sY4gA8ZP7ZQ0wa709ebu0s",
+  operatorMonthly: "https://buy.stripe.com/6oU14o5NDgwm6Uy709ebu0t",
+  operatorAnnual: "https://buy.stripe.com/cNi3cw7VL4NEceS1FPebu0u",
+};
+
+const plans = [
+  {
+    name: "Civive Launch",
+    icon: CalendarCheck,
+    price: "$197",
+    annual: "$1,970/year",
+    monthlyHref: checkoutLinks.launchMonthly,
+    annualHref: checkoutLinks.launchAnnual,
+    description:
+      "Starter CRM, calendar, lead capture, and missed-call recovery for a service business that needs the basics live now.",
+    snapshot: "Lead Response snapshot",
+    bestFor: "Solo operators and small local teams starting from scattered follow-up.",
+    features: [
+      "CRM, opportunities, calendar, and forms",
+      "Missed-call text back",
+      "Web chat and reputation tools",
+      "2-way SMS and email conversations",
+      "Lead Response onboarding snapshot",
+    ],
+  },
+  {
+    name: "Civive Growth",
+    icon: MessageSquareText,
+    price: "$297",
+    annual: "$2,970/year",
+    monthlyHref: checkoutLinks.growthMonthly,
+    annualHref: checkoutLinks.growthAnnual,
+    description:
+      "The lead-response layer for teams that want every inquiry captured, organized, followed up, and moved toward a booked job.",
+    snapshot: "Lead Response snapshot",
+    bestFor: "Service businesses with active inbound leads and review/reputation needs.",
+    featured: true,
+    features: [
+      "Everything in Launch",
+      "Email marketing tools",
+      "Lead response and review workflows",
+      "Unified inbox for faster handoff",
+      "Cleaner Growth OS operating base",
+    ],
+  },
+  {
+    name: "Civive Operator",
+    icon: Bot,
+    price: "$497",
+    annual: "$4,970/year",
+    monthlyHref: checkoutLinks.operatorMonthly,
+    annualHref: checkoutLinks.operatorAnnual,
+    description:
+      "The AI front desk tier: reception, routing, pipeline context, and a stronger automation base built to feel like an operator.",
+    snapshot: "Universal Receptionist snapshot",
+    bestFor: "Teams ready to add an AI employee to answer, qualify, and recover leads.",
+    features: [
+      "Everything in Growth",
+      "AI Employee add-on enabled",
+      "Civive AI Receptionist foundation",
+      "Universal Receptionist pipeline",
+      "Workflow, funnels, sites, reporting, and campaigns",
+    ],
+  },
+];
+
+const platformSignals = [
+  "Stripe checkout live",
+  "Civive-owned snapshots attached",
+  "No setup fee for launch",
+  "Monthly links ready to sell",
+];
 
 export default function PricingSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const tiers = [
-    {
-      name: "Foundation",
-      icon: Zap,
-      tagline: "Get Found. Get Calls.",
-      setup: "$497",
-      monthly: "$197",
-      period: "/mo",
-      popular: false,
-      color: "border-[oklch(0.75_0.18_220)/0.3]",
-      buttonClass: "bg-secondary/50 hover:bg-secondary text-foreground",
-      features: [
-        "Custom AI Website",
-        "Google Business Optimization",
-        "70+ Listing Sync",
-        "Missed-Call Text Back",
-        "Basic Review Automation",
-        "CRM Setup",
-        "Monthly Performance Report",
-      ],
-      bestFor: "New businesses that need a professional online presence fast.",
-    },
-    {
-      name: "Growth System",
-      icon: Rocket,
-      tagline: "The Full AI Workforce",
-      setup: "$997",
-      monthly: "$997",
-      period: "/mo",
-      popular: true,
-      color: "border-[oklch(0.75_0.18_220)]",
-      buttonClass: "bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] text-white hover:opacity-90",
-      features: [
-        "Everything in Foundation",
-        "24/7 AI Voice Receptionist",
-        "AI Web Chat Widget",
-        "Unified Inbox (SMS, Email, Social)",
-        "Pipeline Automation",
-        "Text-to-Pay Invoicing",
-        "Smart Appointment Reminders",
-        "Social Media Posting",
-        "Database Reactivation Campaign",
-        "Weekly Strategy Calls",
-        "Dedicated Account Manager",
-      ],
-      bestFor: "Businesses ready to automate lead capture and conversion.",
-    },
-    {
-      name: "AI Search Domination",
-      icon: Star,
-      tagline: "Own the AI Answer",
-      setup: "$2,497",
-      monthly: "$1,497",
-      period: "/mo",
-      popular: false,
-      color: "border-[oklch(0.55_0.25_300)/0.5]",
-      buttonClass: "bg-gradient-to-r from-[oklch(0.55_0.25_300)] to-[oklch(0.45_0.22_280)] text-white hover:opacity-90",
-      features: [
-        "Everything in Growth System",
-        "AI Search Optimization (AIO)",
-        "Schema Markup & Structured Data",
-        "Google AI Overview Targeting",
-        "ChatGPT & Perplexity Optimization",
-        "Voice Search Optimization (Siri/Alexa)",
-        "Authority Content Strategy",
-        "Competitor AI Search Monitoring",
-        "Monthly AI Search Ranking Report",
-        "Priority Support",
-      ],
-      bestFor: "Businesses that want to dominate AI-powered search results.",
-    },
-    {
-      name: "Market Domination",
-      icon: Crown,
-      tagline: "Total Market Control",
-      setup: "$4,997",
-      monthly: "$2,497",
-      period: "/mo",
-      popular: false,
-      color: "border-[oklch(0.75_0.20_60)/0.4]",
-      buttonClass: "bg-gradient-to-r from-[oklch(0.75_0.20_60)] to-[oklch(0.65_0.22_40)] text-white hover:opacity-90",
-      features: [
-        "Everything in AI Search Domination",
-        "Facebook & Instagram Ad Management",
-        "Google Ads Management",
-        "Custom Funnel Building",
-        "Advanced Workflow Automation",
-        "Multi-Location Support",
-        "White-Glove Onboarding",
-        "Bi-Weekly Strategy Sessions",
-        "Dedicated Slack Channel",
-        "Custom Integrations",
-      ],
-      bestFor: "Businesses ready to own their entire local market.",
-    },
-  ];
+  const isInView = useInView(ref, { once: true, margin: "-120px" });
 
   return (
-    <section id="pricing" className="relative py-24 overflow-hidden" ref={ref}>
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Choose Your Growth Path</span>
-          </h2>
-          <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
-            Every plan includes the full GoHighLevel platform. No hidden fees. No long-term contracts. Cancel anytime.
-          </p>
-        </motion.div>
+    <section
+      id="pricing"
+      className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
+      ref={ref}
+    >
+      <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(25,194,255,0.28),transparent)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,7,12,0),rgba(8,13,22,0.74)_42%,rgba(5,6,11,0)_100%)]" />
 
-        {/* Pricing Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {tiers.map((tier, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-              className={`glass-card p-6 sm:p-8 relative ${tier.color} ${tier.popular ? "ring-2 ring-[oklch(0.75_0.18_220)] scale-[1.02]" : ""
-                }`}
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-14">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="lg:sticky lg:top-28 lg:self-start"
+          >
+            <p className="homepage-eyebrow">Civive Growth OS</p>
+            <h2 className="mt-5 max-w-xl text-3xl font-semibold leading-tight text-foreground sm:text-4xl md:text-5xl">
+              Start selling the system, not another software login.
+            </h2>
+            <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">
+              These are the live white-label SaaS plans connected to the GoHighLevel backend, Civive snapshots, and Stripe Checkout.
+            </p>
+
+            <div className="mt-9 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-2">
+              {platformSignals.map((item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
+                  className="flex items-center gap-3 border-t border-white/[0.08] pt-3 text-sm text-white/74"
+                >
+                  <Sparkles className="h-4 w-4 flex-shrink-0 text-[#19c2ff]" />
+                  <span>{item}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            <a
+              href="#contact"
+              onClick={(event) => {
+                event.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="mt-9 inline-flex items-center gap-2 text-sm font-medium text-white/72 transition-colors hover:text-white"
             >
-              {/* Popular Badge */}
-              {tier.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <div className="px-4 py-1 rounded-full bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] text-white text-xs font-['Space_Grotesk'] font-bold">
-                    MOST POPULAR
-                  </div>
-                </div>
-              )}
+              Want the audit first?
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </motion.div>
 
-              {/* Tier Header */}
-              <div className="text-center mb-6">
-                <tier.icon className="w-8 h-8 text-[oklch(0.75_0.18_220)] mx-auto mb-3" />
-                <h3 className="font-['Syne'] text-xl font-bold text-foreground">
-                  {tier.name}
-                </h3>
-                <p className="font-['Space_Grotesk'] text-sm text-muted-foreground mt-1">
-                  {tier.tagline}
-                </p>
-              </div>
-
-              {/* Pricing */}
-              <div className="text-center mb-6 pb-6 border-b border-border/30">
-                <div className="font-['Space_Grotesk'] text-xs text-muted-foreground mb-1">
-                  Setup: {tier.setup}
-                </div>
-                <div className="flex items-end justify-center gap-1">
-                  <span className="font-['Syne'] text-4xl font-bold gradient-text">
-                    {tier.monthly}
-                  </span>
-                  <span className="font-['Space_Grotesk'] text-muted-foreground text-sm mb-1">
-                    {tier.period}
-                  </span>
-                </div>
-              </div>
-
-              {/* Features */}
-              <div className="space-y-3 mb-6">
-                {tier.features.map((feature, fIndex) => (
-                  <div key={fIndex} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-[oklch(0.65_0.20_180)] flex-shrink-0 mt-0.5" />
-                    <span className="font-['Space_Grotesk'] text-sm text-foreground/80">
-                      {feature}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Best For */}
-              <p className="font-['Space_Grotesk'] text-xs text-muted-foreground italic mb-6">
-                Best for: {tier.bestFor}
-              </p>
-
-              {/* CTA Button */}
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className={`block w-full text-center magnetic-btn font-['Space_Grotesk'] font-semibold py-3 rounded-lg transition-all ${tier.buttonClass}`}
+          <div className="space-y-4">
+            {plans.map((plan, index) => (
+              <motion.article
+                key={plan.name}
+                initial={{ opacity: 0, y: 18 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.48, delay: 0.08 + index * 0.08 }}
+                className={`relative overflow-hidden rounded-[1.6rem] border p-5 transition-colors sm:p-6 ${
+                  plan.featured
+                    ? "border-[#19c2ff]/45 bg-[linear-gradient(135deg,rgba(25,194,255,0.14),rgba(13,16,28,0.82)_38%,rgba(80,95,255,0.12))]"
+                    : "border-white/[0.08] bg-[linear-gradient(180deg,rgba(13,16,26,0.62),rgba(7,10,18,0.72))]"
+                }`}
               >
-                Get Started
-              </a>
-            </motion.div>
-          ))}
-        </div>
+                <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+                  <div>
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/[0.1] bg-white/[0.04] text-[#19c2ff]">
+                            <plan.icon className="h-5 w-5" />
+                          </div>
+                          <h3 className="text-2xl font-semibold text-foreground">
+                            {plan.name}
+                          </h3>
+                        </div>
+                        <p className="mt-4 text-sm leading-7 text-muted-foreground">
+                          {plan.description}
+                        </p>
+                      </div>
+                      {plan.featured && (
+                        <span className="hidden rounded-full border border-[#19c2ff]/30 bg-[#19c2ff]/10 px-3 py-1 text-xs font-medium text-[#b9edff] sm:inline-flex">
+                          Best first push
+                        </span>
+                      )}
+                    </div>
 
-        {/* Founding Partner Note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <div className="inline-flex items-center gap-2 glass-card px-6 py-3">
-            <Star className="w-4 h-4 text-[oklch(0.75_0.20_60)]" />
-            <span className="font-['Space_Grotesk'] text-sm text-foreground">
-              <strong>Founding Partner Discount:</strong> First 5 clients lock in these rates for life.
-            </span>
-            <Star className="w-4 h-4 text-[oklch(0.75_0.20_60)]" />
+                    <div className="mt-6 flex flex-wrap items-end gap-x-3 gap-y-2">
+                      <span className="text-4xl font-semibold tracking-normal text-white">
+                        {plan.price}
+                      </span>
+                      <span className="pb-1 text-sm text-muted-foreground">per month</span>
+                      <span className="pb-1 text-sm text-white/44">or {plan.annual}</span>
+                    </div>
+
+                    <p className="mt-4 border-t border-white/[0.08] pt-4 text-xs leading-6 text-white/54">
+                      {plan.snapshot}. {plan.bestFor}
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="grid gap-2">
+                      {plan.features.map((feature) => (
+                        <div key={feature} className="flex items-start gap-3 text-sm leading-6 text-white/78">
+                          <Check className="mt-1 h-4 w-4 flex-shrink-0 text-[oklch(0.65_0.20_180)]" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto]">
+                      <a
+                        href={plan.monthlyHref}
+                        className="homepage-primary-button inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5"
+                      >
+                        Start monthly
+                        <ArrowRight className="h-4 w-4" />
+                      </a>
+                      <a
+                        href={plan.annualHref}
+                        className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/[0.12] px-5 py-3 text-sm font-medium text-white/72 transition-colors hover:bg-white/[0.06] hover:text-white"
+                      >
+                        Annual
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.article>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Section Divider */}
-      <div className="section-divider mt-24" />
+      <div className="homepage-section-divider mt-20" />
     </section>
   );
 }

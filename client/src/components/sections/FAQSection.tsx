@@ -1,109 +1,115 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { useRef, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { faqs } from "@/content/site";
 
 export default function FAQSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const faqs = [
-    {
-      question: "How quickly will I see results?",
-      answer: "Most partners see their first AI-captured leads within the first week. By the end of the 30-Day Sprint, you'll have a fully operational system generating leads, booking appointments, and automating follow-ups. The ROI typically pays for itself within the first 3 captured leads.",
-    },
-    {
-      question: "Do I need to be tech-savvy to use this?",
-      answer: "Absolutely not. We build everything for you and train you on a simple dashboard. If you can use a smartphone, you can manage your AI systems. Plus, we're always a phone call away if you need help.",
-    },
-    {
-      question: "What if I only need one or two services?",
-      answer: "That's exactly what our Starter tier is for. Pick any 2 services from our menu for $147/mo. As your business grows, you can easily upgrade to access more tools.",
-    },
-    {
-      question: "What's the difference between AIO and traditional SEO?",
-      answer: "Traditional SEO focuses on ranking in Google's blue links. AIO (AI Optimization) ensures your business shows up when people ask Siri, ChatGPT, Google's AI summaries, or Gemini for recommendations. It's the next evolution of being found online.",
-    },
-    {
-      question: "Can I cancel anytime?",
-      answer: "Yes. No long-term contracts, no cancellation fees. We believe in earning your business every month. If we're not delivering results, you shouldn't be locked in.",
-    },
-    {
-      question: "Why should I trust a new agency?",
-      answer: "Fair question. Here's the honest answer: I don't have a thousand clients yet, but I have something better—the drive to make my first partners wildly successful. You get my full attention, not a junior account manager. Plus, as a Founding Partner, you lock in the lowest rates for life.",
-    },
-    {
-      question: "What industries do you work with?",
-      answer: "Any service-based business that relies on leads and appointments: HVAC, plumbing, electrical, roofing, landscaping, auto repair, law firms, dental offices, real estate, and more. If you need customers to find you and book with you, we can help.",
-    },
-    {
-      question: "How is this different from other marketing agencies?",
-      answer: "Three things: (1) I'm a tradesman who understands your world—I've been on roofs and in crawlspaces. (2) We use AI to automate what other agencies charge humans to do. (3) Transparent pricing with no BS. You know exactly what you're paying for.",
-    },
-  ];
+  const homepageFaqs = faqs.slice(0, 8);
 
   return (
-    <section className="relative py-24 overflow-hidden" ref={ref}>
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
+    <section
+      id="faq"
+      className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
+      ref={ref}
+    >
+      <div className="absolute inset-x-0 top-14 h-px opacity-28 homepage-circuit-line" />
+      <div className="container relative z-10 mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Questions? Answers.</span>
+          <p className="homepage-eyebrow">FAQ</p>
+          <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
+            The new search questions business owners need to ask.
           </h2>
-          <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
-            Everything you need to know before we start building together.
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            AI visibility is not magic. It is clarity, proof, structure, and a
+            cleaner path from search intent to booked opportunity.
           </p>
         </motion.div>
 
-        {/* FAQ Accordion */}
-        <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
-              className="glass-card overflow-hidden"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full p-6 flex items-center justify-between text-left"
-              >
-                <span className="font-['Syne'] font-semibold text-foreground pr-4">
-                  {faq.question}
-                </span>
-                <ChevronDown
-                  className={`w-5 h-5 text-[oklch(0.75_0.18_220)] flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
+        <div className="mx-auto mt-14 max-w-4xl divide-y divide-[oklch(0.31_0.05_275/0.12)] border-y border-[oklch(0.31_0.05_275/0.14)]">
+          {homepageFaqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+
+            return (
               <motion.div
-                initial={false}
-                animate={{
-                  height: openIndex === index ? "auto" : 0,
-                  opacity: openIndex === index ? 1 : 0,
-                }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
+                key={faq.question}
+                initial={{ opacity: 0, y: 16 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.45, delay: 0.08 + index * 0.04 }}
+                className={isOpen ? "bg-[linear-gradient(180deg,rgba(18,12,28,0.1),rgba(10,12,20,0.02))]" : ""}
               >
-                <p className="px-6 pb-6 font-['Space_Grotesk'] text-muted-foreground leading-relaxed">
-                  {faq.answer}
-                </p>
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="flex w-full items-start justify-between gap-4 px-0 py-5 text-left transition-colors hover:bg-white/[0.01] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[oklch(0.58_0.16_290)/0.18] sm:px-0 sm:py-6"
+                >
+                  <div className="min-w-0">
+                    <span className="block text-lg font-medium leading-snug text-foreground sm:text-xl">
+                      {faq.question}
+                    </span>
+                  </div>
+
+                  <span className="mt-1 flex flex-shrink-0 items-center justify-center text-white/48">
+                    <ChevronDown
+                      className={`h-5 w-5 transition-transform duration-200 ${
+                        isOpen ? "rotate-180 text-white/76" : ""
+                      }`}
+                    />
+                  </span>
+                </button>
+
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: isOpen ? "auto" : 0,
+                    opacity: isOpen ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.24 }}
+                  className="overflow-hidden"
+                >
+                  <p className="max-w-[42rem] px-0 pb-5 text-sm leading-relaxed text-muted-foreground sm:px-0 sm:pb-6 sm:text-[0.96rem]">
+                    {faq.answer}
+                  </p>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.45, delay: 0.28 }}
+          className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
+        >
+          Have a business-specific visibility question? Bring it to the audit.
+          We will walk through what is helping you, what is hurting you, and
+          what to fix first.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.45, delay: 0.32 }}
+          className="mt-8 text-center"
+        >
+          <a
+            href="/faq"
+            className="inline-flex items-center gap-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
+          >
+            Read the full FAQ
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </motion.div>
       </div>
 
-      {/* Section Divider */}
-      <div className="section-divider mt-24" />
+      <div className="homepage-section-divider" />
     </section>
   );
 }

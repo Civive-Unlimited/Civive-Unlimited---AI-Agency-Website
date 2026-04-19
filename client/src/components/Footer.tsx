@@ -1,117 +1,121 @@
-import { Youtube, Twitter, Github, Phone, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
+import civiveLogo from "@/assets/civive-hero-logo.jpg";
+import { navLinks, site } from "@/content/site";
+
+const navigateTo = (href: string) => {
+  if (href === "/") {
+    if (window.location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    window.location.href = "/";
+    return;
+  }
+
+  if (href.startsWith("/#")) {
+    const sectionId = href.replace("/#", "");
+    if (window.location.pathname === "/") {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+    }
+  }
+
+  window.location.href = href;
+};
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
-    { icon: Youtube, href: "https://www.youtube.com/@CiviveUnlimited", label: "YouTube" },
-    { icon: Twitter, href: "https://x.com/civiveunltd", label: "X (Twitter)" },
-    { icon: Github, href: "https://github.com/CIVIVEUNLTD", label: "GitHub" },
-  ];
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <footer className="relative border-t border-border/30 bg-background/50">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-3 mb-4">
+    <footer className="border-t border-white/[0.08] bg-[linear-gradient(180deg,rgba(5,5,10,0.96),rgba(7,7,12,0.99))]">
+      <div className="container mx-auto px-4 py-12 sm:py-14">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.7fr_0.6fr] lg:gap-12">
+          <div className="max-w-md">
+            <div className="flex items-center gap-3">
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663329647955/sAkXjyNGjbClshEs.jpg"
+                src={civiveLogo}
                 alt="Civive Unlimited"
-                className="h-8 w-8 rounded-lg object-cover"
+                className="h-9 w-9 rounded-xl border border-white/[0.12] object-cover"
                 loading="lazy"
               />
-              <span className="font-['Syne'] font-bold text-lg gradient-text">
+              <span className="bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(192,176,230,0.72))] bg-clip-text text-base font-semibold text-transparent">
                 CIVIVE UNLIMITED
               </span>
             </div>
-            <p className="font-['Space_Grotesk'] text-sm text-muted-foreground leading-relaxed">
-              AI-powered growth systems for small businesses. Built by a technician who understands real work.
+
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
+              AI search visibility systems for local service businesses. Built
+              to make your website, Google profile, reviews, schema, and lead
+              capture easier for buyers and AI tools to understand.
             </p>
-            {/* Social Links */}
-            <div className="flex items-center gap-3 mt-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-secondary/50 hover:bg-secondary text-muted-foreground hover:text-foreground transition-all"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
-          </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-['Syne'] font-bold text-foreground mb-4">Quick Links</h4>
-            <div className="space-y-2">
-              {[
-                { label: "Services", href: "#services" },
-                { label: "AI Search", href: "#ai-search" },
-                { label: "Pricing", href: "#pricing" },
-                { label: "Our Story", href: "#story" },
-                { label: "Contact", href: "#contact" },
-              ].map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
-                  className="block font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-['Syne'] font-bold text-foreground mb-4">Contact</h4>
-            <div className="space-y-3">
-              <a href="tel:+14179526436" className="flex items-center gap-2 font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors">
-                <Phone className="w-4 h-4" /> (417) 952-6436
+            <div className="mt-5 grid gap-3 text-sm text-muted-foreground">
+              <a
+                href={site.phoneHref}
+                className="flex items-center gap-3 transition-colors hover:text-white"
+              >
+                <Phone className="h-4 w-4 text-[oklch(0.75_0.18_220)]" />
+                <span>{site.phone}</span>
               </a>
-              <a href="mailto:ceo@civiveunlimited.com" className="flex items-center gap-2 font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors">
-                <Mail className="w-4 h-4" /> ceo@civiveunlimited.com
+              <a
+                href={`mailto:${site.email}`}
+                className="flex items-center gap-3 transition-colors hover:text-white"
+              >
+                <Mail className="h-4 w-4 text-[oklch(0.75_0.18_220)]" />
+                <span>{site.email}</span>
               </a>
-              <div className="flex items-center gap-2 font-['Space_Grotesk'] text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4" /> Springfield, MO
+              <div className="flex items-center gap-3">
+                <MapPin className="h-4 w-4 text-[oklch(0.75_0.18_220)]" />
+                <span>{site.location}</span>
               </div>
             </div>
           </div>
 
-          {/* Legal */}
           <div>
-            <h4 className="font-['Syne'] font-bold text-foreground mb-4">Legal</h4>
-            <div className="space-y-2">
-              <a href="/privacy" className="block font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <p className="homepage-eyebrow">Navigate</p>
+            <div className="mt-5 grid gap-3">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo(link.href);
+                  }}
+                  className="w-fit text-left text-sm text-muted-foreground transition-colors hover:text-white"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a href="/ai-receptionist" className="w-fit text-sm text-muted-foreground transition-colors hover:text-white">
+                AI Receptionist
+              </a>
+              <a href="/contact" className="w-fit text-sm text-muted-foreground transition-colors hover:text-white">
+                Get Audit
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <p className="homepage-eyebrow">Legal</p>
+            <div className="mt-5 grid gap-3">
+              <a href="/privacy" className="text-sm text-muted-foreground transition-colors hover:text-white">
                 Privacy Policy
               </a>
-              <a href="/terms" className="block font-['Space_Grotesk'] text-sm text-muted-foreground hover:text-foreground transition-colors">
+              <a href="/terms" className="text-sm text-muted-foreground transition-colors hover:text-white">
                 Terms of Service
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-['Space_Grotesk'] text-xs text-muted-foreground">
-            &copy; {currentYear} Civive Unlimited. All rights reserved.
-          </p>
-          <p className="font-['Syne'] text-xs text-muted-foreground">
-            Built with <span className="text-[oklch(0.55_0.25_300)]">&#9829;</span> in Springfield, Missouri
-          </p>
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/[0.08] pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; {currentYear} Civive Unlimited. All rights reserved.</p>
+          <p>AI Search Visibility for Service Businesses - Springfield, MO</p>
         </div>
       </div>
     </footer>

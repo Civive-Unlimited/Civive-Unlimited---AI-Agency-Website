@@ -1,15 +1,19 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { CheckCircle, Loader2, Mail, Phone } from "lucide-react";
 import { useRef, useState } from "react";
-import { Phone, Mail, MapPin, Clock, CheckCircle, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { site } from "@/content/site";
 
-/*
- * CONTACT SECTION
- * Native HTML form for GHL tracking compatibility
- * Honeypot spam protection included
- * SMS consent checkbox for A2P 10DLC compliance
- */
+const nextSteps = [
+  "We check whether AI search can clearly understand what you do.",
+  "We show the weak signals that could make buyers skip you.",
+  "We map the fastest fixes across website, Google profile, schema, and follow-up.",
+];
+
+const contactInfo = [
+  { icon: Phone, label: "24/7 AI assistant line", value: site.phone, href: site.phoneHref },
+  { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
+];
 
 export default function ContactSection() {
   const ref = useRef(null);
@@ -18,270 +22,343 @@ export default function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [smsConsent, setSmsConsent] = useState(false);
 
-  const promises = [
-    "I answer my own phone.",
-    "I do the actual work (no outsourcing).",
-    "I only take clients I know I can help.",
-    "I'm building this for the long haul.",
-  ];
-
-  const contactInfo = [
-    { icon: Phone, label: "Phone", value: "(417) 952-6436", href: "tel:+14179526436" },
-    { icon: Mail, label: "Email", value: "ceo@civiveunlimited.com", href: "mailto:ceo@civiveunlimited.com" },
-    { icon: MapPin, label: "Location", value: "Springfield, MO", href: null },
-    { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
-  ];
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const getField = (name: string) => String(formData.get(name) || "").trim();
 
     try {
-      const response = await fetch(form.action, {
+      const response = await fetch("/api/lead", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: getField("full_name"),
+          companyName: getField("company_name"),
+          email: getField("email"),
+          phone: getField("phone"),
+          website: getField("website"),
+          serviceArea: getField("service_area"),
+          serviceInterest: getField("service_interest"),
+          message: getField("message"),
+          smsConsent,
+          offer: getField("offer"),
+          sourcePage: window.location.href,
+          _honey: getField("_honey"),
+        }),
       });
 
-      if (response.ok || response.redirected) {
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.ok) {
         setIsSubmitted(true);
-        toast.success("Message sent! We'll get back to you within 24 hours.", {
+        toast.success("AI Search Readiness Audit request sent. We'll follow up soon.", {
           duration: 6000,
         });
         form.reset();
         setSmsConsent(false);
       } else {
-        toast.error("Something went wrong. Please try calling us directly at (417) 952-6436.");
+        toast.error(
+          result?.errors?.[0] ||
+            result?.message ||
+            `Something went wrong. Please call or text Civive at ${site.phone}.`,
+        );
       }
     } catch {
-      toast.error("Network error. Please try calling us directly at (417) 952-6436.");
+      toast.error(`Network error. Please call or text Civive at ${site.phone}.`);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="relative py-24 overflow-hidden" ref={ref}>
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
+    <section
+      id="contact"
+      className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24"
+      ref={ref}
+    >
+      <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(circle_at_top,oklch(0.55_0.25_300/0.10),transparent_58%)]" />
+      <div className="absolute right-[8%] top-16 h-44 w-44 bg-[radial-gradient(circle,oklch(0.72_0.15_235/0.06),transparent_70%)]" />
+      <div className="container relative z-10 mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Let's Build Your Growth System</span>
+          <p className="homepage-eyebrow">AI Search Readiness Audit</p>
+          <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
+            Find out if AI would recommend you or replace you.
           </h2>
-          <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
-            Tell us about your business and we'll show you exactly how we'd grow it. No pressure. No BS. Just a real conversation about results.
-          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
-          {/* Left: Contact Info + Promise */}
+        <div className="mx-auto mt-14 grid max-w-6xl gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2 space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: 0.08 }}
+            className="max-w-md lg:pt-6"
           >
-            {/* Contact Details */}
-            <div className="glass-card p-6 sm:p-8">
-              <h3 className="font-['Syne'] text-xl font-bold text-foreground mb-6">
-                Get In Touch
-              </h3>
-              <div className="space-y-5">
-                {contactInfo.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4">
-                    <div className="p-2.5 rounded-lg bg-gradient-to-br from-[oklch(0.75_0.18_220)/0.15] to-[oklch(0.55_0.25_300)/0.15]">
-                      <item.icon className="w-5 h-5 text-[oklch(0.75_0.18_220)]" />
-                    </div>
-                    <div>
-                      <div className="font-['Space_Grotesk'] text-xs text-muted-foreground">
-                        {item.label}
-                      </div>
-                      {item.href ? (
-                        <a href={item.href} className="font-['Space_Grotesk'] text-sm text-foreground hover:text-[oklch(0.75_0.18_220)] transition-colors">
-                          {item.value}
-                        </a>
-                      ) : (
-                        <span className="font-['Space_Grotesk'] text-sm text-foreground">{item.value}</span>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <p className="homepage-eyebrow">What happens next</p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              A practical audit built around the way buyers now search. We look
+              at what AI can understand about your business, where trust breaks,
+              and what needs to be fixed first.
+            </p>
+
+            <div className="mt-8 space-y-3 border-t border-white/[0.08] pt-6">
+              {nextSteps.map((item) => (
+                <div key={item} className="flex items-start gap-3 text-sm leading-relaxed text-foreground/82">
+                  <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-[oklch(0.65_0.20_180)]" />
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
 
-            {/* My Promise */}
-            <div className="glass-card p-6">
-              <h4 className="font-['Syne'] font-bold text-foreground mb-4">My Promise</h4>
-              <div className="space-y-3">
-                {promises.map((promise, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-[oklch(0.65_0.20_180)] flex-shrink-0" />
-                    <span className="font-['Space_Grotesk'] text-sm text-foreground/80">{promise}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="mt-10 space-y-4 border-t border-white/[0.08] pt-8">
+              {contactInfo.map((item) => (
+                <div key={item.label}>
+                  <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                    {item.label}
+                  </p>
+                  <a
+                    href={item.href}
+                    className="mt-1 inline-flex text-sm text-foreground transition-colors hover:text-[oklch(0.75_0.18_220)]"
+                  >
+                    {item.value}
+                  </a>
+                </div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Right: Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-3"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: 0.12 }}
+            className="homepage-panel relative overflow-hidden rounded-[2.2rem] p-6 sm:p-8"
           >
-            <div className="glass-card p-6 sm:p-8">
-              {isSubmitted ? (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[oklch(0.65_0.20_180)/0.2] to-[oklch(0.55_0.25_300)/0.2] mx-auto mb-6 flex items-center justify-center">
-                    <CheckCircle className="w-8 h-8 text-[oklch(0.65_0.20_180)]" />
-                  </div>
-                  <h3 className="font-['Syne'] text-2xl font-bold text-foreground mb-3">
-                    Message Received!
-                  </h3>
-                  <p className="font-['Space_Grotesk'] text-muted-foreground mb-6">
-                    We'll get back to you within 24 hours. In the meantime, feel free to call us directly.
-                  </p>
-                  <button
-                    onClick={() => setIsSubmitted(false)}
-                    className="magnetic-btn bg-secondary/50 hover:bg-secondary text-foreground font-['Space_Grotesk'] font-semibold py-3 px-6 rounded-lg transition-all"
-                  >
-                    Send Another Message
-                  </button>
+            <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,oklch(0.56_0.16_290/0.58),oklch(0.72_0.15_235/0.26),transparent)]" />
+            {isSubmitted ? (
+              <div className="py-12 text-center">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[oklch(0.65_0.20_180)/0.12] text-[oklch(0.65_0.20_180)]">
+                  <CheckCircle className="h-7 w-7" />
                 </div>
-              ) : (
+                <h3 className="mt-5 text-3xl font-semibold text-foreground">Audit request received</h3>
+                <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+                  Your request is in. We will follow up soon and start with the
+                  highest-impact visibility signals first.
+                </p>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="homepage-outline-button magnetic-btn mt-8 rounded-xl px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-white/[0.04]"
+                >
+                  Send Another Request
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="border-b border-white/[0.08] pb-5">
+                  <h3 className="text-2xl font-semibold text-foreground">
+                    Get your AI Search Audit
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    We will look for the gaps that make good businesses
+                    invisible to AI search and buyers.
+                  </p>
+                </div>
+
                 <form
-                  action="https://services.leadconnectorhq.com/funnels/submit"
+                  action="/api/lead"
                   method="POST"
                   onSubmit={handleSubmit}
-                  className="space-y-5"
+                  className="mt-6 space-y-5"
                 >
-                  {/* Honeypot */}
-                  <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+                  <input
+                    type="text"
+                    name="_honey"
+                    style={{ display: "none" }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                  <input
+                    type="hidden"
+                    name="offer"
+                    value="ai-search-readiness-audit"
+                  />
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                      <label htmlFor="name" className="mb-1.5 block text-sm text-foreground">
                         Full Name *
                       </label>
                       <input
-                        type="text" id="name" name="full_name" required placeholder="John Smith"
-                        className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
+                        type="text"
+                        id="name"
+                        name="full_name"
+                        required
+                        placeholder="John Smith"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                       />
                     </div>
                     <div>
-                      <label htmlFor="business" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                      <label htmlFor="business" className="mb-1.5 block text-sm text-foreground">
                         Business Name *
                       </label>
                       <input
-                        type="text" id="business" name="company_name" required placeholder="Smith's HVAC"
-                        className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
+                        type="text"
+                        id="business"
+                        name="company_name"
+                        required
+                        placeholder="Smith's HVAC"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="email" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                      <label htmlFor="email" className="mb-1.5 block text-sm text-foreground">
                         Email *
                       </label>
                       <input
-                        type="email" id="email" name="email" required placeholder="john@smithshvac.com"
-                        className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="john@smithshvac.com"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
+                      <label htmlFor="phone" className="mb-1.5 block text-sm text-foreground">
                         Phone
                       </label>
                       <input
-                        type="tel" id="phone" name="phone" placeholder="(417) 952-6436"
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder={site.phone}
                         required={smsConsent}
-                        className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                       />
-                      <p className="mt-1.5 font-['Space_Grotesk'] text-xs text-muted-foreground">
-                        Add a mobile number if you want SMS updates about your audit request and appointments.
-                      </p>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
-                      What are you interested in?
+                    <label htmlFor="website" className="mb-1.5 block text-sm text-foreground">
+                      Website or Google Business Profile *
                     </label>
-                    <select
-                      id="service" name="service_interest"
-                      className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all"
-                    >
-                      <option value="">Select a service...</option>
-                      <option value="foundation">Foundation Plan ($197/mo)</option>
-                      <option value="growth">Growth System ($997/mo)</option>
-                      <option value="ai-search">AI Search Domination ($1,497/mo)</option>
-                      <option value="domination">Market Domination ($2,497/mo)</option>
-                      <option value="audit">Free Business Audit</option>
-                      <option value="other">Something Else</option>
-                    </select>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      required
+                      placeholder="https://yourbusiness.com"
+                      className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="service_area" className="mb-1.5 block text-sm text-foreground">
+                        Service Area
+                      </label>
+                      <input
+                        type="text"
+                        id="service_area"
+                        name="service_area"
+                        placeholder="Springfield, MO and nearby cities"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="service" className="mb-1.5 block text-sm text-foreground">
+                        Main Concern
+                      </label>
+                      <select
+                        id="service"
+                        name="service_interest"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
+                      >
+                        <option value="">Select an option...</option>
+                        <option value="ai-search-visibility">Showing up in AI search</option>
+                        <option value="website-message-clarity">Website message clarity</option>
+                        <option value="google-business-profile">Google Business Profile signals</option>
+                        <option value="faq-schema-service-pages">FAQs, schema, and service pages</option>
+                        <option value="lead-capture-follow-up">Lead capture and follow-up</option>
+                        <option value="not-sure-yet">Not sure yet</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block font-['Space_Grotesk'] text-sm text-foreground mb-1.5">
-                      Tell us about your business
+                    <label htmlFor="message" className="mb-1.5 block text-sm text-foreground">
+                      Tell us what you want AI and buyers to understand
                     </label>
                     <textarea
-                      id="message" name="message" rows={4}
-                      placeholder="What's your biggest challenge right now? What would success look like in 90 days?"
-                      className="w-full px-4 py-3 rounded-lg bg-secondary/30 border border-border/50 text-foreground font-['Space_Grotesk'] text-sm placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.5] focus:border-transparent transition-all resize-none"
+                      id="message"
+                      name="message"
+                      rows={4}
+                      placeholder="What services do you want to be recommended for, and where do you serve?"
+                      className="w-full resize-none rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                     />
                   </div>
 
-                  {/* SMS Consent â€” Required for A2P 10DLC compliance */}
-                  <div className="flex items-start gap-3">
-                    <input
-                      type="checkbox"
-                      id="sms_consent"
-                      name="sms_consent"
-                      checked={smsConsent}
-                      onChange={(e) => setSmsConsent(e.target.checked)}
-                      className="mt-1 h-4 w-4 rounded border-border/50 bg-secondary/30 text-[oklch(0.75_0.18_220)] focus:ring-[oklch(0.75_0.18_220)/0.5] flex-shrink-0"
-                    />
-                    <label htmlFor="sms_consent" className="font-['Space_Grotesk'] text-xs text-muted-foreground leading-relaxed">
-                      By checking this box, I agree to receive conversational SMS from Civive Unlimited about my audit request, appointments, and service updates at the phone number provided. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. View our{" "}
-                      <a href="/privacy" className="text-[oklch(0.75_0.18_220)] hover:underline">Privacy Policy</a>{" "}and{" "}
-                      <a href="/terms" className="text-[oklch(0.75_0.18_220)] hover:underline">Terms of Service</a>.
-                    </label>
+                  <div className="rounded-[1.4rem] border border-white/[0.08] bg-[linear-gradient(180deg,rgba(14,13,24,0.24),rgba(8,11,18,0.3))] p-4">
+                    <div className="flex items-start gap-3">
+                      <input
+                        type="checkbox"
+                        id="sms_consent"
+                        name="sms_consent"
+                        checked={smsConsent}
+                        onChange={(e) => setSmsConsent(e.target.checked)}
+                        className="mt-1 h-4 w-4 flex-shrink-0 rounded border-border/50 bg-secondary/30 text-[oklch(0.75_0.18_220)] focus:ring-[oklch(0.75_0.18_220)/0.5]"
+                      />
+                      <label htmlFor="sms_consent" className="text-xs leading-relaxed text-muted-foreground">
+                        By checking this box, I agree to receive SMS from Civive Unlimited about my audit request, appointments, and updates. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out.{" "}
+                        <a href="/privacy" className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline">
+                          Privacy Policy
+                        </a>{" "}
+                        &{" "}
+                        <a href="/terms" className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline">
+                          Terms
+                        </a>
+                        .
+                      </label>
+                    </div>
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold py-4 rounded-lg transition-all text-base disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="homepage-primary-button magnetic-btn flex w-full items-center justify-center gap-2 rounded-xl py-4 text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
+                        <Loader2 className="h-5 w-5 animate-spin" />
                         Sending...
                       </>
                     ) : (
-                      "Get My Free Growth Plan"
+                      "Get AI Search Audit"
                     )}
                   </button>
 
-                  <p className="text-center font-['Space_Grotesk'] text-xs text-muted-foreground">
-                    No spam. No pressure. Just a real conversation about growing your business.
+                  <p className="text-center text-sm text-muted-foreground">
+                    Clear audit. Priority fixes. Fast follow-up.
                   </p>
                 </form>
-              )}
-            </div>
+              </>
+            )}
           </motion.div>
         </div>
       </div>
+
+      <div className="homepage-section-divider" />
     </section>
   );
 }
