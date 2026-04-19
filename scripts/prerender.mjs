@@ -7,6 +7,7 @@ const publicDir = path.join(projectRoot, "dist", "public");
 const ssrEntry = path.join(projectRoot, "dist", "ssr", "entry-server.js");
 const templatePath = path.join(publicDir, "index.html");
 const siteDomain = "https://www.civiveunlimited.com";
+const sitePhoneE164 = "+14173862441";
 
 const managedHeadPatterns = [
   /<title>.*?<\/title>\s*/is,
@@ -62,7 +63,7 @@ function buildSchema(route) {
       name: "Civive Unlimited",
       url: siteDomain,
       email: "ceo@civiveunlimited.com",
-      telephone: "+14177385126",
+      telephone: sitePhoneE164,
       address: {
         "@type": "PostalAddress",
         addressLocality: "Springfield",
