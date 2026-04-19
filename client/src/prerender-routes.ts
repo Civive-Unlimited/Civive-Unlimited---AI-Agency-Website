@@ -66,6 +66,12 @@ export const prerenderRoutes: PrerenderRoute[] = [
     schemaKind: "service",
     serviceName: "AI Receptionist for Service Businesses",
   },
+  {
+    path: "/platform",
+    ...pageMeta.platform,
+    schemaKind: "service",
+    serviceName: "Civive Growth OS",
+  },
   { path: "/privacy", ...legalMeta.privacy },
   { path: "/terms", ...legalMeta.terms },
 ];

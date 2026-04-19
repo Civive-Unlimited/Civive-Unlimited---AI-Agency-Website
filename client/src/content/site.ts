@@ -11,6 +11,7 @@ export const site = {
 export const navLinks = [
   { href: "/#how-it-works", label: "What AI Reads" },
   { href: "/visibility-system", label: "Visibility System" },
+  { href: "/platform", label: "Growth OS" },
   { href: "/#pricing", label: "Pricing" },
   { href: "/industries", label: "Industries" },
   { href: "/faq", label: "FAQ" },
@@ -496,6 +497,11 @@ export const pageMeta = {
     title: "AI Receptionist for Service Businesses | Civive Unlimited",
     description:
       "AI receptionist systems for service businesses that need to capture and route leads after search visibility brings the right buyer in.",
+  },
+  platform: {
+    title: "Civive Growth OS | White-Label Business Software",
+    description:
+      "Civive Growth OS gives service businesses a branded CRM, inbox, calendar, missed-call recovery, follow-up, reviews, checkout-ready SaaS plans, and an AI front-desk upgrade path.",
   },
 };
 

@@ -8,6 +8,7 @@ import FAQPage from "@/pages/FAQPage";
 import IndustriesPage from "@/pages/IndustriesPage";
 import IndustryPage from "@/pages/IndustryPage";
 import NotFound from "@/pages/NotFound";
+import Platform from "@/pages/Platform";
 import ResourcesPage from "@/pages/ResourcesPage";
 import VisibilitySystemPage from "@/pages/VisibilitySystemPage";
 import { Route, Switch } from "wouter";
@@ -35,6 +36,7 @@ function Router() {
       <Route path={"/build-in-public"} component={BuildInPublicPage} />
       <Route path={"/contact"} component={ContactPage} />
       <Route path={"/ai-receptionist"} component={AIReceptionistPage} />
+      <Route path={"/platform"} component={Platform} />
       <Route path={"/privacy"} component={Privacy} />
       <Route path={"/terms"} component={Terms} />
       <Route path={"/404"} component={NotFound} />
