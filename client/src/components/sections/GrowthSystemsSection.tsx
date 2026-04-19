@@ -4,27 +4,27 @@ import { useRef } from "react";
 
 const systemGroups = [
   {
-    title: "Follow-up systems",
+    title: "Signal cleanup",
     items: [
-      "Lead reactivation",
-      "Speed-to-lead automations",
-      "Missed-call text back flows",
+      "Website message alignment",
+      "Google Business Profile clarity",
+      "Service and location consistency",
     ],
   },
   {
-    title: "Pipeline systems",
+    title: "AI-ready proof",
     items: [
-      "CRM workflow cleanup",
-      "Routing and handoff logic",
-      "Appointment and nurture sequences",
+      "FAQ and service page structure",
+      "LocalBusiness and service schema",
+      "Review and trust signal mapping",
     ],
   },
   {
-    title: "Conversion systems",
+    title: "Lead capture",
     items: [
-      "Website conversion improvements",
-      "Local visibility support",
-      "Revenue-focused customer journeys",
+      "Audit-focused contact flow",
+      "Booking and follow-up paths",
+      "CRM and automation handoff",
     ],
   },
 ];
@@ -57,30 +57,23 @@ export default function GrowthSystemsSection() {
               transition={{ duration: 0.5 }}
               className="max-w-xl"
             >
-              <p className="homepage-eyebrow">Beyond the front door</p>
+              <p className="homepage-eyebrow">AI Visibility Growth System</p>
 
-              <h2 className="mt-4 max-w-lg text-balance text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl lg:text-[3.05rem] lg:leading-[1.03]">
-                Civive is bigger than one tool.
+              <h2 className="mt-4 max-w-lg text-balance text-3xl font-semibold text-white sm:text-4xl lg:text-[3.15rem] lg:leading-[1.03]">
+                Fix the signals that decide who gets recommended.
               </h2>
 
               <p className="mt-6 max-w-xl text-base leading-7 text-white/72 sm:text-[1.05rem]">
-                The homepage leads with AI receptionist because missed calls and
-                slow response are one of the fastest revenue leaks to fix. Once
-                that front door is tight, Civive can help build the systems
-                around it.
-              </p>
-
-              <p className="mt-5 max-w-xl text-base leading-7 text-white/62">
-                That includes follow-up automation, CRM workflow cleanup, website
-                conversion improvements, and other practical growth systems that
-                make the whole operation run better.
+                Civive turns scattered online presence into a clear, connected
+                proof system that AI search, Google, and real buyers can
+                understand fast.
               </p>
 
               <button
                 onClick={scrollToContact}
                 className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
               >
-                Ask about the full system
+                Build the visibility system
                 <ArrowRight className="h-4 w-4" />
               </button>
             </motion.div>
@@ -91,12 +84,16 @@ export default function GrowthSystemsSection() {
               transition={{ duration: 0.55, delay: 0.08 }}
               className="border-y border-white/[0.08] sm:grid sm:grid-cols-3 sm:gap-0"
             >
-              {systemGroups.map((group) => (
+              {systemGroups.map((group, index) => (
                 <div
                   key={group.title}
                   className="py-6 sm:border-r sm:border-white/[0.08] sm:px-6 sm:py-8 last:border-r-0"
                 >
-                  <p className="text-[0.72rem] uppercase tracking-[0.22em] text-white/42">
+                  <p className="text-[0.72rem] uppercase tracking-[0.22em] text-white/40">
+                    0{index + 1}
+                  </p>
+
+                  <p className="mt-4 text-xl font-medium text-white/92">
                     {group.title}
                   </p>
 

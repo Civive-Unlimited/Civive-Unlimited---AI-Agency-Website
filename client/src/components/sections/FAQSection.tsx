@@ -1,54 +1,13 @@
 import { motion, useInView } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { useRef, useState } from "react";
-
-const faqs = [
-  {
-    question: "What does the AI receptionist do?",
-    answer:
-      "It answers incoming calls, captures lead details, responds professionally, and helps move callers toward booking or the right next step.",
-  },
-  {
-    question: "Can it answer calls after hours?",
-    answer:
-      "Yes. It can answer when you are closed, busy, or unavailable so leads do not hit voicemail and disappear.",
-  },
-  {
-    question: "Can it capture customer information?",
-    answer:
-      "Yes. It can collect key details like name, phone number, service need, and other information needed for follow up.",
-  },
-  {
-    question: "Can it help book appointments?",
-    answer:
-      "Yes. Depending on the setup, it can help move callers toward booking and route them to the right next step.",
-  },
-  {
-    question: "What kinds of businesses is this for?",
-    answer:
-      "It fits service businesses and local appointment-based businesses like HVAC, plumbing, electrical, roofing, med spas, salons, law firms, real estate, and similar businesses that rely on calls and booked appointments.",
-  },
-  {
-    question: "How fast can this be set up?",
-    answer:
-      "Setup timing depends on the business and workflow needs, but the goal is to get you live quickly without dragging the process out.",
-  },
-  {
-    question: "How does it work with our current workflow?",
-    answer:
-      "The setup is shaped around how your business handles calls now, so the receptionist supports the workflow instead of forcing a messy process change.",
-  },
-  {
-    question: "What happens if I want more automation later?",
-    answer:
-      "The website is focused on the AI receptionist offer first, but more automation and custom setup can be added later if it makes sense for your business.",
-  },
-];
+import { faqs } from "@/content/site";
 
 export default function FAQSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const homepageFaqs = faqs.slice(0, 8);
 
   return (
     <section
@@ -66,15 +25,16 @@ export default function FAQSection() {
         >
           <p className="homepage-eyebrow">FAQ</p>
           <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
-            Questions? Answers.
+            The new search questions business owners need to ask.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Everything you need to know before booking a demo.
+            AI visibility is not magic. It is clarity, proof, structure, and a
+            cleaner path from search intent to booked opportunity.
           </p>
         </motion.div>
 
         <div className="mx-auto mt-14 max-w-4xl divide-y divide-[oklch(0.31_0.05_275/0.12)] border-y border-[oklch(0.31_0.05_275/0.14)]">
-          {faqs.map((faq, index) => {
+          {homepageFaqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
@@ -128,9 +88,25 @@ export default function FAQSection() {
           transition={{ duration: 0.45, delay: 0.28 }}
           className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
         >
-          If you have a workflow question that is specific to your business, bring it to
-          the demo and we&apos;ll walk through it directly.
+          Have a business-specific visibility question? Bring it to the audit.
+          We will walk through what is helping you, what is hurting you, and
+          what to fix first.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.45, delay: 0.32 }}
+          className="mt-8 text-center"
+        >
+          <a
+            href="/faq"
+            className="inline-flex items-center gap-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
+          >
+            Read the full FAQ
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </motion.div>
       </div>
 
       <div className="homepage-section-divider" />

@@ -1,37 +1,20 @@
 import { motion, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 
 const proofItems = [
   {
-    eyebrow: "Availability",
-    title: "Answers when your team cannot",
-    copy: "Built to respond when your business is on a job, after hours, or simply unavailable to pick up live.",
+    title: "The buyer never sees you.",
+    copy: "AI search can answer the question before the customer opens a map result. If you are not in that answer, the lead is gone quietly.",
   },
   {
-    eyebrow: "Capture",
-    title: "Keeps leads from slipping away",
-    copy: "Collects the details needed to keep the opportunity alive instead of letting the call end in silence.",
+    title: "Unclear signals look risky.",
+    copy: "A thin website, mismatched services, weak FAQs, missing schema, and stale profiles make a real business look harder to trust.",
   },
   {
-    eyebrow: "Follow-up",
-    title: "Moves the conversation forward",
-    copy: "Supports a faster next step so more inbound opportunities have a real chance to turn into booked work.",
+    title: "Competitors become the default.",
+    copy: "The business with cleaner proof, stronger local signals, and consistent language becomes easier for AI to explain and recommend.",
   },
 ];
-
-const supportLines = [
-  "Answers around the clock",
-  "Captures leads clearly",
-  "Keeps momentum moving",
-];
-
-const scrollToContact = () => {
-  const element = document.querySelector("#contact");
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
 
 export default function ProofSection() {
   const ref = useRef(null);
@@ -43,95 +26,49 @@ export default function ProofSection() {
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl">
-          <div className="grid gap-12 lg:grid-cols-[0.84fr_1.16fr] lg:gap-18">
+          <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-18">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5 }}
               className="max-w-xl"
             >
-              <p className="homepage-eyebrow">Why the first response matters</p>
+              <p className="homepage-eyebrow">The painful part</p>
 
-              <h2 className="mt-4 max-w-lg text-balance text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl lg:text-[3.1rem] lg:leading-[1.03]">
-                The first response decides whether the lead survives.
-              </h2>
+              <blockquote className="mt-4 max-w-[29rem] text-3xl font-medium leading-[1.08] text-white sm:text-4xl lg:text-[3.25rem]">
+                AI search does not recommend businesses it cannot{" "}
+                <span className="text-white/72">understand.</span>
+              </blockquote>
 
-              <p className="mt-6 max-w-xl text-base leading-7 text-white/72 sm:text-[1.05rem]">
-                Civive&apos;s AI receptionist is built to answer, capture, and follow up
-                when your team cannot. The point is not to look technical. The point
-                is to keep real opportunities from disappearing.
+              <p className="mt-6 max-w-md text-sm leading-6 text-white/62">
+                It does not call you to clarify. It does not wait for your team
+                to fix the website later. It gives the buyer another name.
               </p>
-
-              <div className="mt-8 border-l border-white/[0.1] pl-6">
-                <blockquote className="text-xl font-medium leading-8 tracking-[-0.02em] text-white/92 sm:text-2xl sm:leading-9">
-                  An AI receptionist is not there to sound impressive. It is there
-                  to keep revenue from disappearing when no one picks up.
-                </blockquote>
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                {supportLines.map((line) => (
-                  <span
-                    key={line}
-                    className="rounded-full border border-white/[0.1] bg-white/[0.03] px-4 py-2 text-sm text-white/72"
-                  >
-                    {line}
-                  </span>
-                ))}
-              </div>
-
-              <button
-                onClick={scrollToContact}
-                className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
-              >
-                Book a demo
-                <ArrowRight className="h-4 w-4" />
-              </button>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.08 }}
-              className="border-t border-white/[0.08] pt-6 lg:border-l lg:border-t-0 lg:border-white/[0.08] lg:pl-10"
+              className="border-y border-white/[0.08] lg:grid lg:grid-cols-3"
             >
-              <div className="space-y-1">
-                {proofItems.map((item, index) => (
-                  <div
-                    key={item.title}
-                    className="relative border-b border-white/[0.08] py-6 last:border-b-0"
-                  >
-                    <p className="text-[0.68rem] uppercase tracking-[0.22em] text-white/40">
-                      {item.eyebrow}
-                    </p>
-
-                    <h3 className="mt-4 text-xl font-medium tracking-[-0.02em] text-white/92">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-3 max-w-xl text-sm leading-6 text-white/62">
-                      {item.copy}
-                    </p>
-
-                    <div
-                      className={`mt-6 h-px w-16 ${
-                        index === 0
-                          ? "bg-[#8a63ff]"
-                          : index === 1
-                            ? "bg-[#49b4ff]"
-                            : "bg-[#7d8cff]"
-                      }`}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 border-t border-white/[0.08] pt-6">
-                <p className="mt-0 max-w-2xl text-sm leading-6 text-white/72">
-                  More calls get answered, more opportunities stay alive, and the
-                  first impression feels faster, steadier, and more professional.
-                </p>
-              </div>
+              {proofItems.map((item, index) => (
+                <div
+                  key={item.title}
+                  className={`py-7 sm:py-8 lg:px-8 ${
+                    index < proofItems.length - 1
+                      ? "border-b border-white/[0.08] lg:border-b-0 lg:border-r"
+                      : ""
+                  } lg:border-white/[0.08]`}
+                >
+                  <h3 className="text-xl font-medium text-white/92">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-6 text-white/62">
+                    {item.copy}
+                  </p>
+                </div>
+              ))}
             </motion.div>
           </div>
         </div>

@@ -95,6 +95,31 @@ Default attitude:
 Operate like a high-level builder and operator who cares about results, reliability, and leverage.
 I want top-tier work, clean thinking, no slop, and no excuses.
 
+## Repo workflow
+
+- This repo uses `pnpm` as the package manager. Prefer `pnpm install` and `pnpm run <script>` over `npm`.
+- Core local commands:
+  - Run package commands from the repo root. Vite serves from the `client` root via `vite.config.ts`; do not `cd client` unless a task explicitly needs that context.
+  - `pnpm run dev` starts Vite with `--host` from the `client` app root. Default local target is usually `http://localhost:3000`, but `strictPort` is `false`, so confirm the actual port from the server output if 3000 is occupied.
+  - `pnpm run check` runs `tsc --noEmit`.
+  - `pnpm run build` runs the production Vite build.
+  - `pnpm run preview` runs `vite preview --host`.
+  - For local build verification, prefer `pnpm run preview -- --host 127.0.0.1 --port 4173` so the served build is pinned to a known loopback address and port.
+  - `pnpm run format` runs `prettier --write .`.
+- Validation baseline:
+  - Prefer `pnpm run check` and `pnpm run build` for routine verification.
+  - TODO: There is no tracked repo test script/config yet; `vitest` is installed but not wired into committed project tests.
+- Deployment/build contract:
+  - Vercel installs with `pnpm install` and builds with `pnpm run build`.
+  - Build output is `dist/public`.
+  - `vercel.json` rewrites all routes to `/index.html`, so preserve SPA routing behavior.
+  - Vite reads env files from the repo root via `envDir`; keep `.env` and related env files at the project root, not under `client/`.
+  - Vite aliases `@` to `client/src`, `@shared` to `shared`, and `@assets` to `attached_assets`; preserve those imports when moving files.
+- Repo conventions:
+  - `client/public` is the source of truth for shipped static files, including the committed `__manus__/debug-collector.js`; do not edit generated files under `dist/` directly.
+  - `components.json` is configured for shadcn with `client/src/index.css` and `@/` aliases; keep generated UI work aligned to that setup.
+  - `pnpm` uses a committed patch at `patches/wouter@3.7.1.patch`; if `wouter` changes, review and refresh the patch instead of dropping `patchedDependencies`.
+
 ## Skills
 
 A skill is a set of local instructions to follow that is stored in a `SKILL.md` file.

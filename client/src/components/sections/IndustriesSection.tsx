@@ -1,12 +1,7 @@
 import { motion, useInView } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
-
-const industryRows = [
-  ["HVAC", "Plumbing"],
-  ["Electrical", "Roofing"],
-  ["Cleaning", "Landscaping"],
-  ["Med Spas", "Real Estate Teams"],
-];
+import { industries } from "@/content/site";
 
 export default function IndustriesSection() {
   const ref = useRef(null);
@@ -16,23 +11,24 @@ export default function IndustriesSection() {
     <section id="industries" className="relative scroll-mt-24 overflow-hidden py-20 sm:scroll-mt-28 sm:py-24" ref={ref}>
       <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,oklch(0.55_0.25_300/0.08),transparent_72%)]" />
       <div className="container relative z-10 mx-auto px-4">
-        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-18">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-18">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
             className="max-w-xl"
           >
-            <p className="homepage-eyebrow">Built for service businesses</p>
-            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-foreground sm:text-4xl md:text-5xl lg:text-[3.15rem]">
-              If inbound calls drive revenue, this is built for you.
+            <p className="homepage-eyebrow">Built for local demand</p>
+            <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl lg:text-[3.15rem]">
+              If customers ask who to call, AI search can shape your revenue.
             </h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              From HVAC and plumbing to med spas, real estate teams, and local service
-              businesses, the system works anywhere missed calls turn into missed work.
+              This matters most for service businesses where trust, location,
+              reviews, and speed decide who gets contacted first.
             </p>
-            <p className="mt-8 text-sm uppercase tracking-[0.18em] text-white/38">
-              Calls matter. Fit is immediate.
+            <p className="mt-8 text-sm leading-relaxed text-white/60">
+              If your business depends on being found at the exact moment of
+              need, your public signals need to be clean.
             </p>
           </motion.div>
 
@@ -40,31 +36,35 @@ export default function IndustriesSection() {
             initial={{ opacity: 0, y: 18 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.08 }}
-            className="border-y border-[oklch(0.31_0.05_275/0.14)]"
+            className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
           >
-            {industryRows.map((row, rowIndex) => (
-              <motion.div
-                key={row.join("-")}
+            {industries.map((industry, index) => (
+              <motion.a
+                key={industry.slug}
+                href={`/industries/${industry.slug}`}
                 initial={{ opacity: 0, y: 14 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.42, delay: 0.12 + rowIndex * 0.05 }}
-                className={`grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_1px_minmax(0,1fr)] ${
-                  rowIndex < industryRows.length - 1 ? "border-b border-[oklch(0.31_0.05_275/0.14)]" : ""
-                }`}
+                transition={{ duration: 0.42, delay: 0.12 + index * 0.02 }}
+                className="group border-b border-white/[0.08] pb-3 text-base font-medium text-foreground transition-colors hover:border-white/[0.22] hover:text-white sm:text-lg"
               >
-                <div className="py-6 sm:py-8">
-                  <p className="text-[1.4rem] font-medium tracking-[-0.03em] text-foreground sm:text-[1.7rem]">
-                    {row[0]}
-                  </p>
-                </div>
-                <div className="hidden bg-[linear-gradient(180deg,transparent,oklch(0.56_0.16_290/0.18),transparent)] sm:block" />
-                <div className="border-t border-[oklch(0.31_0.05_275/0.14)] py-6 sm:border-t-0 sm:py-8 sm:pl-10">
-                  <p className="text-[1.4rem] font-medium tracking-[-0.03em] text-foreground sm:text-[1.7rem]">
-                    {row[1]}
-                  </p>
-                </div>
-              </motion.div>
+                {industry.name}
+              </motion.a>
             ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.45, delay: 0.28 }}
+            className="lg:col-start-2"
+          >
+            <a
+              href="/industries"
+              className="inline-flex items-center gap-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
+            >
+              View the industries hub
+              <ArrowRight className="h-4 w-4" />
+            </a>
           </motion.div>
         </div>
       </div>

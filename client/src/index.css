@@ -50,6 +50,7 @@
   /* Typography */
   --font-inter: 'Inter', sans-serif;
   --font-inter-tight: 'Inter Tight', sans-serif;
+  --font-display: 'Cormorant Garamond', serif;
   --font-space: var(--font-inter);
   --font-mono: 'JetBrains Mono', monospace;
 }
@@ -164,7 +165,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-inter);
-    letter-spacing: -0.011em;
+    letter-spacing: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -175,7 +176,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-inter-tight);
     font-weight: 700;
-    letter-spacing: -0.045em;
+    letter-spacing: 0;
   }
   
   /* Monospace for stats and counters */
@@ -292,7 +293,33 @@
   .homepage-shell h5,
   .homepage-shell h6 {
     font-family: var(--font-inter-tight);
-    letter-spacing: -0.045em;
+    letter-spacing: 0;
+  }
+
+  .homepage-shell h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  .homepage-shell h2,
+  .homepage-shell h3,
+  .homepage-shell blockquote {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  .homepage-shell h2 em,
+  .homepage-shell h2 i,
+  .homepage-shell h3 em,
+  .homepage-shell h3 i,
+  .homepage-shell blockquote em,
+  .homepage-shell blockquote i,
+  .homepage-shell .italic {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
   }
 
   .homepage-eyebrow {
@@ -386,7 +413,7 @@ html {
 }
 
 p {
-  letter-spacing: -0.012em;
+  letter-spacing: 0;
 }
 
 button,
@@ -397,4 +424,14 @@ a {
 ::selection {
   background: rgba(122, 95, 255, 0.28);
   color: white;
+}
+
+@keyframes hero-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }

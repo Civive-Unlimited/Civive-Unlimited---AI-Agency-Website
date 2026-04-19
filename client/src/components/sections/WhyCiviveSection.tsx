@@ -5,23 +5,23 @@ import { useRef } from "react";
 const principles = [
   {
     number: "01",
-    title: "Operator-first rollout",
-    copy: "The setup should fit how the business actually handles calls, handoffs, and booking pressure.",
+    title: "We start with the question buyers are asking.",
+    copy: "Who should I call? Who is trusted nearby? Who handles this exact problem? Your site has to answer those questions in language humans and AI can both understand.",
   },
   {
     number: "02",
-    title: "Revenue before complexity",
-    copy: "The first goal is to protect inbound demand and stop preventable lead loss before adding more layers.",
+    title: "We align every public signal.",
+    copy: "Website, Google Business Profile, reviews, FAQs, service pages, schema, and social profiles need to tell the same story. Confusion kills confidence.",
   },
   {
     number: "03",
-    title: "Custom where it matters",
-    copy: "The system should feel tailored to the business, not like a recycled AI template dressed up as strategy.",
+    title: "We build for proof, not hype.",
+    copy: "AI search needs evidence: clear services, locations, authority, customer outcomes, and structured context. Pretty pages are not enough.",
   },
   {
     number: "04",
-    title: "Built to expand later",
-    copy: "Once call handling is solid, more follow-up, CRM, and conversion systems can be layered in cleanly.",
+    title: "We connect visibility to revenue.",
+    copy: "Once buyers can find and trust you, we tighten the next step: contact forms, booking flows, follow-up, and lead automation.",
   },
 ];
 
@@ -55,28 +55,21 @@ export default function WhyCiviveSection() {
             >
               <p className="homepage-eyebrow">Why Civive Unlimited</p>
 
-              <h2 className="mt-4 max-w-lg text-balance text-3xl font-semibold tracking-[-0.03em] text-white sm:text-4xl lg:text-[3.1rem] lg:leading-[1.03]">
-                Serious systems for businesses that cannot afford weak response.
+              <h2 className="mt-4 max-w-lg text-balance text-3xl font-semibold text-white sm:text-4xl lg:text-[3.15rem] lg:leading-[1.03]">
+                Make your business impossible to misunderstand.
               </h2>
 
               <p className="mt-6 max-w-xl text-base leading-7 text-white/72 sm:text-[1.05rem]">
-                Civive is not built around fluff, fake dashboards, or generic
-                automation talk. The work starts with a practical question: where
-                is revenue leaking out of the first response, and what is the
-                cleanest way to fix it?
-              </p>
-
-              <p className="mt-5 max-w-xl text-base leading-7 text-white/62">
-                That is why the offer leads with AI receptionist first. It is one
-                of the fastest, clearest ways to make the business more responsive
-                without adding more chaos.
+                This is not old SEO with new buzzwords. It is the cleanup work
+                local businesses need when buyers start letting AI narrow the
+                options before anyone clicks.
               </p>
 
               <button
                 onClick={scrollToContact}
                 className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
               >
-                Book a demo
+                Get the readiness audit
                 <ArrowRight className="h-4 w-4" />
               </button>
             </motion.div>
@@ -99,7 +92,7 @@ export default function WhyCiviveSection() {
                   </p>
 
                   <div>
-                    <h3 className="text-xl font-medium tracking-[-0.02em] text-white/92">
+                    <h3 className="text-xl font-medium text-white/92">
                       {item.title}
                     </h3>
 

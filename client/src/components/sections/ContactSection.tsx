@@ -2,16 +2,17 @@ import { motion, useInView } from "framer-motion";
 import { CheckCircle, Loader2, Mail, Phone } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
+import { site } from "@/content/site";
 
 const nextSteps = [
-  "We look at how calls are handled now.",
-  "We show where leads are slipping away.",
-  "We map the best fit for your booking flow.",
+  "We check whether AI search can clearly understand what you do.",
+  "We show the weak signals that could make buyers skip you.",
+  "We map the fastest fixes across website, Google profile, schema, and follow-up.",
 ];
 
 const contactInfo = [
-  { icon: Phone, label: "24/7 AI assistant line", value: "(417) 386-2441", href: "tel:+14173862441" },
-  { icon: Mail, label: "Email", value: "ceo@civiveunlimited.com", href: "mailto:ceo@civiveunlimited.com" },
+  { icon: Phone, label: "24/7 AI assistant line", value: site.phone, href: site.phoneHref },
+  { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
 ];
 
 export default function ContactSection() {
@@ -27,25 +28,48 @@ export default function ContactSection() {
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const getField = (name: string) => String(formData.get(name) || "").trim();
 
     try {
-      const response = await fetch(form.action, {
+      const response = await fetch("/api/lead", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: getField("full_name"),
+          companyName: getField("company_name"),
+          email: getField("email"),
+          phone: getField("phone"),
+          website: getField("website"),
+          serviceArea: getField("service_area"),
+          serviceInterest: getField("service_interest"),
+          message: getField("message"),
+          smsConsent,
+          offer: getField("offer"),
+          sourcePage: window.location.href,
+          _honey: getField("_honey"),
+        }),
       });
 
-      if (response.ok || response.redirected) {
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.ok) {
         setIsSubmitted(true);
-        toast.success("Demo request sent. We'll follow up soon.", {
+        toast.success("AI Search Readiness Audit request sent. We'll follow up soon.", {
           duration: 6000,
         });
         form.reset();
         setSmsConsent(false);
       } else {
-        toast.error("Something went wrong. Please call or text our AI assistant at (417) 386-2441.");
+        toast.error(
+          result?.errors?.[0] ||
+            result?.message ||
+            `Something went wrong. Please call or text Civive at ${site.phone}.`,
+        );
       }
     } catch {
-      toast.error("Network error. Please call or text our AI assistant at (417) 386-2441.");
+      toast.error(`Network error. Please call or text Civive at ${site.phone}.`);
     } finally {
       setIsSubmitting(false);
     }
@@ -66,14 +90,10 @@ export default function ContactSection() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-3xl text-center"
         >
-          <p className="homepage-eyebrow">Book a demo</p>
+          <p className="homepage-eyebrow">AI Search Readiness Audit</p>
           <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
-            See how the receptionist fits your business.
+            Find out if AI would recommend you or replace you.
           </h2>
-          <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Tell us about your business and we&apos;ll show you how an AI receptionist can
-            help you answer faster, capture more leads, and keep more appointments moving.
-          </p>
         </motion.div>
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
@@ -84,12 +104,10 @@ export default function ContactSection() {
             className="max-w-md lg:pt-6"
           >
             <p className="homepage-eyebrow">What happens next</p>
-            <h3 className="mt-4 text-2xl font-semibold text-foreground">
-              A direct demo, built around real call flow.
-            </h3>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              We keep this practical. The goal is to show where response speed,
-              lead capture, and booking flow can be tightened without adding more chaos.
+              A practical audit built around the way buyers now search. We look
+              at what AI can understand about your business, where trust breaks,
+              and what needs to be fixed first.
             </p>
 
             <div className="mt-8 space-y-3 border-t border-white/[0.08] pt-6">
@@ -115,7 +133,6 @@ export default function ContactSection() {
                   </a>
                 </div>
               ))}
-              <p className="text-sm text-muted-foreground">Fast follow up on demo requests.</p>
             </div>
           </motion.div>
 
@@ -131,31 +148,32 @@ export default function ContactSection() {
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[oklch(0.65_0.20_180)/0.12] text-[oklch(0.65_0.20_180)]">
                   <CheckCircle className="h-7 w-7" />
                 </div>
-                <h3 className="mt-5 text-3xl font-semibold text-foreground">You&apos;re in</h3>
+                <h3 className="mt-5 text-3xl font-semibold text-foreground">Audit request received</h3>
                 <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-                  Your demo request is in. We&apos;ll follow up soon, and you can call directly if
-                  you want to move faster.
+                  Your request is in. We will follow up soon and start with the
+                  highest-impact visibility signals first.
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
                   className="homepage-outline-button magnetic-btn mt-8 rounded-xl px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-white/[0.04]"
                 >
-                  Send Another Message
+                  Send Another Request
                 </button>
               </div>
             ) : (
               <>
                 <div className="border-b border-white/[0.08] pb-5">
                   <h3 className="text-2xl font-semibold text-foreground">
-                    Book a demo
+                    Get your AI Search Audit
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Focused on calls, lead capture, and booking flow.
+                    We will look for the gaps that make good businesses
+                    invisible to AI search and buyers.
                   </p>
                 </div>
 
                 <form
-                  action="https://services.leadconnectorhq.com/funnels/submit"
+                  action="/api/lead"
                   method="POST"
                   onSubmit={handleSubmit}
                   className="mt-6 space-y-5"
@@ -166,6 +184,11 @@ export default function ContactSection() {
                     style={{ display: "none" }}
                     tabIndex={-1}
                     autoComplete="off"
+                  />
+                  <input
+                    type="hidden"
+                    name="offer"
+                    value="ai-search-readiness-audit"
                   />
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -219,43 +242,69 @@ export default function ContactSection() {
                         type="tel"
                         id="phone"
                         name="phone"
-                        placeholder="(417) 386-2441"
+                        placeholder={site.phone}
                         required={smsConsent}
                         className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                       />
-                      <p className="mt-1.5 text-xs text-muted-foreground">
-                        Add a mobile number for quick SMS updates about your demo request and appointments.
-                      </p>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="mb-1.5 block text-sm text-foreground">
-                      What matters most right now?
+                    <label htmlFor="website" className="mb-1.5 block text-sm text-foreground">
+                      Website or Google Business Profile *
                     </label>
-                    <select
-                      id="service"
-                      name="service_interest"
-                      className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
-                    >
-                      <option value="">Select an option...</option>
-                      <option value="never-miss-calls">Never miss calls</option>
-                      <option value="faster-lead-follow-up">Faster lead follow-up</option>
-                      <option value="more-booked-appointments">More booked appointments</option>
-                      <option value="after-hours-coverage">After-hours coverage</option>
-                      <option value="not-sure-yet">Not sure yet</option>
-                    </select>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      required
+                      placeholder="https://yourbusiness.com"
+                      className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="service_area" className="mb-1.5 block text-sm text-foreground">
+                        Service Area
+                      </label>
+                      <input
+                        type="text"
+                        id="service_area"
+                        name="service_area"
+                        placeholder="Springfield, MO and nearby cities"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="service" className="mb-1.5 block text-sm text-foreground">
+                        Main Concern
+                      </label>
+                      <select
+                        id="service"
+                        name="service_interest"
+                        className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
+                      >
+                        <option value="">Select an option...</option>
+                        <option value="ai-search-visibility">Showing up in AI search</option>
+                        <option value="website-message-clarity">Website message clarity</option>
+                        <option value="google-business-profile">Google Business Profile signals</option>
+                        <option value="faq-schema-service-pages">FAQs, schema, and service pages</option>
+                        <option value="lead-capture-follow-up">Lead capture and follow-up</option>
+                        <option value="not-sure-yet">Not sure yet</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div>
                     <label htmlFor="message" className="mb-1.5 block text-sm text-foreground">
-                      Tell us about your business
+                      Tell us what you want AI and buyers to understand
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       rows={4}
-                      placeholder="What happens when a lead calls and your team cannot answer right away?"
+                      placeholder="What services do you want to be recommended for, and where do you serve?"
                       className="w-full resize-none rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                     />
                   </div>
@@ -271,17 +320,13 @@ export default function ContactSection() {
                         className="mt-1 h-4 w-4 flex-shrink-0 rounded border-border/50 bg-secondary/30 text-[oklch(0.75_0.18_220)] focus:ring-[oklch(0.75_0.18_220)/0.5]"
                       />
                       <label htmlFor="sms_consent" className="text-xs leading-relaxed text-muted-foreground">
-                        By checking this box, I agree to receive conversational SMS from
-                        Civive Unlimited about my demo request, appointments, and service
-                        updates at the phone number provided. Message frequency varies. Msg
-                        & data rates may apply. Reply STOP to opt out or HELP for help.
-                        Consent is not a condition of purchase. View our{" "}
+                        By checking this box, I agree to receive SMS from Civive Unlimited about my audit request, appointments, and updates. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out.{" "}
                         <a href="/privacy" className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline">
                           Privacy Policy
                         </a>{" "}
-                        and{" "}
+                        &{" "}
                         <a href="/terms" className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline">
-                          Terms of Service
+                          Terms
                         </a>
                         .
                       </label>
@@ -299,12 +344,12 @@ export default function ContactSection() {
                         Sending...
                       </>
                     ) : (
-                      "Book a demo"
+                      "Get AI Search Audit"
                     )}
                   </button>
 
                   <p className="text-center text-sm text-muted-foreground">
-                    Clear demo. Practical next steps.
+                    Clear audit. Priority fixes. Fast follow-up.
                   </p>
                 </form>
               </>

@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-
-const navLinks = [
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
-];
+import { MessageCircle, Menu, X } from "lucide-react";
+import civiveLogo from "@/assets/civive-hero-logo.jpg";
+import { navLinks } from "@/content/site";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,12 +21,26 @@ export default function Navigation() {
     };
   }, [isMobileMenuOpen]);
 
-  const scrollToSection = (href: string) => {
+  const navigateTo = (href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+
+    if (href.startsWith("/#")) {
+      const sectionId = href.replace("/#", "");
+      if (window.location.pathname === "/") {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+        return;
+      }
     }
+
+    window.location.href = href;
+  };
+
+  const openChat = () => {
+    setIsMobileMenuOpen(false);
+    window.dispatchEvent(new Event("civive:open-chat"));
   };
 
   return (
@@ -38,7 +48,7 @@ export default function Navigation() {
       <motion.nav
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "border-b border-white/[0.08] bg-[linear-gradient(180deg,rgba(7,7,12,0.78),rgba(7,8,14,0.54))] py-3 backdrop-blur-md"
+            ? "border-b border-white/[0.08] bg-[linear-gradient(180deg,rgba(7,7,12,0.82),rgba(7,8,14,0.58))] py-3 backdrop-blur-md"
             : "bg-transparent py-4"
         }`}
         initial={{ y: -100 }}
@@ -52,11 +62,16 @@ export default function Navigation() {
               className="group flex items-center gap-3"
               onClick={(e) => {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                setIsMobileMenuOpen(false);
+                if (window.location.pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                  window.location.href = "/";
+                }
               }}
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663329647955/sAkXjyNGjbClshEs.jpg"
+                src={civiveLogo}
                 alt="Civive Unlimited"
                 className="h-9 w-9 rounded-xl border border-white/[0.14] object-cover transition-transform group-hover:scale-[1.02]"
                 loading="lazy"
@@ -65,38 +80,46 @@ export default function Navigation() {
                 <span className="block text-[0.68rem] uppercase tracking-[0.22em] text-white/42">
                   Civive Unlimited
                 </span>
-                <span className="block text-sm font-medium tracking-[-0.03em] text-white/92">
-                  AI Receptionist
+                <span className="block text-sm font-medium text-white/92">
+                  AI Search Visibility
                 </span>
               </div>
             </a>
 
-            <div className="hidden items-center gap-6 md:flex">
+            <div className="hidden items-center gap-4 md:flex lg:gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(link.href);
+                    navigateTo(link.href);
                   }}
-                  className="text-sm text-white/62 transition-colors hover:text-white"
+                  className="whitespace-nowrap text-sm text-white/62 transition-colors hover:text-white"
                 >
                   {link.label}
                 </a>
               ))}
             </div>
 
-            <div className="hidden md:flex">
+            <div className="hidden items-center gap-2 md:flex">
+              <button
+                type="button"
+                onClick={openChat}
+                className="inline-flex items-center gap-2 whitespace-nowrap rounded-full px-3 py-2.5 text-sm font-medium text-white/72 transition-colors hover:bg-white/[0.05] hover:text-white lg:px-4"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Ask AI
+              </button>
               <a
-                href="#contact"
+                href="/contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("#contact");
+                  navigateTo("/contact");
                 }}
-                className="inline-flex items-center rounded-full border border-white/[0.12] bg-white/[0.04] px-5 py-2.5 text-sm font-medium text-white/92 transition-colors hover:bg-white/[0.08]"
+                className="inline-flex items-center whitespace-nowrap rounded-full border border-white/[0.12] bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-white/92 transition-colors hover:bg-white/[0.08] lg:px-5"
               >
-                Book a demo
+                Get Audit
               </a>
             </div>
 
@@ -127,7 +150,7 @@ export default function Navigation() {
                   href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(link.href);
+                    navigateTo(link.href);
                   }}
                   className="text-2xl font-semibold text-foreground transition-colors hover:text-white"
                   initial={{ opacity: 0, y: 16 }}
@@ -139,18 +162,29 @@ export default function Navigation() {
               ))}
 
               <motion.a
-                href="#contact"
+                href="/contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection("#contact");
+                  navigateTo("/contact");
                 }}
                 className="mt-3 w-64 rounded-full border border-white/[0.12] bg-white/[0.05] py-4 text-center text-base font-medium text-white transition-colors hover:bg-white/[0.1]"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.08 }}
               >
-                Book a demo
+                Get AI Search Audit
               </motion.a>
+
+              <motion.button
+                type="button"
+                onClick={openChat}
+                className="w-64 rounded-full border border-white/[0.12] bg-white/[0.04] py-4 text-center text-base font-medium text-white/82 transition-colors hover:bg-white/[0.09] hover:text-white"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: (navLinks.length + 1) * 0.08 }}
+              >
+                Ask Civive AI
+              </motion.button>
             </div>
           </motion.div>
         )}
