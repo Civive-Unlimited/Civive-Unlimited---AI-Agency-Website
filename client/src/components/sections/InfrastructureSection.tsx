@@ -122,14 +122,14 @@ export default function InfrastructureSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-6">
             <Eye className="w-4 h-4 text-[oklch(0.75_0.18_220)]" />
-            <span className="text-sm font-['Space_Grotesk'] text-muted-foreground">
-              Powered by GoHighLevel
+            <span className="text-sm text-muted-foreground">
+              Powered by Civive OS
             </span>
           </div>
-          <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">The AI Infrastructure Stack</span>
           </h2>
-          <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
             A complete technology platform that captures leads, converts them automatically, and scales your revenue. This isn't marketing—it's infrastructure.
           </p>
         </motion.div>
@@ -148,21 +148,21 @@ export default function InfrastructureSection() {
               }}
             >
               {/* Phase Number */}
-              <div className="absolute top-4 right-4 font-['JetBrains_Mono'] text-6xl font-bold opacity-[0.06] text-foreground">
+              <div className="absolute top-4 right-4 font-mono text-6xl font-bold opacity-[0.06] text-foreground">
                 {col.phase}
               </div>
 
               {/* Column Header */}
               <div className="mb-6">
                 <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${col.color} mb-3`}>
-                  <span className="font-['JetBrains_Mono'] text-xs font-bold text-white tracking-wider">
+                  <span className="font-mono text-xs font-bold text-white tracking-wider">
                     {col.title}
                   </span>
                 </div>
-                <h3 className="font-['Syne'] text-xl font-bold text-foreground mb-1">
+                <h3 className="text-xl font-bold text-foreground mb-1">
                   {col.subtitle}
                 </h3>
-                <p className="font-['Space_Grotesk'] text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   {col.description}
                 </p>
               </div>
@@ -178,10 +178,10 @@ export default function InfrastructureSection() {
                       <item.icon className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <div className="font-['Space_Grotesk'] font-semibold text-foreground text-sm">
+                      <div className="font-semibold text-foreground text-sm">
                         {item.title}
                       </div>
-                      <div className="font-['Space_Grotesk'] text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                      <div className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
                         {item.desc}
                       </div>
                     </div>

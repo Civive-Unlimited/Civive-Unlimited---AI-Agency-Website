@@ -50,7 +50,7 @@ export default function AuditPage() {
               recommend.
             </>
           }
-          copy="A practical audit for service businesses that want ChatGPT, Gemini, Perplexity, Google, maps, voice search, and real buyers to understand who they are, what they do, where they work, and why they should be trusted."
+          copy="A practical audit for service businesses that want ChatGPT, Gemini, Perplexity, Grok, voice search, and real buyers to understand who they are, what they do, where they work, and why they should be trusted."
           primaryCta={{ label: "Get AI Search Audit", href: "/contact" }}
           secondaryCta={{ label: "Explore the system", href: "/visibility-system" }}
         >

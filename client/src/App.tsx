@@ -4,11 +4,12 @@ import AIReceptionistPage from "@/pages/AIReceptionistPage";
 import AuditPage from "@/pages/AuditPage";
 import BuildInPublicPage from "@/pages/BuildInPublicPage";
 import ContactPage from "@/pages/ContactPage";
+import CiviveOSPage from "@/pages/CiviveOSPage";
+import CiviveOSOfferPage from "@/pages/CiviveOSOfferPage";
 import FAQPage from "@/pages/FAQPage";
 import IndustriesPage from "@/pages/IndustriesPage";
 import IndustryPage from "@/pages/IndustryPage";
 import NotFound from "@/pages/NotFound";
-import Platform from "@/pages/Platform";
 import ResourcesPage from "@/pages/ResourcesPage";
 import VisibilitySystemPage from "@/pages/VisibilitySystemPage";
 import { Route, Switch } from "wouter";
@@ -34,9 +35,10 @@ function Router() {
       <Route path={"/faq"} component={FAQPage} />
       <Route path={"/resources"} component={ResourcesPage} />
       <Route path={"/build-in-public"} component={BuildInPublicPage} />
+      <Route path={"/civive-os"} component={CiviveOSPage} />
+      <Route path={"/civive-os-offer"} component={CiviveOSOfferPage} />
       <Route path={"/contact"} component={ContactPage} />
       <Route path={"/ai-receptionist"} component={AIReceptionistPage} />
-      <Route path={"/platform"} component={Platform} />
       <Route path={"/privacy"} component={Privacy} />
       <Route path={"/terms"} component={Terms} />
       <Route path={"/404"} component={NotFound} />

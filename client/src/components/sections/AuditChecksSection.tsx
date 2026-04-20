@@ -16,7 +16,7 @@ export default function AuditChecksSection() {
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={false}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
             className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16"
@@ -44,7 +44,7 @@ export default function AuditChecksSection() {
               {auditChecks.map((item, index) => (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 14 }}
+                  initial={false}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.42, delay: 0.08 + index * 0.03 }}
                   className="grid gap-4 py-5 sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-6 sm:py-6"

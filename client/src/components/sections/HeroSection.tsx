@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight, CheckCircle, Radar, Search } from "lucide-react";
 import civiveHeroLogo from "@/assets/civive-hero-logo.jpg";
 
 const trustItems = [
@@ -13,13 +13,20 @@ const featureStripItems = [
   "ChatGPT",
   "Gemini",
   "Perplexity",
-  "Google AI",
+  "Grok",
   "Website Messaging",
   "FAQ Schema",
   "LocalBusiness Schema",
   "Reviews",
   "Google Business Profile",
   "Social Consistency",
+];
+
+const scanSignals = [
+  { label: "Website message", status: "Clear enough to quote", score: "82" },
+  { label: "Google profile", status: "Needs service alignment", score: "64" },
+  { label: "Review evidence", status: "Specific trust language", score: "78" },
+  { label: "FAQ + schema", status: "Missing answer structure", score: "41" },
 ];
 
 const scrollToId = (id: string) => {
@@ -46,59 +53,58 @@ export default function HeroSection() {
           src={civiveHeroLogo}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.16] mix-blend-screen [mask-image:linear-gradient(90deg,transparent,black_28%,black_82%,transparent)]"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] mix-blend-screen [mask-image:linear-gradient(90deg,transparent,black_24%,black_78%,transparent)]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,4,9,0.99),rgba(7,7,13,0.98)_38%,rgba(6,6,11,1)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,4,9,0.96),rgba(4,4,9,0.82)_42%,rgba(4,4,9,0.96)_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-[42rem] bg-[radial-gradient(circle_at_top,rgba(118,79,255,0.16),transparent_52%)]" />
-        <div className="absolute right-[4%] top-[46%] h-[30rem] w-[30rem] bg-[radial-gradient(circle,rgba(76,166,255,0.12),transparent_62%)] blur-3xl" />
-        <div className="absolute left-[6%] top-[58%] h-40 w-40 bg-[radial-gradient(circle,rgba(76,166,255,0.06),transparent_70%)] blur-3xl" />
+        <div className="absolute inset-x-0 top-0 h-[26rem] bg-[linear-gradient(180deg,rgba(120,91,255,0.13),transparent)]" />
+        <div className="absolute inset-y-0 right-0 w-[42%] bg-[linear-gradient(90deg,transparent,rgba(22,181,255,0.075))]" />
       </div>
 
       <div className="absolute inset-0 opacity-[0.012] [background-image:linear-gradient(rgba(156,114,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(156,114,255,0.8)_1px,transparent_1px)] [background-size:132px_132px]" />
-      <div className="absolute left-[5%] right-[5%] top-[14%] hidden h-[72vh] rounded-[3.5rem] border border-white/[0.04] [mask-image:linear-gradient(180deg,transparent,black_14%,black_86%,transparent)] lg:block" />
+      <div className="absolute left-[5%] right-[5%] top-[14%] hidden h-[72vh] rounded-[2.5rem] border border-white/[0.04] [mask-image:linear-gradient(180deg,transparent,black_14%,black_86%,transparent)] lg:block" />
       <div className="absolute left-[8%] right-[8%] top-28 hidden h-px bg-[linear-gradient(90deg,transparent,rgba(145,96,255,0.16),transparent)] lg:block" />
 
       <div className="container relative z-10 mx-auto px-4">
-        <div className="py-8 sm:py-14 lg:flex lg:min-h-[calc(100svh-180px)] lg:items-center lg:py-10">
+        <div className="grid gap-10 py-8 sm:py-14 lg:min-h-[calc(100svh-170px)] lg:grid-cols-[minmax(0,0.92fr)_minmax(26rem,0.68fr)] lg:items-center lg:gap-12 lg:py-10 xl:gap-16">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
             className="w-full max-w-[78rem]"
           >
-            <p className="homepage-eyebrow">
-              AI Search Visibility - ChatGPT - Gemini - Perplexity
+            <p className="homepage-eyebrow digital-accent">
+              AI Search Visibility - ChatGPT - Gemini - Perplexity - Grok
             </p>
 
             <div className="mt-6 max-w-[72rem] sm:mt-8">
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.05 }}
-                className="text-[2.95rem] leading-[0.96] text-white sm:text-[4.8rem] md:text-[5.65rem] lg:text-[6.55rem]"
+                className="hero-tech-title text-[1.45rem] leading-[1.22] text-white sm:text-[2.05rem] md:text-[2.5rem] lg:text-[2.85rem] xl:text-[3.05rem]"
               >
                 <span className="block">Your next customer</span>
-                <span className="block italic text-[#19c2ff]">asked ChatGPT</span>
+                <span className="hero-tech-accent block text-[#19c2ff]">asked ChatGPT</span>
                 <span className="block">who to call.</span>
-                <span className="block italic text-white/36">Did it name you?</span>
+                <span className="hero-tech-accent block text-white/42">Did it name you?</span>
               </motion.h1>
             </div>
 
             <motion.p
-              initial={{ opacity: 0, y: 18 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.25 }}
-              className="mt-8 max-w-[38rem] text-base leading-8 text-white/68 sm:mt-10 sm:text-[1.08rem]"
+              className="hero-support-copy mt-7 max-w-[39rem] text-base leading-8 text-white/72 sm:mt-9 sm:text-[1.08rem]"
             >
-              Customers are asking ChatGPT, Gemini, Perplexity, and Google who
-              they should trust. If your website, Google Business Profile,
-              reviews, FAQs, schema, and socials send weak signals, AI search
-              can skip you before the buyer ever sees your name.
+              Your next customer may ask ChatGPT, Gemini, Perplexity, or Grok
+              who to call before they ever visit a website. Civive cleans up the
+              public signals that help AI and buyers understand why your
+              business belongs on the shortlist.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.3 }}
               className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center"
@@ -121,10 +127,10 @@ export default function HeroSection() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.35 }}
-              className="mt-12 hidden max-w-[34rem] gap-x-8 gap-y-4 2xl:grid 2xl:grid-cols-2"
+              className="mt-10 grid max-w-[35rem] gap-x-8 gap-y-4 sm:grid-cols-2"
             >
               {trustItems.map((item, index) => (
                 <div key={item} className="flex items-center gap-3 text-sm text-white/68">
@@ -138,6 +144,74 @@ export default function HeroSection() {
               ))}
             </motion.div>
           </motion.div>
+
+          <motion.div
+            initial={false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.18 }}
+            className="relative hidden lg:block"
+          >
+            <div className="homepage-panel relative overflow-hidden rounded-[2rem] p-6 xl:p-7">
+              <div className="hero-scan-sweep" />
+              <div className="relative z-10">
+                <div className="flex items-center justify-between gap-5">
+                  <div>
+                    <p className="homepage-eyebrow digital-accent">Live audit model</p>
+                    <h2 className="mt-3 text-3xl leading-none text-white xl:text-4xl">
+                      Can AI explain why a buyer should call?
+                    </h2>
+                  </div>
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-white/[0.12] bg-white/[0.04] text-[#19c2ff]">
+                    <Radar className="h-5 w-5" />
+                  </div>
+                </div>
+
+                <div className="mt-8 space-y-4">
+                  {scanSignals.map((signal) => (
+                    <div key={signal.label} className="border-t border-white/[0.08] pt-4">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="digital-accent text-sm text-white/78">
+                            {signal.label}
+                          </p>
+                          <p className="mt-1 text-sm text-white/52">
+                            {signal.status}
+                          </p>
+                        </div>
+                        <div className="digital-accent text-sm text-[#19c2ff]">
+                          {signal.score}
+                        </div>
+                      </div>
+                      <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                        <motion.div
+                          initial={false}
+                          animate={{ width: `${signal.score}%` }}
+                          transition={{ duration: 0.85, delay: 0.45 }}
+                          className="h-full rounded-full bg-[linear-gradient(90deg,#19c2ff,#8b5cf6)]"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-8 grid grid-cols-2 gap-4 border-t border-white/[0.08] pt-5">
+                  <div>
+                    <p className="digital-accent text-2xl text-white">9</p>
+                    <p className="mt-1 text-sm text-white/52">signals checked</p>
+                  </div>
+                  <div>
+                    <p className="digital-accent text-2xl text-white">72h</p>
+                    <p className="mt-1 text-sm text-white/52">first cleanup map</p>
+                  </div>
+                </div>
+
+                <div className="mt-7 flex items-center gap-3 text-sm text-white/62">
+                  <CheckCircle className="h-4 w-4 text-[#19c2ff]" />
+                  Website, GBP, reviews, FAQs, schema, and lead path.
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
 
@@ -147,7 +221,7 @@ export default function HeroSection() {
             {[...featureStripItems, ...featureStripItems].map((item, index) => (
               <span
                 key={`${item}-${index}`}
-                className={`text-sm font-medium ${
+                className={`digital-accent text-sm ${
                   index % 3 === 1 ? "text-[#19c2ff]/90" : "text-white/62"
                 }`}
               >

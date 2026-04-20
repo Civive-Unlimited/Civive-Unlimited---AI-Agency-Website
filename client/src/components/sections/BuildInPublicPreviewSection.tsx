@@ -13,7 +13,7 @@ export default function BuildInPublicPreviewSection() {
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto max-w-6xl">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={false}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
             className="grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:gap-18"
@@ -42,7 +42,7 @@ export default function BuildInPublicPreviewSection() {
               {buildLog.map((item, index) => (
                 <motion.div
                   key={`${item.date}-${item.title}`}
-                  initial={{ opacity: 0, y: 14 }}
+                  initial={false}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.42, delay: 0.08 + index * 0.04 }}
                   className="grid gap-4 py-6 sm:grid-cols-[8rem_minmax(0,1fr)] sm:gap-8 sm:py-7"

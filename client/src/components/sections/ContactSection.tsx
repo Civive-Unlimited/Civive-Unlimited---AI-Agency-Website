@@ -85,7 +85,7 @@ export default function ContactSection() {
       <div className="absolute right-[8%] top-16 h-44 w-44 bg-[radial-gradient(circle,oklch(0.72_0.15_235/0.06),transparent_70%)]" />
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={false}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-3xl text-center"
@@ -98,7 +98,7 @@ export default function ContactSection() {
 
         <div className="mx-auto mt-14 grid max-w-6xl gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.08 }}
             className="max-w-md lg:pt-6"
@@ -137,7 +137,7 @@ export default function ContactSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.12 }}
             className="homepage-panel relative overflow-hidden rounded-[2.2rem] p-6 sm:p-8"

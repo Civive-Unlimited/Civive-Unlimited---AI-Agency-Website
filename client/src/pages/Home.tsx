@@ -6,7 +6,6 @@ import FAQSection from "@/components/sections/FAQSection";
 import GrowthSystemsSection from "@/components/sections/GrowthSystemsSection";
 import HeroSection from "@/components/sections/HeroSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
-import PricingSection from "@/components/sections/PricingSection";
 import ProofSection from "@/components/sections/ProofSection";
 import ResultsSection from "@/components/sections/ResultsSection";
 import WhyCiviveSection from "@/components/sections/WhyCiviveSection";
@@ -23,7 +22,6 @@ export default function Home() {
         <ProofSection />
         <WhyCiviveSection />
         <GrowthSystemsSection />
-        <PricingSection />
         <IndustriesSection />
         <BuildInPublicPreviewSection />
         <FAQSection />

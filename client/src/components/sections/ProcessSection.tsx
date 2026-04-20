@@ -48,10 +48,10 @@ export default function ProcessSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">The 30-Day Sprint</span>
           </h2>
-          <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             From "I need help" to "My business runs itself" in just 4 weeks.
           </p>
         </motion.div>
@@ -78,14 +78,14 @@ export default function ProcessSection() {
                     <div className={`p-2 rounded-lg bg-gradient-to-br ${step.color}`}>
                       <step.icon className="w-5 h-5 text-white" />
                     </div>
-                    <span className="font-['JetBrains_Mono'] text-sm text-[oklch(0.75_0.18_220)]">
+                    <span className="font-mono text-sm text-[oklch(0.75_0.18_220)]">
                       {step.week}
                     </span>
                   </div>
-                  <h3 className="font-['Syne'] text-xl font-bold text-foreground mb-2">
+                  <h3 className="text-xl font-bold text-foreground mb-2">
                     {step.title}
                   </h3>
-                  <p className="font-['Space_Grotesk'] text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {step.description}
                   </p>
                 </div>

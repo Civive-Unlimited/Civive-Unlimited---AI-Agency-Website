@@ -13,7 +13,7 @@ export default function IndustriesSection() {
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-18">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={false}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
             className="max-w-xl"
@@ -33,7 +33,7 @@ export default function IndustriesSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={false}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.08 }}
             className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
@@ -42,7 +42,7 @@ export default function IndustriesSection() {
               <motion.a
                 key={industry.slug}
                 href={`/industries/${industry.slug}`}
-                initial={{ opacity: 0, y: 14 }}
+                initial={false}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.42, delay: 0.12 + index * 0.02 }}
                 className="group border-b border-white/[0.08] pb-3 text-base font-medium text-foreground transition-colors hover:border-white/[0.22] hover:text-white sm:text-lg"
@@ -53,7 +53,7 @@ export default function IndustriesSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.45, delay: 0.28 }}
             className="lg:col-start-2"

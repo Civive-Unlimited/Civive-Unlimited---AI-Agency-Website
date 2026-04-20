@@ -8,7 +8,7 @@ const processSteps = [
     eyebrow: "The question",
     title: "A buyer asks AI who to hire",
     description:
-      "They may not search ten websites anymore. They ask ChatGPT, Gemini, Perplexity, or Google for the best local option and expect a short answer.",
+      "They may not search ten websites anymore. They ask ChatGPT, Gemini, Perplexity, or Grok for the best local option and expect a short answer.",
   },
   {
     number: "02",
@@ -49,7 +49,7 @@ export default function ResultsSection() {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 lg:grid-cols-[0.84fr_1.16fr] lg:gap-18">
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={false}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5 }}
               className="max-w-xl"
@@ -68,7 +68,7 @@ export default function ResultsSection() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={false}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.08 }}
               className="space-y-0 border-y border-white/[0.08]"
@@ -101,7 +101,7 @@ export default function ResultsSection() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.45, delay: 0.16 }}
             className="mt-10 flex flex-col gap-4 border-t border-white/[0.08] pt-6 sm:flex-row sm:items-center sm:justify-between"

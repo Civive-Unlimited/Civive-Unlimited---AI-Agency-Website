@@ -34,6 +34,7 @@ function upsertLink(rel: string, href: string) {
 export default function Seo({ title, description, path = "/", type = "website" }: SeoProps) {
   useEffect(() => {
     const canonicalUrl = `${site.domain}${path === "/" ? "" : path}`;
+    const imageUrl = `${site.domain}/og-image.jpg`;
 
     document.title = title;
     upsertMeta('meta[name="description"]', () => {
@@ -56,11 +57,26 @@ export default function Seo({ title, description, path = "/", type = "website" }
       meta.setAttribute("property", "og:type");
       return meta;
     }, type);
+    upsertMeta('meta[property="og:site_name"]', () => {
+      const meta = document.createElement("meta");
+      meta.setAttribute("property", "og:site_name");
+      return meta;
+    }, site.name);
     upsertMeta('meta[property="og:url"]', () => {
       const meta = document.createElement("meta");
       meta.setAttribute("property", "og:url");
       return meta;
     }, canonicalUrl);
+    upsertMeta('meta[property="og:image"]', () => {
+      const meta = document.createElement("meta");
+      meta.setAttribute("property", "og:image");
+      return meta;
+    }, imageUrl);
+    upsertMeta('meta[name="twitter:card"]', () => {
+      const meta = document.createElement("meta");
+      meta.setAttribute("name", "twitter:card");
+      return meta;
+    }, "summary_large_image");
     upsertMeta('meta[name="twitter:title"]', () => {
       const meta = document.createElement("meta");
       meta.setAttribute("name", "twitter:title");
@@ -71,6 +87,11 @@ export default function Seo({ title, description, path = "/", type = "website" }
       meta.setAttribute("name", "twitter:description");
       return meta;
     }, description);
+    upsertMeta('meta[name="twitter:image"]', () => {
+      const meta = document.createElement("meta");
+      meta.setAttribute("name", "twitter:image");
+      return meta;
+    }, imageUrl);
     upsertLink("canonical", canonicalUrl);
   }, [description, path, title, type]);
 

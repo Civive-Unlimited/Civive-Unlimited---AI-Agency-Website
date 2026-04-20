@@ -54,7 +54,7 @@ export default function VisibilitySystemPage() {
                 <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/36">
                   0{index + 1}
                 </p>
-                <h2 className="mt-3 text-2xl font-semibold text-white">{layer.title}</h2>
+                <h2 className="hero-side-title mt-3 text-2xl text-white">{layer.title}</h2>
                 <p className="mt-3 text-sm leading-6 text-white/64">{layer.copy}</p>
               </div>
             ))}

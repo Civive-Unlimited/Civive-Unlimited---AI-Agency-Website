@@ -104,10 +104,10 @@ export default function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">The Civive Essential Toolkit</span>
           </h2>
-          <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Everything you need to capture leads, build reputation, and automate your business.
           </p>
         </motion.div>
@@ -133,10 +133,10 @@ export default function ServicesSection() {
                   <service.icon className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-['Syne'] text-xl font-bold text-foreground mb-1">
+                  <h3 className="text-xl font-bold text-foreground mb-1">
                     {service.title}
                   </h3>
-                  <p className="font-['Space_Grotesk'] text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     {service.description}
                   </p>
                 </div>
@@ -151,10 +151,10 @@ export default function ServicesSection() {
                   >
                     <feature.icon className="w-5 h-5 text-[oklch(0.75_0.18_220)] mt-0.5 flex-shrink-0" />
                     <div>
-                      <div className="font-['Space_Grotesk'] font-semibold text-foreground text-sm">
+                      <div className="font-semibold text-foreground text-sm">
                         {feature.label}
                       </div>
-                      <div className="font-['Space_Grotesk'] text-xs text-muted-foreground">
+                      <div className="text-xs text-muted-foreground">
                         {feature.desc}
                       </div>
                     </div>

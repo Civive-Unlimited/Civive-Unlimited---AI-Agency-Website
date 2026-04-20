@@ -38,11 +38,11 @@ export default function WhyAISection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
             The Window Is Open.{" "}
             <span className="text-muted-foreground">But It Won't Stay Open Forever.</span>
           </h2>
-          <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
             Right now, AI is the best-kept secret in small business. Your competitors are either 
             already building this or they're about to. The question isn't "Should I use AI?" 
             It's "Can I afford to be the last one to start?"
@@ -62,13 +62,13 @@ export default function WhyAISection() {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[oklch(0.75_0.18_220)/0.2] to-[oklch(0.55_0.25_300)/0.2] mb-6 group-hover:scale-110 transition-transform">
                 <stat.icon className="w-8 h-8 text-[oklch(0.75_0.18_220)]" />
               </div>
-              <div className="font-['JetBrains_Mono'] text-4xl sm:text-5xl font-bold gradient-text mb-2">
+              <div className="font-mono text-4xl sm:text-5xl font-bold gradient-text mb-2">
                 {stat.value}
               </div>
-              <div className="font-['Syne'] text-lg font-semibold text-foreground mb-2">
+              <div className="text-lg font-semibold text-foreground mb-2">
                 {stat.label}
               </div>
-              <p className="font-['Space_Grotesk'] text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 {stat.description}
               </p>
             </motion.div>
@@ -82,7 +82,7 @@ export default function WhyAISection() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center"
         >
-          <p className="font-['Syne'] text-xl sm:text-2xl font-semibold text-foreground">
+          <p className="text-xl sm:text-2xl font-semibold text-foreground">
             You're still early.{" "}
             <span className="gradient-text">Let's build your advantage before it becomes the baseline.</span>
           </p>

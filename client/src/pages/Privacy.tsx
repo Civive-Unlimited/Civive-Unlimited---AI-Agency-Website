@@ -7,7 +7,7 @@ export default function Privacy() {
   return (
     <>
       <Seo {...legalPageMeta.privacy} path="/privacy" />
-      <main className="homepage-shell min-h-screen py-24 text-foreground">
+      <main className="homepage-shell legal-page min-h-screen py-24 text-foreground">
         <div className="container mx-auto max-w-3xl px-4">
           <a href="/" className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
             <ArrowLeft className="h-4 w-4" /> Back to Home
@@ -31,7 +31,7 @@ export default function Privacy() {
           <p>We do not sell your personal information. We may share information with service providers who help us operate our business, such as CRM, website hosting, analytics, scheduling, and communications providers, solely to support our business operations and client communication.</p>
 
           <h2 className="mt-8 text-xl font-semibold text-foreground">Third-Party Services</h2>
-          <p>We use GoHighLevel (GHL) as our CRM and white-label software platform to manage leads, communications, subscriptions, and client workspaces. Your data may be processed through GHL's systems. We also use Vercel for website hosting, Stripe for payment processing, and may use analytics or form-processing tools to operate the site and improve performance.</p>
+          <p>We use trusted business operations, CRM, scheduling, communications, hosting, analytics, and form-processing providers to operate the site, manage inquiries, and improve performance.</p>
 
           <h2 className="mt-8 text-xl font-semibold text-foreground">Data Security</h2>
           <p>We implement reasonable security measures to protect your personal information. However, no method of transmission over the Internet is 100% secure.</p>

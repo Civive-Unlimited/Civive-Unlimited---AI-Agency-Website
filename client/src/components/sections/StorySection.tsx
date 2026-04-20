@@ -45,10 +45,10 @@ export default function StorySection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">The Architecture of Efficiency</span>
           </h2>
-          <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             25 Years of Wrenches. Now, Algorithms.
           </p>
         </motion.div>
@@ -79,10 +79,10 @@ export default function StorySection() {
               transition={{ duration: 0.6, delay: 0.3 + index * 0.15 }}
               className="glass-card p-8"
             >
-              <h3 className="font-['Syne'] text-xl sm:text-2xl font-bold mb-4 text-[oklch(0.75_0.18_220)]">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 text-[oklch(0.75_0.18_220)]">
                 {block.title}
               </h3>
-              <p className="font-['Space_Grotesk'] text-muted-foreground leading-relaxed text-base sm:text-lg">
+              <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                 {block.content}
               </p>
             </motion.div>

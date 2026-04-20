@@ -48,11 +48,14 @@
   --color-deep-charcoal: oklch(0.12 0.01 260);
   
   /* Typography */
-  --font-inter: 'Inter', sans-serif;
-  --font-inter-tight: 'Inter Tight', sans-serif;
-  --font-display: 'Cormorant Garamond', serif;
-  --font-space: var(--font-inter);
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-inter: 'Chakra Petch', sans-serif;
+  --font-inter-tight: 'Chakra Petch', sans-serif;
+  --font-display: 'Chakra Petch', sans-serif;
+  --font-ai-display: 'Syncopate', sans-serif;
+  --font-digital: 'Chakra Petch', sans-serif;
+  --font-support-tech: 'Chakra Petch', sans-serif;
+  --font-space: var(--font-support-tech);
+  --font-mono: var(--font-support-tech);
 }
 
 :root {
@@ -179,9 +182,9 @@
     letter-spacing: 0;
   }
   
-  /* Monospace for stats and counters */
+  /* Keep small labels and counters in the main support font so the site stays cohesive. */
   .font-mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-support-tech);
   }
   
   button:not(:disabled),
@@ -276,7 +279,7 @@
   }
 
   .homepage-shell {
-    font-family: var(--font-inter);
+    font-family: var(--font-support-tech);
     position: relative;
     isolation: isolate;
     background:
@@ -297,17 +300,18 @@
   }
 
   .homepage-shell h1 {
-    font-family: var(--font-display);
+    font-family: var(--font-support-tech);
     font-weight: 500;
     letter-spacing: 0;
   }
 
-  .homepage-shell h2,
+  .homepage-shell h2:not(.hero-tech-title),
   .homepage-shell h3,
   .homepage-shell blockquote {
-    font-family: var(--font-display);
-    font-weight: 500;
+    font-family: var(--font-support-tech);
+    font-weight: 600;
     letter-spacing: 0;
+    line-height: 1.12;
   }
 
   .homepage-shell h2 em,
@@ -317,18 +321,69 @@
   .homepage-shell blockquote em,
   .homepage-shell blockquote i,
   .homepage-shell .italic {
-    font-family: var(--font-display);
+    font-family: var(--font-support-tech);
     font-style: italic;
-    font-weight: 400;
+    font-weight: 500;
+  }
+
+  .homepage-shell .hero-tech-title {
+    font-family: var(--font-ai-display);
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .homepage-shell .hero-tech-accent {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+  }
+
+  .homepage-shell .digital-accent {
+    font-family: var(--font-support-tech);
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .homepage-shell .digital-accent {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .homepage-shell .hero-support-copy {
+    font-family: var(--font-support-tech);
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  .homepage-shell .hero-side-title {
+    font-family: var(--font-support-tech);
+    font-weight: 600;
+    letter-spacing: 0;
   }
 
   .homepage-eyebrow {
-    font-family: var(--font-mono);
+    font-family: var(--font-support-tech);
     font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(183, 173, 255, 0.82);
+  }
+
+  .homepage-shell.legal-page h1,
+  .homepage-shell.legal-page h2,
+  .homepage-shell.legal-page h3,
+  .homepage-shell.legal-page h4,
+  .homepage-shell.legal-page h5,
+  .homepage-shell.legal-page h6 {
+    font-family: var(--font-support-tech);
+    font-weight: 600;
+    line-height: 1.3;
   }
 
   .homepage-panel {
@@ -386,6 +441,17 @@
     background:
       linear-gradient(90deg, transparent, oklch(0.58 0.14 286 / 0.18), transparent);
   }
+
+  .hero-scan-sweep {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(120deg, transparent 0%, rgba(25, 194, 255, 0.08) 42%, rgba(139, 92, 246, 0.10) 50%, transparent 58%),
+      linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.025), transparent);
+    transform: translateX(-42%);
+    animation: hero-scan-sweep 6.8s ease-in-out infinite;
+    pointer-events: none;
+  }
 }
 
 /* Smooth scrolling */
@@ -433,5 +499,21 @@ a {
 
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes hero-scan-sweep {
+  0%, 18% {
+    transform: translateX(-42%);
+    opacity: 0;
+  }
+
+  42%, 62% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(42%);
+    opacity: 0;
   }
 }

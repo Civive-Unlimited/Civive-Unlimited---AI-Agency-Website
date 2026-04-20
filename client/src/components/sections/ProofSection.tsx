@@ -28,7 +28,7 @@ export default function ProofSection() {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-18">
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={false}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5 }}
               className="max-w-xl"
@@ -47,7 +47,7 @@ export default function ProofSection() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={false}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: 0.08 }}
               className="border-y border-white/[0.08] lg:grid lg:grid-cols-3"

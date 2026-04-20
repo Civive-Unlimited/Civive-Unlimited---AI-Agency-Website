@@ -20,12 +20,6 @@ import {
   Shield,
 } from "lucide-react";
 
-/*
- * GHL SHOWCASE SECTION
- * Visual walkthrough of the GoHighLevel platform features
- * Shows prospects the enterprise-grade system behind our services
- */
-
 export default function GHLShowcaseSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -61,15 +55,15 @@ export default function GHLShowcaseSection() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-6">
             <Zap className="w-4 h-4 text-[oklch(0.75_0.18_220)]" />
-            <span className="text-sm font-['Space_Grotesk'] text-muted-foreground">
-              Enterprise Platform
+            <span className="text-sm text-muted-foreground">
+              Civive OS
             </span>
           </div>
-          <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">One Platform. Everything You Need.</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span className="gradient-text">One Operating System. Every Lead Covered.</span>
           </h2>
-          <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-3xl mx-auto">
-            Powered by GoHighLevel, the same platform used by 1.4 million businesses. We configure, customize, and manage it all for you.
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+            Civive OS gives service teams one place to capture conversations, book jobs, recover missed calls, request reviews, and keep follow-up moving.
           </p>
         </motion.div>
 
@@ -86,10 +80,10 @@ export default function GHLShowcaseSection() {
               <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[oklch(0.75_0.18_220)/0.15] to-[oklch(0.55_0.25_300)/0.15] mb-3 group-hover:from-[oklch(0.75_0.18_220)/0.3] group-hover:to-[oklch(0.55_0.25_300)/0.3] transition-colors">
                 <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[oklch(0.75_0.18_220)]" />
               </div>
-              <h4 className="font-['Syne'] text-sm sm:text-base font-bold text-foreground mb-1">
+              <h4 className="text-sm sm:text-base font-bold text-foreground mb-1">
                 {feature.title}
               </h4>
-              <p className="font-['Space_Grotesk'] text-xs text-muted-foreground leading-relaxed">
+              <p className="text-xs text-muted-foreground leading-relaxed">
                 {feature.desc}
               </p>
             </motion.div>
@@ -103,14 +97,14 @@ export default function GHLShowcaseSection() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-center mt-12"
         >
-          <p className="font-['Space_Grotesk'] text-muted-foreground text-sm mb-4">
+          <p className="text-muted-foreground text-sm mb-4">
             All 16+ features included in every plan. No hidden add-ons.
           </p>
           <a
-            href="#pricing"
-            className="inline-flex items-center gap-2 magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold py-3 px-8 rounded-lg transition-all"
+            href="/civive-os"
+            className="inline-flex items-center gap-2 magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-semibold py-3 px-8 rounded-lg transition-all"
           >
-            See Pricing
+            View Civive OS
           </a>
         </motion.div>
       </div>

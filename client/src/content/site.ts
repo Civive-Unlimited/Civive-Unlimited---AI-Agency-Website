@@ -11,8 +11,7 @@ export const site = {
 export const navLinks = [
   { href: "/#how-it-works", label: "What AI Reads" },
   { href: "/visibility-system", label: "Visibility System" },
-  { href: "/platform", label: "Growth OS" },
-  { href: "/#pricing", label: "Pricing" },
+  { href: "/civive-os", label: "Civive OS" },
   { href: "/industries", label: "Industries" },
   { href: "/faq", label: "FAQ" },
   { href: "/resources", label: "Resources" },
@@ -80,7 +79,7 @@ export const faqs = [
   {
     question: "Are people really using ChatGPT to find businesses?",
     answer:
-      "Yes. Buyers are increasingly using ChatGPT, Gemini, Perplexity, Google AI summaries, and voice assistants to narrow options before they visit a website or call a business. That does not replace Google, but it changes what needs to be clear across your public presence.",
+      "Yes. Buyers are increasingly using ChatGPT, Gemini, Perplexity, Grok, and voice assistants to narrow options before they visit a website or call a business. That does not replace Google, but it changes what needs to be clear across your public presence.",
   },
   {
     question: "Why would AI skip a good business?",
@@ -387,7 +386,7 @@ export const resourceTopics = [
   {
     slug: "ai-search-local-business",
     title: "AI Search for Local Businesses",
-    copy: "How ChatGPT, Gemini, Perplexity, Google, and Maps change the way buyers discover local companies.",
+    copy: "How ChatGPT, Gemini, Perplexity, and Grok change the way buyers discover local companies.",
     formats: ["Founder video", "Search article", "Short social breakdown"],
   },
   {
@@ -424,7 +423,7 @@ export const resourceTopics = [
     slug: "lead-capture-after-discovery",
     title: "Lead Capture After Discovery",
     copy: "What happens after a buyer finds you: forms, chat, booking, CRM handoff, AI receptionist, and follow-up.",
-    formats: ["Revenue workflow", "GHL build", "Founder demo"],
+    formats: ["Revenue workflow", "Civive OS build", "Founder demo"],
   },
   {
     slug: "build-in-public",
@@ -438,12 +437,12 @@ export const buildLog = [
   {
     date: "April 2026",
     title: "Repositioned the front door around AI Search Readiness.",
-    copy: "The homepage moved from a broad AI receptionist angle into a sharper audit offer: will ChatGPT, Gemini, Perplexity, Google, and buyers understand who to call?",
+    copy: "The homepage moved from a broad AI receptionist angle into a sharper audit offer: will ChatGPT, Gemini, Perplexity, Grok, and buyers understand who to call?",
   },
   {
     date: "April 2026",
     title: "Connected the site to a real lead path.",
-    copy: "The contact flow now sends audit requests into HighLevel, tags the lead, adds context, and creates a pipeline opportunity instead of leaving the form isolated.",
+    copy: "The contact flow now sends audit requests into Civive OS, tags the lead, adds context, and creates a pipeline opportunity instead of leaving the form isolated.",
   },
   {
     date: "Now",
@@ -467,6 +466,16 @@ export const pageMeta = {
     title: "AI Search Visibility System | Civive Unlimited",
     description:
       "The Civive system for cleaning up business signals, creating AI-ready proof, and connecting search visibility to lead capture and follow-up.",
+  },
+  civiveOs: {
+    title: "Civive OS | Lead Response and AI Front Desk SaaS",
+    description:
+      "Civive OS is the operating system for service businesses that need cleaner lead capture, faster follow-up, booking, reviews, and AI front desk support.",
+  },
+  civiveOsOffer: {
+    title: "Civive OS Offer | Plans for Lead Response and AI Front Desk",
+    description:
+      "Civive OS plans for service businesses that need cleaner lead capture, missed-call recovery, booking, reviews, follow-up, and AI front desk support.",
   },
   industries: {
     title: "Industries for AI Search Visibility | Civive Unlimited",
@@ -497,11 +506,6 @@ export const pageMeta = {
     title: "AI Receptionist for Service Businesses | Civive Unlimited",
     description:
       "AI receptionist systems for service businesses that need to capture and route leads after search visibility brings the right buyer in.",
-  },
-  platform: {
-    title: "Civive Growth OS | White-Label Business Software",
-    description:
-      "Civive Growth OS gives service businesses a branded CRM, inbox, calendar, missed-call recovery, follow-up, reviews, checkout-ready SaaS plans, and an AI front-desk upgrade path.",
   },
 };
 

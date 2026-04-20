@@ -37,6 +37,18 @@ export const prerenderRoutes: PrerenderRoute[] = [
     schemaKind: "service",
     serviceName: "AI Search Visibility System",
   },
+  {
+    path: "/civive-os",
+    ...pageMeta.civiveOs,
+    schemaKind: "service",
+    serviceName: "Civive OS",
+  },
+  {
+    path: "/civive-os-offer",
+    ...pageMeta.civiveOsOffer,
+    schemaKind: "service",
+    serviceName: "Civive OS Plans",
+  },
   { path: "/industries", ...pageMeta.industries },
   ...industries.map((industry) => ({
     path: `/industries/${industry.slug}`,
@@ -65,12 +77,6 @@ export const prerenderRoutes: PrerenderRoute[] = [
     ...pageMeta.receptionist,
     schemaKind: "service",
     serviceName: "AI Receptionist for Service Businesses",
-  },
-  {
-    path: "/platform",
-    ...pageMeta.platform,
-    schemaKind: "service",
-    serviceName: "Civive Growth OS",
   },
   { path: "/privacy", ...legalMeta.privacy },
   { path: "/terms", ...legalMeta.terms },

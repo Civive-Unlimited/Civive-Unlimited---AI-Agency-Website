@@ -102,7 +102,10 @@ I want top-tier work, clean thinking, no slop, and no excuses.
   - Run package commands from the repo root. Vite serves from the `client` root via `vite.config.ts`; do not `cd client` unless a task explicitly needs that context.
   - `pnpm run dev` starts Vite with `--host` from the `client` app root. Default local target is usually `http://localhost:3000`, but `strictPort` is `false`, so confirm the actual port from the server output if 3000 is occupied.
   - `pnpm run check` runs `tsc --noEmit`.
-  - `pnpm run build` runs the production Vite build.
+  - `pnpm run build` runs the full production build: client Vite build, SSR bundle, then `scripts/prerender.mjs`.
+  - `pnpm run build:client` runs only the client Vite build.
+  - `pnpm run build:ssr` builds `src/entry-server.tsx` into `dist/ssr`.
+  - `pnpm run prerender` renders the configured routes into `dist/public`.
   - `pnpm run preview` runs `vite preview --host`.
   - For local build verification, prefer `pnpm run preview -- --host 127.0.0.1 --port 4173` so the served build is pinned to a known loopback address and port.
   - `pnpm run format` runs `prettier --write .`.
@@ -111,8 +114,8 @@ I want top-tier work, clean thinking, no slop, and no excuses.
   - TODO: There is no tracked repo test script/config yet; `vitest` is installed but not wired into committed project tests.
 - Deployment/build contract:
   - Vercel installs with `pnpm install` and builds with `pnpm run build`.
-  - Build output is `dist/public`.
-  - `vercel.json` rewrites all routes to `/index.html`, so preserve SPA routing behavior.
+  - Vercel serves `dist/public`; the build also creates `dist/ssr` as an intermediate prerender artifact.
+  - `scripts/prerender.mjs` injects route-specific HTML, canonical/OG/Twitter metadata, and schema into prerendered pages; preserve this SEO/AI-search contract when changing routes or head metadata.
   - Vite reads env files from the repo root via `envDir`; keep `.env` and related env files at the project root, not under `client/`.
   - Vite aliases `@` to `client/src`, `@shared` to `shared`, and `@assets` to `attached_assets`; preserve those imports when moving files.
 - Repo conventions:

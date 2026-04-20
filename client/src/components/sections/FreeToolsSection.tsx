@@ -49,10 +49,10 @@ export default function FreeToolsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">Not Ready Yet? Start Here.</span>
           </h2>
-          <p className="text-muted-foreground font-['Space_Grotesk'] text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Free tools to help you understand where you stand and what's possible.
           </p>
         </motion.div>
@@ -71,21 +71,21 @@ export default function FreeToolsSection() {
                 <tool.icon className="w-7 h-7 text-[oklch(0.75_0.18_220)]" />
               </div>
 
-              <h3 className="font-['Syne'] text-xl font-bold text-foreground mb-3">
+              <h3 className="text-xl font-bold text-foreground mb-3">
                 {tool.title}
               </h3>
 
-              <p className="font-['Space_Grotesk'] text-muted-foreground text-sm leading-relaxed mb-4">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 {tool.description}
               </p>
 
-              <p className="font-['Space_Grotesk'] text-[oklch(0.55_0.25_300)] text-sm font-semibold mb-6">
+              <p className="text-[oklch(0.55_0.25_300)] text-sm font-semibold mb-6">
                 {tool.highlight}
               </p>
 
               <Button
                 onClick={() => handleToolClick(tool.title)}
-                className="w-full magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold group"
+                className="w-full magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-semibold group"
               >
                 {tool.cta}
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

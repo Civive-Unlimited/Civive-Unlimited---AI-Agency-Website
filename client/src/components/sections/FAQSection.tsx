@@ -18,7 +18,7 @@ export default function FAQSection() {
       <div className="absolute inset-x-0 top-14 h-px opacity-28 homepage-circuit-line" />
       <div className="container relative z-10 mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={false}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-3xl text-center"
@@ -40,7 +40,7 @@ export default function FAQSection() {
             return (
               <motion.div
                 key={faq.question}
-                initial={{ opacity: 0, y: 16 }}
+                initial={false}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.45, delay: 0.08 + index * 0.04 }}
                 className={isOpen ? "bg-[linear-gradient(180deg,rgba(18,12,28,0.1),rgba(10,12,20,0.02))]" : ""}
@@ -83,7 +83,7 @@ export default function FAQSection() {
         </div>
 
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={false}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.45, delay: 0.28 }}
           className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
@@ -94,7 +94,7 @@ export default function FAQSection() {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={false}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.45, delay: 0.32 }}
           className="mt-8 text-center"

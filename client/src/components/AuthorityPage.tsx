@@ -45,17 +45,17 @@ export function PageHero({
     <section className="relative overflow-hidden border-b border-white/[0.08] py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="grid gap-12 lg:grid-cols-[0.92fr_0.68fr] lg:items-end lg:gap-16"
         >
           <div className="max-w-4xl">
-            <p className="homepage-eyebrow">{eyebrow}</p>
-            <h1 className="mt-6 max-w-[58rem] text-4xl font-semibold leading-[1.03] text-white sm:text-5xl md:text-6xl lg:text-[4.8rem]">
+            <p className="homepage-eyebrow digital-accent">{eyebrow}</p>
+            <h1 className="hero-tech-title mt-6 max-w-[58rem] text-[1.5rem] leading-[1.24] text-white sm:text-[2rem] md:text-[2.45rem] lg:text-[2.75rem]">
               {title}
             </h1>
-            <p className="mt-7 max-w-2xl text-base leading-8 text-white/66 sm:text-lg">
+            <p className="hero-support-copy mt-7 max-w-2xl text-base leading-8 text-white/70 sm:text-lg">
               {copy}
             </p>
             {(primaryCta || secondaryCta) && (

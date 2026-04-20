@@ -54,12 +54,12 @@ export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyMod
             </div>
 
             {/* Headline */}
-            <h2 className="font-['Syne'] text-2xl sm:text-3xl font-bold text-center mb-3">
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-3">
               <span className="gradient-text">See Who You Are Competing Against</span>
             </h2>
 
             {/* Body */}
-            <p className="font-['Space_Grotesk'] text-muted-foreground text-center text-sm mb-6 leading-relaxed">
+            <p className="text-muted-foreground text-center text-sm mb-6 leading-relaxed">
               Our AI scans your local market to reveal exactly where your competitors are stealing your leads. Enter your details to generate the report.
             </p>
 
@@ -73,7 +73,7 @@ export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyMod
               <input type="hidden" name="formId" value="competitor-spy-report" />
 
               <div>
-                <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-1.5 block">
+                <label className="text-sm text-muted-foreground mb-1.5 block">
                   Your Name
                 </label>
                 <input
@@ -81,12 +81,12 @@ export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyMod
                   name="name"
                   required
                   placeholder="John Smith"
-                  className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border/50 focus:border-[oklch(0.75_0.18_220)] focus:outline-none focus:ring-1 focus:ring-[oklch(0.75_0.18_220)] text-foreground font-['Space_Grotesk'] text-sm transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border/50 focus:border-[oklch(0.75_0.18_220)] focus:outline-none focus:ring-1 focus:ring-[oklch(0.75_0.18_220)] text-foreground text-sm transition-colors"
                 />
               </div>
 
               <div>
-                <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-1.5 block">
+                <label className="text-sm text-muted-foreground mb-1.5 block">
                   Business Name
                 </label>
                 <input
@@ -94,13 +94,13 @@ export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyMod
                   name="business_name"
                   required
                   placeholder="Smith's HVAC"
-                  className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border/50 focus:border-[oklch(0.75_0.18_220)] focus:outline-none focus:ring-1 focus:ring-[oklch(0.75_0.18_220)] text-foreground font-['Space_Grotesk'] text-sm transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border/50 focus:border-[oklch(0.75_0.18_220)] focus:outline-none focus:ring-1 focus:ring-[oklch(0.75_0.18_220)] text-foreground text-sm transition-colors"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-1.5 block">
+                  <label className="text-sm text-muted-foreground mb-1.5 block">
                     Email
                   </label>
                   <input
@@ -108,11 +108,11 @@ export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyMod
                     name="email"
                     required
                     placeholder="john@smithshvac.com"
-                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border/50 focus:border-[oklch(0.75_0.18_220)] focus:outline-none focus:ring-1 focus:ring-[oklch(0.75_0.18_220)] text-foreground font-['Space_Grotesk'] text-sm transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border/50 focus:border-[oklch(0.75_0.18_220)] focus:outline-none focus:ring-1 focus:ring-[oklch(0.75_0.18_220)] text-foreground text-sm transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-1.5 block">
+                  <label className="text-sm text-muted-foreground mb-1.5 block">
                     Phone
                   </label>
                   <input
@@ -120,13 +120,13 @@ export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyMod
                     name="phone"
                     required
                     placeholder="(555) 123-4567"
-                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border/50 focus:border-[oklch(0.75_0.18_220)] focus:outline-none focus:ring-1 focus:ring-[oklch(0.75_0.18_220)] text-foreground font-['Space_Grotesk'] text-sm transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border/50 focus:border-[oklch(0.75_0.18_220)] focus:outline-none focus:ring-1 focus:ring-[oklch(0.75_0.18_220)] text-foreground text-sm transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="font-['Space_Grotesk'] text-sm text-muted-foreground mb-1.5 block">
+                <label className="text-sm text-muted-foreground mb-1.5 block">
                   Business Address <span className="text-[oklch(0.55_0.25_300)]">(Required for Local Scan)</span>
                 </label>
                 <input
@@ -134,13 +134,13 @@ export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyMod
                   name="address"
                   required
                   placeholder="123 Main St, Springfield, MO 65802"
-                  className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border/50 focus:border-[oklch(0.75_0.18_220)] focus:outline-none focus:ring-1 focus:ring-[oklch(0.75_0.18_220)] text-foreground font-['Space_Grotesk'] text-sm transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-background/50 border border-border/50 focus:border-[oklch(0.75_0.18_220)] focus:outline-none focus:ring-1 focus:ring-[oklch(0.75_0.18_220)] text-foreground text-sm transition-colors"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-['Space_Grotesk'] font-semibold py-4 text-base rounded-lg transition-all flex items-center justify-center gap-2"
+                className="w-full magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-semibold py-4 text-base rounded-lg transition-all flex items-center justify-center gap-2"
               >
                 <Radar className="w-5 h-5" />
                 Generate My Competitor Report
@@ -150,7 +150,7 @@ export default function CompetitorSpyModal({ isOpen, onClose }: CompetitorSpyMod
             {/* Trust */}
             <div className="flex items-center justify-center gap-2 mt-4">
               <Shield className="w-4 h-4 text-muted-foreground" />
-              <span className="font-['Space_Grotesk'] text-xs text-muted-foreground">
+              <span className="text-xs text-muted-foreground">
                 Your data is secure. We never share your information.
               </span>
             </div>
