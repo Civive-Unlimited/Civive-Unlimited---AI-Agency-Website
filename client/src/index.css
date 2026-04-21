@@ -517,3 +517,33 @@ a {
     opacity: 0;
   }
 }
+
+@media print {
+  @page {
+    margin: 0.45in;
+    size: letter;
+  }
+
+  html,
+  body {
+    background: #05060a !important;
+  }
+
+  nav,
+  footer,
+  .prospecting-report-actions {
+    display: none !important;
+  }
+
+  .prospecting-report-page {
+    padding-top: 0 !important;
+    color-adjust: exact;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .prospecting-print-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

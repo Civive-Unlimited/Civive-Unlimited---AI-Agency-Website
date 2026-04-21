@@ -10,6 +10,7 @@ import FAQPage from "@/pages/FAQPage";
 import IndustriesPage from "@/pages/IndustriesPage";
 import IndustryPage from "@/pages/IndustryPage";
 import NotFound from "@/pages/NotFound";
+import ProspectingReportPage from "@/pages/ProspectingReportPage";
 import ResourcesPage from "@/pages/ResourcesPage";
 import VisibilitySystemPage from "@/pages/VisibilitySystemPage";
 import { Route, Switch } from "wouter";
@@ -27,6 +28,7 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/ai-search-audit"} component={AuditPage} />
+      <Route path={"/prospecting-report"} component={ProspectingReportPage} />
       <Route path={"/visibility-system"} component={VisibilitySystemPage} />
       <Route path={"/industries"} component={IndustriesPage} />
       <Route path={"/industries/:slug"}>

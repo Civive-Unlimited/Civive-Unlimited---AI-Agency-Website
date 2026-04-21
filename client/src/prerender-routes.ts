@@ -32,6 +32,12 @@ export const prerenderRoutes: PrerenderRoute[] = [
     serviceName: site.primaryOffer,
   },
   {
+    path: "/prospecting-report",
+    ...pageMeta.prospectingReport,
+    schemaKind: "service",
+    serviceName: "AI Search Prospecting Report",
+  },
+  {
     path: "/visibility-system",
     ...pageMeta.system,
     schemaKind: "service",

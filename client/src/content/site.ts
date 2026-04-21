@@ -462,6 +462,11 @@ export const pageMeta = {
     description:
       "A practical audit for local businesses that need clearer website, Google profile, review, FAQ, schema, and lead capture signals for AI search visibility.",
   },
+  prospectingReport: {
+    title: "AI Search Prospecting Report | Civive Unlimited",
+    description:
+      "A polished prospecting report template that shows local businesses how AI search, local search, maps, reviews, schema, and lead-capture signals affect recommendation readiness.",
+  },
   system: {
     title: "AI Search Visibility System | Civive Unlimited",
     description:
