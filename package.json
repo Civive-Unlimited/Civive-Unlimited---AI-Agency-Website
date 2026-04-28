@@ -14,6 +14,8 @@
     "audit:seo-guardrails": "node scripts/audit-seo-guardrails.mjs",
     "audit:seo-live": "node scripts/audit-live-seo-smoke.mjs",
     "audit:lead-contract": "node scripts/lead-api-contract-smoke.mjs",
+    "submit:indexnow": "node scripts/submit-indexnow.mjs",
+    "submit:indexnow:dry": "node scripts/submit-indexnow.mjs --dry-run --skip-key-check",
     "release:seo": "pnpm run build && pnpm run audit:ai-search && pnpm run audit:seo-guardrails && pnpm run audit:lead-contract",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
