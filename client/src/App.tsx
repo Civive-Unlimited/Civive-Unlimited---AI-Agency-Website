@@ -11,6 +11,7 @@ import IndustriesPage from "@/pages/IndustriesPage";
 import IndustryPage from "@/pages/IndustryPage";
 import NotFound from "@/pages/NotFound";
 import ProspectingReportPage from "@/pages/ProspectingReportPage";
+import ResourceArticlePage from "@/pages/ResourceArticlePage";
 import ResourcesPage from "@/pages/ResourcesPage";
 import VisibilitySystemPage from "@/pages/VisibilitySystemPage";
 import { Route, Switch } from "wouter";
@@ -32,9 +33,12 @@ function Router() {
       <Route path={"/visibility-system"} component={VisibilitySystemPage} />
       <Route path={"/industries"} component={IndustriesPage} />
       <Route path={"/industries/:slug"}>
-        {(params) => <IndustryPage slug={params.slug} />}
+        {params => <IndustryPage slug={params.slug} />}
       </Route>
       <Route path={"/faq"} component={FAQPage} />
+      <Route path={"/resources/:slug"}>
+        {params => <ResourceArticlePage slug={params.slug} />}
+      </Route>
       <Route path={"/resources"} component={ResourcesPage} />
       <Route path={"/build-in-public"} component={BuildInPublicPage} />
       <Route path={"/civive-os"} component={CiviveOSPage} />

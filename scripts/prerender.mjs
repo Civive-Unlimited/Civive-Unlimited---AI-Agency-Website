@@ -6,10 +6,18 @@ const projectRoot = process.cwd();
 const publicDir = path.join(projectRoot, "dist", "public");
 const ssrEntry = path.join(projectRoot, "dist", "ssr", "entry-server.js");
 const templatePath = path.join(publicDir, "index.html");
-const siteDomain = "https://www.civiveunlimited.com";
-const sitePhoneE164 = "+14173862441";
-const defaultImageUrl = `${siteDomain}/og-image.jpg`;
-const defaultLastModified = "2026-04-20";
+const {
+  buildAssetUrl,
+  buildCanonicalUrl,
+  render,
+  prerenderRoutes,
+  seoConfig,
+  topicalPages,
+} = await import(pathToFileURL(ssrEntry));
+
+const siteDomain = seoConfig.canonicalDomain;
+const defaultImageUrl = buildAssetUrl(seoConfig.defaultOgImagePath);
+const defaultLogoUrl = buildAssetUrl(seoConfig.defaultLogoPath);
 
 const managedHeadPatterns = [
   /<title>.*?<\/title>\s*/is,
@@ -39,17 +47,19 @@ function escapeHtml(value) {
 }
 
 function absoluteUrl(routePath) {
-  return `${siteDomain}${routePath === "/" ? "" : routePath}`;
+  return buildCanonicalUrl(routePath);
 }
 
 function stripBrand(title) {
-  return title.replace(/\s*\|\s*Civive Unlimited\s*$/i, "").trim();
+  return title
+    .replace(new RegExp(`\\s*\\|\\s*${seoConfig.brandName}\\s*$`, "i"), "")
+    .trim();
 }
 
 function readableSegment(segment) {
   return segment
     .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 }
 
@@ -65,7 +75,10 @@ function buildBreadcrumbItems(route) {
   segments.forEach((segment, index) => {
     currentPath += `/${segment}`;
     items.push({
-      name: index === segments.length - 1 ? stripBrand(route.title) : readableSegment(segment),
+      name:
+        index === segments.length - 1
+          ? stripBrand(route.title)
+          : readableSegment(segment),
       item: absoluteUrl(currentPath),
     });
   });
@@ -79,10 +92,7 @@ function routeOutputPaths(routePath) {
   }
 
   const cleanPath = routePath.replace(/^\//, "");
-  return [
-    path.join(publicDir, cleanPath, "index.html"),
-    path.join(publicDir, `${cleanPath}.html`),
-  ];
+  return [path.join(publicDir, cleanPath, "index.html")];
 }
 
 function buildSchema(route) {
@@ -93,9 +103,10 @@ function buildSchema(route) {
   const breadcrumbId = `${url}#breadcrumb`;
   const serviceId = `${url}#service`;
   const articleId = `${url}#article`;
+  const itemListId = `${url}#itemlist`;
   const breadcrumbItems = buildBreadcrumbItems(route);
   const faqMainEntity = route.faqItems?.length
-    ? route.faqItems.map((faq) => ({
+    ? route.faqItems.map(faq => ({
         "@type": "Question",
         name: faq.question,
         acceptedAnswer: {
@@ -106,7 +117,7 @@ function buildSchema(route) {
     : undefined;
 
   const webPage = {
-    "@type": route.schemaKind === "faq" ? "FAQPage" : "WebPage",
+    "@type": route.faqItems?.length ? ["WebPage", "FAQPage"] : "WebPage",
     "@id": webpageId,
     url,
     name: route.title,
@@ -114,7 +125,7 @@ function buildSchema(route) {
     isPartOf: { "@id": websiteId },
     publisher: { "@id": organizationId },
     inLanguage: "en-US",
-    dateModified: defaultLastModified,
+    dateModified: route.lastModified ?? seoConfig.defaultLastModified,
     primaryImageOfPage: defaultImageUrl,
   };
 
@@ -126,48 +137,48 @@ function buildSchema(route) {
     webPage.mainEntity = faqMainEntity;
   }
 
+  if (route.itemList?.length) {
+    webPage.hasPart = { "@id": itemListId };
+  }
+
   const graph = [
     {
       "@type": ["Organization", "ProfessionalService"],
       "@id": organizationId,
-      name: "Civive Unlimited",
+      name: seoConfig.brandName,
       url: siteDomain,
-      email: "ceo@civiveunlimited.com",
-      telephone: sitePhoneE164,
+      email: seoConfig.email,
+      telephone: seoConfig.phoneE164,
       image: defaultImageUrl,
-      logo: defaultImageUrl,
+      logo: defaultLogoUrl,
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Springfield",
-        addressRegion: "MO",
-        addressCountry: "US",
+        addressLocality: seoConfig.location.locality,
+        addressRegion: seoConfig.location.region,
+        addressCountry: seoConfig.location.country,
       },
       areaServed: {
         "@type": "Country",
-        name: "United States",
+        name: seoConfig.areaServed,
       },
       contactPoint: {
         "@type": "ContactPoint",
-        telephone: "+14173862441",
-        email: "ceo@civiveunlimited.com",
+        telephone: seoConfig.phoneE164,
+        email: seoConfig.email,
         contactType: "sales",
         areaServed: "US",
         availableLanguage: "English",
       },
-      knowsAbout: [
-        "AI search visibility",
-        "answer engine optimization",
-        "AI receptionist systems",
-        "lead capture automation",
-        "schema markup",
-        "local service business growth systems",
-      ],
+      knowsAbout: seoConfig.knowsAbout,
+      ...(seoConfig.socialProfiles.length
+        ? { sameAs: seoConfig.socialProfiles }
+        : {}),
     },
     {
       "@type": "WebSite",
       "@id": websiteId,
       url: siteDomain,
-      name: "Civive Unlimited",
+      name: seoConfig.brandName,
       publisher: { "@id": organizationId },
       inLanguage: "en-US",
     },
@@ -187,8 +198,28 @@ function buildSchema(route) {
     });
   }
 
-  if ((route.schemaKind === "service" || route.schemaKind === "industry") && route.serviceName) {
+  if (route.itemList?.length) {
     graph.push({
+      "@type": "ItemList",
+      "@id": itemListId,
+      name: `${stripBrand(route.title)} list`,
+      numberOfItems: route.itemList.length,
+      itemListOrder: "https://schema.org/ItemListUnordered",
+      itemListElement: route.itemList.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        description: item.description,
+        url: absoluteUrl(item.path),
+      })),
+    });
+  }
+
+  if (
+    (route.schemaKind === "service" || route.schemaKind === "industry") &&
+    route.serviceName
+  ) {
+    const serviceSchema = {
       "@type": "Service",
       "@id": serviceId,
       name: route.serviceName,
@@ -204,11 +235,40 @@ function buildSchema(route) {
         audienceType: "local service businesses",
       },
       mainEntityOfPage: { "@id": webpageId },
-    });
+    };
+
+    if (route.offerCatalog?.length) {
+      serviceSchema.hasOfferCatalog = {
+        "@type": "OfferCatalog",
+        name: `${route.serviceName} offers`,
+        itemListElement: route.offerCatalog.map((offer, index) => ({
+          "@type": "Offer",
+          position: index + 1,
+          name: offer.name,
+          price: offer.price,
+          priceCurrency: offer.priceCurrency || "USD",
+          url: offer.url,
+          availability: "https://schema.org/InStock",
+          itemOffered: {
+            "@type": "Service",
+            name: offer.name,
+            description: offer.description,
+            provider: { "@id": organizationId },
+          },
+        })),
+      };
+    }
+
+    graph.push(serviceSchema);
   }
 
-  if (route.type === "article") {
-    webPage.mainEntity = { "@id": articleId };
+  if (route.schemaKind === "article") {
+    if (faqMainEntity) {
+      webPage.hasPart = { "@id": articleId };
+    } else {
+      webPage.mainEntity = { "@id": articleId };
+    }
+
     graph.push({
       "@type": "Article",
       "@id": articleId,
@@ -218,8 +278,11 @@ function buildSchema(route) {
       author: { "@id": organizationId },
       publisher: { "@id": organizationId },
       mainEntityOfPage: { "@id": webpageId },
-      datePublished: "2026-04-17",
-      dateModified: defaultLastModified,
+      datePublished:
+        route.datePublished ??
+        route.lastModified ??
+        seoConfig.defaultLastModified,
+      dateModified: route.lastModified ?? seoConfig.defaultLastModified,
       inLanguage: "en-US",
     });
   }
@@ -232,48 +295,70 @@ function buildSchema(route) {
 
 function buildManagedHead(route) {
   const url = absoluteUrl(route.path);
-  const schema = JSON.stringify(buildSchema(route)).replaceAll("</script", "<\\/script");
+  const imageUrl = buildAssetUrl(
+    route.imagePath ?? seoConfig.defaultOgImagePath
+  );
+  const schema = JSON.stringify(buildSchema(route)).replaceAll(
+    "</script",
+    "<\\/script"
+  );
 
   return [
     `    <title>${escapeHtml(route.title)}</title>`,
     `    <meta name="description" content="${escapeHtml(route.description)}" />`,
-    '    <meta name="keywords" content="AI search visibility, AI Search Readiness Audit, ChatGPT business recommendations, answer engine optimization, Google Business Profile alignment, FAQ schema, LocalBusiness schema, service business marketing" />',
-    '    <meta name="robots" content="index, follow, max-image-preview:large" />',
+    `    <meta name="robots" content="${escapeHtml(route.robots ?? seoConfig.defaultRobots)}" />`,
     `    <link rel="canonical" href="${escapeHtml(url)}" />`,
     `    <meta property="og:title" content="${escapeHtml(route.title)}" />`,
     `    <meta property="og:description" content="${escapeHtml(route.description)}" />`,
     `    <meta property="og:type" content="${route.type === "article" ? "article" : "website"}" />`,
     `    <meta property="og:url" content="${escapeHtml(url)}" />`,
-    '    <meta property="og:site_name" content="Civive Unlimited" />',
-    `    <meta property="og:image" content="${defaultImageUrl}" />`,
+    `    <meta property="og:site_name" content="${escapeHtml(seoConfig.brandName)}" />`,
+    `    <meta property="og:image" content="${imageUrl}" />`,
     '    <meta name="twitter:card" content="summary_large_image" />',
     `    <meta name="twitter:title" content="${escapeHtml(route.title)}" />`,
     `    <meta name="twitter:description" content="${escapeHtml(route.description)}" />`,
-    `    <meta name="twitter:image" content="${defaultImageUrl}" />`,
+    `    <meta name="twitter:image" content="${imageUrl}" />`,
     `    <script type="application/ld+json" data-prerender-schema>${schema}</script>`,
   ].join("\n");
 }
 
 function injectHead(template, route) {
-  const cleaned = managedHeadPatterns.reduce((html, pattern) => html.replace(pattern, ""), template);
+  const cleaned = managedHeadPatterns.reduce(
+    (html, pattern) => html.replace(pattern, ""),
+    template
+  );
   return cleaned.replace("</head>", `${buildManagedHead(route)}\n  </head>`);
 }
 
 function injectApp(template, appHtml) {
-  return template.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`);
+  return template.replace(
+    '<div id="root"></div>',
+    `<div id="root">${appHtml}</div>`
+  );
 }
 
 function sitemapPriority(route) {
   if (route.path === "/") return "1.0";
   if (route.path === "/ai-search-audit") return "0.9";
-  if (["/visibility-system", "/civive-os", "/civive-os-offer", "/industries"].includes(route.path)) return "0.85";
+  if (
+    [
+      "/visibility-system",
+      "/civive-os",
+      "/civive-os-offer",
+      "/industries",
+    ].includes(route.path)
+  )
+    return "0.85";
   if (route.path.startsWith("/industries/")) return "0.7";
   if (["/privacy", "/terms"].includes(route.path)) return "0.3";
   return "0.75";
 }
 
 function sitemapChangefreq(route) {
-  if (route.path.startsWith("/industries/") || ["/contact", "/ai-receptionist"].includes(route.path)) {
+  if (
+    route.path.startsWith("/industries/") ||
+    ["/contact", "/ai-receptionist"].includes(route.path)
+  ) {
     return "monthly";
   }
   if (["/privacy", "/terms"].includes(route.path)) {
@@ -283,30 +368,121 @@ function sitemapChangefreq(route) {
 }
 
 async function writeCrawlFiles(routes) {
+  const llmsPages = topicalPages.filter(page => page.includeInLlms !== false);
   const sitemap = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...routes.map((route) =>
+    ...routes.map(route =>
       [
         "  <url>",
         `    <loc>${escapeHtml(absoluteUrl(route.path))}</loc>`,
-        `    <lastmod>${defaultLastModified}</lastmod>`,
+        `    <lastmod>${route.lastModified ?? seoConfig.defaultLastModified}</lastmod>`,
         `    <changefreq>${sitemapChangefreq(route)}</changefreq>`,
         `    <priority>${sitemapPriority(route)}</priority>`,
         "  </url>",
-      ].join("\n"),
+      ].join("\n")
     ),
     "</urlset>",
     "",
   ].join("\n");
 
-  const robots = ["User-agent: *", "Allow: /", "", `Sitemap: ${siteDomain}/sitemap.xml`, ""].join("\n");
+  const robots = [
+    "User-agent: *",
+    "Allow: /",
+    "",
+    "User-agent: Googlebot",
+    "Allow: /",
+    "",
+    "User-agent: Google-Extended",
+    "Allow: /",
+    "",
+    "User-agent: GoogleOther",
+    "Allow: /",
+    "",
+    "User-agent: Bingbot",
+    "Allow: /",
+    "",
+    "User-agent: Applebot",
+    "Allow: /",
+    "",
+    "User-agent: Applebot-Extended",
+    "Allow: /",
+    "",
+    "User-agent: OAI-SearchBot",
+    "Allow: /",
+    "",
+    "User-agent: ChatGPT-User",
+    "Allow: /",
+    "",
+    "User-agent: GPTBot",
+    "Allow: /",
+    "",
+    "User-agent: PerplexityBot",
+    "Allow: /",
+    "",
+    "User-agent: ClaudeBot",
+    "Allow: /",
+    "",
+    "User-agent: Claude-SearchBot",
+    "Allow: /",
+    "",
+    "User-agent: CCBot",
+    "Allow: /",
+    "",
+    `Sitemap: ${siteDomain}/sitemap.xml`,
+    "",
+  ].join("\n");
+
+  const llms = [
+    "# Civive Unlimited",
+    "",
+    `> ${seoConfig.defaultDescription}.`,
+    "",
+    `Website: ${siteDomain}`,
+    `Canonical domain: ${siteDomain}`,
+    `Business: ${seoConfig.brandName}`,
+    `Location: ${seoConfig.location.label}`,
+    `Phone: ${seoConfig.phone}`,
+    `Email: ${seoConfig.email}`,
+    `Area served: ${seoConfig.areaServed}`,
+    `Last updated: ${seoConfig.defaultLastModified}`,
+    "",
+    "## What Civive Does",
+    "",
+    "Civive Unlimited helps local service businesses become easier for Google, AI search engines, answer engines, and buyers to understand, trust, contact, and follow up with.",
+    "",
+    "Primary offer: AI Search Readiness Audit.",
+    "Secondary systems: AI search visibility cleanup, service and location signal cleanup, AI receptionist, lead capture, booking, CRM handoff, follow-up automation, and Civive OS.",
+    "",
+    "## Best Pages To Understand The Offer",
+    "",
+    ...llmsPages.map(page =>
+      [
+        `- ${page.title}: ${absoluteUrl(page.path)}`,
+        `  - Page type: ${page.pageType}`,
+        `  - Search intent: ${page.searchIntent}`,
+        `  - Topical role: ${page.topicalRole}`,
+        `  - Conversion goal: ${page.conversionGoal}`,
+      ].join("\n")
+    ),
+    "",
+    "## Crawling And Citation Guidance",
+    "",
+    "- Prefer the canonical www URLs listed above.",
+    "- Use the homepage for brand/entity context.",
+    "- Use /ai-search-audit for the primary commercial offer.",
+    "- Use /visibility-system for the implementation framework.",
+    "- Use /industries and industry subpages for vertical-specific AI search visibility context.",
+    "- Use /resources and /build-in-public for educational and proof-of-work context.",
+    "- Do not infer fake reviews, awards, clients, ratings, case studies, or locations that are not visible on the site.",
+    "",
+  ].join("\n");
 
   await fs.writeFile(path.join(publicDir, "sitemap.xml"), sitemap);
   await fs.writeFile(path.join(publicDir, "robots.txt"), robots);
+  await fs.writeFile(path.join(publicDir, "llms.txt"), llms);
 }
 
-const { render, prerenderRoutes } = await import(pathToFileURL(ssrEntry));
 const template = await fs.readFile(templatePath, "utf8");
 
 for (const route of prerenderRoutes) {

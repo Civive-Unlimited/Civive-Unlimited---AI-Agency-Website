@@ -29,19 +29,6 @@ const scanSignals = [
   { label: "FAQ + schema", status: "Missing answer structure", score: "41" },
 ];
 
-const scrollToId = (id: string) => {
-  const element = document.getElementById(id);
-  if (!element) return;
-
-  const navOffset = 88;
-  const top = element.getBoundingClientRect().top + window.scrollY - navOffset;
-
-  window.scrollTo({
-    top,
-    behavior: "smooth",
-  });
-};
-
 export default function HeroSection() {
   return (
     <section
@@ -85,9 +72,13 @@ export default function HeroSection() {
                 className="hero-tech-title text-[1.45rem] leading-[1.22] text-white sm:text-[2.05rem] md:text-[2.5rem] lg:text-[2.85rem] xl:text-[3.05rem]"
               >
                 <span className="block">Your next customer</span>
-                <span className="hero-tech-accent block text-[#19c2ff]">asked ChatGPT</span>
+                <span className="hero-tech-accent block text-[#19c2ff]">
+                  asked ChatGPT
+                </span>
                 <span className="block">who to call.</span>
-                <span className="hero-tech-accent block text-white/42">Did it name you?</span>
+                <span className="hero-tech-accent block text-white/42">
+                  Did it name you?
+                </span>
               </motion.h1>
             </div>
 
@@ -109,21 +100,21 @@ export default function HeroSection() {
               transition={{ duration: 0.55, delay: 0.3 }}
               className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center"
             >
-              <button
-                onClick={() => scrollToId("contact")}
+              <a
+                href="/ai-search-audit"
                 className="homepage-primary-button inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-medium text-white transition-transform duration-200 hover:-translate-y-0.5 sm:w-auto"
               >
                 <Search className="h-4.5 w-4.5" />
                 Get AI Search Audit
-              </button>
+              </a>
 
-              <button
-                onClick={() => scrollToId("audit-checks")}
+              <a
+                href="/visibility-system"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full px-2 py-4 text-base font-medium text-white/72 transition-colors hover:text-white sm:w-auto"
               >
-                See what AI checks
+                See the visibility system
                 <ArrowRight className="h-4.5 w-4.5" />
-              </button>
+              </a>
             </motion.div>
 
             <motion.div
@@ -133,7 +124,10 @@ export default function HeroSection() {
               className="mt-10 grid max-w-[35rem] gap-x-8 gap-y-4 sm:grid-cols-2"
             >
               {trustItems.map((item, index) => (
-                <div key={item} className="flex items-center gap-3 text-sm text-white/68">
+                <div
+                  key={item}
+                  className="flex items-center gap-3 text-sm text-white/68"
+                >
                   <span
                     className={`h-1.5 w-1.5 rounded-full ${
                       index % 2 === 0 ? "bg-[#49b4ff]" : "bg-[#9b6cff]"
@@ -156,7 +150,9 @@ export default function HeroSection() {
               <div className="relative z-10">
                 <div className="flex items-center justify-between gap-5">
                   <div>
-                    <p className="homepage-eyebrow digital-accent">Live audit model</p>
+                    <p className="homepage-eyebrow digital-accent">
+                      Live audit model
+                    </p>
                     <h2 className="mt-3 text-3xl leading-none text-white xl:text-4xl">
                       Can AI explain why a buyer should call?
                     </h2>
@@ -167,8 +163,11 @@ export default function HeroSection() {
                 </div>
 
                 <div className="mt-8 space-y-4">
-                  {scanSignals.map((signal) => (
-                    <div key={signal.label} className="border-t border-white/[0.08] pt-4">
+                  {scanSignals.map(signal => (
+                    <div
+                      key={signal.label}
+                      className="border-t border-white/[0.08] pt-4"
+                    >
                       <div className="flex items-start justify-between gap-4">
                         <div>
                           <p className="digital-accent text-sm text-white/78">
@@ -197,11 +196,15 @@ export default function HeroSection() {
                 <div className="mt-8 grid grid-cols-2 gap-4 border-t border-white/[0.08] pt-5">
                   <div>
                     <p className="digital-accent text-2xl text-white">9</p>
-                    <p className="mt-1 text-sm text-white/52">signals checked</p>
+                    <p className="mt-1 text-sm text-white/52">
+                      signals checked
+                    </p>
                   </div>
                   <div>
                     <p className="digital-accent text-2xl text-white">72h</p>
-                    <p className="mt-1 text-sm text-white/52">first cleanup map</p>
+                    <p className="mt-1 text-sm text-white/52">
+                      first cleanup map
+                    </p>
                   </div>
                 </div>
 

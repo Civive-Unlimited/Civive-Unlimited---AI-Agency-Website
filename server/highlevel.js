@@ -10,6 +10,7 @@ const WEBSITE_LEAD_TAGS = [
   "ai-search-audit",
   "civive-unlimited",
 ];
+const DRY_RUN_CONTACT_ID = "dry-run-contact-id";
 
 function cleanString(value, maxLength = 500) {
   if (typeof value !== "string") return "";
@@ -98,18 +99,55 @@ async function highLevelRequest(path, { method = "GET", body, token }) {
   return data;
 }
 
+function buildContactPayload(lead, config) {
+  const { firstName, lastName } = splitName(lead.fullName);
+
+  return {
+    locationId: config.locationId,
+    firstName,
+    lastName,
+    name: lead.fullName,
+    email: lead.email,
+    phone: lead.phone || undefined,
+    companyName: lead.companyName,
+    source: "Civive website - AI Search Audit",
+  };
+}
+
+function buildOpportunityPayload(contactId, lead, config) {
+  return {
+    locationId: config.locationId,
+    contactId,
+    pipelineId: config.pipelineId,
+    pipelineStageId: config.pipelineStageId,
+    name: `${lead.companyName} - AI Search Audit`,
+    status: "open",
+    monetaryValue: 0,
+    source: "Civive website",
+  };
+}
+
 export function validateWebsiteLead(input) {
   const lead = {
     fullName: cleanString(input.fullName || input.full_name || input.name, 120),
-    companyName: cleanString(input.companyName || input.company_name || input.business, 160),
+    companyName: cleanString(
+      input.companyName || input.company_name || input.business,
+      160
+    ),
     email: normalizeEmail(input.email),
     phone: normalizePhone(input.phone),
     website: cleanString(input.website || input.website_url, 240),
     serviceArea: cleanString(input.serviceArea || input.service_area, 180),
-    serviceInterest: cleanString(input.serviceInterest || input.service_interest, 180),
+    serviceInterest: cleanString(
+      input.serviceInterest || input.service_interest,
+      180
+    ),
     message: cleanMultiline(input.message, 1200),
     smsConsent: Boolean(input.smsConsent || input.sms_consent === "on"),
-    sourcePage: cleanString(input.sourcePage || input.source_page || input.page, 300),
+    sourcePage: cleanString(
+      input.sourcePage || input.source_page || input.page,
+      300
+    ),
     offer: cleanString(input.offer || "ai-search-readiness-audit", 120),
     honey: cleanString(input._honey || input.honey, 120),
   };
@@ -122,9 +160,12 @@ export function validateWebsiteLead(input) {
 
   if (!lead.fullName) errors.push("Full name is required.");
   if (!lead.companyName) errors.push("Business name is required.");
-  if (!lead.email || !isValidEmail(lead.email)) errors.push("A valid email is required.");
-  if (!lead.website) errors.push("Website or Google Business Profile URL is required.");
-  if (lead.smsConsent && !lead.phone) errors.push("Phone is required when SMS consent is checked.");
+  if (!lead.email || !isValidEmail(lead.email))
+    errors.push("A valid email is required.");
+  if (!lead.website)
+    errors.push("Website or Google Business Profile URL is required.");
+  if (lead.smsConsent && !lead.phone)
+    errors.push("Phone is required when SMS consent is checked.");
 
   return { lead, errors, isSpam: false };
 }
@@ -150,6 +191,23 @@ function buildLeadNote(lead) {
   }
 
   return lines.join("\n");
+}
+
+export function buildWebsiteLeadSubmissionPreview(lead, env = process.env) {
+  const config = getHighLevelConfig(env);
+
+  return {
+    locationId: config.locationId,
+    pipelineId: config.pipelineId || null,
+    pipelineStageId: config.pipelineStageId || null,
+    contactPayload: buildContactPayload(lead, config),
+    tags: [...WEBSITE_LEAD_TAGS],
+    note: buildLeadNote(lead),
+    opportunityPayload:
+      config.pipelineId && config.pipelineStageId
+        ? buildOpportunityPayload(DRY_RUN_CONTACT_ID, lead, config)
+        : null,
+  };
 }
 
 async function addContactTags(contactId, tags, token) {
@@ -178,16 +236,19 @@ async function findExistingOpportunity(contactId, config) {
     contact_id: contactId,
   });
 
-  const data = await highLevelRequest(`/opportunities/search?${params.toString()}`, {
-    method: "GET",
-    token: config.token,
-  });
+  const data = await highLevelRequest(
+    `/opportunities/search?${params.toString()}`,
+    {
+      method: "GET",
+      token: config.token,
+    }
+  );
 
   return (data?.opportunities || []).find(
-    (opportunity) =>
+    opportunity =>
       opportunity?.pipelineId === config.pipelineId &&
       opportunity?.status !== "lost" &&
-      opportunity?.status !== "abandoned",
+      opportunity?.status !== "abandoned"
   );
 }
 
@@ -204,16 +265,7 @@ async function createOpportunity(contactId, lead, config) {
   return highLevelRequest("/opportunities/", {
     method: "POST",
     token: config.token,
-    body: {
-      locationId: config.locationId,
-      contactId,
-      pipelineId: config.pipelineId,
-      pipelineStageId: config.pipelineStageId,
-      name: `${lead.companyName} - AI Search Audit`,
-      status: "open",
-      monetaryValue: 0,
-      source: "Civive website",
-    },
+    body: buildOpportunityPayload(contactId, lead, config),
   });
 }
 
@@ -225,17 +277,7 @@ export async function sendWebsiteLeadToHighLevel(lead, env = process.env) {
     throw error;
   }
 
-  const { firstName, lastName } = splitName(lead.fullName);
-  const contactPayload = {
-    locationId: config.locationId,
-    firstName,
-    lastName,
-    name: lead.fullName,
-    email: lead.email,
-    phone: lead.phone || undefined,
-    companyName: lead.companyName,
-    source: "Civive website - AI Search Audit",
-  };
+  const contactPayload = buildContactPayload(lead, config);
 
   const upsertData = await highLevelRequest("/contacts/upsert", {
     method: "POST",
@@ -250,7 +292,9 @@ export async function sendWebsiteLeadToHighLevel(lead, env = process.env) {
     upsertData?.contactId;
 
   if (!contactId) {
-    const error = new Error("HighLevel contact was created but no contact ID was returned.");
+    const error = new Error(
+      "HighLevel contact was created but no contact ID was returned."
+    );
     error.status = 502;
     error.details = upsertData;
     throw error;
@@ -264,7 +308,11 @@ export async function sendWebsiteLeadToHighLevel(lead, env = process.env) {
   };
 
   try {
-    sideEffects.tags = await addContactTags(contactId, WEBSITE_LEAD_TAGS, config.token);
+    sideEffects.tags = await addContactTags(
+      contactId,
+      WEBSITE_LEAD_TAGS,
+      config.token
+    );
   } catch (error) {
     sideEffects.warnings.push(`Tagging failed: ${error.message}`);
   }
@@ -284,7 +332,10 @@ export async function sendWebsiteLeadToHighLevel(lead, env = process.env) {
   return {
     contactId,
     locationId: config.locationId,
-    opportunityId: sideEffects.opportunity?.opportunity?.id || sideEffects.opportunity?.id || null,
+    opportunityId:
+      sideEffects.opportunity?.opportunity?.id ||
+      sideEffects.opportunity?.id ||
+      null,
     warnings: sideEffects.warnings,
   };
 }

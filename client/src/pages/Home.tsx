@@ -5,6 +5,7 @@ import ContactSection from "@/components/sections/ContactSection";
 import FAQSection from "@/components/sections/FAQSection";
 import GrowthSystemsSection from "@/components/sections/GrowthSystemsSection";
 import HeroSection from "@/components/sections/HeroSection";
+import HomeAuthorityMapSection from "@/components/sections/HomeAuthorityMapSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
 import ProofSection from "@/components/sections/ProofSection";
 import ResultsSection from "@/components/sections/ResultsSection";
@@ -22,6 +23,7 @@ export default function Home() {
         <ProofSection />
         <WhyCiviveSection />
         <GrowthSystemsSection />
+        <HomeAuthorityMapSection />
         <IndustriesSection />
         <BuildInPublicPreviewSection />
         <FAQSection />

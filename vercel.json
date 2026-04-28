@@ -2,5 +2,23 @@
   "buildCommand": "pnpm install && pnpm run build",
   "outputDirectory": "dist/public",
   "framework": "vite",
-  "installCommand": "pnpm install"
+  "installCommand": "pnpm install",
+  "redirects": [
+    {
+      "source": "/resources/ai-search-audit-examples-by-industry",
+      "destination": "https://www.civiveunlimited.com/resources/ai-search-audit-patterns-by-industry",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "civiveunlimited.com"
+        }
+      ],
+      "destination": "https://www.civiveunlimited.com/$1",
+      "permanent": true
+    }
+  ]
 }

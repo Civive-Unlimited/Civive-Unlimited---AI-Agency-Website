@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, MessageCircle, Menu, X } from "lucide-react";
 import civiveHeaderLogo from "@/assets/civive-header-logo.svg";
-import { navLinks } from "@/content/site";
+import { navLinks, site } from "@/content/site";
 
 const compactNavLabels = new Set(["FAQ", "Resources", "Build in Public"]);
-const primaryNavLinks = navLinks.filter((link) => !compactNavLabels.has(link.label));
-const moreNavLinks = navLinks.filter((link) => compactNavLabels.has(link.label));
+const primaryNavLinks = navLinks.filter(
+  link => !compactNavLabels.has(link.label)
+);
+const moreNavLinks = navLinks.filter(link => compactNavLabels.has(link.label));
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,11 +54,7 @@ export default function Navigation() {
   return (
     <>
       <motion.nav
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "border-b border-white/[0.08] bg-[linear-gradient(180deg,rgba(7,7,12,0.9),rgba(7,8,14,0.72))] py-3 backdrop-blur-md"
-            : "bg-transparent py-4"
-        }`}
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${isScrolled ? "border-b border-white/[0.08] bg-[linear-gradient(180deg,rgba(7,7,12,0.9),rgba(7,8,14,0.72))] py-3 backdrop-blur-md" : "bg-transparent py-4"}`}
         initial={false}
         animate={{ y: 0 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
@@ -66,7 +64,7 @@ export default function Navigation() {
             <a
               href="#"
               className="group flex min-w-0 items-center gap-4 lg:min-w-[18rem] xl:min-w-[19rem]"
-              onClick={(e) => {
+              onClick={e => {
                 e.preventDefault();
                 setIsMobileMenuOpen(false);
                 if (window.location.pathname === "/") {
@@ -78,18 +76,18 @@ export default function Navigation() {
             >
               <img
                 src={civiveHeaderLogo}
-                alt="Civive Unlimited"
+                alt={site.name}
                 className="h-12 w-auto max-w-[13rem] object-contain transition-transform group-hover:scale-[1.01] sm:h-14 sm:max-w-[16rem] lg:h-[4.25rem] lg:max-w-[18rem] xl:h-[4.5rem] xl:max-w-[19rem]"
                 loading="lazy"
               />
             </a>
 
             <div className="hidden items-center rounded-full border border-white/[0.09] bg-white/[0.035] p-1 shadow-[0_16px_40px_rgba(0,0,0,0.18)] backdrop-blur-md lg:flex">
-              {primaryNavLinks.map((link) => (
+              {primaryNavLinks.map(link => (
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => {
+                  onClick={e => {
                     e.preventDefault();
                     navigateTo(link.href);
                   }}
@@ -102,8 +100,10 @@ export default function Navigation() {
               <div className="relative">
                 <button
                   type="button"
-                  onClick={() => setIsMoreOpen((open) => !open)}
-                  onBlur={() => window.setTimeout(() => setIsMoreOpen(false), 120)}
+                  onClick={() => setIsMoreOpen(open => !open)}
+                  onBlur={() =>
+                    window.setTimeout(() => setIsMoreOpen(false), 120)
+                  }
                   className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium text-white/66 transition-colors hover:bg-white/[0.07] hover:text-white xl:px-4"
                   aria-haspopup="menu"
                   aria-expanded={isMoreOpen}
@@ -124,12 +124,12 @@ export default function Navigation() {
                       className="absolute right-0 top-[calc(100%+0.65rem)] w-52 overflow-hidden rounded-2xl border border-white/[0.1] bg-[rgba(9,10,18,0.96)] p-1.5 shadow-[0_24px_70px_rgba(0,0,0,0.38)] backdrop-blur-xl"
                       role="menu"
                     >
-                      {moreNavLinks.map((link) => (
+                      {moreNavLinks.map(link => (
                         <a
                           key={link.href}
                           href={link.href}
-                          onMouseDown={(e) => e.preventDefault()}
-                          onClick={(e) => {
+                          onMouseDown={e => e.preventDefault()}
+                          onClick={e => {
                             e.preventDefault();
                             navigateTo(link.href);
                           }}
@@ -156,7 +156,7 @@ export default function Navigation() {
               </button>
               <a
                 href="/contact"
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   navigateTo("/contact");
                 }}
@@ -191,7 +191,7 @@ export default function Navigation() {
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => {
+                  onClick={e => {
                     e.preventDefault();
                     navigateTo(link.href);
                   }}
@@ -206,7 +206,7 @@ export default function Navigation() {
 
               <motion.a
                 href="/contact"
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   navigateTo("/contact");
                 }}

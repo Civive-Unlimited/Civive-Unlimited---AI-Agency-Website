@@ -8,83 +8,13 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useRef } from "react";
+import { civiveOsIncludedFeatures, civiveOsPlans } from "@/content/site";
 
-const checkoutLinks = {
-  launchMonthly: "https://buy.stripe.com/3cI00k5NDa7YdiWcktebu0p",
-  launchAnnual: "https://buy.stripe.com/4gMaEY5ND3JA0waesBebu0q",
-  growthMonthly: "https://buy.stripe.com/00w3cw8ZP3JAdiW709ebu0r",
-  growthAnnual: "https://buy.stripe.com/7sY4gA8ZP7ZQ0wa709ebu0s",
-  operatorMonthly: "https://buy.stripe.com/6oU14o5NDgwm6Uy709ebu0t",
-  operatorAnnual: "https://buy.stripe.com/cNi3cw7VL4NEceS1FPebu0u",
+const iconMap = {
+  calendar: CalendarCheck,
+  message: MessageSquareText,
+  bot: Bot,
 };
-
-const plans = [
-  {
-    name: "Launch",
-    icon: CalendarCheck,
-    price: "$197",
-    annual: "$1,970/year",
-    monthlyHref: checkoutLinks.launchMonthly,
-    annualHref: checkoutLinks.launchAnnual,
-    description:
-      "The clean starting point for a service business that needs missed calls, forms, conversations, and booking organized fast.",
-    bestFor: "Solo operators and small teams fixing scattered follow-up.",
-    includes: [
-      "Lead inbox, opportunities, calendar, and forms",
-      "Missed-call text back",
-      "Web chat and reputation tools",
-      "Two-way SMS and email conversations",
-      "Guided lead-response setup",
-    ],
-  },
-  {
-    name: "Growth",
-    icon: MessageSquareText,
-    price: "$297",
-    annual: "$2,970/year",
-    monthlyHref: checkoutLinks.growthMonthly,
-    annualHref: checkoutLinks.growthAnnual,
-    description:
-      "The stronger operating base for teams that need active follow-up, review movement, and a tighter handoff from lead to booked job.",
-    bestFor: "Service businesses with steady inbound leads and reputation needs.",
-    featured: true,
-    includes: [
-      "Everything in Launch",
-      "Email campaign tools",
-      "Lead response and review workflows",
-      "Unified inbox for faster handoff",
-      "Cleaner Civive OS operating base",
-    ],
-  },
-  {
-    name: "Operator",
-    icon: Bot,
-    price: "$497",
-    annual: "$4,970/year",
-    monthlyHref: checkoutLinks.operatorMonthly,
-    annualHref: checkoutLinks.operatorAnnual,
-    description:
-      "The AI-ready operating base for teams that want the system prepared for receptionist and AI employee add-ons without bundling them into the monthly software plan.",
-    bestFor: "Teams that want the foundation in place before adding paid AI employees.",
-    note: "AI receptionist and AI employees are optional add-ons. They are not included in the $497/month software plan.",
-    includes: [
-      "Everything in Growth",
-      "AI Employee add-ons available when ready",
-      "AI receptionist-ready intake foundation",
-      "Routing, qualification, and handoff fields prepared",
-      "Workflow, reporting, campaigns, and operating support",
-    ],
-  },
-];
-
-const included = [
-  "Lead capture and conversation inbox",
-  "Calendar and booking path",
-  "Opportunity tracking",
-  "Review and reputation movement",
-  "SMS and email follow-up",
-  "Civive setup guidance",
-];
 
 export default function PricingSection() {
   const ref = useRef(null);
@@ -107,9 +37,9 @@ export default function PricingSection() {
             className="lg:sticky lg:top-28 lg:self-start"
           >
             <p className="homepage-eyebrow digital-accent">Civive OS Offer</p>
-            <h1 className="hero-tech-title mt-5 max-w-xl text-[1.45rem] leading-[1.24] text-foreground sm:text-[1.9rem] md:text-[2.25rem]">
+            <h2 className="hero-tech-title mt-5 max-w-xl text-[1.45rem] leading-[1.24] text-foreground sm:text-[1.9rem] md:text-[2.25rem]">
               Civive OS plans.
-            </h1>
+            </h2>
             <p className="hero-support-copy mt-6 max-w-lg text-base leading-8 text-muted-foreground">
               Civive OS is sold as its own lead-response system. Choose the
               level of capture, follow-up, reputation, and AI front desk support
@@ -119,7 +49,7 @@ export default function PricingSection() {
             <div className="mt-10 border-y border-white/[0.08] py-6">
               <p className="homepage-eyebrow">Every plan starts with</p>
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                {included.map((item, index) => (
+                {civiveOsIncludedFeatures.map((item, index) => (
                   <motion.div
                     key={item}
                     initial={false}
@@ -144,79 +74,93 @@ export default function PricingSection() {
           </motion.div>
 
           <div className="border-y border-white/[0.08]">
-            {plans.map((plan, index) => (
-              <motion.article
-                key={plan.name}
-                initial={false}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.48, delay: 0.08 + index * 0.08 }}
-                className={`relative grid gap-7 border-b border-white/[0.08] py-8 last:border-b-0 lg:grid-cols-[0.8fr_1.05fr_0.45fr] lg:items-start lg:gap-8 ${
-                  plan.featured ? "bg-white/[0.025]" : ""
-                }`}
-              >
-                <div className="flex gap-4 px-0 lg:pl-7">
-                  <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center border border-white/[0.1] bg-white/[0.035] text-[#19c2ff]">
-                    <plan.icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <h2 className="text-2xl font-semibold text-white">Civive OS {plan.name}</h2>
-                      {plan.featured && (
-                        <span className="border border-[#19c2ff]/30 bg-[#19c2ff]/10 px-3 py-1 text-xs font-medium text-[#b9edff]">
-                          Strongest starting point
-                        </span>
+            {civiveOsPlans.map((plan, index) => {
+              const PlanIcon =
+                iconMap[plan.iconKey as keyof typeof iconMap] ?? CalendarCheck;
+
+              return (
+                <motion.article
+                  key={plan.name}
+                  initial={false}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.48, delay: 0.08 + index * 0.08 }}
+                  className={`relative grid gap-7 border-b border-white/[0.08] py-8 last:border-b-0 lg:grid-cols-[0.8fr_1.05fr_0.45fr] lg:items-start lg:gap-8 ${
+                    plan.featured ? "bg-white/[0.025]" : ""
+                  }`}
+                >
+                  <div className="flex gap-4 px-0 lg:pl-7">
+                    <div className="mt-1 flex h-11 w-11 flex-shrink-0 items-center justify-center border border-white/[0.1] bg-white/[0.035] text-[#19c2ff]">
+                      <PlanIcon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <h3 className="text-2xl font-semibold text-white">
+                          Civive OS {plan.name}
+                        </h3>
+                        {plan.featured && (
+                          <span className="border border-[#19c2ff]/30 bg-[#19c2ff]/10 px-3 py-1 text-xs font-medium text-[#b9edff]">
+                            Strongest starting point
+                          </span>
+                        )}
+                      </div>
+                      <p className="mt-4 text-sm leading-7 text-white/62">
+                        {plan.description}
+                      </p>
+                      <p className="mt-4 text-xs leading-6 text-white/44">
+                        {plan.bestFor}
+                      </p>
+                      {plan.note && (
+                        <p className="mt-4 border-l border-[#19c2ff]/40 pl-4 text-xs leading-6 text-[#b9edff]/78">
+                          {plan.note}
+                        </p>
                       )}
                     </div>
-                    <p className="mt-4 text-sm leading-7 text-white/62">{plan.description}</p>
-                    <p className="mt-4 text-xs leading-6 text-white/44">{plan.bestFor}</p>
-                    {plan.note && (
-                      <p className="mt-4 border-l border-[#19c2ff]/40 pl-4 text-xs leading-6 text-[#b9edff]/78">
-                        {plan.note}
-                      </p>
-                    )}
                   </div>
-                </div>
 
-                <div className="grid gap-2 lg:border-l lg:border-white/[0.08] lg:pl-7">
-                  {plan.includes.map((feature) => (
-                    <div key={feature} className="flex items-start gap-3 text-sm leading-6 text-white/76">
-                      <Check className="mt-1 h-4 w-4 flex-shrink-0 text-[oklch(0.65_0.20_180)]" />
-                      <span>{feature}</span>
+                  <div className="grid gap-2 lg:border-l lg:border-white/[0.08] lg:pl-7">
+                    {plan.includes.map(feature => (
+                      <div
+                        key={feature}
+                        className="flex items-start gap-3 text-sm leading-6 text-white/76"
+                      >
+                        <Check className="mt-1 h-4 w-4 flex-shrink-0 text-[oklch(0.65_0.20_180)]" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="lg:pr-7">
+                    <div className="flex flex-wrap items-end gap-x-3 gap-y-1 lg:block">
+                      <span className="text-4xl font-semibold tracking-normal text-white">
+                        {plan.price}
+                      </span>
+                      <span className="pb-1 text-sm text-muted-foreground lg:mt-1 lg:block">
+                        per month
+                      </span>
+                      <span className="pb-1 text-sm text-white/44 lg:mt-3 lg:block">
+                        {plan.annual}
+                      </span>
                     </div>
-                  ))}
-                </div>
 
-                <div className="lg:pr-7">
-                  <div className="flex flex-wrap items-end gap-x-3 gap-y-1 lg:block">
-                    <span className="text-4xl font-semibold tracking-normal text-white">
-                      {plan.price}
-                    </span>
-                    <span className="pb-1 text-sm text-muted-foreground lg:mt-1 lg:block">
-                      per month
-                    </span>
-                    <span className="pb-1 text-sm text-white/44 lg:mt-3 lg:block">
-                      {plan.annual}
-                    </span>
+                    <div className="mt-6 grid gap-3">
+                      <a
+                        href={plan.monthlyHref}
+                        className="homepage-primary-button inline-flex min-h-12 min-w-[9.5rem] items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-3 text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5"
+                      >
+                        Start monthly
+                        <ArrowRight className="h-4 w-4" />
+                      </a>
+                      <a
+                        href={plan.annualHref}
+                        className="inline-flex min-h-12 min-w-[9.5rem] items-center justify-center whitespace-nowrap rounded-full border border-white/[0.12] px-5 py-3 text-sm font-medium text-white/72 transition-colors hover:bg-white/[0.06] hover:text-white"
+                      >
+                        Start annual
+                      </a>
+                    </div>
                   </div>
-
-                  <div className="mt-6 grid gap-3">
-                    <a
-                      href={plan.monthlyHref}
-                      className="homepage-primary-button inline-flex min-h-12 min-w-[9.5rem] items-center justify-center gap-2 whitespace-nowrap rounded-full px-5 py-3 text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5"
-                    >
-                      Start monthly
-                      <ArrowRight className="h-4 w-4" />
-                    </a>
-                    <a
-                      href={plan.annualHref}
-                      className="inline-flex min-h-12 min-w-[9.5rem] items-center justify-center whitespace-nowrap rounded-full border border-white/[0.12] px-5 py-3 text-sm font-medium text-white/72 transition-colors hover:bg-white/[0.06] hover:text-white"
-                    >
-                      Start annual
-                    </a>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </div>

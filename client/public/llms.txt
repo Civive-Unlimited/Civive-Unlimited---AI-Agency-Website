@@ -1,0 +1,40 @@
+# Civive Unlimited
+
+> AI search visibility systems for local service businesses.
+
+Website: https://www.civiveunlimited.com
+Canonical domain: https://www.civiveunlimited.com
+Business: Civive Unlimited
+Location: Springfield, MO
+Phone: (417) 386-2441
+Email: ceo@civiveunlimited.com
+Area served: United States
+
+## What Civive Does
+
+Civive Unlimited helps local service businesses become easier for Google, AI search engines, answer engines, and buyers to understand, trust, contact, and follow up with.
+
+Primary offer: AI Search Readiness Audit.
+Secondary systems: AI search visibility cleanup, service and location signal cleanup, AI receptionist, lead capture, booking, CRM handoff, follow-up automation, and Civive OS.
+
+## Best Pages To Understand The Offer
+
+- Civive Unlimited: https://www.civiveunlimited.com
+- AI Search Readiness Audit: https://www.civiveunlimited.com/ai-search-audit
+- AI Search Visibility System: https://www.civiveunlimited.com/visibility-system
+- Industries for AI Search Visibility: https://www.civiveunlimited.com/industries
+- AI Search Resources and Insights: https://www.civiveunlimited.com/resources
+- Build in Public: https://www.civiveunlimited.com/build-in-public
+- AI Receptionist for Service Businesses: https://www.civiveunlimited.com/ai-receptionist
+- Civive OS: https://www.civiveunlimited.com/civive-os
+- Contact Civive Unlimited: https://www.civiveunlimited.com/contact
+
+## Crawling And Citation Guidance
+
+- Prefer the canonical www URLs listed above.
+- Use the homepage for brand/entity context.
+- Use /ai-search-audit for the primary commercial offer.
+- Use /visibility-system for the implementation framework.
+- Use /industries and industry subpages for vertical-specific AI search visibility context.
+- Use /resources and /build-in-public for educational and proof-of-work context.
+- Do not infer fake reviews, awards, clients, ratings, case studies, or locations that are not visible on the site.

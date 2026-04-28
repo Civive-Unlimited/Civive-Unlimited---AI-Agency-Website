@@ -1,12 +1,19 @@
 import {
   AuthoritySection,
   AuthorityShell,
+  EditorialList,
   PageHero,
   SectionHeader,
 } from "@/components/AuthorityPage";
 import Seo from "@/components/Seo";
-import { pageMeta } from "@/content/site";
-import { ArrowRight, Bot, CalendarCheck, MessageSquareText, PhoneIncoming } from "lucide-react";
+import { civiveOsFaqs, pageMeta } from "@/content/site";
+import {
+  ArrowRight,
+  Bot,
+  CalendarCheck,
+  MessageSquareText,
+  PhoneIncoming,
+} from "lucide-react";
 
 const operatingLayers = [
   {
@@ -76,6 +83,46 @@ const planSnapshot = [
   },
 ];
 
+const decisionPath = [
+  {
+    title: "Start with the audit when demand is unclear",
+    copy: "If the public footprint is vague, the site is thin, or the business does not know why AI or Google would recommend it, diagnose the visibility problem first.",
+    href: "/ai-search-audit",
+  },
+  {
+    title: "Use the visibility system when the public signals need cleanup",
+    copy: "The visibility system turns audit findings into pages, FAQs, internal links, schema, proof, and a cleaner route to contact.",
+    href: "/visibility-system",
+  },
+  {
+    title: "Use Civive OS when the lead path is leaking",
+    copy: "If calls, forms, chat, booking, reviews, CRM notes, or follow-up are scattered, Civive OS gives the business an operating base.",
+  },
+  {
+    title: "Layer in the AI receptionist when rules are ready",
+    copy: "Receptionist support works best after service intake, routing, escalation, calendar, and follow-up rules are clear.",
+    href: "/ai-receptionist",
+  },
+];
+
+const supportLinks = [
+  {
+    title: "AI Search Readiness Audit",
+    copy: "Diagnose whether the first bottleneck is demand, clarity, trust, or response.",
+    href: "/ai-search-audit",
+  },
+  {
+    title: "AI Search Implementation Plan",
+    copy: "Review the sequence for turning audit findings into pages, schema, proof, links, and lead systems.",
+    href: "/resources/ai-search-implementation-plan-service-businesses",
+  },
+  {
+    title: "Civive OS Pricing",
+    copy: "Compare Launch, Growth, and Operator when the business is ready to choose a plan.",
+    href: "/civive-os-offer",
+  },
+];
+
 export default function CiviveOSPage() {
   return (
     <>
@@ -83,25 +130,29 @@ export default function CiviveOSPage() {
       <AuthorityShell>
         <PageHero
           eyebrow="Civive OS"
-          title="The lead-response operating system behind the AI front desk."
-          copy="Civive OS gives a service business one clean place to catch leads, move conversations, book jobs, request reviews, and layer in AI reception when the timing is right."
-          primaryCta={{ label: "View the Civive OS offer", href: "/civive-os-offer" }}
-          secondaryCta={{ label: "Start with an audit", href: "/contact" }}
+          title="Civive OS for service businesses that need cleaner lead capture, booking, and AI front desk readiness."
+          copy="Civive OS gives a service business one clean place to catch leads, move conversations, book jobs, request reviews, and prepare for AI reception when the timing is right."
+          primaryCta={{
+            label: "View Civive OS pricing",
+            href: "/civive-os-offer",
+          }}
+          secondaryCta={{
+            label: "Start with AI Search Audit",
+            href: "/ai-search-audit",
+          }}
         >
           <div className="border-y border-white/[0.08] py-7">
-            <p className="homepage-eyebrow">Operating layer</p>
-            <div className="mt-6 space-y-5">
-              {operatingLayers.map((layer, index) => (
-                <div key={layer.title} className="grid grid-cols-[2.5rem_minmax(0,1fr)] gap-4">
-                  <span className="font-mono text-xs text-white/36">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h2 className="text-lg font-semibold text-white">{layer.title}</h2>
-                    <p className="mt-2 text-sm leading-6 text-white/62">{layer.copy}</p>
-                  </div>
-                </div>
-              ))}
+            <p className="homepage-eyebrow">Direct answer</p>
+            <div className="mt-5 space-y-4 text-sm leading-6 text-white/72">
+              <p>
+                Use Civive OS when the business already gets calls, forms,
+                chats, or booking requests and the main leak is slow response,
+                scattered handoff, weak review movement, or no clear follow-up.
+              </p>
+              <p>
+                If the business is not getting enough qualified demand yet,
+                start with the AI Search Readiness Audit and visibility system.
+              </p>
             </div>
           </div>
         </PageHero>
@@ -115,14 +166,23 @@ export default function CiviveOSPage() {
             />
             <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
               {workflows.map((step, index) => (
-                <div key={step.title} className="grid gap-5 py-7 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-8">
+                <div
+                  key={step.title}
+                  className="grid gap-5 py-7 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-8"
+                >
                   <div className="flex h-11 w-11 items-center justify-center border border-white/[0.1] bg-white/[0.035] text-[#19c2ff]">
                     <step.icon className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="homepage-eyebrow">{String(index + 1).padStart(2, "0")}</p>
-                    <h2 className="mt-3 text-2xl font-semibold text-white">{step.title}</h2>
-                    <p className="mt-3 max-w-2xl text-sm leading-6 text-white/62">{step.copy}</p>
+                    <p className="homepage-eyebrow">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="mt-3 text-2xl font-semibold text-white">
+                      {step.title}
+                    </h3>
+                    <p className="mt-3 max-w-2xl text-sm leading-6 text-white/62">
+                      {step.copy}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -138,13 +198,27 @@ export default function CiviveOSPage() {
               copy="This is for teams that want the lead path cleaned up, not another generic login with no operating discipline."
             />
             <div className="border-y border-white/[0.08] py-6">
-              {fitChecks.map((item) => (
-                <div key={item} className="flex items-start gap-4 border-b border-white/[0.08] py-4 text-sm leading-6 text-white/72 last:border-b-0">
+              {fitChecks.map(item => (
+                <div
+                  key={item}
+                  className="flex items-start gap-4 border-b border-white/[0.08] py-4 text-sm leading-6 text-white/72 last:border-b-0"
+                >
                   <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 bg-[#19c2ff]" />
                   <span>{item}</span>
                 </div>
               ))}
             </div>
+          </div>
+        </AuthoritySection>
+
+        <AuthoritySection>
+          <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
+            <SectionHeader
+              eyebrow="Decision path"
+              title="Choose the layer that matches the real bottleneck."
+              copy="Civive OS is strongest when there is already lead intent to protect. The audit and visibility system come first when public evidence is still unclear."
+            />
+            <EditorialList items={decisionPath} />
           </div>
         </AuthoritySection>
 
@@ -156,13 +230,17 @@ export default function CiviveOSPage() {
               copy="The page should make the offer obvious without forcing buyers into a wall of pricing before they understand the system."
             />
             <div className="border-y border-white/[0.08]">
-              {planSnapshot.map((plan) => (
+              {planSnapshot.map(plan => (
                 <div
                   key={plan.name}
                   className="grid gap-4 border-b border-white/[0.08] py-6 last:border-b-0 sm:grid-cols-[8rem_8rem_minmax(0,1fr)] sm:items-start"
                 >
-                  <h2 className="text-2xl font-semibold text-white">Civive OS {plan.name}</h2>
-                  <p className="text-xl font-semibold text-white/90">{plan.price}</p>
+                  <h3 className="text-2xl font-semibold text-white">
+                    Civive OS {plan.name}
+                  </h3>
+                  <p className="text-xl font-semibold text-white/90">
+                    {plan.price}
+                  </p>
                   <p className="text-sm leading-6 text-white/62">{plan.copy}</p>
                 </div>
               ))}
@@ -175,6 +253,58 @@ export default function CiviveOSPage() {
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
+            </div>
+          </div>
+        </AuthoritySection>
+
+        <AuthoritySection>
+          <div className="grid gap-12 lg:grid-cols-[0.65fr_1.35fr] lg:gap-16">
+            <SectionHeader
+              eyebrow="Connected pages"
+              title="Civive OS sits between visibility work and AI receptionist implementation."
+              copy="These pages explain the upstream visibility layer, the implementation sequence, and the pricing path."
+            />
+            <div className="grid gap-4 sm:grid-cols-3">
+              {supportLinks.map(link => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="group border-y border-white/[0.08] py-6 transition-colors hover:border-white/[0.22]"
+                >
+                  <h3 className="text-xl font-semibold text-white/92 group-hover:text-white">
+                    {link.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-white/58">
+                    {link.copy}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-white">
+                    Open page
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </AuthoritySection>
+
+        <AuthoritySection>
+          <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
+            <SectionHeader
+              eyebrow="Civive OS FAQs"
+              title="Questions service businesses ask before choosing the operating base."
+              copy="These answers are visible on-page, so the FAQ schema only describes content buyers can actually read."
+            />
+            <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
+              {civiveOsFaqs.map(item => (
+                <div key={item.question} className="py-6">
+                  <h3 className="text-xl font-semibold text-white">
+                    {item.question}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-white/62">
+                    {item.answer}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </AuthoritySection>

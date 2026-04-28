@@ -5,14 +5,31 @@ import { toast } from "sonner";
 import { site } from "@/content/site";
 
 const nextSteps = [
-  "We check whether AI search can clearly understand what you do.",
-  "We show the weak signals that could make buyers skip you.",
-  "We map the fastest fixes across website, Google profile, schema, and follow-up.",
+  "We review the public facts, service language, Google profile, schema, and lead path you send.",
+  "We separate visibility issues from website, profile, content, schema, or response-speed issues.",
+  "We map the next fixes so the business knows what to clean up before building more pages or automation.",
 ];
 
 const contactInfo = [
-  { icon: Phone, label: "24/7 AI assistant line", value: site.phone, href: site.phoneHref },
-  { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
+  {
+    icon: Phone,
+    label: "Call or text",
+    value: site.phone,
+    href: site.phoneHref,
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: site.email,
+    href: `mailto:${site.email}`,
+  },
+];
+
+const auditRequestSignals = [
+  "Website or Google profile URL",
+  "Service area and top services",
+  "What you want AI and buyers to understand",
+  "Whether calls, forms, booking, or follow-up are leaking leads",
 ];
 
 export default function ContactSection() {
@@ -56,20 +73,25 @@ export default function ContactSection() {
 
       if (response.ok && result?.ok) {
         setIsSubmitted(true);
-        toast.success("AI Search Readiness Audit request sent. We'll follow up soon.", {
-          duration: 6000,
-        });
+        toast.success(
+          "AI Search Readiness Audit request sent. We'll follow up soon.",
+          {
+            duration: 6000,
+          }
+        );
         form.reset();
         setSmsConsent(false);
       } else {
         toast.error(
           result?.errors?.[0] ||
             result?.message ||
-            `Something went wrong. Please call or text Civive at ${site.phone}.`,
+            `Something went wrong. Please call or text Civive at ${site.phone}.`
         );
       }
     } catch {
-      toast.error(`Network error. Please call or text Civive at ${site.phone}.`);
+      toast.error(
+        `Network error. Please call or text Civive at ${site.phone}.`
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -92,7 +114,7 @@ export default function ContactSection() {
         >
           <p className="homepage-eyebrow">AI Search Readiness Audit</p>
           <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
-            Find out if AI would recommend you or replace you.
+            Send the context Civive needs to find the first visibility gap.
           </h2>
         </motion.div>
 
@@ -105,22 +127,42 @@ export default function ContactSection() {
           >
             <p className="homepage-eyebrow">What happens next</p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              A practical audit built around the way buyers now search. We look
-              at what AI can understand about your business, where trust breaks,
-              and what needs to be fixed first.
+              A practical audit starts with the public evidence buyers and AI
+              systems can already see. The form routes the business details into
+              the lead system so the first follow-up can stay specific.
             </p>
 
             <div className="mt-8 space-y-3 border-t border-white/[0.08] pt-6">
-              {nextSteps.map((item) => (
-                <div key={item} className="flex items-start gap-3 text-sm leading-relaxed text-foreground/82">
+              {nextSteps.map(item => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 text-sm leading-relaxed text-foreground/82"
+                >
                   <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-[oklch(0.65_0.20_180)]" />
                   <span>{item}</span>
                 </div>
               ))}
             </div>
 
+            <div className="mt-10 rounded-[1.4rem] border border-white/[0.08] bg-white/[0.025] p-5">
+              <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                Best request includes
+              </p>
+              <div className="mt-4 space-y-3">
+                {auditRequestSignals.map(item => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 text-sm leading-relaxed text-foreground/78"
+                  >
+                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 bg-[oklch(0.65_0.20_180)]" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="mt-10 space-y-4 border-t border-white/[0.08] pt-8">
-              {contactInfo.map((item) => (
+              {contactInfo.map(item => (
                 <div key={item.label}>
                   <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
                     {item.label}
@@ -148,7 +190,9 @@ export default function ContactSection() {
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[oklch(0.65_0.20_180)/0.12] text-[oklch(0.65_0.20_180)]">
                   <CheckCircle className="h-7 w-7" />
                 </div>
-                <h3 className="mt-5 text-3xl font-semibold text-foreground">Audit request received</h3>
+                <h3 className="mt-5 text-3xl font-semibold text-foreground">
+                  Audit request received
+                </h3>
                 <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
                   Your request is in. We will follow up soon and start with the
                   highest-impact visibility signals first.
@@ -164,11 +208,11 @@ export default function ContactSection() {
               <>
                 <div className="border-b border-white/[0.08] pb-5">
                   <h3 className="text-2xl font-semibold text-foreground">
-                    Get your AI Search Audit
+                    Request your AI Search Readiness Audit
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    We will look for the gaps that make good businesses
-                    invisible to AI search and buyers.
+                    Send enough context to inspect the public signals, then
+                    Civive can follow up around the highest-impact fix order.
                   </p>
                 </div>
 
@@ -193,7 +237,10 @@ export default function ContactSection() {
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="mb-1.5 block text-sm text-foreground">
+                      <label
+                        htmlFor="name"
+                        className="mb-1.5 block text-sm text-foreground"
+                      >
                         Full Name *
                       </label>
                       <input
@@ -206,7 +253,10 @@ export default function ContactSection() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="business" className="mb-1.5 block text-sm text-foreground">
+                      <label
+                        htmlFor="business"
+                        className="mb-1.5 block text-sm text-foreground"
+                      >
                         Business Name *
                       </label>
                       <input
@@ -222,7 +272,10 @@ export default function ContactSection() {
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="email" className="mb-1.5 block text-sm text-foreground">
+                      <label
+                        htmlFor="email"
+                        className="mb-1.5 block text-sm text-foreground"
+                      >
                         Email *
                       </label>
                       <input
@@ -235,7 +288,10 @@ export default function ContactSection() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="mb-1.5 block text-sm text-foreground">
+                      <label
+                        htmlFor="phone"
+                        className="mb-1.5 block text-sm text-foreground"
+                      >
                         Phone
                       </label>
                       <input
@@ -250,7 +306,10 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label htmlFor="website" className="mb-1.5 block text-sm text-foreground">
+                    <label
+                      htmlFor="website"
+                      className="mb-1.5 block text-sm text-foreground"
+                    >
                       Website or Google Business Profile *
                     </label>
                     <input
@@ -265,7 +324,10 @@ export default function ContactSection() {
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div>
-                      <label htmlFor="service_area" className="mb-1.5 block text-sm text-foreground">
+                      <label
+                        htmlFor="service_area"
+                        className="mb-1.5 block text-sm text-foreground"
+                      >
                         Service Area
                       </label>
                       <input
@@ -277,7 +339,10 @@ export default function ContactSection() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="service" className="mb-1.5 block text-sm text-foreground">
+                      <label
+                        htmlFor="service"
+                        className="mb-1.5 block text-sm text-foreground"
+                      >
                         Main Concern
                       </label>
                       <select
@@ -286,25 +351,38 @@ export default function ContactSection() {
                         className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                       >
                         <option value="">Select an option...</option>
-                        <option value="ai-search-visibility">Showing up in AI search</option>
-                        <option value="website-message-clarity">Website message clarity</option>
-                        <option value="google-business-profile">Google Business Profile signals</option>
-                        <option value="faq-schema-service-pages">FAQs, schema, and service pages</option>
-                        <option value="lead-capture-follow-up">Lead capture and follow-up</option>
+                        <option value="ai-search-visibility">
+                          Showing up in AI search
+                        </option>
+                        <option value="website-message-clarity">
+                          Website message clarity
+                        </option>
+                        <option value="google-business-profile">
+                          Google Business Profile signals
+                        </option>
+                        <option value="faq-schema-service-pages">
+                          FAQs, schema, and service pages
+                        </option>
+                        <option value="lead-capture-follow-up">
+                          Lead capture and follow-up
+                        </option>
                         <option value="not-sure-yet">Not sure yet</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="mb-1.5 block text-sm text-foreground">
-                      Tell us what you want AI and buyers to understand
+                    <label
+                      htmlFor="message"
+                      className="mb-1.5 block text-sm text-foreground"
+                    >
+                      Tell us what you want AI, Google, and buyers to understand
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       rows={4}
-                      placeholder="What services do you want to be recommended for, and where do you serve?"
+                      placeholder="What services should you be understood for, where do you serve, and what feels unclear or broken right now?"
                       className="w-full resize-none rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                     />
                   </div>
@@ -316,16 +394,28 @@ export default function ContactSection() {
                         id="sms_consent"
                         name="sms_consent"
                         checked={smsConsent}
-                        onChange={(e) => setSmsConsent(e.target.checked)}
+                        onChange={e => setSmsConsent(e.target.checked)}
                         className="mt-1 h-4 w-4 flex-shrink-0 rounded border-border/50 bg-secondary/30 text-[oklch(0.75_0.18_220)] focus:ring-[oklch(0.75_0.18_220)/0.5]"
                       />
-                      <label htmlFor="sms_consent" className="text-xs leading-relaxed text-muted-foreground">
-                        By checking this box, I agree to receive SMS from Civive Unlimited about my audit request, appointments, and updates. Message frequency varies. Msg & data rates may apply. Reply STOP to opt out.{" "}
-                        <a href="/privacy" className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline">
+                      <label
+                        htmlFor="sms_consent"
+                        className="text-xs leading-relaxed text-muted-foreground"
+                      >
+                        By checking this box, I agree to receive SMS from Civive
+                        Unlimited about my audit request, appointments, and
+                        updates. Message frequency varies. Msg & data rates may
+                        apply. Reply STOP to opt out.{" "}
+                        <a
+                          href="/privacy"
+                          className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline"
+                        >
                           Privacy Policy
                         </a>{" "}
                         &{" "}
-                        <a href="/terms" className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline">
+                        <a
+                          href="/terms"
+                          className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline"
+                        >
                           Terms
                         </a>
                         .
@@ -349,7 +439,7 @@ export default function ContactSection() {
                   </button>
 
                   <p className="text-center text-sm text-muted-foreground">
-                    Clear audit. Priority fixes. Fast follow-up.
+                    Clear audit request. Priority fixes. No fake authority.
                   </p>
                 </form>
               </>

@@ -10,6 +10,11 @@
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir ../dist/ssr",
     "prerender": "node scripts/prerender.mjs",
     "audit:ai-search": "node scripts/audit-ai-search-readiness.mjs",
+    "audit:seo-links": "node scripts/audit-ai-search-readiness.mjs",
+    "audit:seo-guardrails": "node scripts/audit-seo-guardrails.mjs",
+    "audit:seo-live": "node scripts/audit-live-seo-smoke.mjs",
+    "audit:lead-contract": "node scripts/lead-api-contract-smoke.mjs",
+    "release:seo": "pnpm run build && pnpm run audit:ai-search && pnpm run audit:seo-guardrails && pnpm run audit:lead-contract",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "format": "prettier --write ."

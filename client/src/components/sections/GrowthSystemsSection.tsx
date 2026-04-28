@@ -29,13 +29,6 @@ const systemGroups = [
   },
 ];
 
-const scrollToContact = () => {
-  const element = document.querySelector("#contact");
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
 export default function GrowthSystemsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -69,13 +62,22 @@ export default function GrowthSystemsSection() {
                 understand fast.
               </p>
 
-              <button
-                onClick={scrollToContact}
-                className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
-              >
-                Build the visibility system
-                <ArrowRight className="h-4 w-4" />
-              </button>
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <a
+                  href="/visibility-system"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
+                >
+                  Build the visibility system
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="/civive-os"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-white/58 transition-colors hover:text-white"
+                >
+                  Connect lead response
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
             </motion.div>
 
             <motion.div
@@ -98,7 +100,7 @@ export default function GrowthSystemsSection() {
                   </p>
 
                   <ul className="mt-5 space-y-3">
-                    {group.items.map((item) => (
+                    {group.items.map(item => (
                       <li
                         key={item}
                         className="border-b border-white/[0.08] pb-3 text-sm leading-6 text-white/74 last:border-b-0 last:pb-0"
