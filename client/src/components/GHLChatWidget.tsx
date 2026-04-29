@@ -14,6 +14,7 @@ declare global {
 const CHAT_WIDGET_SCRIPT_ID = "civive-ghl-chat-widget";
 const GHL_WIDGET_LOADER_URL = "https://widgets.leadconnectorhq.com/loader.js";
 const GHL_CHAT_RESOURCES_URL = "https://widgets.leadconnectorhq.com/chat-widget/loader.js";
+const GHL_LOAD_STRATEGY = "immediate";
 
 function openHighLevelWidget() {
   if (window.leadConnector?.chatWidget?.openWidget) {
@@ -42,13 +43,18 @@ export default function GHLChatWidget() {
       script.async = true;
       script.dataset.resourcesUrl = GHL_CHAT_RESOURCES_URL;
       script.dataset.widgetId = widgetId;
+      script.dataset.loadStrategy = GHL_LOAD_STRATEGY;
       document.body.appendChild(script);
     }
 
     const handleOpenChat = () => {
       if (openHighLevelWidget()) return;
 
-      scrollToContact();
+      window.setTimeout(() => {
+        if (openHighLevelWidget()) return;
+
+        scrollToContact();
+      }, 600);
     };
 
     window.addEventListener("civive:open-chat", handleOpenChat);
