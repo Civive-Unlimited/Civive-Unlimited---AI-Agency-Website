@@ -1,4 +1,4 @@
-import { industries, resourceArticles } from "@/content/site";
+import { industries, resourceArticles, servicePages } from "@/content/site";
 
 export type TopicalPageType =
   | "homepage"
@@ -30,12 +30,20 @@ const coreTopicalPages: TopicalPage[] = [
     pageType: "homepage",
     searchIntent: "Brand, offer, and service overview",
     topicalRole:
-      "Defines the entity, audience, primary AI Search Audit offer, and next step.",
+      "Defines the entity, audience, primary AI Search Visibility Audit offer, and next step.",
     conversionGoal:
       "Move qualified local service businesses toward the audit request.",
     relatedPaths: [
       "/ai-search-audit",
       "/visibility-system",
+      "/services/ai-search-visibility-audit",
+      "/services/google-business-profile-optimization",
+      "/services/ai-receptionist",
+      "/services/missed-call-recovery",
+      "/services/review-automation",
+      "/services/website-design-service-businesses",
+      "/services/crm-lead-follow-up",
+      "/service-areas/springfield-mo",
       "/civive-os",
       "/civive-os-offer",
       "/ai-receptionist",
@@ -48,7 +56,7 @@ const coreTopicalPages: TopicalPage[] = [
   {
     path: "/ai-search-audit",
     label: "AI Search Audit",
-    title: "AI Search Readiness Audit",
+    title: "AI Search Visibility Audit",
     pageType: "commercial",
     searchIntent:
       "Buyer intent for AI search, AEO, local SEO, and visibility audit help",
@@ -65,6 +73,9 @@ const coreTopicalPages: TopicalPage[] = [
       "/resources/schema-for-ai-search-local-businesses",
       "/resources/ai-search-audit-patterns-by-industry",
       "/visibility-system",
+      "/services/ai-search-visibility-audit",
+      "/services/google-business-profile-optimization",
+      "/service-areas/springfield-mo",
       "/contact",
       "/industries",
     ],
@@ -91,6 +102,7 @@ const coreTopicalPages: TopicalPage[] = [
       "/civive-os-offer",
       "/ai-receptionist",
       "/contact",
+      "/service-areas/springfield-mo",
     ],
   },
   {
@@ -111,6 +123,7 @@ const coreTopicalPages: TopicalPage[] = [
       "/resources/location-pages-ai-search-without-doorway-pages",
       "/resources/ai-search-implementation-plan-service-businesses",
       "/ai-receptionist",
+      "/service-areas/springfield-mo",
       "/civive-os",
       "/resources",
       "/contact",
@@ -217,8 +230,8 @@ const coreTopicalPages: TopicalPage[] = [
   },
   {
     path: "/civive-os",
-    label: "Civive OS",
-    title: "Civive OS",
+    label: "CiviveOS",
+    title: "CiviveOS",
     pageType: "commercial",
     searchIntent:
       "Product and solution intent for lead response and AI front desk software",
@@ -238,10 +251,10 @@ const coreTopicalPages: TopicalPage[] = [
   },
   {
     path: "/civive-os-offer",
-    label: "Civive OS Offer",
-    title: "Civive OS Pricing and Plans",
+    label: "CiviveOS Offer",
+    title: "CiviveOS Pricing and Plans",
     pageType: "commercial",
-    searchIntent: "Pricing, package, and buying intent for Civive OS",
+    searchIntent: "Pricing, package, and buying intent for CiviveOS",
     topicalRole:
       "Clarifies the commercial offer for lead response, booking, reviews, follow-up, and AI front desk support.",
     conversionGoal:
@@ -280,6 +293,54 @@ const coreTopicalPages: TopicalPage[] = [
   },
 ];
 
+const serviceTopicalPages: TopicalPage[] = servicePages.map(service => ({
+  path: `/services/${service.slug}`,
+  label: service.name,
+  title: service.name,
+  pageType: "commercial",
+  searchIntent: `${service.name} buyer intent for local service businesses`,
+  topicalRole: `Commercial service page explaining Civive's ${service.name.toLowerCase()} work, local fit, deliverables, and related services.`,
+  conversionGoal: "Move qualified service business owners toward an audit request or call.",
+  parentPath: "/",
+  relatedPaths: Array.from(
+    new Set([
+      "/",
+      "/ai-search-audit",
+      "/service-areas/springfield-mo",
+      ...service.relatedSlugs.map(slug => `/services/${slug}`),
+      "/contact",
+    ])
+  ),
+}));
+
+const serviceAreaTopicalPages: TopicalPage[] = [
+  {
+    path: "/service-areas/springfield-mo",
+    label: "Springfield, MO",
+    title: "Springfield Service Businesses",
+    pageType: "commercial",
+    searchIntent:
+      "Local buyer intent for AI search visibility, Google Business Profile optimization, CRM automation, missed-call recovery, review automation, and lead follow-up in Springfield, MO",
+    topicalRole:
+      "Local landing page tying Civive's service pages to Springfield, Missouri and nearby service businesses.",
+    conversionGoal:
+      "Move Springfield service business owners toward the AI Search Visibility Audit or a call.",
+    parentPath: "/",
+    relatedPaths: [
+      "/",
+      "/ai-search-audit",
+      "/services/ai-search-visibility-audit",
+      "/services/google-business-profile-optimization",
+      "/services/ai-receptionist",
+      "/services/missed-call-recovery",
+      "/services/review-automation",
+      "/services/website-design-service-businesses",
+      "/services/crm-lead-follow-up",
+      "/contact",
+    ],
+  },
+];
+
 const industryTopicalPages: TopicalPage[] = industries.map(industry => ({
   path: `/industries/${industry.slug}`,
   label: industry.name,
@@ -287,7 +348,7 @@ const industryTopicalPages: TopicalPage[] = industries.map(industry => ({
   pageType: "subpillar",
   searchIntent: `${industry.name} AI search visibility and local service business readiness`,
   topicalRole: `Explains the buyer questions, trust signals, missing assets, and cleanup path for ${industry.name} businesses.`,
-  conversionGoal: `Move ${industry.shortName} operators toward an AI Search Readiness Audit.`,
+  conversionGoal: `Move ${industry.shortName} operators toward an AI Search Visibility Audit.`,
   parentPath: "/industries",
   relatedPaths: [
     "/ai-search-audit",
@@ -313,7 +374,7 @@ const articleTopicalPages: TopicalPage[] = resourceArticles.map(article => ({
   title: stripBrand(article.title),
   pageType: "support",
   searchIntent: article.intent,
-  topicalRole: `Supports the AI Search Readiness Audit and visibility-system pillar with ${article.eyebrow.toLowerCase()} intent content.`,
+  topicalRole: `Supports the AI Search Visibility Audit and visibility-system pillar with ${article.eyebrow.toLowerCase()} intent content.`,
   conversionGoal:
     "Move readers from education into an audit request, visibility-system review, or contact path.",
   parentPath: "/resources",
@@ -330,6 +391,8 @@ const articleTopicalPages: TopicalPage[] = resourceArticles.map(article => ({
 
 export const topicalPages: TopicalPage[] = [
   ...coreTopicalPages,
+  ...serviceTopicalPages,
+  ...serviceAreaTopicalPages,
   ...industryTopicalPages,
   ...articleTopicalPages,
 ];

@@ -56,14 +56,14 @@ export default function GHLShowcaseSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-6">
             <Zap className="w-4 h-4 text-[oklch(0.75_0.18_220)]" />
             <span className="text-sm text-muted-foreground">
-              Civive OS
+              CiviveOS
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <span className="gradient-text">One Operating System. Every Lead Covered.</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            Civive OS gives service teams one place to capture conversations, book jobs, recover missed calls, request reviews, and keep follow-up moving.
+            CiviveOS gives service teams one place to capture conversations, book jobs, recover missed calls, request reviews, and keep follow-up moving.
           </p>
         </motion.div>
 
@@ -104,7 +104,7 @@ export default function GHLShowcaseSection() {
             href="/civive-os"
             className="inline-flex items-center gap-2 magnetic-btn bg-gradient-to-r from-[oklch(0.75_0.18_220)] to-[oklch(0.55_0.25_300)] hover:opacity-90 text-white font-semibold py-3 px-8 rounded-lg transition-all"
           >
-            View Civive OS
+            View CiviveOS
           </a>
         </motion.div>
       </div>

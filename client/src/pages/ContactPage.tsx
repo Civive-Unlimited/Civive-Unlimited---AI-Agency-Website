@@ -64,7 +64,7 @@ export default function ContactPage() {
       <AuthorityShell>
         <PageHero
           eyebrow="Contact Civive"
-          title="Request the AI Search Readiness Audit with enough context to act."
+          title="Request the AI Search Visibility Audit with enough context to act."
           copy="Send the business, website or Google profile, service area, and the visibility problem you want solved first. Civive will start with the public signals most likely to affect AI search, local trust, and lead capture."
           primaryCta={{ label: "Use the form below", href: "#contact" }}
           secondaryCta={{

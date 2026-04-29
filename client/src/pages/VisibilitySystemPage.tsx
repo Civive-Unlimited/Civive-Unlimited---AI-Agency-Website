@@ -63,7 +63,7 @@ const implementationSequence = [
   },
   {
     title: "Protect the lead after discovery",
-    copy: "Use forms, booking, chat, CRM context, follow-up, Civive OS, or an AI receptionist when response speed is the revenue leak.",
+    copy: "Use forms, booking, chat, CRM context, follow-up, CiviveOS, or an AI receptionist when response speed is the revenue leak.",
     href: "/civive-os",
   },
 ];
@@ -77,17 +77,17 @@ const fitSignals = [
 
 const connectedPages = [
   {
-    title: "AI Search Readiness Audit",
+    title: "AI Search Visibility Audit",
     copy: "Start here when the weak signals need to be diagnosed and prioritized.",
     href: "/ai-search-audit",
   },
   {
-    title: "Civive OS",
+    title: "CiviveOS",
     copy: "Move here when the lead-response operating base needs to catch demand.",
     href: "/civive-os",
   },
   {
-    title: "Civive OS Pricing",
+    title: "CiviveOS Pricing",
     copy: "Compare plans when the business is ready to choose the operating base.",
     href: "/civive-os-offer",
   },
@@ -112,7 +112,7 @@ export default function VisibilitySystemPage() {
           eyebrow="AI Search Visibility System"
           title="AI Search Visibility System for service businesses that need cleaner signals and better lead capture."
           copy="The audit finds the weak signals. The visibility system fixes them through clearer messaging, service structure, public proof, schema-ready content, internal links, and a cleaner lead path."
-          primaryCta={{ label: "Get AI Search Audit", href: "/contact" }}
+          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
           secondaryCta={{ label: "See the audit", href: "/ai-search-audit" }}
         >
           <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">

@@ -7,7 +7,7 @@ import {
   SectionHeader,
 } from "@/components/AuthorityPage";
 import Seo from "@/components/Seo";
-import { auditChecks, auditPageFaqs, pageMeta } from "@/content/site";
+import { auditChecks, auditPageFaqs, pageMeta, site } from "@/content/site";
 
 const processSteps = [
   {
@@ -137,7 +137,7 @@ export default function AuditPage() {
       <Seo {...pageMeta.audit} path="/ai-search-audit" />
       <AuthorityShell>
         <PageHero
-          eyebrow="AI Search Readiness Audit"
+          eyebrow="AI Search Visibility Audit"
           title={
             <>
               Find the signals that make your business easier or harder to
@@ -145,7 +145,7 @@ export default function AuditPage() {
             </>
           }
           copy="A practical audit for service businesses that want ChatGPT, Gemini, Perplexity, Grok, voice search, and real buyers to understand who they are, what they do, where they work, and why they should be trusted."
-          primaryCta={{ label: "Get AI Search Audit", href: "/contact" }}
+          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
           secondaryCta={{
             label: "Explore the system",
             href: "/visibility-system",
@@ -154,7 +154,7 @@ export default function AuditPage() {
           <div className="border-y border-white/[0.08] py-7">
             <p className="homepage-eyebrow">Direct answer</p>
             <p className="mt-5 text-sm leading-6 text-white/72">
-              An AI Search Readiness Audit finds the public signals that help or
+              An AI Search Visibility Audit finds the public signals that help or
               hurt recommendation confidence, then turns them into a prioritized
               implementation map for search, AI answers, and lead capture.
             </p>
@@ -165,6 +165,38 @@ export default function AuditPage() {
             </div>
           </div>
         </PageHero>
+
+        <AuthoritySection>
+          <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
+            <SectionHeader
+              eyebrow="Business facts"
+              title="The audit starts by making the public facts consistent."
+              copy="These are the Civive Unlimited NAP and contact signals used across the site, footer, metadata, and structured data."
+            />
+            <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
+              {[
+                { title: "Business", copy: site.name },
+                { title: "Address", copy: site.addressDisplay },
+                { title: "Phone", copy: site.phone },
+                { title: "Email", copy: site.email },
+                { title: "Website", copy: site.website },
+                { title: "Primary market", copy: site.location },
+              ].map(item => (
+                <div
+                  key={item.title}
+                  className="grid gap-3 py-5 sm:grid-cols-[10rem_minmax(0,1fr)]"
+                >
+                  <h2 className="text-sm font-medium uppercase tracking-[0.16em] text-white/42">
+                    {item.title}
+                  </h2>
+                  <p className="text-sm leading-6 text-white/72">
+                    {item.copy}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </AuthoritySection>
 
         <AuthoritySection>
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">

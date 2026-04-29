@@ -42,7 +42,7 @@ const workflows = [
   },
   {
     icon: MessageSquareText,
-    title: "Civive OS catches the thread",
+    title: "CiviveOS catches the thread",
     copy: "The business gets one place to see the conversation, contact, source, and next action.",
   },
   {
@@ -95,8 +95,8 @@ const decisionPath = [
     href: "/visibility-system",
   },
   {
-    title: "Use Civive OS when the lead path is leaking",
-    copy: "If calls, forms, chat, booking, reviews, CRM notes, or follow-up are scattered, Civive OS gives the business an operating base.",
+    title: "Use CiviveOS when the lead path is leaking",
+    copy: "If calls, forms, chat, booking, reviews, CRM notes, or follow-up are scattered, CiviveOS gives the business an operating base.",
   },
   {
     title: "Layer in the AI receptionist when rules are ready",
@@ -107,7 +107,7 @@ const decisionPath = [
 
 const supportLinks = [
   {
-    title: "AI Search Readiness Audit",
+    title: "AI Search Visibility Audit",
     copy: "Diagnose whether the first bottleneck is demand, clarity, trust, or response.",
     href: "/ai-search-audit",
   },
@@ -117,7 +117,7 @@ const supportLinks = [
     href: "/resources/ai-search-implementation-plan-service-businesses",
   },
   {
-    title: "Civive OS Pricing",
+    title: "CiviveOS Pricing",
     copy: "Compare Launch, Growth, and Operator when the business is ready to choose a plan.",
     href: "/civive-os-offer",
   },
@@ -129,11 +129,11 @@ export default function CiviveOSPage() {
       <Seo {...pageMeta.civiveOs} path="/civive-os" />
       <AuthorityShell>
         <PageHero
-          eyebrow="Civive OS"
-          title="Civive OS for service businesses that need cleaner lead capture, booking, and AI front desk readiness."
-          copy="Civive OS gives a service business one clean place to catch leads, move conversations, book jobs, request reviews, and prepare for AI reception when the timing is right."
+          eyebrow="CiviveOS"
+          title="CiviveOS for service businesses that need cleaner lead capture, booking, and AI front desk readiness."
+          copy="CiviveOS gives a service business one clean place to catch leads, move conversations, book jobs, request reviews, and prepare for AI reception when the timing is right."
           primaryCta={{
-            label: "View Civive OS pricing",
+            label: "View CiviveOS pricing",
             href: "/civive-os-offer",
           }}
           secondaryCta={{
@@ -145,13 +145,13 @@ export default function CiviveOSPage() {
             <p className="homepage-eyebrow">Direct answer</p>
             <div className="mt-5 space-y-4 text-sm leading-6 text-white/72">
               <p>
-                Use Civive OS when the business already gets calls, forms,
+                Use CiviveOS when the business already gets calls, forms,
                 chats, or booking requests and the main leak is slow response,
                 scattered handoff, weak review movement, or no clear follow-up.
               </p>
               <p>
                 If the business is not getting enough qualified demand yet,
-                start with the AI Search Readiness Audit and visibility system.
+                start with the AI Search Visibility Audit and visibility system.
               </p>
             </div>
           </div>
@@ -161,8 +161,8 @@ export default function CiviveOSPage() {
           <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
             <SectionHeader
               eyebrow="Why it exists"
-              title="Visibility creates demand. Civive OS keeps that demand from leaking."
-              copy="The website can make a business easier to find and trust. Civive OS handles what happens after someone asks for help."
+              title="Visibility creates demand. CiviveOS keeps that demand from leaking."
+              copy="The website can make a business easier to find and trust. CiviveOS handles what happens after someone asks for help."
             />
             <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
               {workflows.map((step, index) => (
@@ -194,7 +194,7 @@ export default function CiviveOSPage() {
           <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start lg:gap-16">
             <SectionHeader
               eyebrow="Good fit"
-              title="Use Civive OS when the business needs a better front desk before it needs more noise."
+              title="Use CiviveOS when the business needs a better front desk before it needs more noise."
               copy="This is for teams that want the lead path cleaned up, not another generic login with no operating discipline."
             />
             <div className="border-y border-white/[0.08] py-6">
@@ -216,7 +216,7 @@ export default function CiviveOSPage() {
             <SectionHeader
               eyebrow="Decision path"
               title="Choose the layer that matches the real bottleneck."
-              copy="Civive OS is strongest when there is already lead intent to protect. The audit and visibility system come first when public evidence is still unclear."
+              copy="CiviveOS is strongest when there is already lead intent to protect. The audit and visibility system come first when public evidence is still unclear."
             />
             <EditorialList items={decisionPath} />
           </div>
@@ -236,7 +236,7 @@ export default function CiviveOSPage() {
                   className="grid gap-4 border-b border-white/[0.08] py-6 last:border-b-0 sm:grid-cols-[8rem_8rem_minmax(0,1fr)] sm:items-start"
                 >
                   <h3 className="text-2xl font-semibold text-white">
-                    Civive OS {plan.name}
+                    CiviveOS {plan.name}
                   </h3>
                   <p className="text-xl font-semibold text-white/90">
                     {plan.price}
@@ -261,7 +261,7 @@ export default function CiviveOSPage() {
           <div className="grid gap-12 lg:grid-cols-[0.65fr_1.35fr] lg:gap-16">
             <SectionHeader
               eyebrow="Connected pages"
-              title="Civive OS sits between visibility work and AI receptionist implementation."
+              title="CiviveOS sits between visibility work and AI receptionist implementation."
               copy="These pages explain the upstream visibility layer, the implementation sequence, and the pricing path."
             />
             <div className="grid gap-4 sm:grid-cols-3">
@@ -290,7 +290,7 @@ export default function CiviveOSPage() {
         <AuthoritySection>
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
             <SectionHeader
-              eyebrow="Civive OS FAQs"
+              eyebrow="CiviveOS FAQs"
               title="Questions service businesses ask before choosing the operating base."
               copy="These answers are visible on-page, so the FAQ schema only describes content buyers can actually read."
             />

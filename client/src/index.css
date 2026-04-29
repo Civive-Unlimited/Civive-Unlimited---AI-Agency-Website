@@ -48,12 +48,13 @@
   --color-deep-charcoal: oklch(0.12 0.01 260);
   
   /* Typography */
-  --font-inter: 'Chakra Petch', sans-serif;
-  --font-inter-tight: 'Chakra Petch', sans-serif;
-  --font-display: 'Chakra Petch', sans-serif;
-  --font-ai-display: 'Syncopate', sans-serif;
-  --font-digital: 'Chakra Petch', sans-serif;
-  --font-support-tech: 'Chakra Petch', sans-serif;
+  --font-brand: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --font-inter: var(--font-brand);
+  --font-inter-tight: var(--font-brand);
+  --font-display: var(--font-brand);
+  --font-ai-display: var(--font-brand);
+  --font-digital: var(--font-brand);
+  --font-support-tech: var(--font-brand);
   --font-space: var(--font-support-tech);
   --font-mono: var(--font-support-tech);
 }
@@ -168,10 +169,12 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-inter);
+    font-weight: 400;
     letter-spacing: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    font-optical-sizing: auto;
     font-feature-settings: "ss01" 1, "cv11" 1, "cv05" 1;
   }
   
@@ -301,7 +304,7 @@
 
   .homepage-shell h1 {
     font-family: var(--font-support-tech);
-    font-weight: 500;
+    font-weight: 800;
     letter-spacing: 0;
   }
 
@@ -309,9 +312,9 @@
   .homepage-shell h3,
   .homepage-shell blockquote {
     font-family: var(--font-support-tech);
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0;
-    line-height: 1.12;
+    line-height: 1.08;
   }
 
   .homepage-shell h2 em,
@@ -356,21 +359,28 @@
 
   .homepage-shell .hero-support-copy {
     font-family: var(--font-support-tech);
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0;
+  }
+
+  .homepage-shell .premium-hero-title {
+    font-family: var(--font-support-tech);
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 0.96;
   }
 
   .homepage-shell .hero-side-title {
     font-family: var(--font-support-tech);
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0;
   }
 
   .homepage-eyebrow {
     font-family: var(--font-support-tech);
     font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: rgba(183, 173, 255, 0.82);
   }
@@ -413,13 +423,170 @@
   }
 
   .homepage-primary-button {
+    position: relative;
+    overflow: hidden;
     background:
-      linear-gradient(135deg, oklch(0.66 0.14 235), oklch(0.58 0.18 282) 52%, oklch(0.54 0.22 300));
+      linear-gradient(135deg, oklch(0.77 0.18 220), oklch(0.62 0.20 246) 58%, oklch(0.55 0.20 268));
     box-shadow:
-      inset 0 1px 0 oklch(0.98 0 0 / 0.18),
-      0 0 0 1px oklch(0.58 0.16 285 / 0.16),
-      0 14px 32px rgba(0, 0, 0, 0.2),
-      0 0 24px oklch(0.56 0.16 290 / 0.1);
+      inset 0 1px 0 oklch(0.98 0 0 / 0.22),
+      0 0 0 1px oklch(0.72 0.16 230 / 0.2),
+      0 16px 36px rgba(0, 0, 0, 0.28),
+      0 0 30px oklch(0.68 0.16 235 / 0.18);
+  }
+
+  .homepage-primary-button::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(
+      105deg,
+      transparent 8%,
+      rgba(255, 255, 255, 0.20) 45%,
+      transparent 64%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-120%);
+    transition:
+      opacity 220ms ease,
+      transform 580ms ease;
+  }
+
+  .homepage-primary-button,
+  .homepage-secondary-button,
+  .premium-hover-surface,
+  .command-outcome-card,
+  .command-outcome-icon,
+  .nav-link-premium {
+    transition:
+      background 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease,
+      color 220ms ease,
+      filter 220ms ease,
+      opacity 220ms ease,
+      transform 220ms ease;
+  }
+
+  .hero-spotlight-shell {
+    --mouse-x: 62%;
+    --mouse-y: 28%;
+  }
+
+  .hero-cursor-spotlight {
+    position: absolute;
+    inset: -16%;
+    z-index: 4;
+    display: none;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        circle 560px at var(--mouse-x) var(--mouse-y),
+        rgba(25, 194, 255, 0.145),
+        rgba(139, 92, 246, 0.09) 32%,
+        rgba(25, 194, 255, 0.035) 46%,
+        transparent 70%
+      );
+    filter: blur(18px);
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 420ms ease;
+  }
+
+  .nav-link-premium {
+    position: relative;
+  }
+
+  .nav-link-premium::after {
+    content: "";
+    position: absolute;
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 0.36rem;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(25, 194, 255, 0.7),
+      rgba(139, 92, 246, 0.42),
+      transparent
+    );
+    opacity: 0;
+    pointer-events: none;
+    transform: scaleX(0.25);
+    transition:
+      opacity 180ms ease,
+      transform 220ms ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+    .hero-spotlight-shell[data-spotlight-enabled="true"] .hero-cursor-spotlight {
+      display: block;
+      opacity: 0.74;
+    }
+
+    .homepage-primary-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.045);
+      box-shadow:
+        inset 0 1px 0 oklch(0.98 0 0 / 0.28),
+        0 0 0 1px oklch(0.78 0.16 230 / 0.30),
+        0 18px 44px rgba(0, 0, 0, 0.32),
+        0 0 44px oklch(0.68 0.16 235 / 0.28);
+    }
+
+    .homepage-primary-button:hover::after {
+      opacity: 1;
+      transform: translateX(120%);
+    }
+
+    .homepage-secondary-button:hover,
+    .nav-link-premium:hover,
+    .nav-link-premium:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .homepage-secondary-button:hover {
+      border-color: rgba(25, 194, 255, 0.28) !important;
+      box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.22),
+        0 0 24px rgba(25, 194, 255, 0.10) !important;
+    }
+
+    .nav-link-premium:hover::after,
+    .nav-link-premium:focus-visible::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .premium-hover-surface:hover {
+      transform: translateY(-2px);
+      border-color: rgba(25, 194, 255, 0.22) !important;
+      filter: brightness(1.035);
+      box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.38),
+        0 0 42px rgba(25, 194, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .founder-trust-card:hover img {
+      filter: brightness(1.035) saturate(1.03);
+    }
+
+    .command-outcome-card:hover {
+      transform: translateY(-1px);
+      border-color: rgba(25, 194, 255, 0.18) !important;
+      background: rgba(255, 255, 255, 0.065) !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 12px 30px rgba(0, 0, 0, 0.18),
+        0 0 18px rgba(25, 194, 255, 0.07) !important;
+    }
+
+    .command-outcome-card:hover .command-outcome-icon {
+      filter: brightness(1.1);
+      box-shadow: 0 0 18px rgba(25, 194, 255, 0.16) !important;
+    }
   }
 
   .homepage-section-divider {
@@ -452,11 +619,54 @@
     animation: hero-scan-sweep 6.8s ease-in-out infinite;
     pointer-events: none;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-cursor-spotlight {
+      display: none !important;
+    }
+
+    .hero-scan-sweep {
+      animation: none;
+      opacity: 0;
+    }
+
+    .homepage-primary-button,
+    .homepage-secondary-button,
+    .premium-hover-surface,
+    .command-outcome-card,
+    .nav-link-premium {
+      transition:
+        background 150ms ease,
+        border-color 150ms ease,
+        box-shadow 150ms ease,
+        color 150ms ease,
+        opacity 150ms ease;
+    }
+
+    .homepage-primary-button:hover,
+    .homepage-secondary-button:hover,
+    .premium-hover-surface:hover,
+    .command-outcome-card:hover,
+    .nav-link-premium:hover {
+      transform: none !important;
+    }
+
+    .homepage-primary-button::after,
+    .nav-link-premium::after {
+      display: none;
+    }
+  }
 }
 
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* Custom scrollbar for dark theme */

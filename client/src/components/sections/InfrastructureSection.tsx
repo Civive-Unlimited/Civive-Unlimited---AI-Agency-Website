@@ -123,7 +123,7 @@ export default function InfrastructureSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-6">
             <Eye className="w-4 h-4 text-[oklch(0.75_0.18_220)]" />
             <span className="text-sm text-muted-foreground">
-              Powered by Civive OS
+              Powered by CiviveOS
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">

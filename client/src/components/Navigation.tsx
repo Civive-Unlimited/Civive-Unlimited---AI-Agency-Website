@@ -54,16 +54,16 @@ export default function Navigation() {
   return (
     <>
       <motion.nav
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${isScrolled ? "border-b border-white/[0.08] bg-[linear-gradient(180deg,rgba(7,7,12,0.9),rgba(7,8,14,0.72))] py-3 backdrop-blur-md" : "bg-transparent py-4"}`}
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${isScrolled ? "border-b border-white/[0.08] bg-[linear-gradient(180deg,rgba(7,7,12,0.9),rgba(7,8,14,0.72))] py-2.5 backdrop-blur-md" : "bg-transparent py-3"}`}
         initial={false}
         animate={{ y: 0 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
       >
         <div className="container mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-[1fr_auto] items-center gap-4 lg:grid-cols-[minmax(18rem,1.05fr)_auto_minmax(8.5rem,0.7fr)] lg:gap-5 xl:grid-cols-[minmax(19rem,1.05fr)_auto_minmax(11rem,0.85fr)] xl:gap-8">
+          <div className="grid grid-cols-[1fr_auto] items-center gap-4 lg:grid-cols-[minmax(14.5rem,0.92fr)_auto_minmax(8.5rem,0.7fr)] lg:gap-5 xl:grid-cols-[minmax(15.5rem,0.92fr)_auto_minmax(11rem,0.85fr)] xl:gap-8">
             <a
               href="#"
-              className="group flex min-w-0 items-center gap-4 lg:min-w-[18rem] xl:min-w-[19rem]"
+              className="group flex min-w-0 items-center gap-4 lg:min-w-[14.5rem] xl:min-w-[15.5rem]"
               onClick={e => {
                 e.preventDefault();
                 setIsMobileMenuOpen(false);
@@ -77,7 +77,7 @@ export default function Navigation() {
               <img
                 src={civiveHeaderLogo}
                 alt={site.name}
-                className="h-12 w-auto max-w-[13rem] object-contain transition-transform group-hover:scale-[1.01] sm:h-14 sm:max-w-[16rem] lg:h-[4.25rem] lg:max-w-[18rem] xl:h-[4.5rem] xl:max-w-[19rem]"
+                className="h-10 w-auto max-w-[10.5rem] object-contain transition-transform group-hover:scale-[1.01] sm:h-11 sm:max-w-[12.75rem] lg:h-[3.35rem] lg:max-w-[14.25rem] xl:h-[3.6rem] xl:max-w-[15.25rem]"
                 loading="lazy"
               />
             </a>
@@ -91,7 +91,7 @@ export default function Navigation() {
                     e.preventDefault();
                     navigateTo(link.href);
                   }}
-                  className="whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium text-white/66 transition-colors hover:bg-white/[0.07] hover:text-white xl:px-4"
+                  className="nav-link-premium whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium text-white/66 transition-colors hover:bg-white/[0.07] hover:text-white xl:px-4"
                 >
                   {link.label}
                 </a>
@@ -104,7 +104,7 @@ export default function Navigation() {
                   onBlur={() =>
                     window.setTimeout(() => setIsMoreOpen(false), 120)
                   }
-                  className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium text-white/66 transition-colors hover:bg-white/[0.07] hover:text-white xl:px-4"
+                  className="nav-link-premium inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium text-white/66 transition-colors hover:bg-white/[0.07] hover:text-white xl:px-4"
                   aria-haspopup="menu"
                   aria-expanded={isMoreOpen}
                 >
@@ -133,7 +133,7 @@ export default function Navigation() {
                             e.preventDefault();
                             navigateTo(link.href);
                           }}
-                          className="block rounded-xl px-3.5 py-2.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/[0.07] hover:text-white"
+                          className="nav-link-premium block rounded-xl px-3.5 py-2.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/[0.07] hover:text-white"
                           role="menuitem"
                         >
                           {link.label}
@@ -149,7 +149,7 @@ export default function Navigation() {
               <button
                 type="button"
                 onClick={openChat}
-                className="hidden items-center gap-2 whitespace-nowrap rounded-full px-3 py-2.5 text-sm font-medium text-white/72 transition-colors hover:bg-white/[0.05] hover:text-white xl:inline-flex xl:px-4"
+                className="nav-link-premium hidden items-center gap-2 whitespace-nowrap rounded-full px-3 py-2.5 text-sm font-medium text-white/72 transition-colors hover:bg-white/[0.05] hover:text-white xl:inline-flex xl:px-4"
               >
                 <MessageCircle className="h-4 w-4" />
                 Ask AI
@@ -160,7 +160,7 @@ export default function Navigation() {
                   e.preventDefault();
                   navigateTo("/contact");
                 }}
-                className="inline-flex items-center whitespace-nowrap rounded-full border border-white/[0.13] bg-white/[0.055] px-4 py-2.5 text-sm font-medium text-white/92 transition-colors hover:bg-white/[0.1] xl:px-5"
+                className="homepage-secondary-button inline-flex items-center whitespace-nowrap rounded-full border border-white/[0.13] bg-white/[0.055] px-4 py-2.5 text-sm font-medium text-white/92 transition-colors hover:bg-white/[0.1] xl:px-5"
               >
                 Get Audit
               </a>
@@ -215,7 +215,7 @@ export default function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.08 }}
               >
-                Get AI Search Audit
+                Get an AI Search Visibility Audit
               </motion.a>
 
               <motion.button

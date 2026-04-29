@@ -26,7 +26,7 @@ const industrySignalPatterns = [
 const industryPillarLinks = [
   {
     href: "/ai-search-audit",
-    label: "AI Search Readiness Audit",
+    label: "AI Search Visibility Audit",
     copy: "Diagnose the public facts, schema, FAQs, service pages, reviews, and lead path first.",
   },
   {
@@ -46,7 +46,7 @@ const industryPillarLinks = [
   },
   {
     href: "/civive-os",
-    label: "Civive OS",
+    label: "CiviveOS",
     copy: "Connect visibility work to the lead-response operating base for conversations, booking, reviews, and CRM handoff.",
   },
   {
@@ -65,7 +65,7 @@ export default function IndustriesPage() {
           eyebrow="Industries for AI Search Visibility"
           title="AI search visibility pages for local service businesses where trust and timing decide the call."
           copy="Civive helps service-based and trust-dependent businesses make their public signals easier for Google, ChatGPT, Gemini, Perplexity, Grok, maps, and buyers to understand. Each industry page explains the questions, proof, skipped-signal risks, and conversion paths that matter for that category."
-          primaryCta={{ label: "Get AI Search Audit", href: "/contact" }}
+          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
           secondaryCta={{ label: "See the audit", href: "/ai-search-audit" }}
         >
           <div className="border-y border-white/[0.08] py-7">

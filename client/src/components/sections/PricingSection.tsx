@@ -36,12 +36,12 @@ export default function PricingSection() {
             transition={{ duration: 0.5 }}
             className="lg:sticky lg:top-28 lg:self-start"
           >
-            <p className="homepage-eyebrow digital-accent">Civive OS Offer</p>
+            <p className="homepage-eyebrow digital-accent">CiviveOS Offer</p>
             <h2 className="hero-tech-title mt-5 max-w-xl text-[1.45rem] leading-[1.24] text-foreground sm:text-[1.9rem] md:text-[2.25rem]">
-              Civive OS plans.
+              CiviveOS plans.
             </h2>
             <p className="hero-support-copy mt-6 max-w-lg text-base leading-8 text-muted-foreground">
-              Civive OS is sold as its own lead-response system. Choose the
+              CiviveOS is sold as its own lead-response system. Choose the
               level of capture, follow-up, reputation, and AI front desk support
               your business needs right now.
             </p>
@@ -95,7 +95,7 @@ export default function PricingSection() {
                     <div>
                       <div className="flex flex-wrap items-center gap-3">
                         <h3 className="text-2xl font-semibold text-white">
-                          Civive OS {plan.name}
+                          CiviveOS {plan.name}
                         </h3>
                         {plan.featured && (
                           <span className="border border-[#19c2ff]/30 bg-[#19c2ff]/10 px-3 py-1 text-xs font-medium text-[#b9edff]">

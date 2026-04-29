@@ -52,7 +52,7 @@ export default function BuildInPublicPage() {
           eyebrow="Build in Public"
           title="Civive is applying the visibility system to itself first."
           copy="The business is early. There are no fake case studies, no borrowed logos, and no pretend portfolio. The first proof is the public build: the site, content, schema-ready structure, AI assistant, lead capture, and founder-led documentation."
-          primaryCta={{ label: "Get AI Search Audit", href: "/contact" }}
+          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
           secondaryCta={{ label: "Explore resources", href: "/resources" }}
         >
           <div className="border-y border-white/[0.08] py-7">

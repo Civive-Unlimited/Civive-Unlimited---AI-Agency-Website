@@ -13,6 +13,8 @@ import NotFound from "@/pages/NotFound";
 import ProspectingReportPage from "@/pages/ProspectingReportPage";
 import ResourceArticlePage from "@/pages/ResourceArticlePage";
 import ResourcesPage from "@/pages/ResourcesPage";
+import ServicePage from "@/pages/ServicePage";
+import SpringfieldServiceAreaPage from "@/pages/SpringfieldServiceAreaPage";
 import VisibilitySystemPage from "@/pages/VisibilitySystemPage";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -35,6 +37,13 @@ function Router() {
       <Route path={"/industries/:slug"}>
         {params => <IndustryPage slug={params.slug} />}
       </Route>
+      <Route path={"/services/:slug"}>
+        {params => <ServicePage slug={params.slug} />}
+      </Route>
+      <Route
+        path={"/service-areas/springfield-mo"}
+        component={SpringfieldServiceAreaPage}
+      />
       <Route path={"/faq"} component={FAQPage} />
       <Route path={"/resources/:slug"}>
         {params => <ResourceArticlePage slug={params.slug} />}

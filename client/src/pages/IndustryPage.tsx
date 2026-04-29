@@ -37,7 +37,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
 
   const industryImplementationLinks = [
     {
-      title: "Start with the AI Search Readiness Audit",
+      title: "Start with the AI Search Visibility Audit",
       href: "/ai-search-audit",
       copy: `Use the audit to inspect the ${industry.shortName} site's public facts, service pages, schema opportunities, Google profile alignment, reviews, FAQs, and contact path before creating more content.`,
     },
@@ -57,9 +57,9 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
       copy: `If ${industry.shortName} leads already arrive through calls, forms, chat, or booking requests, AI receptionist and missed-call recovery work can reduce lost opportunities after discovery.`,
     },
     {
-      title: "Connect the work to Civive OS",
+      title: "Connect the work to CiviveOS",
       href: "/civive-os",
-      copy: "Civive OS provides the lead-response operating base for conversations, booking, reviews, follow-up, and AI-ready handoff after visibility improves.",
+      copy: "CiviveOS provides the lead-response operating base for conversations, booking, reviews, follow-up, and AI-ready handoff after visibility improves.",
     },
   ];
 
@@ -67,7 +67,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
     <>
       <Seo
         title={`${industry.name} AI Search Visibility | Civive Unlimited`}
-        description={`AI Search Readiness Audit and visibility signal cleanup for ${industry.name} businesses that need clearer services, trust signals, reviews, FAQs, schema, and lead capture.`}
+        description={`AI Search Visibility Audit and visibility signal cleanup for ${industry.name} businesses that need clearer services, trust signals, reviews, FAQs, schema, and lead capture.`}
         path={`/industries/${industry.slug}`}
       />
       <AuthorityShell>
@@ -80,7 +80,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
             </>
           }
           copy={industry.intro}
-          primaryCta={{ label: "Get AI Search Audit", href: auditContactHref }}
+          primaryCta={{ label: "Get an AI Search Visibility Audit", href: auditContactHref }}
           secondaryCta={{ label: "View all industries", href: "/industries" }}
         >
           <div className="border-y border-white/[0.08] py-7">

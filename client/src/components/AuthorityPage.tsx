@@ -90,8 +90,8 @@ function AuthorityBreadcrumbs({
 function relatedActionLabel(path: string, title: string) {
   if (path === "/ai-search-audit") return "Read the AI Search Audit";
   if (path === "/visibility-system") return "Explore the visibility system";
-  if (path === "/civive-os") return "Explore Civive OS";
-  if (path === "/civive-os-offer") return "Compare Civive OS plans";
+  if (path === "/civive-os") return "Explore CiviveOS";
+  if (path === "/civive-os-offer") return "Compare CiviveOS plans";
   if (path === "/ai-receptionist") return "Compare AI receptionist fit";
   if (path === "/contact") return "Request the audit";
   if (path.startsWith("/resources/")) return "Read the resource";
@@ -116,7 +116,7 @@ function RelatedAuthorityPages({
         <SectionHeader
           eyebrow="Related authority paths"
           title="Continue through the pages that support this decision."
-          copy="These internal links connect the audit, visibility system, Civive OS, AI receptionist, resources, proof, and conversion paths so buyers and crawlers can follow the topic cleanly."
+          copy="These internal links connect the audit, visibility system, CiviveOS, AI receptionist, resources, proof, and conversion paths so buyers and crawlers can follow the topic cleanly."
         />
         <div className="grid gap-3 sm:grid-cols-2">
           {items.map(item => (
@@ -283,7 +283,7 @@ export function FinalCta({
   title,
   copy,
   primaryCta = {
-    label: "Get AI Search Audit",
+    label: "Get an AI Search Visibility Audit",
     href: "/contact",
   },
   secondaryCta = {

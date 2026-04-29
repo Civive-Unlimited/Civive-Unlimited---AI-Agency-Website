@@ -13,6 +13,7 @@ const {
   prerenderRoutes,
   seoConfig,
   topicalPages,
+  coreServices,
 } = await import(pathToFileURL(ssrEntry));
 
 const siteDomain = seoConfig.canonicalDomain;
@@ -54,6 +55,28 @@ function stripBrand(title) {
   return title
     .replace(new RegExp(`\\s*\\|\\s*${seoConfig.brandName}\\s*$`, "i"), "")
     .trim();
+}
+
+function schemaSlug(value) {
+  return String(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function buildPostalAddress() {
+  return {
+    "@type": "PostalAddress",
+    streetAddress: seoConfig.address.streetAddress,
+    addressLocality: seoConfig.address.addressLocality,
+    addressRegion: seoConfig.address.addressRegion,
+    postalCode: seoConfig.address.postalCode,
+    addressCountry: seoConfig.address.addressCountry,
+  };
+}
+
+function buildAreaServed() {
+  return seoConfig.areaServedPlaces;
 }
 
 function readableSegment(segment) {
@@ -98,6 +121,7 @@ function routeOutputPaths(routePath) {
 function buildSchema(route) {
   const url = absoluteUrl(route.path);
   const organizationId = `${siteDomain}/#organization`;
+  const localBusinessId = `${siteDomain}/#localbusiness`;
   const websiteId = `${siteDomain}/#website`;
   const webpageId = `${url}#webpage`;
   const breadcrumbId = `${url}#breadcrumb`;
@@ -143,33 +167,56 @@ function buildSchema(route) {
 
   const graph = [
     {
-      "@type": ["Organization", "ProfessionalService"],
+      "@type": "Organization",
       "@id": organizationId,
       name: seoConfig.brandName,
+      legalName: seoConfig.legalName,
       url: siteDomain,
       email: seoConfig.email,
       telephone: seoConfig.phoneE164,
       image: defaultImageUrl,
       logo: defaultLogoUrl,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: seoConfig.location.locality,
-        addressRegion: seoConfig.location.region,
-        addressCountry: seoConfig.location.country,
-      },
-      areaServed: {
-        "@type": "Country",
-        name: seoConfig.areaServed,
+      address: buildPostalAddress(),
+      description: seoConfig.businessDescription,
+      founder: {
+        "@type": "Person",
+        name: seoConfig.founder,
       },
       contactPoint: {
         "@type": "ContactPoint",
         telephone: seoConfig.phoneE164,
         email: seoConfig.email,
         contactType: "sales",
-        areaServed: "US",
+        areaServed: buildAreaServed(),
         availableLanguage: "English",
       },
       knowsAbout: seoConfig.knowsAbout,
+      ...(seoConfig.socialProfiles.length
+        ? { sameAs: seoConfig.socialProfiles }
+        : {}),
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": localBusinessId,
+      name: seoConfig.brandName,
+      image: defaultImageUrl,
+      logo: defaultLogoUrl,
+      url: siteDomain,
+      telephone: seoConfig.phoneE164,
+      email: seoConfig.email,
+      address: buildPostalAddress(),
+      areaServed: buildAreaServed(),
+      priceRange: seoConfig.priceRange,
+      description: seoConfig.businessDescription,
+      parentOrganization: { "@id": organizationId },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: seoConfig.phoneE164,
+        email: seoConfig.email,
+        contactType: "sales",
+        areaServed: buildAreaServed(),
+        availableLanguage: "English",
+      },
       ...(seoConfig.socialProfiles.length
         ? { sameAs: seoConfig.socialProfiles }
         : {}),
@@ -215,6 +262,25 @@ function buildSchema(route) {
     });
   }
 
+  if (route.path === "/") {
+    graph.push(
+      ...coreServices.map(service => ({
+        "@type": "Service",
+        "@id": `${absoluteUrl(service.path)}#service-${schemaSlug(service.name)}`,
+        name: service.name,
+        description: service.description,
+        provider: { "@id": localBusinessId },
+        areaServed: buildAreaServed(),
+        serviceType: service.serviceType,
+        url: absoluteUrl(service.path),
+        audience: {
+          "@type": "BusinessAudience",
+          audienceType: "local service businesses",
+        },
+      }))
+    );
+  }
+
   if (
     (route.schemaKind === "service" || route.schemaKind === "industry") &&
     route.serviceName
@@ -224,12 +290,9 @@ function buildSchema(route) {
       "@id": serviceId,
       name: route.serviceName,
       description: route.description,
-      provider: { "@id": organizationId },
-      areaServed: {
-        "@type": "AdministrativeArea",
-        name: "United States",
-      },
-      serviceType: route.serviceName,
+      provider: { "@id": localBusinessId },
+      areaServed: buildAreaServed(),
+      serviceType: route.serviceType ?? route.serviceName,
       audience: {
         "@type": "BusinessAudience",
         audienceType: "local service businesses",
@@ -253,7 +316,7 @@ function buildSchema(route) {
             "@type": "Service",
             name: offer.name,
             description: offer.description,
-            provider: { "@id": organizationId },
+            provider: { "@id": localBusinessId },
           },
         })),
       };
@@ -340,6 +403,8 @@ function injectApp(template, appHtml) {
 function sitemapPriority(route) {
   if (route.path === "/") return "1.0";
   if (route.path === "/ai-search-audit") return "0.9";
+  if (route.path.startsWith("/services/")) return "0.82";
+  if (route.path === "/service-areas/springfield-mo") return "0.86";
   if (
     [
       "/visibility-system",
@@ -357,7 +422,10 @@ function sitemapPriority(route) {
 function sitemapChangefreq(route) {
   if (
     route.path.startsWith("/industries/") ||
-    ["/contact", "/ai-receptionist"].includes(route.path)
+    route.path.startsWith("/services/") ||
+    ["/contact", "/ai-receptionist", "/service-areas/springfield-mo"].includes(
+      route.path
+    )
   ) {
     return "monthly";
   }
@@ -436,12 +504,13 @@ async function writeCrawlFiles(routes) {
   const llms = [
     "# Civive Unlimited",
     "",
-    `> ${seoConfig.defaultDescription}.`,
+    `> ${seoConfig.defaultDescription.replace(/\.+$/, ".")}`,
     "",
     `Website: ${siteDomain}`,
     `Canonical domain: ${siteDomain}`,
     `Business: ${seoConfig.brandName}`,
     `Location: ${seoConfig.location.label}`,
+    `Address: ${seoConfig.address.display}`,
     `Phone: ${seoConfig.phone}`,
     `Email: ${seoConfig.email}`,
     `Area served: ${seoConfig.areaServed}`,
@@ -451,8 +520,8 @@ async function writeCrawlFiles(routes) {
     "",
     "Civive Unlimited helps local service businesses become easier for Google, AI search engines, answer engines, and buyers to understand, trust, contact, and follow up with.",
     "",
-    "Primary offer: AI Search Readiness Audit.",
-    "Secondary systems: AI search visibility cleanup, service and location signal cleanup, AI receptionist, lead capture, booking, CRM handoff, follow-up automation, and Civive OS.",
+    "Primary offer: AI Search Visibility Audit.",
+    "Secondary systems: AI search visibility cleanup, service and location signal cleanup, AI receptionist, lead capture, booking, CRM handoff, follow-up automation, and CiviveOS.",
     "",
     "## Best Pages To Understand The Offer",
     "",

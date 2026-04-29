@@ -331,7 +331,7 @@ export default function ProspectingReportPage() {
                   Turn this report into a cleaned-up public presence and a faster lead response system.
                 </h2>
                 <p className="mt-5 max-w-3xl text-base leading-7 text-white/66">
-                  Civive can start with the AI Search Readiness Audit, then build the practical fix pack: clearer
+                  Civive can start with the AI Search Visibility Audit, then build the practical fix pack: clearer
                   service language, FAQs, schema, profile alignment, contact path, CRM handoff, and follow-up.
                 </p>
               </div>

@@ -13,7 +13,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 const decisionChecks = [
   {
     title: "Is slow lead response the first leak?",
-    copy: "If calls, forms, chats, or messages already arrive but replies are scattered, Civive OS should come before another traffic push.",
+    copy: "If calls, forms, chats, or messages already arrive but replies are scattered, CiviveOS should come before another traffic push.",
   },
   {
     title: "Does the business need review and follow-up movement?",
@@ -25,7 +25,7 @@ const decisionChecks = [
   },
   {
     title: "Should visibility be fixed first?",
-    copy: "If the business is not getting enough qualified demand, start with the AI Search Readiness Audit before buying a larger operating base.",
+    copy: "If the business is not getting enough qualified demand, start with the AI Search Visibility Audit before buying a larger operating base.",
     href: "/ai-search-audit",
   },
 ];
@@ -51,14 +51,14 @@ const implementationSteps = [
 
 const boundaries = [
   "AI receptionist and AI employees are optional add-ons, not included by default in the Operator software plan.",
-  "An AI Search Readiness Audit may still be the first move if the business has weak demand, unclear pages, or inconsistent public facts.",
+  "An AI Search Visibility Audit may still be the first move if the business has weak demand, unclear pages, or inconsistent public facts.",
   "SMS sender readiness, A2P registration, and account-level permissions may require setup before texting can run at full strength.",
   "Civive does not use fake reviews, fake locations, fake proof, unsupported schema, or inflated claims to make the offer look stronger.",
 ];
 
 const supportLinks = [
   {
-    title: "Civive OS",
+    title: "CiviveOS",
     copy: "Read the system overview before choosing a plan.",
     href: "/civive-os",
   },
@@ -80,9 +80,9 @@ export default function CiviveOSOfferPage() {
       <Seo {...pageMeta.civiveOsOffer} path="/civive-os-offer" />
       <AuthorityShell>
         <PageHero
-          eyebrow="Civive OS pricing and plans"
+          eyebrow="CiviveOS pricing and plans"
           title="Choose the lead-response operating base before adding more AI."
-          copy="Civive OS plans give service businesses the capture, booking, review, follow-up, and AI-ready front desk foundation behind the audit and visibility system."
+          copy="CiviveOS plans give service businesses the capture, booking, review, follow-up, and AI-ready front desk foundation behind the audit and visibility system."
           primaryCta={{ label: "Compare plans", href: "#offer" }}
           secondaryCta={{ label: "Ask what fits first", href: "/contact" }}
         >
@@ -155,7 +155,7 @@ export default function CiviveOSOfferPage() {
             <SectionHeader
               eyebrow="After checkout"
               title="The first job is to make the lead path visible and usable."
-              copy="Civive OS is not just another login. It should become the operating surface where lead response, booking, follow-up, and reputation movement are easier to control."
+              copy="CiviveOS is not just another login. It should become the operating surface where lead response, booking, follow-up, and reputation movement are easier to control."
             />
             <EditorialList items={implementationSteps} />
           </div>
@@ -212,7 +212,7 @@ export default function CiviveOSOfferPage() {
         <AuthoritySection>
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
             <SectionHeader
-              eyebrow="Civive OS pricing FAQs"
+              eyebrow="CiviveOS pricing FAQs"
               title="Questions service businesses ask before choosing a plan."
               copy="These answers are visible on-page, so the FAQ schema only describes content visitors can actually read."
             />

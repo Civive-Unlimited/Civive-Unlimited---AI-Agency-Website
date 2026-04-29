@@ -32,7 +32,7 @@ export default function ResourcesPage() {
           eyebrow="Resources and Insights"
           title="The content engine for AI search, local visibility, and the Civive build."
           copy="This hub is the foundation for topical authority. It is designed to turn real work into articles, YouTube topics, social posts, founder notes, audit education, and future sales enablement."
-          primaryCta={{ label: "Get AI Search Audit", href: "/contact" }}
+          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
           secondaryCta={{
             label: "Read the public build",
             href: "/build-in-public",

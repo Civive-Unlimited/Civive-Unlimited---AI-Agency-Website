@@ -457,7 +457,9 @@ for (const route of prerenderRoutes) {
           if (serviceNode.name !== route.serviceName) {
             issues.push(`${route.path}: schema Service name mismatch`);
           }
-          if (serviceNode.serviceType !== route.serviceName) {
+          if (
+            serviceNode.serviceType !== (route.serviceType ?? route.serviceName)
+          ) {
             issues.push(`${route.path}: schema Service serviceType mismatch`);
           }
           if (serviceNode.mainEntityOfPage?.["@id"] !== `${routeUrl}#webpage`) {

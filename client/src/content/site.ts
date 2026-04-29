@@ -2,18 +2,595 @@ import { seoConfig } from "@/content/seo";
 
 export const site = {
   name: seoConfig.brandName,
+  legalName: seoConfig.legalName,
   domain: seoConfig.canonicalDomain,
+  website: seoConfig.website,
   email: seoConfig.email,
   phone: seoConfig.phone,
+  phoneE164: seoConfig.phoneE164,
   phoneHref: seoConfig.phoneHref,
+  address: seoConfig.address,
+  addressLines: seoConfig.address.lines,
+  addressDisplay: seoConfig.address.display,
   location: seoConfig.location.label,
-  primaryOffer: "AI Search Readiness Audit",
+  serviceArea: seoConfig.areaServed,
+  founder: seoConfig.founder,
+  primaryOffer: "AI Search Visibility Audit",
 };
+
+export const areasServed = [
+  "Springfield, MO",
+  "Missouri service businesses",
+  "HVAC companies",
+  "Plumbers",
+  "Cleaners",
+  "Roofers",
+  "Real estate professionals",
+  "Landscapers",
+  "Med spas",
+  "Salons",
+  "Pest control companies",
+  "Auto repair shops",
+  "Restoration companies",
+  "Electricians",
+];
+
+export type CoreService = {
+  name: string;
+  description: string;
+  serviceType: string;
+  path: string;
+};
+
+export const coreServices: CoreService[] = [
+  {
+    name: "AI Search Visibility Audit",
+    serviceType: "AI Search Visibility Audit",
+    path: "/services/ai-search-visibility-audit",
+    description:
+      "A plain-English audit of the public signals that help Google, Maps, ChatGPT, Gemini, Perplexity, and buyers understand a local service business.",
+  },
+  {
+    name: "Google Business Profile Optimization",
+    serviceType: "Google Business Profile Optimization",
+    path: "/services/google-business-profile-optimization",
+    description:
+      "Google Business Profile cleanup for categories, services, descriptions, booking paths, website alignment, and local trust signals.",
+  },
+  {
+    name: "AI Receptionist Setup",
+    serviceType: "AI Receptionist Setup",
+    path: "/services/ai-receptionist",
+    description:
+      "AI receptionist setup for intake, qualification, routing, booking support, CRM notes, and safe handoff rules.",
+  },
+  {
+    name: "Missed Call Text Back",
+    serviceType: "Missed Call Text Back",
+    path: "/services/missed-call-recovery",
+    description:
+      "Missed-call recovery that responds quickly, captures context, and keeps service leads from going cold.",
+  },
+  {
+    name: "Lead Follow Up Automation",
+    serviceType: "Lead Follow Up Automation",
+    path: "/services/crm-lead-follow-up",
+    description:
+      "Follow-up automation for new leads, quote requests, booking reminders, review requests, and sales pipeline movement.",
+  },
+  {
+    name: "CRM Setup",
+    serviceType: "CRM Setup",
+    path: "/services/crm-lead-follow-up",
+    description:
+      "CRM setup for service businesses that need cleaner conversations, opportunities, tags, notes, calendars, and pipeline stages.",
+  },
+  {
+    name: "Website Design for Service Businesses",
+    serviceType: "Website Design for Service Businesses",
+    path: "/services/website-design-service-businesses",
+    description:
+      "Website design focused on service clarity, local trust, AI-search readability, forms, calls, booking, and lead capture.",
+  },
+  {
+    name: "Review Automation",
+    serviceType: "Review Automation",
+    path: "/services/review-automation",
+    description:
+      "Review request and reputation workflows that help service businesses gather more useful public trust signals without fake claims.",
+  },
+  {
+    name: "Local SEO Cleanup",
+    serviceType: "Local SEO Cleanup",
+    path: "/visibility-system",
+    description:
+      "Local SEO cleanup for business facts, services, service areas, internal links, metadata, crawlability, and profile alignment.",
+  },
+  {
+    name: "AI Chatbot Setup",
+    serviceType: "AI Chatbot Setup",
+    path: "/services/ai-receptionist",
+    description:
+      "AI chatbot setup for website visitors who need fast answers, intake help, and a clean handoff to the business.",
+  },
+  {
+    name: "Appointment Booking Automation",
+    serviceType: "Appointment Booking Automation",
+    path: "/civive-os",
+    description:
+      "Booking automation that connects inquiry, calendar rules, reminders, CRM notes, and follow-up for service businesses.",
+  },
+  {
+    name: "Sales Pipeline Setup",
+    serviceType: "Sales Pipeline Setup",
+    path: "/civive-os",
+    description:
+      "Sales pipeline setup for tracking new leads, booked appointments, estimates, follow-up, won jobs, and stalled opportunities.",
+  },
+  {
+    name: "Reputation Management",
+    serviceType: "Reputation Management",
+    path: "/services/review-automation",
+    description:
+      "Reputation management support for reviews, profile consistency, customer feedback, and public trust signals.",
+  },
+];
+
+export type ServicePageContent = {
+  slug: string;
+  name: string;
+  serviceName: string;
+  serviceType: string;
+  meta: {
+    title: string;
+    description: string;
+  };
+  h1: string;
+  intro: string;
+  problem: { title: string; copy: string };
+  fixes: { title: string; copy: string }[];
+  deliverables: { title: string; copy: string }[];
+  audience: { title: string; copy: string }[];
+  relatedSlugs: string[];
+  primaryCta: string;
+};
+
+export const servicePages: ServicePageContent[] = [
+  {
+    slug: "ai-search-visibility-audit",
+    name: "AI Search Visibility Audit",
+    serviceName: "AI Search Visibility Audit",
+    serviceType: "AI Search Visibility Audit",
+    meta: {
+      title: "AI Search Visibility Audit | Civive Unlimited",
+      description:
+        "Civive audits the public signals that help local service businesses show up clearly in Google, Maps, ChatGPT, Gemini, Perplexity, and buyer research.",
+    },
+    h1: "AI Search Visibility Audit for service businesses",
+    intro:
+      "The audit shows what a buyer or answer engine can understand from the public footprint today, then turns the gaps into a practical fix order.",
+    problem: {
+      title: "Good businesses get skipped when their public signals are unclear.",
+      copy: "If the website, Google Business Profile, services, service area, reviews, schema, and lead path do not agree, search engines and AI tools have less confidence in what to recommend.",
+    },
+    fixes: [
+      {
+        title: "Entity and NAP clarity",
+        copy: "Civive checks the name, address, phone, website, service area, categories, and descriptions that define the business online.",
+      },
+      {
+        title: "Service and location signals",
+        copy: "The audit maps which services need clearer pages, FAQs, internal links, schema, or Google profile alignment.",
+      },
+      {
+        title: "Lead path review",
+        copy: "Forms, calls, booking, chat, CRM handoff, and follow-up are reviewed so visibility can turn into actual conversations.",
+      },
+    ],
+    deliverables: [
+      {
+        title: "Visibility gap list",
+        copy: "A plain list of what is unclear, missing, duplicated, or inconsistent across the public footprint.",
+      },
+      {
+        title: "Fix sequence",
+        copy: "A prioritized order for website, Google profile, schema, service-page, FAQ, review, and lead-response improvements.",
+      },
+      {
+        title: "Implementation direction",
+        copy: "A practical next-step map that can become content, schema, profile cleanup, automation, or CiviveOS setup.",
+      },
+    ],
+    audience: [
+      {
+        title: "Local service businesses",
+        copy: "Best for companies that need more non-branded discovery and a clearer path from search to contact.",
+      },
+      {
+        title: "Springfield and Missouri operators",
+        copy: "Useful when the business serves Springfield, MO or nearby Missouri markets and needs local signals to match the Google Business Profile.",
+      },
+    ],
+    relatedSlugs: [
+      "google-business-profile-optimization",
+      "website-design-service-businesses",
+      "crm-lead-follow-up",
+    ],
+    primaryCta: "Get an AI Search Visibility Audit",
+  },
+  {
+    slug: "google-business-profile-optimization",
+    name: "Google Business Profile Optimization",
+    serviceName: "Google Business Profile Optimization",
+    serviceType: "Google Business Profile Optimization",
+    meta: {
+      title: "Google Business Profile Optimization | Civive Unlimited",
+      description:
+        "Google Business Profile optimization for Springfield and Missouri service businesses that need clearer categories, services, contact paths, and website alignment.",
+    },
+    h1: "Google Business Profile optimization for service businesses",
+    intro:
+      "Civive aligns the Google Business Profile with the website so Maps, local search, AI tools, and buyers see the same business facts.",
+    problem: {
+      title: "Profiles lose strength when the website and GBP tell different stories.",
+      copy: "Wrong categories, thin services, weak descriptions, missing booking paths, inconsistent contact details, and mismatched website copy make the profile harder to trust.",
+    },
+    fixes: [
+      {
+        title: "Category and service cleanup",
+        copy: "Civive checks whether the profile categories, service list, and website services reinforce the same real offer.",
+      },
+      {
+        title: "Description and contact alignment",
+        copy: "The profile language, phone, email, address, website link, and booking path are aligned with the site.",
+      },
+      {
+        title: "Review and FAQ direction",
+        copy: "Civive identifies review, question, and answer opportunities without inventing reviews or unsupported claims.",
+      },
+    ],
+    deliverables: [
+      {
+        title: "GBP cleanup checklist",
+        copy: "A prioritized list for categories, services, description, photos, links, contact fields, and profile completeness.",
+      },
+      {
+        title: "Website alignment notes",
+        copy: "The site changes needed to support the same services, local market, and next step shown on the profile.",
+      },
+      {
+        title: "Local visibility next steps",
+        copy: "A practical order for profile, page, FAQ, review, and schema improvements.",
+      },
+    ],
+    audience: [
+      {
+        title: "Maps-dependent service companies",
+        copy: "Useful for HVAC, plumbers, cleaners, roofers, med spas, auto repair, pest control, and other local operators.",
+      },
+      {
+        title: "Owners with a profile but weak conversion",
+        copy: "Best when people can find the listing but the profile and site do not make the next step obvious.",
+      },
+    ],
+    relatedSlugs: [
+      "ai-search-visibility-audit",
+      "review-automation",
+      "website-design-service-businesses",
+    ],
+    primaryCta: "Book a Call",
+  },
+  {
+    slug: "ai-receptionist",
+    name: "AI Receptionist",
+    serviceName: "AI Receptionist Setup",
+    serviceType: "AI Receptionist Setup",
+    meta: {
+      title: "AI Receptionist Setup | Civive Unlimited",
+      description:
+        "AI receptionist setup for service businesses that need faster intake, missed-call recovery, booking support, CRM notes, and safer handoff rules.",
+    },
+    h1: "AI receptionist setup for service businesses",
+    intro:
+      "An AI receptionist helps answer, qualify, route, book, and document leads after a buyer reaches out through Google, AI search, calls, forms, or chat.",
+    problem: {
+      title: "A lead is not won just because it called or filled out a form.",
+      copy: "Slow response, weak intake, no escalation rules, and scattered CRM notes can waste the demand the business already earned.",
+    },
+    fixes: [
+      {
+        title: "Intake and routing rules",
+        copy: "Civive maps what the assistant can ask, when it should book, and when it should hand off to a person.",
+      },
+      {
+        title: "CRM context",
+        copy: "Lead details, source, service need, urgency, and next action are captured so the team does not rediscover the same information.",
+      },
+      {
+        title: "Safe automation boundaries",
+        copy: "The receptionist is built around the real services, hours, escalation needs, and consent requirements of the business.",
+      },
+    ],
+    deliverables: [
+      {
+        title: "Receptionist flow map",
+        copy: "The call, chat, or form flow from first contact through qualification, booking, or escalation.",
+      },
+      {
+        title: "Knowledge and handoff setup",
+        copy: "The service facts, common questions, fields, notes, and routing rules the assistant needs to be useful.",
+      },
+      {
+        title: "Launch QA checklist",
+        copy: "A review of edge cases, opt-out language, escalation behavior, and lead record quality before relying on the system.",
+      },
+    ],
+    audience: [
+      {
+        title: "Teams with real inbound demand",
+        copy: "Best when calls, chats, forms, or bookings already happen and the business needs faster response.",
+      },
+      {
+        title: "Service categories where speed matters",
+        copy: "Useful for urgent or competitive categories like HVAC, plumbing, restoration, roofing, pest control, and auto repair.",
+      },
+    ],
+    relatedSlugs: ["missed-call-recovery", "crm-lead-follow-up"],
+    primaryCta: "Book a Call",
+  },
+  {
+    slug: "missed-call-recovery",
+    name: "Missed Call Recovery",
+    serviceName: "Missed Call Text Back",
+    serviceType: "Missed Call Text Back",
+    meta: {
+      title: "Missed Call Recovery | Civive Unlimited",
+      description:
+        "Missed-call text back and recovery systems for service businesses that need faster response, better intake, and cleaner follow-up.",
+    },
+    h1: "Missed-call recovery for service businesses",
+    intro:
+      "Missed-call recovery gives a buyer a fast response when the team cannot answer, then captures enough context for useful follow-up.",
+    problem: {
+      title: "A missed call often becomes a competitor's booked job.",
+      copy: "When buyers need help now, voicemail and delayed callbacks are weak. The first useful response can decide who gets the opportunity.",
+    },
+    fixes: [
+      {
+        title: "Fast text-back response",
+        copy: "Civive sets up a clear text response that acknowledges the missed call and asks for the right next detail.",
+      },
+      {
+        title: "Lead capture and tagging",
+        copy: "The system captures the caller, service need, source, and follow-up state in the CRM.",
+      },
+      {
+        title: "Follow-up path",
+        copy: "Missed calls can move into reminders, booking links, human callbacks, or AI receptionist intake when appropriate.",
+      },
+    ],
+    deliverables: [
+      {
+        title: "Missed-call workflow",
+        copy: "The trigger, message, routing, CRM update, and next action for unanswered calls.",
+      },
+      {
+        title: "Consent-safe copy",
+        copy: "Plain language for response and opt-out handling without spammy or misleading automation.",
+      },
+      {
+        title: "Pipeline connection",
+        copy: "A handoff into opportunities, tasks, tags, or follow-up so the call does not disappear.",
+      },
+    ],
+    audience: [
+      {
+        title: "Busy owner-operators",
+        copy: "Good fit when the owner or small team cannot answer every call during jobs, nights, or busy windows.",
+      },
+      {
+        title: "High-intent service calls",
+        copy: "Useful for businesses where every missed call could be a quote, repair, booking, or urgent request.",
+      },
+    ],
+    relatedSlugs: ["ai-receptionist", "crm-lead-follow-up"],
+    primaryCta: "Book a Call",
+  },
+  {
+    slug: "website-design-service-businesses",
+    name: "Website Design for Service Businesses",
+    serviceName: "Website Design for Service Businesses",
+    serviceType: "Website Design for Service Businesses",
+    meta: {
+      title: "Website Design for Service Businesses | Civive Unlimited",
+      description:
+        "Website design for service businesses that need clearer services, local trust, AI-search visibility, calls, forms, booking, and lead capture.",
+    },
+    h1: "Website design for service businesses",
+    intro:
+      "Civive builds or improves service business websites so buyers and AI systems can quickly understand the offer, market, trust signals, and next step.",
+    problem: {
+      title: "A pretty site can still be invisible, vague, and hard to act on.",
+      copy: "Many service sites bury the services, ignore the local market, weaken Google profile alignment, and make the lead path harder than it should be.",
+    },
+    fixes: [
+      {
+        title: "Service-first structure",
+        copy: "Pages and sections are organized around the services, industries, locations, and questions buyers actually use.",
+      },
+      {
+        title: "Local trust signals",
+        copy: "The site reinforces the business facts, service area, contact details, proof, FAQs, and profile language.",
+      },
+      {
+        title: "Conversion path",
+        copy: "Calls, forms, booking, chat, CRM handoff, and follow-up are treated as part of the website system.",
+      },
+    ],
+    deliverables: [
+      {
+        title: "Page structure",
+        copy: "A homepage, service pages, local signals, FAQ content, metadata, and internal links that work together.",
+      },
+      {
+        title: "Search-ready content",
+        copy: "Plain service copy that helps humans and machines understand what the business does and where it works.",
+      },
+      {
+        title: "Lead capture setup",
+        copy: "The visible calls, forms, and routing needed to turn the website into a working acquisition asset.",
+      },
+    ],
+    audience: [
+      {
+        title: "Service businesses with thin pages",
+        copy: "Best when the current site looks decent but does not explain services, market, proof, or the next step clearly.",
+      },
+      {
+        title: "Owners preparing for SEO or ads",
+        copy: "Useful before spending more on traffic, because stronger visibility should land on a page that can convert.",
+      },
+    ],
+    relatedSlugs: [
+      "ai-search-visibility-audit",
+      "google-business-profile-optimization",
+      "crm-lead-follow-up",
+    ],
+    primaryCta: "Get an AI Search Visibility Audit",
+  },
+  {
+    slug: "review-automation",
+    name: "Review Automation",
+    serviceName: "Review Automation",
+    serviceType: "Review Automation",
+    meta: {
+      title: "Review Automation | Civive Unlimited",
+      description:
+        "Review automation and reputation workflows for service businesses that need more useful public trust signals and cleaner follow-up.",
+    },
+    h1: "Review automation for service businesses",
+    intro:
+      "Review automation helps a real customer experience turn into public trust signals that buyers, Google, Maps, and AI tools can understand.",
+    problem: {
+      title: "Happy customers often stay invisible unless the follow-up is built.",
+      copy: "Without a clean request process, reviews arrive randomly, feedback gets missed, and public trust signals stay weaker than the service quality.",
+    },
+    fixes: [
+      {
+        title: "Review request timing",
+        copy: "Civive maps when and how to request reviews after completed work without pressuring or misleading customers.",
+      },
+      {
+        title: "Reputation workflow",
+        copy: "The system can route feedback, reminders, replies, and follow-up into one cleaner operating path.",
+      },
+      {
+        title: "Visibility alignment",
+        copy: "Reviews support the same services, locations, and customer language the website and Google profile need to reinforce.",
+      },
+    ],
+    deliverables: [
+      {
+        title: "Review workflow",
+        copy: "A practical request and reminder path connected to completed jobs, appointments, or customer follow-up.",
+      },
+      {
+        title: "Customer feedback route",
+        copy: "A place for feedback and follow-up so reputation work improves the business, not just the public profile.",
+      },
+      {
+        title: "Trust-signal cleanup",
+        copy: "Recommendations for where review language, FAQs, and service pages can support clearer buyer confidence.",
+      },
+    ],
+    audience: [
+      {
+        title: "Businesses with real customers but weak review flow",
+        copy: "Best when service quality exists but review requests are inconsistent or manual.",
+      },
+      {
+        title: "Local categories where trust decides the call",
+        copy: "Useful for home services, med spas, salons, veterinary clinics, real estate, and other reputation-sensitive businesses.",
+      },
+    ],
+    relatedSlugs: [
+      "google-business-profile-optimization",
+      "crm-lead-follow-up",
+    ],
+    primaryCta: "Book a Call",
+  },
+  {
+    slug: "crm-lead-follow-up",
+    name: "CRM and Lead Follow-Up",
+    serviceName: "CRM Setup and Lead Follow Up Automation",
+    serviceType: "CRM Setup",
+    meta: {
+      title: "CRM and Lead Follow-Up Automation | Civive Unlimited",
+      description:
+        "CRM setup and lead follow-up automation for service businesses that need cleaner pipelines, conversations, booking, reviews, and missed-call recovery.",
+    },
+    h1: "CRM setup and lead follow-up automation",
+    intro:
+      "Civive helps service businesses organize leads, conversations, pipeline stages, booking, reviews, and follow-up so opportunities do not leak after discovery.",
+    problem: {
+      title: "More visibility does not help if leads scatter after contact.",
+      copy: "Calls, forms, texts, chats, estimates, and bookings need one operating path. Otherwise good leads get lost between inboxes and memory.",
+    },
+    fixes: [
+      {
+        title: "Lead capture structure",
+        copy: "Civive sets up the fields, source context, tags, notes, and pipeline stages needed to track real opportunities.",
+      },
+      {
+        title: "Follow-up automation",
+        copy: "New leads, missed calls, appointments, quotes, review requests, and stale opportunities can trigger practical next steps.",
+      },
+      {
+        title: "CiviveOS handoff",
+        copy: "The operating base can support AI receptionist, booking, reputation, and lead-response workflows when the business is ready.",
+      },
+    ],
+    deliverables: [
+      {
+        title: "Pipeline setup",
+        copy: "Stages and fields that match the real path from inquiry to booked work, estimate, won job, or lost opportunity.",
+      },
+      {
+        title: "Automation map",
+        copy: "The messages, reminders, tasks, and handoffs needed to keep leads moving without pretending automation solves everything.",
+      },
+      {
+        title: "Operator runbook",
+        copy: "A simple guide for what the team checks, updates, and improves after launch.",
+      },
+    ],
+    audience: [
+      {
+        title: "Teams with scattered lead handling",
+        copy: "Best when calls, forms, messages, and booking requests exist but the follow-up process is unreliable.",
+      },
+      {
+        title: "Businesses preparing for AI reception",
+        copy: "Useful before adding AI receptionist support because the handoff needs a clean CRM base.",
+      },
+    ],
+    relatedSlugs: [
+      "missed-call-recovery",
+      "ai-receptionist",
+      "review-automation",
+    ],
+    primaryCta: "Book a Call",
+  },
+];
+
+export function getServicePage(slug?: string) {
+  return servicePages.find(service => service.slug === slug);
+}
 
 export const navLinks = [
   { href: "/ai-search-audit", label: "AI Search Audit" },
   { href: "/visibility-system", label: "Visibility System" },
-  { href: "/civive-os", label: "Civive OS" },
+  { href: "/civive-os", label: "CiviveOS" },
   { href: "/ai-receptionist", label: "AI Receptionist" },
   { href: "/industries", label: "Industries" },
   { href: "/resources", label: "Resources" },
@@ -62,7 +639,7 @@ export const auditChecks = [
 
 export const auditPageFaqs = [
   {
-    question: "What does an AI Search Readiness Audit include?",
+    question: "What does an AI Search Visibility Audit include?",
     answer:
       "It reviews entity clarity, service clarity, location and service-area signals, Google Business Profile alignment, reviews, FAQs, schema opportunities, internal links, crawlability, and the lead-capture path. The goal is a prioritized fix order, not a generic SEO score.",
   },
@@ -183,7 +760,7 @@ export const civiveOsPlans = [
       "Email campaign tools",
       "Lead response and review workflows",
       "Unified inbox for faster handoff",
-      "Cleaner Civive OS operating base",
+      "Cleaner CiviveOS operating base",
     ],
   },
   {
@@ -212,14 +789,14 @@ export const civiveOsPlans = [
 
 export const civiveOsOfferSchemaOffers = civiveOsPlans.flatMap(plan => [
   {
-    name: `Civive OS ${plan.name} Monthly`,
+    name: `CiviveOS ${plan.name} Monthly`,
     price: plan.priceValue,
     priceCurrency: "USD",
     url: plan.monthlyHref,
     description: `${plan.description} Billed monthly at ${plan.price}/month.`,
   },
   {
-    name: `Civive OS ${plan.name} Annual`,
+    name: `CiviveOS ${plan.name} Annual`,
     price: plan.annualPriceValue,
     priceCurrency: "USD",
     url: plan.annualHref,
@@ -229,12 +806,12 @@ export const civiveOsOfferSchemaOffers = civiveOsPlans.flatMap(plan => [
 
 export const civiveOsOfferFaqs = [
   {
-    question: "What is included in every Civive OS plan?",
+    question: "What is included in every CiviveOS plan?",
     answer:
       "Every plan starts with lead capture, a conversation inbox, calendar and booking support, opportunity tracking, review and reputation tools, SMS and email follow-up, and Civive setup guidance.",
   },
   {
-    question: "Which Civive OS plan should a service business start with?",
+    question: "Which CiviveOS plan should a service business start with?",
     answer:
       "Launch fits small teams that need the basics cleaned up. Growth fits teams with steady inbound leads that need workflows and review movement. Operator fits teams that want an AI-ready operating base before adding paid AI employees or receptionist support.",
   },
@@ -247,7 +824,7 @@ export const civiveOsOfferFaqs = [
   {
     question: "Do the plans replace an AI Search Readiness Audit?",
     answer:
-      "No. The audit diagnoses visibility, entity clarity, schema, content, and conversion gaps. Civive OS is the lead-response operating base that helps capture and follow up once the business is ready for better lead handling.",
+      "No. The audit diagnoses visibility, entity clarity, schema, content, and conversion gaps. CiviveOS is the lead-response operating base that helps capture and follow up once the business is ready for better lead handling.",
   },
   {
     question: "Can a business ask which plan fits before paying?",
@@ -258,27 +835,27 @@ export const civiveOsOfferFaqs = [
 
 export const civiveOsFaqs = [
   {
-    question: "What is Civive OS?",
+    question: "What is CiviveOS?",
     answer:
-      "Civive OS is the lead-response operating base for service businesses. It organizes lead capture, conversations, missed-call response, booking, opportunities, reviews, SMS, email follow-up, and AI-ready front desk context in one cleaner system.",
+      "CiviveOS is the lead-response operating base for service businesses. It organizes lead capture, conversations, missed-call response, booking, opportunities, reviews, SMS, email follow-up, and AI-ready front desk context in one cleaner system.",
   },
   {
-    question: "How is Civive OS different from an AI receptionist?",
+    question: "How is CiviveOS different from an AI receptionist?",
     answer:
-      "Civive OS is the operating base that catches and routes leads. An AI receptionist is an optional front desk layer that can answer, qualify, book, or escalate conversations once the business rules and handoff path are clear.",
+      "CiviveOS is the operating base that catches and routes leads. An AI receptionist is an optional front desk layer that can answer, qualify, book, or escalate conversations once the business rules and handoff path are clear.",
   },
   {
     question: "When should a business start with the audit instead?",
     answer:
-      "Start with the AI Search Readiness Audit when demand, public facts, service pages, reviews, schema, or local trust signals are the main constraint. Start with Civive OS when leads already arrive but response, booking, or follow-up is leaking revenue.",
+      "Start with the AI Search Readiness Audit when demand, public facts, service pages, reviews, schema, or local trust signals are the main constraint. Start with CiviveOS when leads already arrive but response, booking, or follow-up is leaking revenue.",
   },
   {
-    question: "Are AI employees included in Civive OS?",
+    question: "Are AI employees included in CiviveOS?",
     answer:
-      "No. Civive OS can prepare the fields, routing, and handoff structure for AI employees, but paid AI receptionist or AI employee builds are separate add-ons so the business does not buy automation before the base is ready.",
+      "No. CiviveOS can prepare the fields, routing, and handoff structure for AI employees, but paid AI receptionist or AI employee builds are separate add-ons so the business does not buy automation before the base is ready.",
   },
   {
-    question: "Which Civive OS plan fits most service businesses?",
+    question: "Which CiviveOS plan fits most service businesses?",
     answer:
       "Launch fits basic capture and missed-call cleanup. Growth fits teams that need follow-up and review movement. Operator fits teams that want an AI-ready front desk foundation before adding receptionist or AI employee support.",
   },
@@ -349,58 +926,59 @@ export const visibilitySystemFaqs = [
 
 export const faqs = [
   {
-    question: "Are people really using ChatGPT to find businesses?",
+    question: "What does Civive Unlimited do?",
     answer:
-      "Yes. Buyers are increasingly using ChatGPT, Gemini, Perplexity, Grok, and voice assistants to narrow options before they visit a website or call a business. That does not replace Google, but it changes what needs to be clear across your public presence.",
+      "Civive Unlimited helps local service businesses improve AI search visibility, Google Business Profile clarity, websites, CRM automation, missed-call recovery, AI receptionist setup, reviews, and lead follow-up.",
   },
   {
-    question: "Why would AI skip a good business?",
+    question: "Who does Civive Unlimited help?",
     answer:
-      "AI systems need evidence. If your services, locations, reviews, FAQs, schema, and public profiles are thin, mismatched, or unclear, a competitor with cleaner signals can look easier to explain and recommend.",
+      "Civive helps service businesses such as HVAC companies, plumbers, cleaners, roofers, real estate professionals, landscapers, med spas, salons, pest control companies, auto repair shops, restoration companies, electricians, and veterinary clinics.",
   },
   {
-    question: "What signals does AI search look for?",
+    question: "What is an AI Search Visibility Audit?",
     answer:
-      "It can use website copy, service pages, Google Business Profile data, reviews, FAQs, structured data, social profiles, local mentions, media, and the language other sources use to describe the business.",
+      "It is a review of the public signals that help Google, Maps, ChatGPT, Gemini, Perplexity, and buyers understand who the business is, what it does, where it serves customers, and how people can contact it.",
   },
   {
-    question: "Do reviews matter for AI search visibility?",
+    question: "Can Civive help my business show up better on Google?",
     answer:
-      "Yes, but not as magic ranking fuel. Reviews give public evidence about trust, service quality, locations, problems solved, and customer language. Specific reviews are easier for humans and machines to understand than vague star counts alone.",
+      "Yes. Civive can clean up website structure, service pages, Google Business Profile alignment, local signals, internal links, schema, reviews, and lead paths that support stronger local search visibility.",
   },
   {
-    question: "Do FAQs and schema matter?",
+    question:
+      "Can Civive help my business show up in ChatGPT, Gemini, and Perplexity?",
     answer:
-      "They matter because they make expertise easier to parse. FAQs answer natural-language questions. Schema gives machines structured context. Neither guarantees placement, but both reduce confusion.",
+      "Civive cannot guarantee placement in any AI answer engine, but it can make the business easier to understand by improving public facts, services, local signals, FAQs, schema, reviews, and crawlable content.",
   },
   {
-    question: "Is this just SEO with a different name?",
+    question: "What is an AI receptionist?",
     answer:
-      "There is overlap with local SEO, but the target is broader. AI visibility work is about making the business understandable across search engines, answer engines, maps, profiles, content, and conversion paths.",
+      "An AI receptionist answers or supports intake, collects lead details, qualifies requests, helps with booking or routing, and leaves cleaner context for follow-up.",
   },
   {
-    question: "How is this different from local SEO?",
+    question: "What is missed-call recovery?",
     answer:
-      "Local SEO often focuses on rankings, citations, Google profile optimization, and content. AI visibility keeps those pieces but also asks whether an answer engine can confidently summarize, compare, and recommend the business.",
+      "Missed-call recovery sends a fast response when the business cannot answer, captures the reason for the call, and creates a follow-up path so the lead does not disappear.",
   },
   {
-    question: "What happens in the AI Search Readiness Audit?",
+    question: "Does Civive build websites?",
     answer:
-      "Civive reviews the message, services, locations, Google profile, reviews, FAQs, schema opportunities, public consistency, and lead capture path. The output is a priority map of what to fix first.",
+      "Yes. Civive builds and improves websites for service businesses with clear services, local search signals, forms, calls, booking, CRM handoff, and AI-search readable structure.",
   },
   {
-    question: "Can a business with no content still improve visibility?",
+    question: "Does Civive help with Google Business Profiles?",
     answer:
-      "Yes. The first wins often come from clarity: better service language, stronger FAQs, cleaner Google profile alignment, and a better contact or booking path. Deeper content can be layered after the basics are coherent.",
+      "Yes. Civive helps align the Google Business Profile with the website, services, categories, contact details, service area, reviews, and booking path.",
   },
   {
-    question: "How long does this take?",
+    question: "What is CiviveOS?",
     answer:
-      "The audit creates the priority order first. Some fixes can be done quickly. Larger work such as service pages, location pages, schema, review strategy, and automation should be implemented in controlled stages.",
+      "CiviveOS is the lead-response operating base for service businesses. It organizes conversations, missed-call recovery, booking, opportunities, reviews, SMS, email follow-up, and AI-ready handoff.",
   },
 ];
 
-export const homepageFaqs = faqs.slice(0, 8);
+export const homepageFaqs = faqs;
 
 export type Industry = {
   slug: string;
@@ -1622,7 +2200,7 @@ export const resourceTopics = [
     slug: "lead-capture-after-discovery",
     title: "Lead Capture After Discovery",
     copy: "What happens after a buyer finds you: forms, chat, booking, CRM handoff, AI receptionist, and follow-up.",
-    formats: ["Revenue workflow", "Civive OS build", "Founder demo"],
+    formats: ["Revenue workflow", "CiviveOS build", "Founder demo"],
   },
   {
     slug: "build-in-public",
@@ -1687,7 +2265,7 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "7 min read",
     summary:
       "AI search readiness means a buyer, Google, and an answer engine can quickly understand who you are, what you do, where you work, why you can be trusted, and how to contact you. Use this checklist before creating more content.",
-    primaryCta: { label: "Get AI Search Audit", href: "/contact" },
+    primaryCta: { label: "Get an AI Search Visibility Audit", href: "/contact" },
     secondaryCta: {
       label: "See the visibility system",
       href: "/visibility-system",
@@ -1786,7 +2364,7 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "8 min read",
     summary:
       "AI search visibility and local SEO overlap, but they are not identical. Local SEO helps a business compete in maps, organic search, and local discovery. AI search visibility asks whether answer engines can confidently summarize, compare, and recommend that business.",
-    primaryCta: { label: "Get AI Search Audit", href: "/contact" },
+    primaryCta: { label: "Get an AI Search Visibility Audit", href: "/contact" },
     secondaryCta: { label: "View industry pages", href: "/industries" },
     finalCta: {
       title: "Use AI search and local SEO together.",
@@ -2476,7 +3054,7 @@ export const resourceArticles: ResourceArticle[] = [
     relatedLinks: [
       { label: "Visibility System", href: "/visibility-system" },
       { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
-      { label: "Civive OS", href: "/civive-os" },
+      { label: "CiviveOS", href: "/civive-os" },
     ],
   },
   {
@@ -2494,7 +3072,7 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "8 min read",
     summary:
       "No provider can honestly guarantee a business will be recommended by ChatGPT, Gemini, Grok, Perplexity, or Google. What a service business can do is make its public evidence clearer, more consistent, and easier for those systems to understand.",
-    primaryCta: { label: "Request an AI Search Audit", href: "/contact" },
+    primaryCta: { label: "Get an AI Search Visibility Audit", href: "/contact" },
     secondaryCta: {
       label: "See the visibility system",
       href: "/visibility-system",
@@ -3309,7 +3887,7 @@ export const buildLog = [
   {
     date: "April 2026",
     title: "Connected the site to a real lead path.",
-    copy: "The contact flow now sends audit requests into Civive OS, tags the lead, adds context, and creates a pipeline opportunity instead of leaving the form isolated.",
+    copy: "The contact flow now sends audit requests into CiviveOS, tags the lead, adds context, and creates a pipeline opportunity instead of leaving the form isolated.",
   },
   {
     date: "Now",
@@ -3320,15 +3898,15 @@ export const buildLog = [
 
 export const pageMeta = {
   home: {
-    title: "AI Search Visibility for Service Businesses | Civive Unlimited",
+    title: "Civive Unlimited | AI Search Visibility for Service Businesses",
     description:
-      "Civive Unlimited helps service businesses improve AI search visibility, Google clarity, schema, internal links, lead capture, Civive OS handoff, and AI receptionist readiness.",
+      "Civive Unlimited helps local service businesses improve AI search visibility, Google Business Profile clarity, websites, CRM automation, missed-call recovery, AI receptionist setup, reviews, and lead follow-up.",
   },
   audit: {
     title:
-      "AI Search Readiness Audit for Service Businesses | Civive Unlimited",
+      "AI Search Visibility Audit for Service Businesses | Civive Unlimited",
     description:
-      "A practical AI Search Readiness Audit for service businesses that need clearer public facts, service pages, schema, FAQs, Google profile alignment, and lead capture.",
+      "A practical AI Search Visibility Audit for service businesses that need clearer public facts, service pages, schema, FAQs, Google profile alignment, and lead capture.",
   },
   prospectingReport: {
     title: "AI Search Prospecting Report | Civive Unlimited",
@@ -3341,14 +3919,14 @@ export const pageMeta = {
       "The Civive system for cleaning up service business signals, AI-ready proof, schema, internal links, local trust, lead capture, follow-up, and AI receptionist handoff.",
   },
   civiveOs: {
-    title: "Civive OS | Lead Response and AI Front Desk SaaS",
+    title: "CiviveOS | Lead Response and AI Front Desk SaaS",
     description:
-      "Civive OS helps service businesses clean up lead capture, missed-call recovery, booking, reviews, follow-up, and AI receptionist-ready front desk handoff.",
+      "CiviveOS helps service businesses clean up lead capture, missed-call recovery, booking, reviews, follow-up, and AI receptionist-ready front desk handoff.",
   },
   civiveOsOffer: {
-    title: "Civive OS Pricing and Plans | Lead Response Software",
+    title: "CiviveOS Pricing and Plans | Lead Response Software",
     description:
-      "Compare Civive OS Launch, Growth, and Operator plans for service businesses that need lead capture, missed-call recovery, booking, reviews, follow-up, and AI-ready front desk support.",
+      "Compare CiviveOS Launch, Growth, and Operator plans for service businesses that need lead capture, missed-call recovery, booking, reviews, follow-up, and AI-ready front desk support.",
   },
   industries: {
     title: "Industries for AI Search Visibility | Civive Unlimited",
@@ -3371,14 +3949,20 @@ export const pageMeta = {
       "How Civive Unlimited is applying its AI visibility system to itself first and documenting the process in public.",
   },
   contact: {
-    title: "Request an AI Search Readiness Audit | Civive Unlimited",
+    title: "Request an AI Search Visibility Audit | Civive Unlimited",
     description:
-      "Request an AI Search Readiness Audit from Civive Unlimited and send the business, website or Google profile, service area, and visibility problem to inspect first.",
+      "Request an AI Search Visibility Audit from Civive Unlimited and send the business, website or Google profile, service area, and visibility problem to inspect first.",
   },
   receptionist: {
     title: "AI Receptionist for Service Businesses | Missed-Call Recovery",
     description:
       "AI receptionist and missed-call recovery systems for service businesses that need faster intake, lead qualification, booking handoff, CRM notes, and follow-up.",
+  },
+  springfield: {
+    title:
+      "AI Search Visibility and Lead Automation in Springfield MO | Civive Unlimited",
+    description:
+      "Civive Unlimited helps Springfield, MO service businesses improve AI search visibility, Google Business Profile clarity, websites, CRM automation, missed-call recovery, reviews, and lead follow-up.",
   },
 };
 

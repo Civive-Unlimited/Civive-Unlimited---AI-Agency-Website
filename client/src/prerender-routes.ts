@@ -12,6 +12,7 @@ import {
   industryHubFaqs,
   pageMeta,
   resourceArticles,
+  servicePages,
   site,
   visibilitySystemFaqs,
 } from "@/content/site";
@@ -23,6 +24,7 @@ export type PrerenderRoute = {
   type?: "website" | "article";
   schemaKind?: "webpage" | "faq" | "service" | "industry" | "article";
   serviceName?: string;
+  serviceType?: string;
   faqItems?: Array<{ question: string; answer: string }>;
   offerCatalog?: Array<{
     name: string;
@@ -81,14 +83,14 @@ export const prerenderRoutes: PrerenderRoute[] = [
     path: "/civive-os",
     ...pageMeta.civiveOs,
     schemaKind: "service",
-    serviceName: "Civive OS",
+    serviceName: "CiviveOS",
     faqItems: civiveOsFaqs,
   },
   {
     path: "/civive-os-offer",
     ...pageMeta.civiveOsOffer,
     schemaKind: "service",
-    serviceName: "Civive OS Plans",
+    serviceName: "CiviveOS Plans",
     faqItems: civiveOsOfferFaqs,
     offerCatalog: civiveOsOfferSchemaOffers,
   },
@@ -106,11 +108,32 @@ export const prerenderRoutes: PrerenderRoute[] = [
   ...industries.map(industry => ({
     path: `/industries/${industry.slug}`,
     title: `${industry.name} AI Search Visibility | Civive Unlimited`,
-    description: `AI Search Readiness Audit and visibility signal cleanup for ${industry.name} businesses that need clearer services, trust signals, reviews, FAQs, schema, and lead capture.`,
+    description: `AI Search Visibility Audit and visibility signal cleanup for ${industry.name} businesses that need clearer services, trust signals, reviews, FAQs, schema, and lead capture.`,
     schemaKind: "industry" as const,
     serviceName: `${industry.name} AI Search Visibility Audit`,
     faqItems: getIndustryFaqs(industry),
   })),
+  ...servicePages.map(service => ({
+    path: `/services/${service.slug}`,
+    title: service.meta.title,
+    description: service.meta.description,
+    schemaKind: "service" as const,
+    serviceName: service.serviceName,
+    serviceType: service.serviceType,
+  })),
+  {
+    path: "/service-areas/springfield-mo",
+    ...pageMeta.springfield,
+    schemaKind: "service",
+    serviceName:
+      "AI Search Visibility and Lead Automation for Springfield Service Businesses",
+    serviceType: "AI Search Visibility and Lead Automation",
+    itemList: servicePages.map(service => ({
+      name: service.name,
+      path: `/services/${service.slug}`,
+      description: service.meta.description,
+    })),
+  },
   {
     path: "/faq",
     ...pageMeta.faq,

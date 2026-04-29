@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { CheckCircle, Loader2, Mail, Phone } from "lucide-react";
+import { CheckCircle, Globe, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 import { site } from "@/content/site";
@@ -22,6 +22,17 @@ const contactInfo = [
     label: "Email",
     value: site.email,
     href: `mailto:${site.email}`,
+  },
+  {
+    icon: Globe,
+    label: "Website",
+    value: site.website,
+    href: site.website,
+  },
+  {
+    icon: MapPin,
+    label: "Address",
+    value: site.addressDisplay,
   },
 ];
 
@@ -74,7 +85,7 @@ export default function ContactSection() {
       if (response.ok && result?.ok) {
         setIsSubmitted(true);
         toast.success(
-          "AI Search Readiness Audit request sent. We'll follow up soon.",
+          "AI Search Visibility Audit request sent. We'll follow up soon.",
           {
             duration: 6000,
           }
@@ -112,7 +123,7 @@ export default function ContactSection() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-3xl text-center"
         >
-          <p className="homepage-eyebrow">AI Search Readiness Audit</p>
+          <p className="homepage-eyebrow">AI Search Visibility Audit</p>
           <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
             Send the context Civive needs to find the first visibility gap.
           </h2>
@@ -167,12 +178,18 @@ export default function ContactSection() {
                   <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">
                     {item.label}
                   </p>
-                  <a
-                    href={item.href}
-                    className="mt-1 inline-flex text-sm text-foreground transition-colors hover:text-[oklch(0.75_0.18_220)]"
-                  >
-                    {item.value}
-                  </a>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      className="mt-1 inline-flex text-sm text-foreground transition-colors hover:text-[oklch(0.75_0.18_220)]"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="mt-1 text-sm text-foreground">
+                      {item.value}
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -208,7 +225,7 @@ export default function ContactSection() {
               <>
                 <div className="border-b border-white/[0.08] pb-5">
                   <h3 className="text-2xl font-semibold text-foreground">
-                    Request your AI Search Readiness Audit
+                    Request your AI Search Visibility Audit
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     Send enough context to inspect the public signals, then
@@ -434,7 +451,7 @@ export default function ContactSection() {
                         Sending...
                       </>
                     ) : (
-                      "Get AI Search Audit"
+                      "Get an AI Search Visibility Audit"
                     )}
                   </button>
 

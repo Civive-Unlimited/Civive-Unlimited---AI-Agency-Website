@@ -4,7 +4,12 @@ import App from "./App";
 import { prerenderRoutes } from "./prerender-routes";
 
 export { buildAssetUrl, buildCanonicalUrl, seoConfig } from "./content/seo";
-export { industries, relatedIndustrySlugsBySlug } from "./content/site";
+export {
+  coreServices,
+  industries,
+  relatedIndustrySlugsBySlug,
+  servicePages,
+} from "./content/site";
 export { topicalPages } from "./content/topical-map";
 export { prerenderRoutes };
 

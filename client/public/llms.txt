@@ -1,33 +1,271 @@
 # Civive Unlimited
 
-> AI search visibility systems for local service businesses.
+> Civive Unlimited helps local service businesses improve AI search visibility, Google Business Profile clarity, websites, CRM automation, missed-call recovery, AI receptionist setup, reviews, and lead follow-up.
 
 Website: https://www.civiveunlimited.com
 Canonical domain: https://www.civiveunlimited.com
 Business: Civive Unlimited
 Location: Springfield, MO
+Address: 1214 N Robberson Ave, Springfield, MO 65802
 Phone: (417) 386-2441
 Email: ceo@civiveunlimited.com
-Area served: United States
+Area served: Springfield, MO and Missouri service businesses
+Last updated: 2026-04-29
 
 ## What Civive Does
 
 Civive Unlimited helps local service businesses become easier for Google, AI search engines, answer engines, and buyers to understand, trust, contact, and follow up with.
 
-Primary offer: AI Search Readiness Audit.
-Secondary systems: AI search visibility cleanup, service and location signal cleanup, AI receptionist, lead capture, booking, CRM handoff, follow-up automation, and Civive OS.
+Primary offer: AI Search Visibility Audit.
+Secondary systems: AI search visibility cleanup, service and location signal cleanup, AI receptionist, lead capture, booking, CRM handoff, follow-up automation, and CiviveOS.
 
 ## Best Pages To Understand The Offer
 
 - Civive Unlimited: https://www.civiveunlimited.com
-- AI Search Readiness Audit: https://www.civiveunlimited.com/ai-search-audit
+  - Page type: homepage
+  - Search intent: Brand, offer, and service overview
+  - Topical role: Defines the entity, audience, primary AI Search Visibility Audit offer, and next step.
+  - Conversion goal: Move qualified local service businesses toward the audit request.
+- AI Search Visibility Audit: https://www.civiveunlimited.com/ai-search-audit
+  - Page type: commercial
+  - Search intent: Buyer intent for AI search, AEO, local SEO, and visibility audit help
+  - Topical role: Primary commercial entry point for diagnosing visibility, entity, schema, and lead-capture gaps.
+  - Conversion goal: Get the visitor to request an audit.
 - AI Search Visibility System: https://www.civiveunlimited.com/visibility-system
+  - Page type: pillar
+  - Search intent: Solution intent for improving AI search and local recommendation readiness
+  - Topical role: Explains Civive's cleanup framework from public signals to lead capture.
+  - Conversion goal: Help the visitor understand the implementation path after the audit.
 - Industries for AI Search Visibility: https://www.civiveunlimited.com/industries
+  - Page type: pillar
+  - Search intent: Industry-fit and vertical-specific AI visibility research
+  - Topical role: Parent hub for industry-specific AI search visibility pages.
+  - Conversion goal: Route visitors to the industry page that best matches their business.
+- AI Search Visibility FAQ: https://www.civiveunlimited.com/faq
+  - Page type: support
+  - Search intent: Question intent around AI search, local SEO, reviews, schema, and FAQs
+  - Topical role: Answers objections and supports commercial audit and visibility-system pages.
+  - Conversion goal: Reduce uncertainty and move qualified visitors toward the audit.
 - AI Search Resources and Insights: https://www.civiveunlimited.com/resources
+  - Page type: pillar
+  - Search intent: Educational intent for AI search, local visibility, schema, and answer-engine formatting
+  - Topical role: Content hub for future articles, videos, founder notes, and practical checklists.
+  - Conversion goal: Build trust and direct readers to the audit or public build.
 - Build in Public: https://www.civiveunlimited.com/build-in-public
+  - Page type: proof
+  - Search intent: Proof, process, and founder-led build documentation intent
+  - Topical role: Shows Civive applying its visibility system to itself without fake proof.
+  - Conversion goal: Turn transparency into trust and route serious buyers toward the audit.
+- AI Search Prospecting Report: https://www.civiveunlimited.com/prospecting-report
+  - Page type: proof
+  - Search intent: Example and sales enablement intent for AI search audit reporting
+  - Topical role: Demonstrates how Civive frames public visibility gaps for prospects.
+  - Conversion goal: Help prospects understand the audit output and ask for their own.
 - AI Receptionist for Service Businesses: https://www.civiveunlimited.com/ai-receptionist
-- Civive OS: https://www.civiveunlimited.com/civive-os
+  - Page type: commercial
+  - Search intent: Buyer intent for AI receptionist, missed-call recovery, and lead response systems
+  - Topical role: Positions lead response as the downstream conversion layer after visibility.
+  - Conversion goal: Move visitors from visibility interest into lead-capture and receptionist implementation.
+- CiviveOS: https://www.civiveunlimited.com/civive-os
+  - Page type: commercial
+  - Search intent: Product and solution intent for lead response and AI front desk software
+  - Topical role: Explains the operating system layer for lead capture, booking, follow-up, and AI front desk support.
+  - Conversion goal: Move visitors toward the offer or contact path.
+- CiviveOS Pricing and Plans: https://www.civiveunlimited.com/civive-os-offer
+  - Page type: commercial
+  - Search intent: Pricing, package, and buying intent for CiviveOS
+  - Topical role: Clarifies the commercial offer for lead response, booking, reviews, follow-up, and AI front desk support.
+  - Conversion goal: Convert qualified visitors into a plan discussion or audit request.
 - Contact Civive Unlimited: https://www.civiveunlimited.com/contact
+  - Page type: conversion
+  - Search intent: Contact, booking, and audit request intent
+  - Topical role: Primary conversion page for audit and implementation requests.
+  - Conversion goal: Capture a qualified lead with enough context for follow-up.
+- AI Search Visibility Audit: https://www.civiveunlimited.com/services/ai-search-visibility-audit
+  - Page type: commercial
+  - Search intent: AI Search Visibility Audit buyer intent for local service businesses
+  - Topical role: Commercial service page explaining Civive's ai search visibility audit work, local fit, deliverables, and related services.
+  - Conversion goal: Move qualified service business owners toward an audit request or call.
+- Google Business Profile Optimization: https://www.civiveunlimited.com/services/google-business-profile-optimization
+  - Page type: commercial
+  - Search intent: Google Business Profile Optimization buyer intent for local service businesses
+  - Topical role: Commercial service page explaining Civive's google business profile optimization work, local fit, deliverables, and related services.
+  - Conversion goal: Move qualified service business owners toward an audit request or call.
+- AI Receptionist: https://www.civiveunlimited.com/services/ai-receptionist
+  - Page type: commercial
+  - Search intent: AI Receptionist buyer intent for local service businesses
+  - Topical role: Commercial service page explaining Civive's ai receptionist work, local fit, deliverables, and related services.
+  - Conversion goal: Move qualified service business owners toward an audit request or call.
+- Missed Call Recovery: https://www.civiveunlimited.com/services/missed-call-recovery
+  - Page type: commercial
+  - Search intent: Missed Call Recovery buyer intent for local service businesses
+  - Topical role: Commercial service page explaining Civive's missed call recovery work, local fit, deliverables, and related services.
+  - Conversion goal: Move qualified service business owners toward an audit request or call.
+- Website Design for Service Businesses: https://www.civiveunlimited.com/services/website-design-service-businesses
+  - Page type: commercial
+  - Search intent: Website Design for Service Businesses buyer intent for local service businesses
+  - Topical role: Commercial service page explaining Civive's website design for service businesses work, local fit, deliverables, and related services.
+  - Conversion goal: Move qualified service business owners toward an audit request or call.
+- Review Automation: https://www.civiveunlimited.com/services/review-automation
+  - Page type: commercial
+  - Search intent: Review Automation buyer intent for local service businesses
+  - Topical role: Commercial service page explaining Civive's review automation work, local fit, deliverables, and related services.
+  - Conversion goal: Move qualified service business owners toward an audit request or call.
+- CRM and Lead Follow-Up: https://www.civiveunlimited.com/services/crm-lead-follow-up
+  - Page type: commercial
+  - Search intent: CRM and Lead Follow-Up buyer intent for local service businesses
+  - Topical role: Commercial service page explaining Civive's crm and lead follow-up work, local fit, deliverables, and related services.
+  - Conversion goal: Move qualified service business owners toward an audit request or call.
+- Springfield Service Businesses: https://www.civiveunlimited.com/service-areas/springfield-mo
+  - Page type: commercial
+  - Search intent: Local buyer intent for AI search visibility, Google Business Profile optimization, CRM automation, missed-call recovery, review automation, and lead follow-up in Springfield, MO
+  - Topical role: Local landing page tying Civive's service pages to Springfield, Missouri and nearby service businesses.
+  - Conversion goal: Move Springfield service business owners toward the AI Search Visibility Audit or a call.
+- HVAC AI Search Visibility: https://www.civiveunlimited.com/industries/hvac
+  - Page type: subpillar
+  - Search intent: HVAC AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for HVAC businesses.
+  - Conversion goal: Move HVAC operators toward an AI Search Visibility Audit.
+- Plumbing AI Search Visibility: https://www.civiveunlimited.com/industries/plumbing
+  - Page type: subpillar
+  - Search intent: Plumbing AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Plumbing businesses.
+  - Conversion goal: Move Plumbing operators toward an AI Search Visibility Audit.
+- Electrical AI Search Visibility: https://www.civiveunlimited.com/industries/electrical
+  - Page type: subpillar
+  - Search intent: Electrical AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Electrical businesses.
+  - Conversion goal: Move Electrical operators toward an AI Search Visibility Audit.
+- Roofing AI Search Visibility: https://www.civiveunlimited.com/industries/roofing
+  - Page type: subpillar
+  - Search intent: Roofing AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Roofing businesses.
+  - Conversion goal: Move Roofing operators toward an AI Search Visibility Audit.
+- Cleaning Services AI Search Visibility: https://www.civiveunlimited.com/industries/cleaning-services
+  - Page type: subpillar
+  - Search intent: Cleaning Services AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Cleaning Services businesses.
+  - Conversion goal: Move Cleaning operators toward an AI Search Visibility Audit.
+- Landscaping AI Search Visibility: https://www.civiveunlimited.com/industries/landscaping
+  - Page type: subpillar
+  - Search intent: Landscaping AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Landscaping businesses.
+  - Conversion goal: Move Landscaping operators toward an AI Search Visibility Audit.
+- Med Spas AI Search Visibility: https://www.civiveunlimited.com/industries/med-spas
+  - Page type: subpillar
+  - Search intent: Med Spas AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Med Spas businesses.
+  - Conversion goal: Move Med Spas operators toward an AI Search Visibility Audit.
+- Salons & Spas AI Search Visibility: https://www.civiveunlimited.com/industries/salons-spas
+  - Page type: subpillar
+  - Search intent: Salons & Spas AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Salons & Spas businesses.
+  - Conversion goal: Move Salons & Spas operators toward an AI Search Visibility Audit.
+- Law Firms AI Search Visibility: https://www.civiveunlimited.com/industries/law-firms
+  - Page type: subpillar
+  - Search intent: Law Firms AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Law Firms businesses.
+  - Conversion goal: Move Law Firms operators toward an AI Search Visibility Audit.
+- Pest Control AI Search Visibility: https://www.civiveunlimited.com/industries/pest-control
+  - Page type: subpillar
+  - Search intent: Pest Control AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Pest Control businesses.
+  - Conversion goal: Move Pest Control operators toward an AI Search Visibility Audit.
+- Home Restoration AI Search Visibility: https://www.civiveunlimited.com/industries/home-restoration
+  - Page type: subpillar
+  - Search intent: Home Restoration AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Home Restoration businesses.
+  - Conversion goal: Move Restoration operators toward an AI Search Visibility Audit.
+- Auto Repair AI Search Visibility: https://www.civiveunlimited.com/industries/auto-repair
+  - Page type: subpillar
+  - Search intent: Auto Repair AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Auto Repair businesses.
+  - Conversion goal: Move Auto Repair operators toward an AI Search Visibility Audit.
+- Veterinary Clinics AI Search Visibility: https://www.civiveunlimited.com/industries/veterinary-clinics
+  - Page type: subpillar
+  - Search intent: Veterinary Clinics AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Veterinary Clinics businesses.
+  - Conversion goal: Move Veterinary operators toward an AI Search Visibility Audit.
+- Real Estate Teams AI Search Visibility: https://www.civiveunlimited.com/industries/real-estate-teams
+  - Page type: subpillar
+  - Search intent: Real Estate Teams AI search visibility and local service business readiness
+  - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Real Estate Teams businesses.
+  - Conversion goal: Move Real Estate operators toward an AI Search Visibility Audit.
+- AI Search Readiness Checklist for Local Service Businesses: https://www.civiveunlimited.com/resources/ai-search-readiness-checklist
+  - Page type: support
+  - Search intent: Checklist intent for AI search readiness and local visibility cleanup
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with checklist intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- AI Search vs Local SEO: What Service Businesses Need to Know: https://www.civiveunlimited.com/resources/ai-search-vs-local-seo
+  - Page type: support
+  - Search intent: Comparison intent for AI search visibility versus local SEO
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with comparison intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- How Much Should an AI Search Readiness Audit Cost?: https://www.civiveunlimited.com/resources/ai-search-audit-cost
+  - Page type: support
+  - Search intent: Cost and pricing intent for AI Search Readiness Audit services
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with cost guide intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- What Does an AI Search Readiness Audit Include?: https://www.civiveunlimited.com/resources/what-does-an-ai-search-audit-include
+  - Page type: support
+  - Search intent: Buyer intent for AI Search Readiness Audit deliverables and scope
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with audit scope intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- AI Search Audit Alternatives for Local Service Businesses: https://www.civiveunlimited.com/resources/ai-search-audit-alternatives
+  - Page type: support
+  - Search intent: Alternative intent for businesses comparing AI search audit options
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with alternatives intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- Best AI Search Audit for Service Businesses: How to Choose: https://www.civiveunlimited.com/resources/best-ai-search-audit-for-service-businesses
+  - Page type: support
+  - Search intent: Best provider intent for choosing an AI Search Readiness Audit
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with best-fit guide intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- AI Search Visibility Mistakes Local Businesses Should Avoid: https://www.civiveunlimited.com/resources/ai-search-visibility-mistakes
+  - Page type: support
+  - Search intent: Mistakes intent for AI search visibility and local service business SEO
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with mistakes intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- AI Search Implementation Plan for Service Businesses: https://www.civiveunlimited.com/resources/ai-search-implementation-plan-service-businesses
+  - Page type: support
+  - Search intent: How-to and implementation intent for AI search visibility systems
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with implementation intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- How Local Service Businesses Can Become Easier for ChatGPT to Recommend: https://www.civiveunlimited.com/resources/chatgpt-business-recommendations-local-service-businesses
+  - Page type: support
+  - Search intent: AI-answer visibility intent for local service businesses that want to be easier for AI tools to understand and cite
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with ai recommendations intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- AI Search Audit for Home Service Businesses: https://www.civiveunlimited.com/resources/ai-search-audit-for-home-service-businesses
+  - Page type: support
+  - Search intent: Buyer and industry-fit intent for home service businesses evaluating an AI search audit
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with home services intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- AI Search Visibility Service Page Template: https://www.civiveunlimited.com/resources/ai-search-visibility-service-page-template
+  - Page type: support
+  - Search intent: Template and tool intent for service businesses improving a page for AI search visibility
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with template intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- Google Business Profile AI Search Readiness for Local Businesses: https://www.civiveunlimited.com/resources/google-business-profile-ai-search-readiness
+  - Page type: support
+  - Search intent: Buyer and implementation intent for Google Business Profile cleanup as part of AI search readiness
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with google profile intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- Location Pages for AI Search Without Doorway Page Risk: https://www.civiveunlimited.com/resources/location-pages-ai-search-without-doorway-pages
+  - Page type: support
+  - Search intent: Risk-aware local SEO and AI search intent for building location pages without doorway spam
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with local pages intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- Schema for AI Search and Local Service Businesses: https://www.civiveunlimited.com/resources/schema-for-ai-search-local-businesses
+  - Page type: support
+  - Search intent: Technical SEO and implementation intent for local business schema that supports AI search visibility
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with schema intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
+- AI Search Audit Patterns by Industry: https://www.civiveunlimited.com/resources/ai-search-audit-patterns-by-industry
+  - Page type: support
+  - Search intent: Proof-adjacent and method-comparison intent for buyers evaluating AI search audit use cases across service industries
+  - Topical role: Supports the AI Search Visibility Audit and visibility-system pillar with audit patterns intent content.
+  - Conversion goal: Move readers from education into an audit request, visibility-system review, or contact path.
 
 ## Crawling And Citation Guidance
 

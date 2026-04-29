@@ -37,7 +37,7 @@ export default function Terms() {
             <p>
               {site.name} provides AI-powered business growth solutions
               including websites, lead generation systems, automation, CRM
-              setup, marketing services, and subscription access to Civive OS.
+              setup, marketing services, and subscription access to CiviveOS.
               Specific deliverables, timelines, and scope are defined in
               checkout pages, individual service agreements, or approved
               proposals.
@@ -61,7 +61,7 @@ export default function Terms() {
             </h2>
             <p>
               Setup fees are due before work begins unless a checkout page
-              states otherwise. Civive OS subscriptions are billed through
+              states otherwise. CiviveOS subscriptions are billed through
               Stripe according to the plan, billing interval, trial terms,
               credits, and price shown at checkout. All prices are in USD. Late,
               failed, disputed, or canceled payments may result in service

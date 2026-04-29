@@ -115,13 +115,13 @@ const implementationChecks = [
 
 const supportLinks = [
   {
-    title: "AI Search Readiness Audit",
+    title: "AI Search Visibility Audit",
     copy: "Use the audit when the business needs more demand or clearer public signals before adding automation.",
     href: "/ai-search-audit",
   },
   {
-    title: "Civive OS",
-    copy: "Use Civive OS when the lead-response operating base needs to be cleaned up before adding more AI.",
+    title: "CiviveOS",
+    copy: "Use CiviveOS when the lead-response operating base needs to be cleaned up before adding more AI.",
     href: "/civive-os",
   },
   {
@@ -140,9 +140,9 @@ export default function AIReceptionistPage() {
           eyebrow="AI receptionist and missed-call recovery"
           title="Capture, qualify, and route service leads before they cool off."
           copy="An AI receptionist is the downstream conversion layer for service businesses. It helps answer, qualify, book, route, and follow up after a buyer finds the business through AI search, Google, referrals, calls, forms, or chat."
-          primaryCta={{ label: "Get AI Search Audit", href: "/contact" }}
+          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
           secondaryCta={{
-            label: "Explore Civive OS",
+            label: "Explore CiviveOS",
             href: "/civive-os",
           }}
         >
@@ -156,7 +156,7 @@ export default function AIReceptionistPage() {
               </p>
               <p>
                 If the business is not getting enough qualified demand yet,
-                start with the AI Search Readiness Audit and visibility cleanup.
+                start with the AI Search Visibility Audit and visibility cleanup.
               </p>
             </div>
           </div>

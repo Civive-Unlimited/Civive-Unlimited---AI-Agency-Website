@@ -44,6 +44,10 @@ export default defineConfig({
             id.includes("cmdk") ||
             id.includes("vaul") ||
             id.includes("sonner") ||
+            id.includes("next-themes") ||
+            id.includes("react-hook-form") ||
+            id.includes("wouter") ||
+            id.includes("streamdown") ||
             id.includes("input-otp") ||
             id.includes("react-day-picker") ||
             id.includes("embla-carousel-react")
@@ -51,7 +55,7 @@ export default defineConfig({
             return "vendor-ui";
           }
 
-          return "vendor";
+          return undefined;
         },
       },
     },
