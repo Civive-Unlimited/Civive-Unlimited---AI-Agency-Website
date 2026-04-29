@@ -1,3 +1,4 @@
+import { auditPageFaqs } from "@/content/audit-page";
 import { faqs, industries, pageMeta, site } from "@/content/site";
 
 export type PrerenderRoute = {
@@ -27,9 +28,12 @@ export const prerenderRoutes: PrerenderRoute[] = [
   { path: "/", ...pageMeta.home },
   {
     path: "/ai-search-audit",
-    ...pageMeta.audit,
+    title: "AI Visibility Audit For Local Service Businesses | Civive Unlimited",
+    description:
+      "Get a free AI Visibility Audit from Civive Unlimited. See how your business shows up in ChatGPT, Gemini, Perplexity, Google Search, and Google Maps.",
     schemaKind: "service",
-    serviceName: site.primaryOffer,
+    serviceName: "AI Search Visibility Audit",
+    faqItems: auditPageFaqs,
   },
   {
     path: "/visibility-system",
