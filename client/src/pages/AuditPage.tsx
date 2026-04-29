@@ -8,7 +8,8 @@ import {
 } from "@/components/AuthorityPage";
 import Seo from "@/components/Seo";
 import ContactSection from "@/components/sections/ContactSection";
-import { auditChecks, auditPageFaqs, pageMeta, site } from "@/content/site";
+import { auditPageFaqs } from "@/content/audit-page";
+import { auditChecks, pageMeta, site } from "@/content/site";
 
 const auditDeliverables = [
   "Visibility gap list",
