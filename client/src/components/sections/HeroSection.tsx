@@ -153,9 +153,9 @@ export default function HeroSection() {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.04 }}
-              className="premium-hero-title mt-4 max-w-[46rem] text-balance text-[2.65rem] tracking-[0] text-white sm:mt-5 sm:text-[4.1rem] lg:text-[4.85rem] xl:text-[5.2rem]"
+              className="hero-tech-title mt-4 max-w-[48rem] text-balance text-[2.55rem] leading-[0.98] text-white sm:mt-5 sm:text-[4rem] lg:text-[4.75rem] xl:text-[5.1rem]"
             >
-              Get found. Capture the lead. Book the job.
+              Get found. Get called. Get booked.
             </motion.h1>
 
             <motion.p

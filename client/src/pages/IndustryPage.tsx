@@ -105,7 +105,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
               title={`${industry.name} AI search visibility depends on specific buyer evidence.`}
               copy={
                 authorityBrief?.answerSummary ??
-                `A ${industry.shortName} business becomes easier for Google, AI answers, and buyers to understand when its services, service area, proof, reviews, FAQs, schema, and response path all describe the same real-world offer.`
+                `For ${industry.shortName} businesses, Google, AI answers, and buyers can understand the offer more clearly when services, service area, proof, reviews, FAQs, schema, and response path all describe the same real-world offer.`
               }
             />
             <div className="grid gap-4 sm:grid-cols-2">
@@ -171,7 +171,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
               items={toItems(
                 industry.skipReasons,
                 item =>
-                  `${item} can make a stronger competitor easier for Google, maps, AI search, and buyers to understand. The fix is to turn the real service, location, proof, and next-step context into visible page content instead of leaving it implied.`
+                  `This gap can make a stronger competitor easier for Google, maps, AI search, and buyers to understand. The fix is to turn the real service, location, proof, and next-step context into visible page content instead of leaving it implied.`
               )}
             />
           </div>
@@ -227,7 +227,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
             <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
               <SectionHeader
                 eyebrow="Objection handling"
-                title={`Questions a ${industry.shortName} buyer may hesitate on before contacting anyone.`}
+                title={`Questions ${industry.shortName} buyers may hesitate on before contacting anyone.`}
                 copy="Objection sections help visitors decide faster and give AI systems clearer language for comparison, without inventing fake proof or making unsupported promises."
               />
               <div className="grid gap-4 sm:grid-cols-2">
@@ -270,7 +270,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
               eyebrow="Connected implementation path"
-              title={`Where a ${industry.shortName} visibility fix should connect next.`}
+              title={`Where ${industry.shortName} visibility fixes should connect next.`}
               copy="Search engines and AI systems understand sites better when parent, child, sibling, support, and conversion pages are connected with descriptive links. These are the paths a serious industry page should support."
             />
             <EditorialList items={industryImplementationLinks} />

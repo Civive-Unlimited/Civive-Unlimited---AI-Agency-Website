@@ -151,15 +151,76 @@ const routeByPath = new Map(prerenderRoutes.map(route => [route.path, route]));
 const topicalByPath = new Map(topicalPages.map(page => [page.path, page]));
 const siteDomain = seoConfig.canonicalDomain;
 const sitemap = await fs.readFile(path.join(publicDir, "sitemap.xml"), "utf8");
+const robotsTxt = await fs.readFile(path.join(publicDir, "robots.txt"), "utf8");
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(
   match => match[1]
 );
 const expectedSitemapUrls = prerenderRoutes.map(route =>
   buildCanonicalUrl(route.path)
 );
+const expectedRobotsTxt = [
+  "User-agent: *",
+  "Allow: /",
+  "",
+  "User-agent: Googlebot",
+  "Allow: /",
+  "",
+  "User-agent: Bingbot",
+  "Allow: /",
+  "",
+  "User-agent: Applebot",
+  "Allow: /",
+  "",
+  "User-agent: OAI-SearchBot",
+  "Allow: /",
+  "",
+  "User-agent: ChatGPT-User",
+  "Allow: /",
+  "",
+  "User-agent: GPTBot",
+  "Allow: /",
+  "",
+  "User-agent: PerplexityBot",
+  "Allow: /",
+  "",
+  "User-agent: ClaudeBot",
+  "Allow: /",
+  "",
+  "User-agent: Claude-SearchBot",
+  "Allow: /",
+  "",
+  `Sitemap: ${siteDomain}/sitemap.xml`,
+  "",
+].join("\n");
 
 await assertFreshGeneratedOutput(issues);
 compareSets("sitemap route set", expectedSitemapUrls, sitemapUrls, issues);
+
+if (robotsTxt.replace(/\r\n/g, "\n") !== expectedRobotsTxt) {
+  issues.push("robots.txt does not match the approved crawler policy");
+}
+
+if (new Set(sitemapUrls).size !== sitemapUrls.length) {
+  issues.push("sitemap contains duplicate URLs");
+}
+
+for (const sitemapUrl of sitemapUrls) {
+  let parsed;
+  try {
+    parsed = new URL(sitemapUrl);
+  } catch {
+    issues.push(`sitemap URL is invalid XML URL text: ${sitemapUrl}`);
+    continue;
+  }
+
+  if (parsed.protocol !== "https:" || parsed.origin !== siteDomain) {
+    issues.push(`sitemap URL is not canonical production URL: ${sitemapUrl}`);
+  }
+
+  if (/localhost|vercel\.app/i.test(sitemapUrl)) {
+    issues.push(`sitemap URL contains non-production host: ${sitemapUrl}`);
+  }
+}
 
 const minimumWordsByPageType = {
   homepage: 900,

@@ -1,5 +1,39 @@
 const canonicalDomain = "https://www.civiveunlimited.com";
 const apexDomain = "https://civiveunlimited.com";
+const expectedRobotsTxt = [
+  "User-agent: *",
+  "Allow: /",
+  "",
+  "User-agent: Googlebot",
+  "Allow: /",
+  "",
+  "User-agent: Bingbot",
+  "Allow: /",
+  "",
+  "User-agent: Applebot",
+  "Allow: /",
+  "",
+  "User-agent: OAI-SearchBot",
+  "Allow: /",
+  "",
+  "User-agent: ChatGPT-User",
+  "Allow: /",
+  "",
+  "User-agent: GPTBot",
+  "Allow: /",
+  "",
+  "User-agent: PerplexityBot",
+  "Allow: /",
+  "",
+  "User-agent: ClaudeBot",
+  "Allow: /",
+  "",
+  "User-agent: Claude-SearchBot",
+  "Allow: /",
+  "",
+  `Sitemap: ${canonicalDomain}/sitemap.xml`,
+  "",
+].join("\n");
 
 function fail(message) {
   throw new Error(message);
@@ -101,13 +135,8 @@ for (const assetPath of ["/sitemap.xml", "/robots.txt", "/llms.txt"]) {
     issues.push(`${assetPath}: expected 200, got ${response.status}`);
   }
   if (assetPath === "/robots.txt") {
-    for (const required of [
-      "User-agent: OAI-SearchBot",
-      "User-agent: ChatGPT-User",
-      `Sitemap: ${canonicalDomain}/sitemap.xml`,
-    ]) {
-      if (!text.includes(required))
-        issues.push(`/robots.txt: missing ${required}`);
+    if (text.replace(/\r\n/g, "\n") !== expectedRobotsTxt) {
+      issues.push("/robots.txt: content does not match approved crawl policy");
     }
   }
   if (assetPath === "/sitemap.xml") {

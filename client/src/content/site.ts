@@ -2082,7 +2082,7 @@ export function getIndustryFaqs(industry: Industry) {
   return [
     ...industry.faqs,
     {
-      question: `What should a ${industry.shortName} business explain first?`,
+      question: `What should ${industry.shortName} businesses explain first?`,
       answer: brief
         ? `${brief.searchMoment} Start with the questions buyers already ask, such as "${industry.customerQuestions[0]}" and "${industry.customerQuestions[1]}".`
         : `Start with the questions buyers already ask, such as "${industry.customerQuestions[0]}" and "${industry.customerQuestions[1]}". The page should connect those questions to clear services, service area, trust signals, reviews, FAQs, and the next step to call, book, or request an estimate.`,
@@ -2102,7 +2102,7 @@ export function getIndustryFaqs(industry: Industry) {
         "Visibility creates opportunity, but slow response can still lose the buyer. Calls, forms, chat, booking, CRM notes, missed-call recovery, and AI receptionist routing should be checked when the business already receives demand or expects more after cleanup.",
     },
     {
-      question: `What should a ${industry.shortName} site fix first?`,
+      question: `What should ${industry.shortName} sites fix first?`,
       answer:
         brief?.firstFixPriority ??
         "Fix the public facts, commercial pages, FAQs, schema, internal links, and contact path before scaling informational content.",
