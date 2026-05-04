@@ -1,6 +1,7 @@
 import Seo from "@/components/Seo";
 import { createProspectingReport, defaultProspectingReport, type ReportStatus } from "@/content/prospectingReport";
 import { pageMeta, site } from "@/content/site";
+import { trackEvent } from "@/lib/tracking";
 import { motion } from "framer-motion";
 import {
   Activity,
@@ -66,6 +67,11 @@ export default function ProspectingReportPage() {
     try {
       await navigator.clipboard.writeText(summaryText);
       setCopied(true);
+      trackEvent({
+        event: "report_copy_brief",
+        business: report.prospect.businessName,
+        target: { label: "Copy brief" },
+      });
       window.setTimeout(() => setCopied(false), 1600);
     } catch {
       setCopied(false);
@@ -157,7 +163,16 @@ export default function ProspectingReportPage() {
                 <div className="prospecting-report-actions mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
                   <button
                     type="button"
-                    onClick={() => window.print()}
+                    data-track-label="Print or PDF report"
+                    data-track-id="prospecting-report-print"
+                    onClick={() => {
+                      trackEvent({
+                        event: "report_print",
+                        business: report.prospect.businessName,
+                        target: { label: "Print / PDF" },
+                      });
+                      window.print();
+                    }}
                     className="inline-flex flex-1 items-center justify-center gap-2 border border-white/[0.12] bg-white/[0.07] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/[0.11]"
                   >
                     <Printer className="h-4 w-4" />
@@ -165,6 +180,8 @@ export default function ProspectingReportPage() {
                   </button>
                   <button
                     type="button"
+                    data-track-label="Copy report brief"
+                    data-track-id="prospecting-report-copy-brief"
                     onClick={copySummary}
                     className="inline-flex flex-1 items-center justify-center gap-2 border border-white/[0.12] px-4 py-3 text-sm font-semibold text-white/78 transition-colors hover:bg-white/[0.07] hover:text-white"
                   >
@@ -337,6 +354,15 @@ export default function ProspectingReportPage() {
               </div>
               <a
                 href="/contact"
+                data-track-label="Request cleanup plan"
+                data-track-id="prospecting-report-cleanup-plan"
+                onClick={() =>
+                  trackEvent({
+                    event: "report_cleanup_plan_click",
+                    business: report.prospect.businessName,
+                    target: { label: "Request cleanup plan", href: "/contact" },
+                  })
+                }
                 className="homepage-primary-button inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
               >
                 Request cleanup plan

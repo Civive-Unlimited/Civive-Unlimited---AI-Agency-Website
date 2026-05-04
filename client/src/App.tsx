@@ -16,9 +16,11 @@ import ResourcesPage from "@/pages/ResourcesPage";
 import ServicePage from "@/pages/ServicePage";
 import SpringfieldServiceAreaPage from "@/pages/SpringfieldServiceAreaPage";
 import VisibilitySystemPage from "@/pages/VisibilitySystemPage";
+import { useEffect } from "react";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { installWebsiteTracking } from "./lib/tracking";
 import Home from "./pages/Home";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -62,11 +64,18 @@ function Router() {
   );
 }
 
+function WebsiteTracking() {
+  useEffect(() => installWebsiteTracking(), []);
+
+  return null;
+}
+
 function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
+          <WebsiteTracking />
           <Toaster />
           <Navigation />
           <Router />
