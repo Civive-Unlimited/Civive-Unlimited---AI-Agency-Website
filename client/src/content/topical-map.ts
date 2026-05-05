@@ -34,6 +34,7 @@ const coreTopicalPages: TopicalPage[] = [
     conversionGoal:
       "Move qualified local service businesses toward the audit request.",
     relatedPaths: [
+      "/ai-agency-springfield-mo",
       "/ai-search-audit",
       "/visibility-system",
       "/services/ai-search-visibility-audit",
@@ -49,6 +50,33 @@ const coreTopicalPages: TopicalPage[] = [
       "/ai-receptionist",
       "/resources/chatgpt-business-recommendations-local-service-businesses",
       "/resources/ai-search-implementation-plan-service-businesses",
+      "/industries",
+      "/contact",
+    ],
+  },
+  {
+    path: "/ai-agency-springfield-mo",
+    label: "AI Agency Springfield MO",
+    title: "AI Agency Springfield MO",
+    pageType: "commercial",
+    searchIntent:
+      "Local buyer intent for an AI agency, AI marketing agency, AI consulting, and AI automation agency in Springfield, MO",
+    topicalRole:
+      "Main local commercial landing page for Civive Unlimited as a Springfield AI agency for service businesses.",
+    conversionGoal:
+      "Move Springfield service business owners toward an AI Growth Audit request.",
+    parentPath: "/",
+    relatedPaths: [
+      "/service-areas/springfield-mo",
+      "/ai-search-audit",
+      "/visibility-system",
+      "/ai-receptionist",
+      "/services/ai-receptionist",
+      "/services/missed-call-recovery",
+      "/services/crm-lead-follow-up",
+      "/services/google-business-profile-optimization",
+      "/services/website-design-service-businesses",
+      "/services/review-automation",
       "/industries",
       "/contact",
     ],
@@ -328,6 +356,7 @@ const serviceAreaTopicalPages: TopicalPage[] = [
     parentPath: "/",
     relatedPaths: [
       "/",
+      "/ai-agency-springfield-mo",
       "/ai-search-audit",
       "/services/ai-search-visibility-audit",
       "/services/google-business-profile-optimization",

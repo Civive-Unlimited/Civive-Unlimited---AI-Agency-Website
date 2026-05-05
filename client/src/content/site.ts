@@ -711,6 +711,39 @@ export const aiReceptionistFaqs = [
   },
 ];
 
+export const aiAgencySpringfieldFaqs = [
+  {
+    question: "What does an AI agency do for a local service business?",
+    answer:
+      "An AI agency helps the business use AI and automation to improve visibility, capture leads, answer faster, follow up, and book more jobs.",
+  },
+  {
+    question: "Is Civive Unlimited an AI agency in Springfield, MO?",
+    answer:
+      "Yes. Civive Unlimited is based in Springfield, Missouri and helps service businesses with AI visibility, AI automation, AI receptionist setup, CRM follow up, websites, and Google Business Profile optimization.",
+  },
+  {
+    question: "Do I need AI if I already have a website?",
+    answer:
+      "Yes. A website alone does not guarantee visibility, fast response, or follow up. AI systems help the business get found, capture leads, and respond faster.",
+  },
+  {
+    question: "Can AI help with missed calls?",
+    answer:
+      "Yes. Missed-call recovery can text back quickly, capture the lead's information, and help move the person toward booking.",
+  },
+  {
+    question: "Does Civive build custom AI software?",
+    answer:
+      "Civive focuses on practical AI systems for local service businesses, including visibility, reception, follow up, CRM automation, and lead systems. It is not positioned as a custom enterprise AI software development shop.",
+  },
+  {
+    question: "What types of businesses does Civive help?",
+    answer:
+      "Civive helps HVAC, plumbing, electrical, roofing, contractors, med spas, real estate teams, law firms, and other local service businesses.",
+  },
+];
+
 export const civiveOsIncludedFeatures = [
   "Lead capture and conversation inbox",
   "Calendar and booking path",
@@ -3901,6 +3934,11 @@ export const pageMeta = {
     title: "Civive Unlimited | AI Search Visibility for Service Businesses",
     description:
       "Civive Unlimited helps local service businesses improve AI search visibility, Google Business Profile clarity, websites, CRM automation, missed-call recovery, AI receptionist setup, reviews, and lead follow-up.",
+  },
+  aiAgencySpringfield: {
+    title: "AI Agency Springfield MO | Civive Unlimited",
+    description:
+      "Civive Unlimited is an AI agency in Springfield, MO helping service businesses with AI automation, AI receptionists, missed-call recovery, CRM follow-up, websites, Google Business Profile optimization, AI search visibility, and CiviveOS.",
   },
   audit: {
     title:

@@ -1,4 +1,5 @@
 import {
+  aiAgencySpringfieldFaqs,
   aiReceptionistFaqs,
   auditPageFaqs,
   contactPageFaqs,
@@ -59,6 +60,70 @@ const legalMeta = {
 
 export const prerenderRoutes: PrerenderRoute[] = [
   { path: "/", ...pageMeta.home, faqItems: homepageFaqs },
+  {
+    path: "/ai-agency-springfield-mo",
+    ...pageMeta.aiAgencySpringfield,
+    schemaKind: "service",
+    serviceName: "AI Agency Services for Springfield Service Businesses",
+    serviceType: "AI agency services",
+    faqItems: aiAgencySpringfieldFaqs,
+    itemList: [
+      {
+        name: "AI agency services",
+        path: "/ai-agency-springfield-mo",
+        description:
+          "Local AI agency services for Springfield service businesses that need visibility, automation, receptionist setup, follow up, and booking support.",
+      },
+      {
+        name: "AI automation",
+        path: "/services/crm-lead-follow-up",
+        description:
+          "AI automation for lead routing, reminders, estimate follow up, CRM movement, and reactivation.",
+      },
+      {
+        name: "AI search visibility",
+        path: "/ai-search-audit",
+        description:
+          "AI search visibility cleanup for business facts, services, Google profile alignment, schema, and lead capture.",
+      },
+      {
+        name: "AI receptionist setup",
+        path: "/services/ai-receptionist",
+        description:
+          "AI receptionist setup for intake, qualification, routing, booking support, CRM notes, and safe handoff rules.",
+      },
+      {
+        name: "Missed-call recovery",
+        path: "/services/missed-call-recovery",
+        description:
+          "Missed-call recovery and text-back automation for service businesses that need faster response.",
+      },
+      {
+        name: "CRM lead follow-up automation",
+        path: "/services/crm-lead-follow-up",
+        description:
+          "CRM setup and lead follow-up automation for service businesses that need cleaner pipelines and reminders.",
+      },
+      {
+        name: "Google Business Profile optimization",
+        path: "/services/google-business-profile-optimization",
+        description:
+          "Google Business Profile optimization for categories, services, descriptions, photos, reviews, and local consistency.",
+      },
+      {
+        name: "Website design for service businesses",
+        path: "/services/website-design-service-businesses",
+        description:
+          "Website design for local service businesses that need clearer services, trust, contact paths, and AI-readable structure.",
+      },
+      {
+        name: "Review automation",
+        path: "/services/review-automation",
+        description:
+          "Review automation and reputation workflows for service businesses that need stronger public trust signals.",
+      },
+    ],
+  },
   {
     path: "/ai-search-audit",
     ...pageMeta.audit,

@@ -115,6 +115,11 @@ const implementationChecks = [
 
 const supportLinks = [
   {
+    title: "AI automation agency in Springfield",
+    copy: "See how the receptionist layer fits into the wider local AI agency system for Springfield service businesses.",
+    href: "/ai-agency-springfield-mo",
+  },
+  {
     title: "AI Search Visibility Audit",
     copy: "Use the audit when the business needs more demand or clearer public signals before adding automation.",
     href: "/ai-search-audit",

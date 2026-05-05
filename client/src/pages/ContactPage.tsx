@@ -41,6 +41,11 @@ const requestPrep = [
 
 const conversionResources = [
   {
+    title: "AI agency in Springfield, MO",
+    copy: "Use the local AI agency page if you want visibility, AI automation, CRM follow up, missed-call recovery, or receptionist help for a Springfield service business.",
+    href: "/ai-agency-springfield-mo",
+  },
+  {
     title: "What the audit includes",
     copy: "See the public signals and deliverables Civive checks before recommending implementation.",
     href: "/resources/what-does-an-ai-search-audit-include",

@@ -28,6 +28,10 @@ const footerGroups = [
     links: [
       { href: "/visibility-system", label: "AI Search Visibility System" },
       {
+        href: "/ai-agency-springfield-mo",
+        label: "AI Agency Springfield MO",
+      },
+      {
         href: "/services/google-business-profile-optimization",
         label: "GBP Optimization",
       },

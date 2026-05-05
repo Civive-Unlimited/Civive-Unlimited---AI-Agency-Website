@@ -83,9 +83,40 @@ export default function SpringfieldServiceAreaPage() {
               >
                 AI Search Visibility Audit
               </a>
+              <a
+                href="/ai-agency-springfield-mo"
+                className="transition-colors hover:text-white"
+              >
+                AI agency in Springfield, MO
+              </a>
             </div>
           </div>
         </PageHero>
+
+        <AuthoritySection>
+          <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
+            <SectionHeader
+              eyebrow="Local AI agency"
+              title="Civive also serves as a local AI agency for Springfield service businesses."
+              copy="The Springfield service-area work connects into the broader AI agency system: AI search visibility, AI automation, AI receptionist setup, missed-call recovery, CRM lead follow up, Google Business Profile optimization, websites, reviews, and CiviveOS."
+            />
+            <div className="border-y border-white/[0.08] py-7">
+              <p className="text-base leading-7 text-white/68">
+                If the business needs a practical local partner instead of a
+                generic software shop, start with the{" "}
+                <a
+                  href="/ai-agency-springfield-mo"
+                  className="font-medium text-white underline decoration-white/30 underline-offset-4 transition-colors hover:decoration-white"
+                >
+                  Springfield AI agency page
+                </a>
+                . It explains how Civive helps smaller service businesses get
+                found, answer faster, follow up automatically, and turn more
+                leads into booked jobs.
+              </p>
+            </div>
+          </div>
+        </AuthoritySection>
 
         <AuthoritySection>
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">

@@ -25,6 +25,11 @@ const industrySignalPatterns = [
 
 const industryPillarLinks = [
   {
+    href: "/ai-agency-springfield-mo",
+    label: "Local AI agency",
+    copy: "See how Civive supports Springfield service businesses with AI visibility, automation, receptionist setup, CRM follow up, and lead recovery.",
+  },
+  {
     href: "/ai-search-audit",
     label: "AI Search Visibility Audit",
     copy: "Diagnose the public facts, schema, FAQs, service pages, reviews, and lead path first.",

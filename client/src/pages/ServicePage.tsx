@@ -22,6 +22,20 @@ export default function ServicePage({ slug }: { slug?: string }) {
     .filter(
       (related): related is ServicePageContent => related !== undefined
     );
+  const localAgencyAnchorBySlug: Record<string, string> = {
+    "crm-lead-follow-up":
+      "AI lead follow-up automation for Springfield service businesses",
+    "missed-call-recovery":
+      "missed-call recovery from a local AI agency",
+    "google-business-profile-optimization":
+      "Springfield AI visibility and Google profile support",
+    "website-design-service-businesses":
+      "AI systems for Springfield service businesses",
+    "review-automation":
+      "local AI agency for review and follow-up systems",
+  };
+  const localAgencyAnchor =
+    localAgencyAnchorBySlug[service.slug] ?? "AI agency in Springfield, MO";
 
   return (
     <>
@@ -53,6 +67,12 @@ export default function ServicePage({ slug }: { slug?: string }) {
                 className="transition-colors hover:text-white"
               >
                 AI Search Visibility Audit
+              </a>
+              <a
+                href="/ai-agency-springfield-mo"
+                className="transition-colors hover:text-white"
+              >
+                {localAgencyAnchor}
               </a>
             </div>
           </div>
@@ -137,6 +157,19 @@ export default function ServicePage({ slug }: { slug?: string }) {
                   </p>
                 </a>
               ))}
+              <a
+                href="/ai-agency-springfield-mo"
+                className="group border-y border-white/[0.08] py-6 transition-colors hover:border-white/[0.22]"
+              >
+                <h2 className="text-xl font-semibold text-white/92 group-hover:text-white">
+                  Springfield AI agency
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-white/58">
+                  See how Civive connects this service into a wider local AI
+                  agency system for visibility, lead capture, follow up, and
+                  booking.
+                </p>
+              </a>
               <a
                 href="/service-areas/springfield-mo"
                 className="group border-y border-white/[0.08] py-6 transition-colors hover:border-white/[0.22]"

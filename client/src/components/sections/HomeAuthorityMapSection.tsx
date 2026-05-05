@@ -4,6 +4,13 @@ import { useRef } from "react";
 
 const authorityPaths = [
   {
+    title: "Work with a Springfield AI agency",
+    eyebrow: "Local agency",
+    copy: "See how Civive acts as an AI agency in Springfield, MO for service businesses that need visibility, automation, lead response, and booking systems.",
+    href: "/ai-agency-springfield-mo",
+    cta: "Open the local AI agency page",
+  },
+  {
     title: "Diagnose the visibility problem",
     eyebrow: "Audit",
     copy: "Use the AI Search Visibility Audit when the business needs a fix order for public facts, services, reviews, FAQs, schema, links, and lead capture.",

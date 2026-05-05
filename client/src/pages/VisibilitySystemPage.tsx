@@ -77,6 +77,11 @@ const fitSignals = [
 
 const connectedPages = [
   {
+    title: "AI agency for service businesses",
+    copy: "See the local commercial page for Springfield service businesses that need AI visibility, automation, CRM follow up, and faster response.",
+    href: "/ai-agency-springfield-mo",
+  },
+  {
     title: "AI Search Visibility Audit",
     copy: "Start here when the weak signals need to be diagnosed and prioritized.",
     href: "/ai-search-audit",

@@ -110,6 +110,11 @@ const objectionHandlers = [
 
 const supportResources = [
   {
+    title: "Springfield AI agency",
+    copy: "See how Civive connects the audit to local AI agency services, AI automation, lead capture, and booked jobs for Springfield service businesses.",
+    href: "/ai-agency-springfield-mo",
+  },
+  {
     title: "What the audit includes",
     copy: "A deeper breakdown of the surfaces and deliverables the audit should inspect.",
     href: "/resources/what-does-an-ai-search-audit-include",
