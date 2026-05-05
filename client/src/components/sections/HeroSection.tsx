@@ -91,17 +91,14 @@ export default function HeroSection() {
               </motion.h1>
             </div>
 
-            <motion.p
-              initial={false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.25 }}
+            <p
               className="hero-support-copy mt-7 max-w-[39rem] text-base leading-8 text-white/72 sm:mt-9 sm:text-[1.08rem]"
             >
               Your next customer may ask ChatGPT, Gemini, Perplexity, or Grok
               who to call before they ever visit a website. Civive cleans up the
               public signals that help AI and buyers understand why your
               business belongs on the shortlist.
-            </motion.p>
+            </p>
 
             <motion.div
               initial={false}
