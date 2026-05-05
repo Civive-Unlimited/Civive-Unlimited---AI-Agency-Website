@@ -25,7 +25,7 @@ type SectionHeaderProps = {
 
 export function AuthorityShell({ children }: { children: ReactNode }) {
   return (
-    <main className="homepage-shell authority-shell relative min-h-screen overflow-hidden pt-20 text-foreground sm:pt-24">
+    <main className="homepage-shell authority-shell relative min-h-screen w-full max-w-full overflow-hidden pt-20 text-foreground sm:pt-24">
       <div className="absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_top,oklch(0.55_0.25_300/0.10),transparent_58%)]" />
       <div className="absolute inset-0 opacity-[0.012] [background-image:linear-gradient(rgba(156,114,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(156,114,255,0.8)_1px,transparent_1px)] [background-size:132px_132px]" />
       <div className="relative z-10">{children}</div>
@@ -52,18 +52,18 @@ export function PageHero({
         >
           <div className="max-w-4xl">
             <p className="homepage-eyebrow digital-accent">{eyebrow}</p>
-            <h1 className="hero-tech-title mt-6 max-w-[58rem] text-[1.5rem] leading-[1.24] text-white sm:text-[2rem] md:text-[2.45rem] lg:text-[2.75rem]">
+            <h1 className="hero-tech-title mt-6 max-w-[58rem] break-words text-[1.5rem] leading-[1.24] text-white sm:text-[2rem] md:text-[2.45rem] lg:text-[2.75rem]">
               {title}
             </h1>
             <p className="hero-support-copy mt-7 max-w-2xl text-base leading-8 text-white/70 sm:text-lg">
               {copy}
             </p>
             {(primaryCta || secondaryCta) && (
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-9 flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center">
                 {primaryCta && (
                   <a
                     href={primaryCta.href}
-                    className="homepage-primary-button inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+                    className="homepage-primary-button inline-flex w-full max-w-full items-center justify-center gap-2 whitespace-normal rounded-full px-7 py-4 text-center text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 sm:w-auto"
                   >
                     {primaryCta.label}
                     <ArrowRight className="h-4 w-4" />
@@ -72,7 +72,7 @@ export function PageHero({
                 {secondaryCta && (
                   <a
                     href={secondaryCta.href}
-                    className="inline-flex items-center justify-center gap-2 rounded-full px-2 py-4 text-sm font-medium text-white/70 transition-colors hover:text-white"
+                    className="inline-flex w-full max-w-full items-center justify-center gap-2 whitespace-normal rounded-full px-2 py-4 text-center text-sm font-medium text-white/70 transition-colors hover:text-white sm:w-auto"
                   >
                     {secondaryCta.label}
                     <ArrowRight className="h-4 w-4" />
