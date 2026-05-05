@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Radar, Search } from "lucide-react";
 import civiveHeroLogo from "@/assets/civive-hero-logo.jpg";
 
@@ -67,28 +66,20 @@ export default function HeroSection() {
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="grid gap-10 py-8 sm:py-14 lg:min-h-[calc(100svh-170px)] lg:grid-cols-[minmax(0,0.92fr)_minmax(26rem,0.68fr)] lg:items-center lg:gap-12 lg:py-10 xl:gap-16">
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-            className="w-full max-w-[78rem]"
-          >
+          <div className="w-full max-w-[78rem]">
             <p className="homepage-eyebrow digital-accent">
               AI Search Visibility - ChatGPT - Gemini - Perplexity - Grok
             </p>
 
             <div className="mt-6 max-w-[72rem] sm:mt-8">
-              <motion.h1
-                initial={false}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.05 }}
+              <h1
                 className="hero-tech-title text-[1.45rem] leading-[1.22] text-white sm:text-[2.05rem] md:text-[2.5rem] lg:text-[2.85rem] xl:text-[3.05rem]"
               >
                 <span className="block">Your next customer</span>
                 <span className="hero-tech-accent block text-[#19c2ff]">asked ChatGPT</span>
                 <span className="block">who to call.</span>
                 <span className="hero-tech-accent block text-white/42">Did it name you?</span>
-              </motion.h1>
+              </h1>
             </div>
 
             <p
@@ -100,12 +91,7 @@ export default function HeroSection() {
               business belongs on the shortlist.
             </p>
 
-            <motion.div
-              initial={false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.3 }}
-              className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center"
-            >
+            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center">
               <button
                 onClick={() => scrollToId("contact")}
                 className="homepage-primary-button inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-medium text-white transition-transform duration-200 hover:-translate-y-0.5 sm:w-auto"
@@ -121,14 +107,9 @@ export default function HeroSection() {
                 See what AI checks
                 <ArrowRight className="h-4.5 w-4.5" />
               </button>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.35 }}
-              className="mt-10 grid max-w-[35rem] gap-x-8 gap-y-4 sm:grid-cols-2"
-            >
+            <div className="mt-10 grid max-w-[35rem] gap-x-8 gap-y-4 sm:grid-cols-2">
               {trustItems.map((item, index) => (
                 <div key={item} className="flex items-center gap-3 text-sm text-white/68">
                   <span
@@ -139,15 +120,10 @@ export default function HeroSection() {
                   {item}
                 </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.18 }}
-            className="relative hidden lg:block"
-          >
+          <div className="relative hidden lg:block">
             <div className="homepage-panel relative overflow-hidden rounded-[2rem] p-6 xl:p-7">
               <div className="hero-scan-sweep" />
               <div className="relative z-10">
@@ -180,10 +156,8 @@ export default function HeroSection() {
                         </div>
                       </div>
                       <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
-                        <motion.div
-                          initial={false}
-                          animate={{ width: `${signal.score}%` }}
-                          transition={{ duration: 0.85, delay: 0.45 }}
+                        <div
+                          style={{ width: `${signal.score}%` }}
                           className="h-full rounded-full bg-[linear-gradient(90deg,#19c2ff,#8b5cf6)]"
                         />
                       </div>
@@ -208,7 +182,7 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
