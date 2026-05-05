@@ -1,5 +1,11 @@
 import { auditPageFaqs } from "@/content/audit-page";
-import { faqs, industries, pageMeta, site } from "@/content/site";
+import {
+  aiAgencySpringfieldFaqs,
+  faqs,
+  industries,
+  pageMeta,
+  site,
+} from "@/content/site";
 
 export type PrerenderRoute = {
   path: string;
@@ -26,6 +32,13 @@ const legalMeta = {
 
 export const prerenderRoutes: PrerenderRoute[] = [
   { path: "/", ...pageMeta.home },
+  {
+    path: "/ai-agency-springfield-mo",
+    ...pageMeta.aiAgencySpringfield,
+    schemaKind: "service",
+    serviceName: "AI Agency Services for Springfield Service Businesses",
+    faqItems: aiAgencySpringfieldFaqs,
+  },
   {
     path: "/ai-search-audit",
     title: "AI Visibility Audit For Local Service Businesses | Civive Unlimited",

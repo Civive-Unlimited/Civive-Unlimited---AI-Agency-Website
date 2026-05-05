@@ -161,10 +161,14 @@ export function FinalCta({
   eyebrow = "Next step",
   title,
   copy,
+  primaryCta = { label: "Get AI Search Audit", href: "/contact" },
+  secondaryCta = { label: "Read the public build", href: "/build-in-public" },
 }: {
   eyebrow?: string;
   title: string;
   copy: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
 }) {
   return (
     <AuthoritySection className="border-t border-white/[0.08]">
@@ -174,17 +178,17 @@ export function FinalCta({
         <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/64">{copy}</p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           <a
-            href="/contact"
+            href={primaryCta.href}
             className="homepage-primary-button inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
           >
-            Get AI Search Audit
+            {primaryCta.label}
             <ArrowRight className="h-4 w-4" />
           </a>
           <a
-            href="/build-in-public"
+            href={secondaryCta.href}
             className="inline-flex items-center justify-center gap-2 rounded-full px-2 py-4 text-sm font-medium text-white/70 transition-colors hover:text-white"
           >
-            Read the public build
+            {secondaryCta.label}
             <ArrowRight className="h-4 w-4" />
           </a>
         </div>

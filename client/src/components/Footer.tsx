@@ -94,6 +94,9 @@ export default function Footer() {
               <a href="/ai-receptionist" className="w-fit text-sm text-muted-foreground transition-colors hover:text-white">
                 AI Receptionist
               </a>
+              <a href="/ai-agency-springfield-mo" className="w-fit text-sm text-muted-foreground transition-colors hover:text-white">
+                AI Agency Springfield MO
+              </a>
               <a href="/contact" className="w-fit text-sm text-muted-foreground transition-colors hover:text-white">
                 Get Audit
               </a>

@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import AIReceptionistPage from "@/pages/AIReceptionistPage";
+import AIAgencySpringfieldPage from "@/pages/AIAgencySpringfieldPage";
 import AuditPage from "@/pages/AuditPage";
 import BuildInPublicPage from "@/pages/BuildInPublicPage";
 import ContactPage from "@/pages/ContactPage";
@@ -26,6 +27,10 @@ function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route
+        path={"/ai-agency-springfield-mo"}
+        component={AIAgencySpringfieldPage}
+      />
       <Route path={"/ai-search-audit"} component={AuditPage} />
       <Route path={"/visibility-system"} component={VisibilitySystemPage} />
       <Route path={"/industries"} component={IndustriesPage} />
