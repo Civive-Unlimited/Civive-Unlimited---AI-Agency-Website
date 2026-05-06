@@ -1,27 +1,29 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import AIReceptionistPage from "@/pages/AIReceptionistPage";
-import AIAgencySpringfieldPage from "@/pages/AIAgencySpringfieldPage";
-import AuditPage from "@/pages/AuditPage";
-import BuildInPublicPage from "@/pages/BuildInPublicPage";
-import ContactPage from "@/pages/ContactPage";
-import CiviveOSPage from "@/pages/CiviveOSPage";
-import CiviveOSOfferPage from "@/pages/CiviveOSOfferPage";
-import FAQPage from "@/pages/FAQPage";
-import IndustriesPage from "@/pages/IndustriesPage";
-import IndustryPage from "@/pages/IndustryPage";
-import NotFound from "@/pages/NotFound";
-import ResourcesPage from "@/pages/ResourcesPage";
-import VisibilitySystemPage from "@/pages/VisibilitySystemPage";
+import { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import GHLChatWidget from "./components/GHLChatWidget";
+import Home from "./pages/Home";
+
+const AIAgencySpringfieldPage = lazy(() => import("@/pages/AIAgencySpringfieldPage"));
+const AuditPage = lazy(() => import("@/pages/AuditPage"));
+const VisibilitySystemPage = lazy(() => import("@/pages/VisibilitySystemPage"));
+const IndustriesPage = lazy(() => import("@/pages/IndustriesPage"));
+const IndustryPage = lazy(() => import("@/pages/IndustryPage"));
+const FAQPage = lazy(() => import("@/pages/FAQPage"));
+const ResourcesPage = lazy(() => import("@/pages/ResourcesPage"));
+const BuildInPublicPage = lazy(() => import("@/pages/BuildInPublicPage"));
+const CiviveOSPage = lazy(() => import("@/pages/CiviveOSPage"));
+const CiviveOSOfferPage = lazy(() => import("@/pages/CiviveOSOfferPage"));
+const ContactPage = lazy(() => import("@/pages/ContactPage"));
+const AIReceptionistPage = lazy(() => import("@/pages/AIReceptionistPage"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Terms = lazy(() => import("./pages/Terms"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 function Router() {
   return (
@@ -59,7 +61,9 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Navigation />
-          <Router />
+          <Suspense fallback={null}>
+            <Router />
+          </Suspense>
           <Footer />
           <GHLChatWidget />
         </TooltipProvider>

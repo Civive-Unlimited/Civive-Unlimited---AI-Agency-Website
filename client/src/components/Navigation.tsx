@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, MessageCircle, Menu, X } from "lucide-react";
-import civiveHeaderLogo from "@/assets/civive-header-logo.svg";
+import civiveHeaderLogo from "@/assets/civive-header-logo.webp";
 import { navLinks } from "@/content/site";
 
 const compactNavLabels = new Set(["FAQ", "Resources", "Build in Public"]);
@@ -51,15 +50,12 @@ export default function Navigation() {
 
   return (
     <>
-      <motion.nav
+      <nav
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
           isScrolled
             ? "border-b border-white/[0.08] bg-[linear-gradient(180deg,rgba(7,7,12,0.9),rgba(7,8,14,0.72))] py-3 backdrop-blur-md"
             : "bg-transparent py-4"
         }`}
-        initial={false}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
       >
         <div className="container mx-auto max-w-7xl px-4">
           <div className="grid grid-cols-[1fr_auto] items-center gap-4 lg:grid-cols-[minmax(18rem,1.05fr)_auto_minmax(8.5rem,0.7fr)] lg:gap-5 xl:grid-cols-[minmax(19rem,1.05fr)_auto_minmax(11rem,0.85fr)] xl:gap-8">
@@ -79,8 +75,12 @@ export default function Navigation() {
               <img
                 src={civiveHeaderLogo}
                 alt="Civive Unlimited"
+                width={546}
+                height={126}
                 className="h-12 w-auto max-w-[13rem] object-contain transition-transform group-hover:scale-[1.01] sm:h-14 sm:max-w-[16rem] lg:h-[4.25rem] lg:max-w-[18rem] xl:h-[4.5rem] xl:max-w-[19rem]"
-                loading="lazy"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
             </a>
 
@@ -114,13 +114,8 @@ export default function Navigation() {
                   />
                 </button>
 
-                <AnimatePresence>
-                  {isMoreOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                      transition={{ duration: 0.16 }}
+                {isMoreOpen && (
+                    <div
                       className="absolute right-0 top-[calc(100%+0.65rem)] w-52 overflow-hidden rounded-2xl border border-white/[0.1] bg-[rgba(9,10,18,0.96)] p-1.5 shadow-[0_24px_70px_rgba(0,0,0,0.38)] backdrop-blur-xl"
                       role="menu"
                     >
@@ -139,9 +134,8 @@ export default function Navigation() {
                           {link.label}
                         </a>
                       ))}
-                    </motion.div>
+                    </div>
                   )}
-                </AnimatePresence>
               </div>
             </div>
 
@@ -176,19 +170,15 @@ export default function Navigation() {
             </button>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
+      {isMobileMenuOpen && (
+          <div
             className="fixed inset-0 z-40 bg-[linear-gradient(180deg,rgba(6,6,11,0.97),rgba(8,8,14,0.99))] backdrop-blur-md lg:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
           >
             <div className="flex h-full flex-col items-center justify-center gap-7 pt-16">
-              {navLinks.map((link, index) => (
-                <motion.a
+              {navLinks.map((link) => (
+                <a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => {
@@ -196,42 +186,32 @@ export default function Navigation() {
                     navigateTo(link.href);
                   }}
                   className="text-2xl font-semibold text-foreground transition-colors hover:text-white"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.08 }}
                 >
                   {link.label}
-                </motion.a>
+                </a>
               ))}
 
-              <motion.a
+              <a
                 href="/contact"
                 onClick={(e) => {
                   e.preventDefault();
                   navigateTo("/contact");
                 }}
                 className="mt-3 w-64 rounded-full border border-white/[0.12] bg-white/[0.05] py-4 text-center text-base font-medium text-white transition-colors hover:bg-white/[0.1]"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.08 }}
               >
                 Get AI Search Audit
-              </motion.a>
+              </a>
 
-              <motion.button
+              <button
                 type="button"
                 onClick={openChat}
                 className="w-64 rounded-full border border-white/[0.12] bg-white/[0.04] py-4 text-center text-base font-medium text-white/82 transition-colors hover:bg-white/[0.09] hover:text-white"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: (navLinks.length + 1) * 0.08 }}
               >
                 Ask Civive AI
-              </motion.button>
+              </button>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </>
   );
 }

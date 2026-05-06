@@ -1,5 +1,5 @@
 import { ArrowRight, CheckCircle, Radar, Search } from "lucide-react";
-import civiveHeroLogo from "@/assets/civive-hero-logo.jpg";
+import civiveHeroLogo from "@/assets/civive-hero-logo.webp";
 
 const trustItems = [
   "ChatGPT clarity",
@@ -52,7 +52,11 @@ export default function HeroSection() {
           src={civiveHeroLogo}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] mix-blend-screen [mask-image:linear-gradient(90deg,transparent,black_24%,black_78%,transparent)]"
+          width={1024}
+          height={559}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 hidden h-full w-full object-cover object-center opacity-[0.14] mix-blend-screen [mask-image:linear-gradient(90deg,transparent,black_24%,black_78%,transparent)] sm:block"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,4,9,0.99),rgba(7,7,13,0.98)_38%,rgba(6,6,11,1)_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,4,9,0.96),rgba(4,4,9,0.82)_42%,rgba(4,4,9,0.96)_100%)]" />

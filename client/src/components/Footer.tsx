@@ -1,5 +1,5 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import civiveLogo from "@/assets/civive-hero-logo.jpg";
+import civiveLogo from "@/assets/civive-hero-logo.webp";
 import { navLinks, site } from "@/content/site";
 
 const navigateTo = (href: string) => {
@@ -39,8 +39,11 @@ export default function Footer() {
               <img
                 src={civiveLogo}
                 alt="Civive Unlimited"
+                width={1024}
+                height={559}
                 className="h-9 w-9 rounded-xl border border-white/[0.12] object-cover"
                 loading="lazy"
+                decoding="async"
               />
               <span className="bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(192,176,230,0.72))] bg-clip-text text-base font-semibold text-transparent">
                 CIVIVE UNLIMITED
