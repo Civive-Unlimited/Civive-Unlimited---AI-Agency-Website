@@ -166,6 +166,124 @@ export const defaultProspectingReport: ProspectingReport = {
   ],
 };
 
+type ProspectingReportRoute = {
+  slug: string;
+  params: Record<string, string>;
+};
+
+export const prospectingReportRoutes: ProspectingReportRoute[] = [
+  {
+    slug: "great-oak-concrete",
+    params: {
+      business: "Great Oak Concrete",
+      category: "Concrete",
+      market: "Springfield, MO",
+      website: "https://great-oak-concrete.com/",
+      report: "ai-visibility-report",
+      cid: "fmMHdqtnu1WDosbMbjyL",
+      contact_id: "fmMHdqtnu1WDosbMbjyL",
+      oid: "ZNyQLNs7yYofQxjerqBx",
+      opportunity_id: "ZNyQLNs7yYofQxjerqBx",
+      campaign: "ai_visibility_report",
+      batch: "20260506",
+      utm_source: "ghl",
+      utm_medium: "sms",
+      utm_campaign: "ai_visibility_report",
+      utm_content: "sms_pilot_20260506",
+    },
+  },
+  {
+    slug: "springfield-mo-tree-service",
+    params: {
+      business: "Springfield MO Tree Service",
+      category: "Tree Service",
+      market: "Springfield, MO",
+      website: "https://springfieldmotree.com/",
+      report: "ai-visibility-report",
+      cid: "7Ui2SxJR7t2mGUm0REQ2",
+      contact_id: "7Ui2SxJR7t2mGUm0REQ2",
+      oid: "CrlpR92hIIDlxaEENRZj",
+      opportunity_id: "CrlpR92hIIDlxaEENRZj",
+      campaign: "ai_visibility_report",
+      batch: "20260506",
+      utm_source: "ghl",
+      utm_medium: "sms",
+      utm_campaign: "ai_visibility_report",
+      utm_content: "sms_pilot_20260506",
+    },
+  },
+  {
+    slug: "jags-lawn-landscape",
+    params: {
+      business: "Jag's Lawn & Landscape",
+      category: "Lawn care and landscaping",
+      market: "Springfield, MO",
+      website: "https://www.jagslawn.com/",
+      report: "ai-visibility-report",
+      cid: "eAI2jpTo4wcMgAdSHxL1",
+      contact_id: "eAI2jpTo4wcMgAdSHxL1",
+      oid: "B2tGx52VysqqGgCG8ES0",
+      opportunity_id: "B2tGx52VysqqGgCG8ES0",
+      campaign: "ai_visibility_report",
+      batch: "20260506",
+      utm_source: "ghl",
+      utm_medium: "sms",
+      utm_campaign: "ai_visibility_report",
+      utm_content: "sms_pilot_20260506",
+    },
+  },
+  {
+    slug: "handyman-services-near-me-llc",
+    params: {
+      business: "Handyman Services Near Me LLC",
+      category: "Handyman services",
+      market: "Springfield, MO",
+      website: "https://www.handymanservicesmo.com/",
+      report: "ai-visibility-report",
+      cid: "aGML7rnpfRuTWgoQZEHt",
+      contact_id: "aGML7rnpfRuTWgoQZEHt",
+      oid: "AfqFez9YWoIIWrHohw4B",
+      opportunity_id: "AfqFez9YWoIIWrHohw4B",
+      campaign: "ai_visibility_report",
+      batch: "20260506",
+      utm_source: "ghl",
+      utm_medium: "sms",
+      utm_campaign: "ai_visibility_report",
+      utm_content: "sms_pilot_20260506",
+    },
+  },
+  {
+    slug: "greene-county-garage-doors",
+    params: {
+      business: "Greene County Garage Doors",
+      category: "Garage Doors",
+      market: "Springfield, MO",
+      website: "https://www.greenecountygaragedoors.com/contact-us",
+      report: "ai-visibility-report",
+      cid: "2L8p16fYtJJiPOlP9sAH",
+      contact_id: "2L8p16fYtJJiPOlP9sAH",
+      oid: "s9SZVkLOrpRzXvUncmMI",
+      opportunity_id: "s9SZVkLOrpRzXvUncmMI",
+      campaign: "ai_visibility_report",
+      batch: "20260506",
+      utm_source: "ghl",
+      utm_medium: "sms",
+      utm_campaign: "ai_visibility_report",
+      utm_content: "sms_pilot_20260506",
+    },
+  },
+];
+
+export function getProspectingReportRoute(slug?: string) {
+  return prospectingReportRoutes.find(report => report.slug === slug);
+}
+
+export function searchParamsFromReportRoute(slug?: string) {
+  const route = getProspectingReportRoute(slug);
+  if (!route) return null;
+  return new URLSearchParams(route.params);
+}
+
 function clampScore(value: number) {
   if (Number.isNaN(value)) return defaultProspectingReport.score;
   return Math.min(100, Math.max(0, Math.round(value)));

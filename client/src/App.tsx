@@ -36,7 +36,12 @@ function Router() {
         component={AIAgencySpringfieldPage}
       />
       <Route path={"/ai-search-audit"} component={AuditPage} />
-      <Route path={"/prospecting-report"} component={ProspectingReportPage} />
+      <Route path={"/prospecting-report"}>
+        {() => <ProspectingReportPage />}
+      </Route>
+      <Route path={"/report/:slug"}>
+        {params => <ProspectingReportPage slug={params.slug} />}
+      </Route>
       <Route path={"/visibility-system"} component={VisibilitySystemPage} />
       <Route path={"/industries"} component={IndustriesPage} />
       <Route path={"/industries/:slug"}>

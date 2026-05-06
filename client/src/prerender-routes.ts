@@ -17,6 +17,7 @@ import {
   site,
   visibilitySystemFaqs,
 } from "@/content/site";
+import { prospectingReportRoutes } from "@/content/prospectingReport";
 
 export type PrerenderRoute = {
   path: string;
@@ -137,6 +138,12 @@ export const prerenderRoutes: PrerenderRoute[] = [
     schemaKind: "service",
     serviceName: "AI Search Prospecting Report",
   },
+  ...prospectingReportRoutes.map(report => ({
+    path: `/report/${report.slug}`,
+    ...pageMeta.prospectingReport,
+    schemaKind: "service" as const,
+    serviceName: "AI Search Prospecting Report",
+  })),
   {
     path: "/visibility-system",
     ...pageMeta.system,

@@ -1,5 +1,10 @@
 import Seo from "@/components/Seo";
-import { createProspectingReport, defaultProspectingReport, type ReportStatus } from "@/content/prospectingReport";
+import {
+  createProspectingReport,
+  defaultProspectingReport,
+  searchParamsFromReportRoute,
+  type ReportStatus,
+} from "@/content/prospectingReport";
 import { pageMeta, site } from "@/content/site";
 import { motion } from "framer-motion";
 import {
@@ -48,13 +53,18 @@ function scoreTone(score: number) {
   return "from-rose-300 to-amber-200";
 }
 
-export default function ProspectingReportPage() {
-  const [report, setReport] = useState(defaultProspectingReport);
+export default function ProspectingReportPage({ slug }: { slug?: string }) {
+  const initialReport = useMemo(() => {
+    const routedParams = searchParamsFromReportRoute(slug);
+    return routedParams ? createProspectingReport(routedParams) : defaultProspectingReport;
+  }, [slug]);
+  const [report, setReport] = useState(initialReport);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    setReport(createProspectingReport(new URLSearchParams(window.location.search)));
-  }, []);
+    const routedParams = searchParamsFromReportRoute(slug);
+    setReport(createProspectingReport(routedParams ?? new URLSearchParams(window.location.search)));
+  }, [slug]);
 
   const summaryText = useMemo(
     () =>
@@ -74,7 +84,7 @@ export default function ProspectingReportPage() {
 
   return (
     <>
-      <Seo {...pageMeta.prospectingReport} path="/prospecting-report" />
+      <Seo {...pageMeta.prospectingReport} path={slug ? `/report/${slug}` : "/prospecting-report"} />
       <main className="prospecting-report-page min-h-screen overflow-hidden bg-[#05060a] pt-24 text-white sm:pt-28">
         <div className="pointer-events-none absolute inset-0 opacity-[0.035] [background-image:linear-gradient(rgba(96,210,255,0.65)_1px,transparent_1px),linear-gradient(90deg,rgba(96,210,255,0.65)_1px,transparent_1px)] [background-size:72px_72px]" />
         <div className="pointer-events-none absolute left-0 top-0 h-[42rem] w-full bg-[radial-gradient(circle_at_24%_0%,rgba(87,207,255,0.18),transparent_34%),radial-gradient(circle_at_78%_6%,rgba(172,108,255,0.12),transparent_32%)]" />
