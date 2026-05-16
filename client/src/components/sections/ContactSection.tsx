@@ -3,6 +3,7 @@ import { CheckCircle, Globe, Loader2, Mail, MapPin, Phone } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 import { site } from "@/content/site";
+import { trackWebsiteEvent } from "@/lib/tracking";
 
 const nextSteps = [
   "We review the public facts, service language, Google profile, schema, and lead path you send.",
@@ -36,7 +37,7 @@ const contactInfo = [
   },
 ];
 
-const auditRequestSignals = [
+const reportRequestSignals = [
   "Website or Google profile URL",
   "Service area and top services",
   "What you want AI and buyers to understand",
@@ -57,6 +58,15 @@ export default function ContactSection() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     const getField = (name: string) => String(formData.get(name) || "").trim();
+    const offer = getField("offer");
+    const sourcePage = window.location.href;
+
+    trackWebsiteEvent("form_submit", {
+      form: "ai-search-visibility-report",
+      offer,
+      destination: "/api/lead",
+      sourcePage,
+    });
 
     try {
       const response = await fetch("/api/lead", {
@@ -74,8 +84,8 @@ export default function ContactSection() {
           serviceInterest: getField("service_interest"),
           message: getField("message"),
           smsConsent,
-          offer: getField("offer"),
-          sourcePage: window.location.href,
+          offer,
+          sourcePage,
           _honey: getField("_honey"),
         }),
       });
@@ -83,9 +93,15 @@ export default function ContactSection() {
       const result = await response.json().catch(() => null);
 
       if (response.ok && result?.ok) {
+        trackWebsiteEvent("form_submit_success", {
+          form: "ai-search-visibility-report",
+          offer,
+          destination: "/api/lead",
+          status: response.status,
+        });
         setIsSubmitted(true);
         toast.success(
-          "AI Search Visibility Audit request sent. We'll follow up soon.",
+          "Visibility Report request sent. We'll follow up soon.",
           {
             duration: 6000,
           }
@@ -93,6 +109,12 @@ export default function ContactSection() {
         form.reset();
         setSmsConsent(false);
       } else {
+        trackWebsiteEvent("form_submit_error", {
+          form: "ai-search-visibility-report",
+          offer,
+          destination: "/api/lead",
+          status: response.status,
+        });
         toast.error(
           result?.errors?.[0] ||
             result?.message ||
@@ -100,6 +122,12 @@ export default function ContactSection() {
         );
       }
     } catch {
+      trackWebsiteEvent("form_submit_error", {
+        form: "ai-search-visibility-report",
+        offer,
+        destination: "/api/lead",
+        status: "network-error",
+      });
       toast.error(
         `Network error. Please call or text Civive at ${site.phone}.`
       );
@@ -123,7 +151,7 @@ export default function ContactSection() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-3xl text-center"
         >
-          <p className="homepage-eyebrow">AI Search Visibility Audit</p>
+          <p className="homepage-eyebrow">Visibility Report</p>
           <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
             Send the context Civive needs to find the first visibility gap.
           </h2>
@@ -138,7 +166,7 @@ export default function ContactSection() {
           >
             <p className="homepage-eyebrow">What happens next</p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              A practical audit starts with the public evidence buyers and AI
+              A practical visibility report starts with the public evidence buyers and AI
               systems can already see. The form routes the business details into
               the lead system so the first follow-up can stay specific.
             </p>
@@ -160,7 +188,7 @@ export default function ContactSection() {
                 Best request includes
               </p>
               <div className="mt-4 space-y-3">
-                {auditRequestSignals.map(item => (
+                {reportRequestSignals.map(item => (
                   <div
                     key={item}
                     className="flex items-start gap-3 text-sm leading-relaxed text-foreground/78"
@@ -181,6 +209,14 @@ export default function ContactSection() {
                   {item.href ? (
                     <a
                       href={item.href}
+                      data-cta-destination={item.href}
+                      onClick={() =>
+                        trackWebsiteEvent("cta_click", {
+                          placement: "contact_info",
+                          label: item.label,
+                          destination: item.href,
+                        })
+                      }
                       className="mt-1 inline-flex text-sm text-foreground transition-colors hover:text-[oklch(0.75_0.18_220)]"
                     >
                       {item.value}
@@ -208,7 +244,7 @@ export default function ContactSection() {
                   <CheckCircle className="h-7 w-7" />
                 </div>
                 <h3 className="mt-5 text-3xl font-semibold text-foreground">
-                  Audit request received
+                  Visibility report request received
                 </h3>
                 <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
                   Your request is in. We will follow up soon and start with the
@@ -225,7 +261,7 @@ export default function ContactSection() {
               <>
                 <div className="border-b border-white/[0.08] pb-5">
                   <h3 className="text-2xl font-semibold text-foreground">
-                    Request your AI Search Visibility Audit
+                    Request your Visibility Report
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                     Send enough context to inspect the public signals, then
@@ -249,7 +285,7 @@ export default function ContactSection() {
                   <input
                     type="hidden"
                     name="offer"
-                    value="ai-search-readiness-audit"
+                    value="ai-search-visibility-report"
                   />
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -419,7 +455,7 @@ export default function ContactSection() {
                         className="text-xs leading-relaxed text-muted-foreground"
                       >
                         By checking this box, I agree to receive SMS from Civive
-                        Unlimited about my audit request, appointments, and
+                        Unlimited about my visibility report request, appointments, and
                         updates. Message frequency varies. Msg & data rates may
                         apply. Reply STOP to opt out.{" "}
                         <a
@@ -451,12 +487,12 @@ export default function ContactSection() {
                         Sending...
                       </>
                     ) : (
-                      "Get an AI Search Visibility Audit"
+                      "Get Your Free Visibility Report"
                     )}
                   </button>
 
                   <p className="text-center text-sm text-muted-foreground">
-                    Clear audit request. Priority fixes. No fake authority.
+                    Clear visibility report request. Priority fixes. No fake authority.
                   </p>
                 </form>
               </>

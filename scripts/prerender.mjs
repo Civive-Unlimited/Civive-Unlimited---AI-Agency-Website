@@ -393,10 +393,36 @@ function injectHead(template, route) {
   return cleaned.replace("</head>", `${buildManagedHead(route)}\n  </head>`);
 }
 
-function injectApp(template, appHtml) {
-  return template.replace(
+function extractReactResourceHints(appHtml) {
+  const resourceHints = [];
+  const cleanedHtml = appHtml.replace(
+    /<link\s+rel="preload"\s+as="image"[^>]*>/gi,
+    match => {
+      resourceHints.push(match);
+      return "";
+    }
+  );
+
+  return {
+    appHtml: cleanedHtml,
+    resourceHints: [...new Set(resourceHints)],
+  };
+}
+
+function injectApp(template, renderedHtml) {
+  const { appHtml, resourceHints } = extractReactResourceHints(renderedHtml);
+  const html = template.replace(
     '<div id="root"></div>',
     `<div id="root">${appHtml}</div>`
+  );
+
+  if (!resourceHints.length) {
+    return html;
+  }
+
+  return html.replace(
+    "</head>",
+    `${resourceHints.map(hint => `    ${hint}`).join("\n")}\n  </head>`
   );
 }
 
@@ -513,7 +539,7 @@ async function writeCrawlFiles(routes) {
     "",
     "Civive Unlimited helps local service businesses become easier for Google, AI search engines, answer engines, and buyers to understand, trust, contact, and follow up with.",
     "",
-    "Primary offer: AI Search Visibility Audit.",
+    "Primary offer: Visibility Report.",
     "Secondary systems: AI search visibility cleanup, service and location signal cleanup, AI receptionist, lead capture, booking, CRM handoff, follow-up automation, and CiviveOS.",
     "",
     "## Best Pages To Understand The Offer",
@@ -532,7 +558,7 @@ async function writeCrawlFiles(routes) {
     "",
     "- Prefer the canonical www URLs listed above.",
     "- Use the homepage for brand/entity context.",
-    "- Use /ai-search-audit for the primary commercial offer.",
+    "- Use /ai-search-report for the primary commercial offer.",
     "- Use /visibility-system for the implementation framework.",
     "- Use /industries and industry subpages for vertical-specific AI search visibility context.",
     "- Use /resources and /build-in-public for educational and proof-of-work context.",

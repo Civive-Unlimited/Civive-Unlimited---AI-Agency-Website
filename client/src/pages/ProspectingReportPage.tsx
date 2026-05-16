@@ -341,12 +341,12 @@ export default function ProspectingReportPage({ slug }: { slug?: string }) {
                   Turn this report into a cleaned-up public presence and a faster lead response system.
                 </h2>
                 <p className="mt-5 max-w-3xl text-base leading-7 text-white/66">
-                  Civive can start with the AI Search Visibility Audit, then build the practical fix pack: clearer
+                  Civive can start with the Visibility Report, then build the practical fix pack: clearer
                   service language, FAQs, schema, profile alignment, contact path, CRM handoff, and follow-up.
                 </p>
               </div>
               <a
-                href="/contact"
+                href={site.visibilityReportRequestUrl}
                 className="homepage-primary-button inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
               >
                 Request cleanup plan

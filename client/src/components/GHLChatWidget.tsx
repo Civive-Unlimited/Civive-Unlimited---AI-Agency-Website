@@ -6,6 +6,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLocation } from "wouter";
 import {
   ArrowRight,
   Bot,
@@ -77,8 +78,8 @@ const initialMessages: ChatMessage[] = [
     text: "I can help you sort out AI search visibility, missed calls, booking, lead follow-up, and where to start without guessing.",
     ctas: [
       {
-        label: "Get an audit",
-        href: "/contact",
+        label: "Free report",
+        href: site.visibilityReportRequestUrl,
         icon: "audit",
       },
       {
@@ -92,7 +93,7 @@ const initialMessages: ChatMessage[] = [
 
 const promptChips = [
   "Can AI find my business?",
-  "What does the audit check?",
+  "What does the report check?",
   "I miss calls after hours",
   "How do I get booked?",
 ];
@@ -113,9 +114,9 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
 
   if (/(book|schedule|calendar|appointment|call me|talk|consult)/.test(lower)) {
     return {
-      text: `Best next step is to request the audit or call ${site.phone}. Bring the business name, website or Google profile, service area, and where leads are leaking.`,
+      text: `Best next step is to request the report or call ${site.phone}. Bring the business name, website or Google profile, service area, and where leads are leaking.`,
       ctas: [
-        { label: "Request audit", href: "/contact", icon: "book" },
+        { label: "Book a review", href: site.reviewBookingUrl, icon: "book" },
         { label: `Call ${site.phone}`, href: site.phoneHref, icon: "call" },
       ],
     };
@@ -154,17 +155,17 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
           href: "/services/ai-receptionist",
           icon: "audit",
         },
-        { label: "Ask for setup", href: "/contact", icon: "book" },
+        { label: "Book a review", href: site.reviewBookingUrl, icon: "book" },
       ],
     };
   }
 
   if (/(price|pricing|cost|package|plan|budget)/.test(lower)) {
     return {
-      text: "The cleanest starting point is the audit because it shows whether the next paid work should be visibility cleanup, website/service pages, Google profile work, missed-call recovery, or CiviveOS setup.",
+      text: "The cleanest starting point is the report because it shows whether the next paid work should be visibility cleanup, website/service pages, Google profile work, missed-call recovery, or CiviveOS setup.",
       ctas: [
         { label: "CiviveOS plans", href: "/civive-os-offer", icon: "audit" },
-        { label: "Request audit", href: "/contact", icon: "book" },
+        { label: "Free report", href: site.visibilityReportRequestUrl, icon: "book" },
       ],
     };
   }
@@ -178,7 +179,7 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
           href: "/services/google-business-profile-optimization",
           icon: "audit",
         },
-        { label: "Get audit", href: "/contact", icon: "book" },
+        { label: "Free report", href: site.visibilityReportRequestUrl, icon: "book" },
       ],
     };
   }
@@ -192,7 +193,7 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
           href: "/resources/schema-for-ai-search-local-businesses",
           icon: "audit",
         },
-        { label: "Request audit", href: "/contact", icon: "book" },
+        { label: "Free report", href: site.visibilityReportRequestUrl, icon: "book" },
       ],
     };
   }
@@ -202,11 +203,11 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
       text: "AI search visibility starts with whether public systems can understand who the business is, what it does, where it works, why it should be trusted, and how a buyer should take the next step.",
       ctas: [
         {
-          label: "AI Search Audit",
+          label: "Visibility Report",
           href: "/ai-search-audit",
           icon: "audit",
         },
-        { label: "Request audit", href: "/contact", icon: "book" },
+        { label: "Free report", href: site.visibilityReportRequestUrl, icon: "book" },
       ],
     };
   }
@@ -214,7 +215,7 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
   return {
     text: "Start with the business goal: get found, get called, or get booked. Civive can inspect the public footprint, identify the highest-leverage gap, and map the next fix without inventing proof or adding noise.",
     ctas: [
-      { label: "Get an audit", href: "/contact", icon: "audit" },
+      { label: "Free report", href: site.visibilityReportRequestUrl, icon: "audit" },
       { label: `Call ${site.phone}`, href: site.phoneHref, icon: "call" },
     ],
   };
@@ -225,6 +226,7 @@ function openExternalLink(href: string) {
 }
 
 export default function GHLChatWidget() {
+  const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
@@ -235,6 +237,12 @@ export default function GHLChatWidget() {
   const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
 
   const canSend = useMemo(() => normalizeInput(draft).length > 0, [draft]);
+  const normalizedLocation = location.replace(/\/$/, "") || "/";
+  const shouldHideChat = normalizedLocation === "/free-visibility-report";
+
+  useEffect(() => {
+    if (shouldHideChat) setIsOpen(false);
+  }, [shouldHideChat]);
 
   useEffect(() => {
     const handleOpenChat = () => {
@@ -257,6 +265,10 @@ export default function GHLChatWidget() {
   useEffect(() => {
     return () => recognitionRef.current?.abort();
   }, []);
+
+  if (shouldHideChat) {
+    return null;
+  }
 
   const submitMessage = (rawInput = draft) => {
     const input = normalizeInput(rawInput);

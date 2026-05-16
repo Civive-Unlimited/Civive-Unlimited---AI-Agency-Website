@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
+import { site } from "@/content/site";
 
 const processSteps = [
   {
@@ -102,15 +103,15 @@ export default function ResultsSection() {
             className="mt-10 flex flex-col gap-4 border-t border-white/[0.08] pt-6 sm:flex-row sm:items-center sm:justify-between"
           >
             <a
-              href="/ai-search-audit"
+              href={site.visibilityReportRequestUrl}
               className="inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
             >
-              Check your AI visibility
+              Get your free visibility report
               <ArrowRight className="h-4 w-4" />
             </a>
 
             <p className="text-sm text-white/58">
-              One audit. Clear fixes. No guessing.
+              One report. Clear fixes. No guessing.
             </p>
           </motion.div>
         </div>

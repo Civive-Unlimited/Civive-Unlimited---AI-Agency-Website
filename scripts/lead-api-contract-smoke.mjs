@@ -155,6 +155,18 @@ try {
     "Malformed JSON should return a clear parser error."
   );
 
+  const oversizedBody = await callLeadApi({
+    headers: {
+      "x-civive-lead-mode": "dry-run",
+      "content-length": String(33 * 1024),
+    },
+    rawBody: "",
+  });
+  assert(
+    oversizedBody.statusCode === 413,
+    "Oversized lead payloads should be rejected before parsing."
+  );
+
   const smsConsentError = await callLeadApi({
     headers: { "x-civive-lead-mode": "dry-run" },
     body: { ...validLeadPayload, phone: "", smsConsent: true },
@@ -211,6 +223,7 @@ try {
           "HighLevel payload preview without writes",
           "email validation",
           "malformed JSON handling",
+          "oversized request rejection",
           "SMS consent validation",
           "honeypot handling",
           "production dry-run authorization gate",

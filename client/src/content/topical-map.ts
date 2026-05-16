@@ -30,9 +30,9 @@ const coreTopicalPages: TopicalPage[] = [
     pageType: "homepage",
     searchIntent: "Brand, offer, and service overview",
     topicalRole:
-      "Defines the entity, audience, primary AI Search Visibility Audit offer, and next step.",
+      "Defines the entity, audience, primary Visibility Report offer, and next step.",
     conversionGoal:
-      "Move qualified local service businesses toward the audit request.",
+      "Move qualified local service businesses toward the visibility report request.",
     relatedPaths: [
       "/ai-agency-springfield-mo",
       "/ai-search-audit",
@@ -64,7 +64,7 @@ const coreTopicalPages: TopicalPage[] = [
     topicalRole:
       "Main local commercial landing page for Civive Unlimited as a Springfield AI agency for service businesses.",
     conversionGoal:
-      "Move Springfield service business owners toward an AI Growth Audit request.",
+      "Move Springfield service business owners toward an AI Growth Visibility report request.",
     parentPath: "/",
     relatedPaths: [
       "/service-areas/springfield-mo",
@@ -83,14 +83,14 @@ const coreTopicalPages: TopicalPage[] = [
   },
   {
     path: "/ai-search-audit",
-    label: "AI Search Audit",
-    title: "AI Search Visibility Audit",
+    label: "Visibility Report",
+    title: "Visibility Report",
     pageType: "commercial",
     searchIntent:
-      "Buyer intent for AI search, AEO, local SEO, and visibility audit help",
+      "Buyer intent for AI search, AEO, local SEO, and visibility report help",
     topicalRole:
       "Primary commercial entry point for diagnosing visibility, entity, schema, and lead-capture gaps.",
-    conversionGoal: "Get the visitor to request an audit.",
+    conversionGoal: "Get the visitor to request a visibility report.",
     parentPath: "/",
     relatedPaths: [
       "/resources/what-does-an-ai-search-audit-include",
@@ -118,7 +118,7 @@ const coreTopicalPages: TopicalPage[] = [
     topicalRole:
       "Explains Civive's cleanup framework from public signals to lead capture.",
     conversionGoal:
-      "Help the visitor understand the implementation path after the audit.",
+      "Help the visitor understand the implementation path after the report.",
     parentPath: "/",
     relatedPaths: [
       "/ai-search-audit",
@@ -165,9 +165,9 @@ const coreTopicalPages: TopicalPage[] = [
     searchIntent:
       "Question intent around AI search, local SEO, reviews, schema, and FAQs",
     topicalRole:
-      "Answers objections and supports commercial audit and visibility-system pages.",
+      "Answers objections and supports commercial report and visibility-system pages.",
     conversionGoal:
-      "Reduce uncertainty and move qualified visitors toward the audit.",
+      "Reduce uncertainty and move qualified visitors toward the report.",
     parentPath: "/resources",
     relatedPaths: [
       "/ai-search-audit",
@@ -187,7 +187,7 @@ const coreTopicalPages: TopicalPage[] = [
     topicalRole:
       "Content hub for future articles, videos, founder notes, and practical checklists.",
     conversionGoal:
-      "Build trust and direct readers to the audit or public build.",
+      "Build trust and direct readers to the report or public build.",
     parentPath: "/",
     relatedPaths: [
       "/build-in-public",
@@ -205,7 +205,7 @@ const coreTopicalPages: TopicalPage[] = [
     topicalRole:
       "Shows Civive applying its visibility system to itself without fake proof.",
     conversionGoal:
-      "Turn transparency into trust and route serious buyers toward the audit.",
+      "Turn transparency into trust and route serious buyers toward the report.",
     parentPath: "/resources",
     relatedPaths: [
       "/resources",
@@ -220,11 +220,11 @@ const coreTopicalPages: TopicalPage[] = [
     title: "AI Search Prospecting Report",
     pageType: "proof",
     searchIntent:
-      "Example and sales enablement intent for AI search audit reporting",
+      "Example and sales enablement intent for AI search report reporting",
     topicalRole:
       "Demonstrates how Civive frames public visibility gaps for prospects.",
     conversionGoal:
-      "Help prospects understand the audit output and ask for their own.",
+      "Help prospects understand the report output and ask for their own.",
     parentPath: "/build-in-public",
     relatedPaths: [
       "/ai-search-audit",
@@ -286,7 +286,7 @@ const coreTopicalPages: TopicalPage[] = [
     topicalRole:
       "Clarifies the commercial offer for lead response, booking, reviews, follow-up, and AI front desk support.",
     conversionGoal:
-      "Convert qualified visitors into a plan discussion or audit request.",
+      "Convert qualified visitors into a plan discussion or visibility report request.",
     parentPath: "/civive-os",
     relatedPaths: [
       "/civive-os",
@@ -302,9 +302,9 @@ const coreTopicalPages: TopicalPage[] = [
     label: "Contact",
     title: "Contact Civive Unlimited",
     pageType: "conversion",
-    searchIntent: "Contact, booking, and audit request intent",
+    searchIntent: "Contact, booking, and visibility report request intent",
     topicalRole:
-      "Primary conversion page for audit and implementation requests.",
+      "Primary conversion page for report and implementation requests.",
     conversionGoal:
       "Capture a qualified lead with enough context for follow-up.",
     parentPath: "/",
@@ -328,7 +328,7 @@ const serviceTopicalPages: TopicalPage[] = servicePages.map(service => ({
   pageType: "commercial",
   searchIntent: `${service.name} buyer intent for local service businesses`,
   topicalRole: `Commercial service page explaining Civive's ${service.name.toLowerCase()} work, local fit, deliverables, and related services.`,
-  conversionGoal: "Move qualified service business owners toward an audit request or call.",
+  conversionGoal: "Move qualified service business owners toward a visibility report request or call.",
   parentPath: "/",
   relatedPaths: Array.from(
     new Set([
@@ -352,7 +352,7 @@ const serviceAreaTopicalPages: TopicalPage[] = [
     topicalRole:
       "Local landing page tying Civive's service pages to Springfield, Missouri and nearby service businesses.",
     conversionGoal:
-      "Move Springfield service business owners toward the AI Search Visibility Audit or a call.",
+      "Move Springfield service business owners toward the Visibility Report or a call.",
     parentPath: "/",
     relatedPaths: [
       "/",
@@ -377,7 +377,7 @@ const industryTopicalPages: TopicalPage[] = industries.map(industry => ({
   pageType: "subpillar",
   searchIntent: `${industry.name} AI search visibility and local service business readiness`,
   topicalRole: `Explains the buyer questions, trust signals, missing assets, and cleanup path for ${industry.name} businesses.`,
-  conversionGoal: `Move ${industry.shortName} operators toward an AI Search Visibility Audit.`,
+  conversionGoal: `Move ${industry.shortName} operators toward a Visibility Report.`,
   parentPath: "/industries",
   relatedPaths: [
     "/ai-search-audit",
@@ -403,9 +403,9 @@ const articleTopicalPages: TopicalPage[] = resourceArticles.map(article => ({
   title: stripBrand(article.title),
   pageType: "support",
   searchIntent: article.intent,
-  topicalRole: `Supports the AI Search Visibility Audit and visibility-system pillar with ${article.eyebrow.toLowerCase()} intent content.`,
+  topicalRole: `Supports the Visibility Report and visibility-system pillar with ${article.eyebrow.toLowerCase()} intent content.`,
   conversionGoal:
-    "Move readers from education into an audit request, visibility-system review, or contact path.",
+    "Move readers from education into a visibility report request, visibility-system review, or contact path.",
   parentPath: "/resources",
   relatedPaths: Array.from(
     new Set([

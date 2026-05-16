@@ -7,7 +7,12 @@ import {
 } from "@/components/AuthorityPage";
 import Seo from "@/components/Seo";
 import PricingSection from "@/components/sections/PricingSection";
-import { civiveOsOfferFaqs, civiveOsPlans, pageMeta } from "@/content/site";
+import {
+  civiveOsOfferFaqs,
+  civiveOsPlans,
+  pageMeta,
+  site,
+} from "@/content/site";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const decisionChecks = [
@@ -25,7 +30,7 @@ const decisionChecks = [
   },
   {
     title: "Should visibility be fixed first?",
-    copy: "If the business is not getting enough qualified demand, start with the AI Search Visibility Audit before buying a larger operating base.",
+    copy: "If the business is not getting enough qualified demand, start with the Visibility Report before buying a larger operating base.",
     href: "/ai-search-audit",
   },
 ];
@@ -51,7 +56,7 @@ const implementationSteps = [
 
 const boundaries = [
   "AI receptionist and AI employees are optional add-ons, not included by default in the Operator software plan.",
-  "An AI Search Visibility Audit may still be the first move if the business has weak demand, unclear pages, or inconsistent public facts.",
+  "A Visibility Report may still be the first move if the business has weak demand, unclear pages, or inconsistent public facts.",
   "SMS sender readiness, A2P registration, and account-level permissions may require setup before texting can run at full strength.",
   "Civive does not use fake reviews, fake locations, fake proof, unsupported schema, or inflated claims to make the offer look stronger.",
 ];
@@ -68,8 +73,8 @@ const supportLinks = [
     href: "/ai-receptionist",
   },
   {
-    title: "AI Search Audit",
-    copy: "Use the audit first when demand, public facts, or search visibility are the bigger constraint.",
+    title: "Visibility Report",
+    copy: "Use the report first when demand, public facts, or search visibility are the bigger constraint.",
     href: "/ai-search-audit",
   },
 ];
@@ -82,7 +87,7 @@ export default function CiviveOSOfferPage() {
         <PageHero
           eyebrow="CiviveOS pricing and plans"
           title="Choose the lead-response operating base before adding more AI."
-          copy="CiviveOS plans give service businesses the capture, booking, review, follow-up, and AI-ready front desk foundation behind the audit and visibility system."
+          copy="CiviveOS plans give service businesses the capture, booking, review, follow-up, and AI-ready front desk foundation behind the report and visibility system."
           primaryCta={{ label: "Compare plans", href: "#offer" }}
           secondaryCta={{ label: "Ask what fits first", href: "/contact" }}
         >
@@ -184,7 +189,7 @@ export default function CiviveOSOfferPage() {
             <SectionHeader
               eyebrow="Connected pages"
               title="Use the right page for the right stage of the buying path."
-              copy="The offer page links back into the system overview, AI receptionist page, audit path, and contact route so buyers and crawlers do not hit a dead end."
+              copy="The offer page links back into the system overview, AI receptionist page, report path, and contact route so buyers and crawlers do not hit a dead end."
             />
             <div className="grid gap-4 sm:grid-cols-3">
               {supportLinks.map(link => (
@@ -240,7 +245,7 @@ export default function CiviveOSOfferPage() {
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/64">
               If you already know the business needs a cleaner operating base,
               compare the plans above. If the biggest leak is unclear, request
-              an audit conversation first.
+              a visibility report conversation first.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <a
@@ -251,7 +256,7 @@ export default function CiviveOSOfferPage() {
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="/contact"
+                href={site.visibilityReportRequestUrl}
                 className="inline-flex items-center justify-center gap-2 rounded-full px-2 py-4 text-sm font-medium text-white/70 transition-colors hover:text-white"
               >
                 Ask what fits first

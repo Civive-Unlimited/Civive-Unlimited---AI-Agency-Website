@@ -26,7 +26,7 @@ export default function Terms() {
             <p>
               These Terms of Service govern your use of the {site.name} website,
               services, and software subscriptions. By using our website,
-              submitting a form, requesting an audit, booking an appointment,
+              submitting a form, requesting a visibility report, booking an appointment,
               purchasing a subscription, or engaging our services, you agree to
               these terms.
             </p>
@@ -48,8 +48,8 @@ export default function Terms() {
             </h2>
             <p>
               If you provide your phone number and opt in, you agree that Civive
-              Unlimited may send you conversational SMS regarding your audit
-              request, appointments, onboarding, and service-related updates.
+              Unlimited may send you conversational SMS regarding your visibility
+              report request, appointments, onboarding, and service-related updates.
               Message frequency varies. Message and data rates may apply.
               Consent to receive SMS is not a condition of purchase. You may opt
               out at any time by replying STOP, and you can reply HELP for

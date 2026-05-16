@@ -6,7 +6,7 @@ import {
   SectionHeader,
 } from "@/components/AuthorityPage";
 import Seo from "@/components/Seo";
-import { civiveOsFaqs, pageMeta } from "@/content/site";
+import { civiveOsFaqs, pageMeta, site } from "@/content/site";
 import {
   ArrowRight,
   Bot,
@@ -85,13 +85,13 @@ const planSnapshot = [
 
 const decisionPath = [
   {
-    title: "Start with the audit when demand is unclear",
+    title: "Start with the report when demand is unclear",
     copy: "If the public footprint is vague, the site is thin, or the business does not know why AI or Google would recommend it, diagnose the visibility problem first.",
     href: "/ai-search-audit",
   },
   {
     title: "Use the visibility system when the public signals need cleanup",
-    copy: "The visibility system turns audit findings into pages, FAQs, internal links, schema, proof, and a cleaner route to contact.",
+    copy: "The visibility system turns report findings into pages, FAQs, internal links, schema, proof, and a cleaner route to contact.",
     href: "/visibility-system",
   },
   {
@@ -107,13 +107,13 @@ const decisionPath = [
 
 const supportLinks = [
   {
-    title: "AI Search Visibility Audit",
+    title: "Visibility Report",
     copy: "Diagnose whether the first bottleneck is demand, clarity, trust, or response.",
     href: "/ai-search-audit",
   },
   {
     title: "AI Search Implementation Plan",
-    copy: "Review the sequence for turning audit findings into pages, schema, proof, links, and lead systems.",
+    copy: "Review the sequence for turning report findings into pages, schema, proof, links, and lead systems.",
     href: "/resources/ai-search-implementation-plan-service-businesses",
   },
   {
@@ -137,7 +137,7 @@ export default function CiviveOSPage() {
             href: "/civive-os-offer",
           }}
           secondaryCta={{
-            label: "Start with AI Search Audit",
+            label: "Start with Visibility Report",
             href: "/ai-search-audit",
           }}
         >
@@ -151,7 +151,7 @@ export default function CiviveOSPage() {
               </p>
               <p>
                 If the business is not getting enough qualified demand yet,
-                start with the AI Search Visibility Audit and visibility system.
+                start with the Visibility Report and visibility system.
               </p>
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function CiviveOSPage() {
             <SectionHeader
               eyebrow="Decision path"
               title="Choose the layer that matches the real bottleneck."
-              copy="CiviveOS is strongest when there is already lead intent to protect. The audit and visibility system come first when public evidence is still unclear."
+              copy="CiviveOS is strongest when there is already lead intent to protect. The report and visibility system come first when public evidence is still unclear."
             />
             <EditorialList items={decisionPath} />
           </div>
@@ -328,7 +328,7 @@ export default function CiviveOSPage() {
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="/contact"
+                href={site.visibilityReportRequestUrl}
                 className="inline-flex items-center justify-center gap-2 rounded-full px-2 py-4 text-sm font-medium text-white/70 transition-colors hover:text-white"
               >
                 Ask what fits first

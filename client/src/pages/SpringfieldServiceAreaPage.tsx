@@ -31,7 +31,7 @@ const springfieldWorkflow = [
   },
   {
     title: "Strengthen the service pages",
-    copy: "Build distinct pages for the services buyers search for, then connect them to the homepage, audit path, and local page.",
+    copy: "Build distinct pages for the services buyers search for, then connect them to the homepage, report path, and local page.",
   },
   {
     title: "Connect lead response",
@@ -63,7 +63,7 @@ export default function SpringfieldServiceAreaPage() {
           eyebrow="Springfield, Missouri"
           title="AI Search Visibility and Lead Automation for Springfield Service Businesses"
           copy="Civive Unlimited helps Springfield service businesses make their website, Google Business Profile, service pages, reviews, schema, calls, forms, booking, and follow-up easier for buyers and AI tools to understand."
-          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
+          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
           secondaryCta={{ label: "Book a Call", href: "/contact" }}
         >
           <div className="border-y border-white/[0.08] py-7">
@@ -81,7 +81,7 @@ export default function SpringfieldServiceAreaPage() {
                 href="/ai-search-audit"
                 className="transition-colors hover:text-white"
               >
-                AI Search Visibility Audit
+                Visibility Report
               </a>
               <a
                 href="/ai-agency-springfield-mo"
@@ -218,7 +218,7 @@ export default function SpringfieldServiceAreaPage() {
           title="Make the Springfield signals match the business people can actually hire."
           copy="Send the website, Google Business Profile, service area, and the services that matter most. Civive will map what to clean up first."
           primaryCta={{
-            label: "Get an AI Search Visibility Audit",
+            label: "Get Your Free Visibility Report",
             href: "/contact",
           }}
           secondaryCta={{ label: "Book a Call", href: "/contact" }}

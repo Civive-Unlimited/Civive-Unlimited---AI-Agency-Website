@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
+import { site } from "@/content/site";
 
 const authorityPaths = [
   {
@@ -12,10 +13,10 @@ const authorityPaths = [
   },
   {
     title: "Diagnose the visibility problem",
-    eyebrow: "Audit",
-    copy: "Use the AI Search Visibility Audit when the business needs a fix order for public facts, services, reviews, FAQs, schema, links, and lead capture.",
+    eyebrow: "Report",
+    copy: "Use the Visibility Report when the business needs a fix order for public facts, services, reviews, FAQs, schema, links, and lead capture.",
     href: "/services/ai-search-visibility-audit",
-    cta: "Read the audit path",
+    cta: "Read the report path",
   },
   {
     title: "Align the Google Business Profile",
@@ -27,7 +28,7 @@ const authorityPaths = [
   {
     title: "Build the AI search visibility system",
     eyebrow: "Pillar",
-    copy: "Turn the audit into clearer pages, stronger entity signals, better internal links, structured answers, and conversion-ready public evidence.",
+    copy: "Turn the report into clearer pages, stronger entity signals, better internal links, structured answers, and conversion-ready public evidence.",
     href: "/visibility-system",
     cta: "Explore the system",
   },
@@ -121,7 +122,7 @@ export default function HomeAuthorityMapSection() {
                 next step.
               </p>
               <a
-                href="/contact"
+                href={site.visibilityReportRequestUrl}
                 className="mt-9 inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
               >
                 Ask where to start

@@ -5,21 +5,22 @@ import { areasServed, site } from "@/content/site";
 
 const footerGroups = [
   {
-    title: "Audit",
+    title: "Report",
     links: [
       {
         href: "/services/ai-search-visibility-audit",
-        label: "AI Search Visibility Audit",
+        label: "Visibility Report",
       },
-      { href: "/ai-search-audit", label: "Audit details" },
-      { href: "/contact", label: "Request an audit" },
+      { href: "/ai-search-audit", label: "Report details" },
+      { href: site.visibilityReportRequestUrl, label: "Free visibility report" },
+      { href: "/contact", label: "Contact Civive" },
       {
         href: "/resources/what-does-an-ai-search-audit-include",
-        label: "What the audit includes",
+        label: "What the report includes",
       },
       {
         href: "/resources/ai-search-audit-cost",
-        label: "AI search audit cost",
+        label: "AI search report cost",
       },
     ],
   },

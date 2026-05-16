@@ -44,7 +44,7 @@ const implementationAreas = [
 const implementationSequence = [
   {
     title: "Diagnose the weak signal",
-    copy: "Use the audit to identify whether the issue is entity clarity, service depth, local proof, schema, reviews, or the lead path.",
+    copy: "Use the report to identify whether the issue is entity clarity, service depth, local proof, schema, reviews, or the lead path.",
     href: "/ai-search-audit",
   },
   {
@@ -82,7 +82,7 @@ const connectedPages = [
     href: "/ai-agency-springfield-mo",
   },
   {
-    title: "AI Search Visibility Audit",
+    title: "Visibility Report",
     copy: "Start here when the weak signals need to be diagnosed and prioritized.",
     href: "/ai-search-audit",
   },
@@ -103,7 +103,7 @@ const connectedPages = [
   },
   {
     title: "Implementation Plan",
-    copy: "Read the sequence for turning audit findings into pages, schema, links, and lead systems.",
+    copy: "Read the sequence for turning report findings into pages, schema, links, and lead systems.",
     href: "/resources/ai-search-implementation-plan-service-businesses",
   },
 ];
@@ -116,9 +116,9 @@ export default function VisibilitySystemPage() {
         <PageHero
           eyebrow="AI Search Visibility System"
           title="AI Search Visibility System for service businesses that need cleaner signals and better lead capture."
-          copy="The audit finds the weak signals. The visibility system fixes them through clearer messaging, service structure, public proof, schema-ready content, internal links, and a cleaner lead path."
-          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
-          secondaryCta={{ label: "See the audit", href: "/ai-search-audit" }}
+          copy="The report finds the weak signals. The visibility system fixes them through clearer messaging, service structure, public proof, schema-ready content, internal links, and a cleaner lead path."
+          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
+          secondaryCta={{ label: "See the report", href: "/ai-search-audit" }}
         >
           <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
             {visibilitySystemLayers.map((layer, index) => (
@@ -244,7 +244,7 @@ export default function VisibilitySystemPage() {
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
             <SectionHeader
               eyebrow="Visibility system FAQs"
-              title="Questions buyers ask before turning an audit into implementation."
+              title="Questions buyers ask before turning a report into implementation."
               copy="These answers are visible on-page, so the FAQ schema describes real content instead of hidden markup."
             />
             <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
@@ -263,7 +263,7 @@ export default function VisibilitySystemPage() {
         </AuthoritySection>
 
         <FinalCta
-          title="Build the visibility system from the audit outward."
+          title="Build the visibility system from the report outward."
           copy="Start with what is unclear now. Then turn the highest-impact fixes into pages, answers, structured context, internal links, and lead systems."
         />
       </AuthorityShell>

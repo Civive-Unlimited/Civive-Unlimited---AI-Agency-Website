@@ -31,7 +31,7 @@ const receptionistPieces = [
 const fitSignals = [
   {
     title: "You already get calls, chats, or form fills",
-    copy: "The receptionist makes sense once there is real intent to capture. If demand is low, the audit and visibility system should come first.",
+    copy: "The receptionist makes sense once there is real intent to capture. If demand is low, the report and visibility system should come first.",
   },
   {
     title: "Speed matters in your category",
@@ -120,8 +120,8 @@ const supportLinks = [
     href: "/ai-agency-springfield-mo",
   },
   {
-    title: "AI Search Visibility Audit",
-    copy: "Use the audit when the business needs more demand or clearer public signals before adding automation.",
+    title: "Visibility Report",
+    copy: "Use the report when the business needs more demand or clearer public signals before adding automation.",
     href: "/ai-search-audit",
   },
   {
@@ -131,7 +131,7 @@ const supportLinks = [
   },
   {
     title: "Implementation plan",
-    copy: "Review the sequence for turning audit findings into schema, pages, internal links, and lead systems.",
+    copy: "Review the sequence for turning report findings into schema, pages, internal links, and lead systems.",
     href: "/resources/ai-search-implementation-plan-service-businesses",
   },
 ];
@@ -145,7 +145,7 @@ export default function AIReceptionistPage() {
           eyebrow="AI receptionist and missed-call recovery"
           title="Capture, qualify, and route service leads before they cool off."
           copy="An AI receptionist is the downstream conversion layer for service businesses. It helps answer, qualify, book, route, and follow up after a buyer finds the business through AI search, Google, referrals, calls, forms, or chat."
-          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
+          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
           secondaryCta={{
             label: "Explore CiviveOS",
             href: "/civive-os",
@@ -161,7 +161,7 @@ export default function AIReceptionistPage() {
               </p>
               <p>
                 If the business is not getting enough qualified demand yet,
-                start with the AI Search Visibility Audit and visibility cleanup.
+                start with the Visibility Report and visibility cleanup.
               </p>
             </div>
           </div>
@@ -309,7 +309,7 @@ export default function AIReceptionistPage() {
 
         <FinalCta
           title="Find the leak first, then build the right response layer."
-          copy="The audit shows whether the business has a visibility problem, a conversion problem, or both. The receptionist layer protects the opportunity once the buyer reaches out."
+          copy="The report shows whether the business has a visibility problem, a conversion problem, or both. The receptionist layer protects the opportunity once the buyer reaches out."
         />
       </AuthorityShell>
     </>

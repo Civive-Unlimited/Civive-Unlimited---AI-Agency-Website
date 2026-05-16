@@ -6,7 +6,7 @@ import {
   SectionHeader,
 } from "@/components/AuthorityPage";
 import Seo from "@/components/Seo";
-import { industries, industryHubFaqs, pageMeta } from "@/content/site";
+import { industries, industryHubFaqs, pageMeta, site } from "@/content/site";
 
 const industrySignalPatterns = [
   {
@@ -31,13 +31,13 @@ const industryPillarLinks = [
   },
   {
     href: "/ai-search-audit",
-    label: "AI Search Visibility Audit",
+    label: "Visibility Report",
     copy: "Diagnose the public facts, schema, FAQs, service pages, reviews, and lead path first.",
   },
   {
     href: "/visibility-system",
     label: "AI Search Visibility System",
-    copy: "Turn the audit findings into clearer pages, structured answers, internal links, and proof.",
+    copy: "Turn the report findings into clearer pages, structured answers, internal links, and proof.",
   },
   {
     href: "/resources/ai-search-implementation-plan-service-businesses",
@@ -55,8 +55,8 @@ const industryPillarLinks = [
     copy: "Connect visibility work to the lead-response operating base for conversations, booking, reviews, and CRM handoff.",
   },
   {
-    href: "/contact",
-    label: "Request an audit",
+    href: site.visibilityReportRequestUrl,
+    label: "Request a visibility report",
     copy: "Send the business, service area, website or Google profile, and the visibility problem to inspect first.",
   },
 ];
@@ -70,8 +70,8 @@ export default function IndustriesPage() {
           eyebrow="Industries for AI Search Visibility"
           title="AI search visibility pages for local service businesses where trust and timing decide the call."
           copy="Civive helps service-based and trust-dependent businesses make their public signals easier for Google, ChatGPT, Gemini, Perplexity, Grok, maps, and buyers to understand. Each industry page explains the questions, proof, skipped-signal risks, and conversion paths that matter for that category."
-          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
-          secondaryCta={{ label: "See the audit", href: "/ai-search-audit" }}
+          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
+          secondaryCta={{ label: "See the report", href: "/ai-search-audit" }}
         >
           <div className="border-y border-white/[0.08] py-7">
             <p className="homepage-eyebrow">Direct answer</p>
@@ -89,7 +89,7 @@ export default function IndustriesPage() {
             <SectionHeader
               eyebrow="How this hub works"
               title="The industry pages are subpillars, not random landing pages."
-              copy="Each page has one topical job: explain how AI search visibility changes for that type of business, then route the visitor into the audit, implementation plan, lead-response system, or contact path."
+              copy="Each page has one topical job: explain how AI search visibility changes for that type of business, then route the visitor into the report, implementation plan, lead-response system, or contact path."
             />
             <div className="grid gap-3">
               {industryPillarLinks.map(link => (
@@ -115,7 +115,7 @@ export default function IndustriesPage() {
             <SectionHeader
               eyebrow="Industry pages"
               title="Each category has different questions, proof, and skipped-signal risks."
-              copy="These pages give each industry a clean parent-child place in the topical map. They support the commercial audit page, the visibility-system pillar, and the lead-response pages without creating duplicate doorway content."
+              copy="These pages give each industry a clean parent-child place in the topical map. They support the commercial report page, the visibility-system pillar, and the lead-response pages without creating duplicate doorway content."
             />
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {industries.map(industry => (
@@ -188,7 +188,7 @@ export default function IndustriesPage() {
 
         <FinalCta
           title="Start with the industry fit, then inspect the signals that decide the call."
-          copy="The audit maps the business-specific gaps across service language, local proof, reviews, structured answers, schema, internal links, and lead capture."
+          copy="The report maps the business-specific gaps across service language, local proof, reviews, structured answers, schema, internal links, and lead capture."
         />
       </AuthorityShell>
     </>

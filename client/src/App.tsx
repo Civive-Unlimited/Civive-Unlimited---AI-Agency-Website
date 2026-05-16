@@ -8,6 +8,7 @@ import ContactPage from "@/pages/ContactPage";
 import CiviveOSPage from "@/pages/CiviveOSPage";
 import CiviveOSOfferPage from "@/pages/CiviveOSOfferPage";
 import FAQPage from "@/pages/FAQPage";
+import FreeVisibilityReportPage from "@/pages/FreeVisibilityReportPage";
 import IndustriesPage from "@/pages/IndustriesPage";
 import IndustryPage from "@/pages/IndustryPage";
 import NotFound from "@/pages/NotFound";
@@ -17,7 +18,8 @@ import ResourcesPage from "@/pages/ResourcesPage";
 import ServicePage from "@/pages/ServicePage";
 import SpringfieldServiceAreaPage from "@/pages/SpringfieldServiceAreaPage";
 import VisibilitySystemPage from "@/pages/VisibilitySystemPage";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
+import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
@@ -26,6 +28,16 @@ import Terms from "./pages/Terms";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import GHLChatWidget from "./components/GHLChatWidget";
+
+function RouteScrollReset() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [location]);
+
+  return null;
+}
 
 function Router() {
   return (
@@ -36,6 +48,10 @@ function Router() {
         component={AIAgencySpringfieldPage}
       />
       <Route path={"/ai-search-audit"} component={AuditPage} />
+      <Route
+        path={"/free-visibility-report"}
+        component={FreeVisibilityReportPage}
+      />
       <Route path={"/prospecting-report"}>
         {() => <ProspectingReportPage />}
       </Route>
@@ -79,6 +95,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Navigation />
+          <RouteScrollReset />
           <Router />
           <Footer />
           <GHLChatWidget />

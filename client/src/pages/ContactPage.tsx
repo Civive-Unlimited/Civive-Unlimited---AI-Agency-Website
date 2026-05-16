@@ -31,11 +31,11 @@ const requestPrep = [
   },
   {
     title: "If you do not know the problem yet",
-    copy: "That is fine. Send the public footprint and choose Not sure yet. The audit exists to separate a visibility problem from a website, profile, schema, or response problem.",
+    copy: "That is fine. Send the public footprint and choose Not sure yet. The report exists to separate a visibility problem from a website, profile, schema, or response problem.",
   },
   {
     title: "If the lead path is the issue",
-    copy: "Mention missed calls, slow follow-up, bad form routing, booking friction, or CRM gaps so the audit can include the downstream conversion layer.",
+    copy: "Mention missed calls, slow follow-up, bad form routing, booking friction, or CRM gaps so the report can include the downstream conversion layer.",
   },
 ];
 
@@ -46,7 +46,7 @@ const conversionResources = [
     href: "/ai-agency-springfield-mo",
   },
   {
-    title: "What the audit includes",
+    title: "What the report includes",
     copy: "See the public signals and deliverables Civive checks before recommending implementation.",
     href: "/resources/what-does-an-ai-search-audit-include",
   },
@@ -69,11 +69,11 @@ export default function ContactPage() {
       <AuthorityShell>
         <PageHero
           eyebrow="Contact Civive"
-          title="Request the AI Search Visibility Audit with enough context to act."
+          title="Request the Visibility Report with enough context to act."
           copy="Send the business, website or Google profile, service area, and the visibility problem you want solved first. Civive will start with the public signals most likely to affect AI search, local trust, and lead capture."
           primaryCta={{ label: "Use the form below", href: "#contact" }}
           secondaryCta={{
-            label: "See what the audit checks",
+            label: "See what the report checks",
             href: "/ai-search-audit",
           }}
         >
@@ -96,7 +96,7 @@ export default function ContactPage() {
             <SectionHeader
               eyebrow="Request path"
               title="The contact page should preserve search intent, not restart the conversation."
-              copy="Someone arriving here from the audit page, a comparison article, or an industry page should know exactly what to send and what happens next."
+              copy="Someone arriving here from the report page, a comparison article, or an industry page should know exactly what to send and what happens next."
             />
             <EditorialList items={requestPath} />
           </div>
@@ -106,7 +106,7 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
               eyebrow="Before you submit"
-              title="A stronger request creates a better first audit pass."
+              title="A stronger request creates a better first report pass."
               copy="The form is intentionally simple, but the more context it carries, the easier it is to separate a visibility problem from a response, content, schema, or profile problem."
             />
             <EditorialList items={requestPrep} />
@@ -131,7 +131,7 @@ export default function ContactPage() {
             <SectionHeader
               eyebrow="Contact FAQs"
               title="Short answers before you send the request."
-              copy="These answers are visible on the page and included in JSON-LD because they directly support the contact and audit request intent."
+              copy="These answers are visible on the page and included in JSON-LD because they directly support the contact and visibility report request intent."
             />
             <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
               {contactPageFaqs.map(faq => (

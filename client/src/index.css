@@ -260,6 +260,49 @@
     padding-right: 1rem;
   }
 
+  .prospecting-widget-host {
+    --prospecting-card-padding: clamp(1rem, 6vw, 2.25rem);
+  }
+
+  .prospecting-widget-host [id^="prospecting-widget-"] > div > div {
+    width: min(30rem, calc(100vw - 2rem)) !important;
+    max-width: calc(100vw - 2rem) !important;
+    padding: var(--prospecting-card-padding) !important;
+  }
+
+  .prospecting-widget-host [id^="prospecting-widget-"] img {
+    object-fit: contain !important;
+  }
+
+  @media (max-width: 640px) {
+    .prospecting-widget-host [id^="prospecting-widget-"] > div > div {
+      border-radius: 1rem !important;
+      max-width: calc(100vw - 5rem) !important;
+      width: min(30rem, calc(100vw - 5rem)) !important;
+    }
+
+    .prospecting-widget-host [id^="prospecting-widget-"] [style*="height: 15rem"] {
+      height: 10rem !important;
+      margin: calc(-1 * var(--prospecting-card-padding))
+        calc(-1 * var(--prospecting-card-padding)) 1rem !important;
+    }
+
+    .prospecting-widget-host [id^="prospecting-widget-"] form {
+      max-width: 100% !important;
+    }
+
+    .prospecting-widget-host [id^="prospecting-widget-"] .flex.gap-2.mb-5 {
+      align-items: flex-start !important;
+      flex-direction: column !important;
+    }
+
+    .prospecting-widget-host [id^="prospecting-widget-"] label,
+    .prospecting-widget-host [id^="prospecting-widget-"] p,
+    .prospecting-widget-host [id^="prospecting-widget-"] button[type="submit"] {
+      font-size: 0.95rem !important;
+    }
+  }
+
   .flex {
     min-height: 0;
     min-width: 0;
@@ -870,6 +913,29 @@ a {
   100% {
     transform: translateX(42%);
     opacity: 0;
+  }
+}
+
+.homepage-shell .homepage-hero-title {
+  font-size: clamp(3.1rem, 14vw, 4.15rem);
+  line-height: 0.98;
+}
+
+@media (min-width: 640px) {
+  .homepage-shell .homepage-hero-title {
+    font-size: clamp(4.6rem, 10vw, 5.25rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .homepage-shell .homepage-hero-title {
+    font-size: clamp(5.15rem, 6.2vw, 5.9rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .homepage-shell .homepage-hero-title {
+    font-size: 6.25rem;
   }
 }
 

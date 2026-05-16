@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, MessageCircle, Menu, X } from "lucide-react";
+import { useLocation } from "wouter";
 import civiveHeaderLogo from "@/assets/civive-header-logo.svg";
 import { navLinks, site } from "@/content/site";
+import { trackWebsiteEvent } from "@/lib/tracking";
 
+const actionNavLabels = new Set(["Free Report"]);
 const compactNavLabels = new Set(["FAQ", "Resources", "Build in Public"]);
 const primaryNavLinks = navLinks.filter(
-  link => !compactNavLabels.has(link.label)
+  link => !compactNavLabels.has(link.label) && !actionNavLabels.has(link.label)
 );
 const moreNavLinks = navLinks.filter(link => compactNavLabels.has(link.label));
 
 export default function Navigation() {
+  const [location, setLocation] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
@@ -34,7 +38,7 @@ export default function Navigation() {
 
     if (href.startsWith("/#")) {
       const sectionId = href.replace("/#", "");
-      if (window.location.pathname === "/") {
+      if (location === "/") {
         const element = document.getElementById(sectionId);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
@@ -43,11 +47,21 @@ export default function Navigation() {
       }
     }
 
-    window.location.href = href;
+    if (href.startsWith("/")) {
+      setLocation(href);
+      return;
+    }
+
+    window.location.assign(href);
   };
 
-  const openChat = () => {
+  const openChat = (placement: string) => {
     setIsMobileMenuOpen(false);
+    trackWebsiteEvent("chat_open", {
+      placement,
+      label: "Ask AI",
+      destination: "civive:open-chat",
+    });
     window.dispatchEvent(new Event("civive:open-chat"));
   };
 
@@ -67,10 +81,10 @@ export default function Navigation() {
               onClick={e => {
                 e.preventDefault();
                 setIsMobileMenuOpen(false);
-                if (window.location.pathname === "/") {
+                if (location === "/") {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 } else {
-                  window.location.href = "/";
+                  setLocation("/");
                 }
               }}
             >
@@ -148,21 +162,27 @@ export default function Navigation() {
             <div className="hidden items-center justify-end gap-2 lg:flex">
               <button
                 type="button"
-                onClick={openChat}
+                onClick={() => openChat("desktop_navigation")}
                 className="nav-link-premium hidden items-center gap-2 whitespace-nowrap rounded-full px-3 py-2.5 text-sm font-medium text-white/72 transition-colors hover:bg-white/[0.05] hover:text-white xl:inline-flex xl:px-4"
               >
                 <MessageCircle className="h-4 w-4" />
                 Ask AI
               </button>
               <a
-                href="/contact"
+                href={site.visibilityReportRequestUrl}
+                data-cta-destination={site.visibilityReportRequestUrl}
                 onClick={e => {
                   e.preventDefault();
-                  navigateTo("/contact");
+                  trackWebsiteEvent("cta_click", {
+                    placement: "desktop_navigation",
+                    label: "Free Report",
+                    destination: site.visibilityReportRequestUrl,
+                  });
+                  navigateTo(site.visibilityReportRequestUrl);
                 }}
                 className="homepage-secondary-button inline-flex items-center whitespace-nowrap rounded-full border border-white/[0.13] bg-white/[0.055] px-4 py-2.5 text-sm font-medium text-white/92 transition-colors hover:bg-white/[0.1] xl:px-5"
               >
-                Get Audit
+                Free Report
               </a>
             </div>
 
@@ -187,7 +207,7 @@ export default function Navigation() {
             exit={{ opacity: 0 }}
           >
             <div className="flex h-full flex-col items-center justify-center gap-7 pt-16">
-              {navLinks.map((link, index) => (
+              {primaryNavLinks.concat(moreNavLinks).map((link, index) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
@@ -205,22 +225,28 @@ export default function Navigation() {
               ))}
 
               <motion.a
-                href="/contact"
+                href={site.visibilityReportRequestUrl}
+                data-cta-destination={site.visibilityReportRequestUrl}
                 onClick={e => {
                   e.preventDefault();
-                  navigateTo("/contact");
+                  trackWebsiteEvent("cta_click", {
+                    placement: "mobile_navigation",
+                    label: "Get Your Free Visibility Report",
+                    destination: site.visibilityReportRequestUrl,
+                  });
+                  navigateTo(site.visibilityReportRequestUrl);
                 }}
                 className="mt-3 w-64 rounded-full border border-white/[0.12] bg-white/[0.05] py-4 text-center text-base font-medium text-white transition-colors hover:bg-white/[0.1]"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.08 }}
               >
-                Get an AI Search Visibility Audit
+                Get Your Free Visibility Report
               </motion.a>
 
               <motion.button
                 type="button"
-                onClick={openChat}
+                onClick={() => openChat("mobile_navigation")}
                 className="w-64 rounded-full border border-white/[0.12] bg-white/[0.04] py-4 text-center text-base font-medium text-white/82 transition-colors hover:bg-white/[0.09] hover:text-white"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}

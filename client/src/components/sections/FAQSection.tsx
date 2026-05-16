@@ -91,7 +91,7 @@ export default function FAQSection() {
           transition={{ duration: 0.45, delay: 0.28 }}
           className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
         >
-          Have a business-specific visibility question? Bring it to the audit.
+          Have a business-specific visibility question? Bring it to the visibility report.
           We will walk through what is helping you, what is hurting you, and
           what to fix first.
         </motion.p>

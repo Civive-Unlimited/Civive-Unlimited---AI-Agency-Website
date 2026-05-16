@@ -73,7 +73,7 @@ const fitSignals = [
 const pricingDrivers = [
   {
     title: "Simple footprint",
-    copy: "One location, clear services, small site, and a mostly working contact path usually need a lighter audit and a shorter implementation map.",
+    copy: "One location, clear services, small site, and a mostly working contact path usually need a lighter report and a shorter implementation map.",
   },
   {
     title: "Messy footprint",
@@ -81,19 +81,19 @@ const pricingDrivers = [
   },
   {
     title: "Implementation depth",
-    copy: "An audit that only identifies issues is lighter. An audit that turns findings into page briefs, schema recommendations, and build sequencing is more valuable.",
+    copy: "A report that only identifies issues is lighter. A report that turns findings into page briefs, schema recommendations, and build sequencing is more valuable.",
   },
 ];
 
 const objectionHandlers = [
   {
     title: "Is this just SEO?",
-    copy: "It overlaps with SEO, but the audit is broader: it asks whether buyers, search engines, and answer systems can understand, summarize, compare, and trust the business.",
+    copy: "It overlaps with SEO, but the report is broader: it asks whether buyers, search engines, and answer systems can understand, summarize, compare, and trust the business.",
     href: "/resources/ai-search-vs-local-seo",
   },
   {
     title: "Can I do this myself?",
-    copy: "Some public-fact cleanup can be DIY. The audit is useful when the issues overlap and you need a fix order before paying for content, schema, profile cleanup, or automation.",
+    copy: "Some public-fact cleanup can be DIY. The report is useful when the issues overlap and you need a fix order before paying for content, schema, profile cleanup, or automation.",
     href: "/resources/ai-search-audit-alternatives",
   },
   {
@@ -111,12 +111,12 @@ const objectionHandlers = [
 const supportResources = [
   {
     title: "Springfield AI agency",
-    copy: "See how Civive connects the audit to local AI agency services, AI automation, lead capture, and booked jobs for Springfield service businesses.",
+    copy: "See how Civive connects the report to local AI agency services, AI automation, lead capture, and booked jobs for Springfield service businesses.",
     href: "/ai-agency-springfield-mo",
   },
   {
-    title: "What the audit includes",
-    copy: "A deeper breakdown of the surfaces and deliverables the audit should inspect.",
+    title: "What the report includes",
+    copy: "A deeper breakdown of the surfaces and deliverables the report should inspect.",
     href: "/resources/what-does-an-ai-search-audit-include",
   },
   {
@@ -131,7 +131,7 @@ const supportResources = [
   },
   {
     title: "Implementation plan",
-    copy: "The sequence for turning audit findings into pages, schema, proof, links, and lead response.",
+    copy: "The sequence for turning report findings into pages, schema, proof, links, and lead response.",
     href: "/resources/ai-search-implementation-plan-service-businesses",
   },
 ];
@@ -142,15 +142,15 @@ export default function AuditPage() {
       <Seo {...pageMeta.audit} path="/ai-search-audit" />
       <AuthorityShell>
         <PageHero
-          eyebrow="AI Search Visibility Audit"
+          eyebrow="Visibility Report"
           title={
             <>
               Find the signals that make your business easier or harder to
               recommend.
             </>
           }
-          copy="A practical audit for service businesses that want ChatGPT, Gemini, Perplexity, Grok, voice search, and real buyers to understand who they are, what they do, where they work, and why they should be trusted."
-          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
+          copy="A practical report for service businesses that want ChatGPT, Gemini, Perplexity, Grok, voice search, and real buyers to understand who they are, what they do, where they work, and why they should be trusted."
+          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
           secondaryCta={{
             label: "Explore the system",
             href: "/visibility-system",
@@ -159,7 +159,7 @@ export default function AuditPage() {
           <div className="border-y border-white/[0.08] py-7">
             <p className="homepage-eyebrow">Direct answer</p>
             <p className="mt-5 text-sm leading-6 text-white/72">
-              An AI Search Visibility Audit finds the public signals that help or
+              A Visibility Report finds the public signals that help or
               hurt recommendation confidence, then turns them into a prioritized
               implementation map for search, AI answers, and lead capture.
             </p>
@@ -175,7 +175,7 @@ export default function AuditPage() {
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
               eyebrow="Business facts"
-              title="The audit starts by making the public facts consistent."
+              title="The report starts by making the public facts consistent."
               copy="These are the Civive Unlimited NAP and contact signals used across the site, footer, metadata, and structured data."
             />
             <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
@@ -207,8 +207,8 @@ export default function AuditPage() {
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
               eyebrow="Who it is for"
-              title="Use the audit when visibility, trust, and response are all connected."
-              copy="The audit is strongest when the business is real, but the public evidence is fragmented. It keeps the next spend focused on what will actually make the company easier to understand and contact."
+              title="Use the report when visibility, trust, and response are all connected."
+              copy="The report is strongest when the business is real, but the public evidence is fragmented. It keeps the next spend focused on what will actually make the company easier to understand and contact."
             />
             <EditorialList items={fitSignals} />
           </div>
@@ -218,8 +218,8 @@ export default function AuditPage() {
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
               eyebrow="What it checks"
-              title="The audit looks where recommendation confidence is created."
-              copy="Good businesses get skipped when their public evidence is hard to parse. The audit turns that invisible problem into a visible fix list."
+              title="The report looks where recommendation confidence is created."
+              copy="Good businesses get skipped when their public evidence is hard to parse. The report turns that invisible problem into a visible fix list."
             />
             <EditorialList items={auditChecks} />
           </div>
@@ -230,7 +230,7 @@ export default function AuditPage() {
             <SectionHeader
               eyebrow="Deliverables"
               title="What you should walk away with."
-              copy="A useful audit should be specific enough to guide implementation. If the output cannot become a page map, schema plan, profile cleanup, or lead-response fix, it is not sharp enough."
+              copy="A useful report should be specific enough to guide implementation. If the output cannot become a page map, schema plan, profile cleanup, or lead-response fix, it is not sharp enough."
             />
             <EditorialList items={deliverables} />
           </div>
@@ -251,7 +251,7 @@ export default function AuditPage() {
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
               eyebrow="Pricing logic"
-              title="The audit cost should match the complexity of the footprint."
+              title="The report cost should match the complexity of the footprint."
               copy="The point is not to buy the longest report. The point is to buy enough inspection depth to avoid building the wrong thing first."
             />
             <EditorialList items={pricingDrivers} />
@@ -263,7 +263,7 @@ export default function AuditPage() {
             <div>
               <p className="homepage-eyebrow">What it is</p>
               <h2 className="mt-5 text-3xl font-semibold text-white sm:text-4xl">
-                A readiness audit for AI search, local search, and buyer trust.
+                A visibility report for AI search, local search, and buyer trust.
               </h2>
               <p className="mt-5 text-base leading-7 text-white/64">
                 Civive reviews the business as a public entity: message,
@@ -290,8 +290,8 @@ export default function AuditPage() {
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
               eyebrow="Objection handling"
-              title="The audit should answer the buying questions before the call."
-              copy="These are the comparison, cost, and trust questions buyers ask before they decide whether an AI search audit is worth doing."
+              title="The report should answer the buying questions before the call."
+              copy="These are the comparison, cost, and trust questions buyers ask before they decide whether an AI search report is worth doing."
             />
             <EditorialList items={objectionHandlers} />
           </div>
@@ -301,7 +301,7 @@ export default function AuditPage() {
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
               eyebrow="Supporting resources"
-              title="Read the pages that support this audit path."
+              title="Read the pages that support this report path."
               copy="This cluster exists so the commercial page is backed by useful, crawlable support content instead of floating by itself."
             />
             <EditorialList items={supportResources} />
@@ -311,7 +311,7 @@ export default function AuditPage() {
         <AuthoritySection>
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
-              eyebrow="Audit FAQs"
+              eyebrow="Report FAQs"
               title="Short answers for buyers and answer engines."
               copy="These questions are visible on-page and included in JSON-LD only because the answers are actually present here."
             />
@@ -331,7 +331,7 @@ export default function AuditPage() {
         </AuthoritySection>
 
         <FinalCta
-          title="Start with the audit, then build only what the evidence says matters."
+          title="Start with the report, then build only what the evidence says matters."
           copy="Bring the business, website, Google profile, and service area. Civive will map the fastest path from unclear signals to recommendation readiness."
         />
       </AuthorityShell>

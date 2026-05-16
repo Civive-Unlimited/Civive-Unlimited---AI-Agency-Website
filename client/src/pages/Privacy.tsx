@@ -27,7 +27,7 @@ export default function Privacy() {
               {site.name} ("we," "us," or "our") respects your privacy. This
               Privacy Policy explains how we collect, use, disclose, and
               safeguard your information when you visit our website, submit a
-              form, request an audit, book an appointment, purchase a software
+              form, request a visibility report, book an appointment, purchase a software
               subscription, or communicate with us by email, phone, or text
               message.
             </p>
@@ -38,7 +38,7 @@ export default function Privacy() {
             <p>
               We may collect personal information that you voluntarily provide
               when you fill out our contact forms, request a complimentary
-              audit, book an appointment, purchase a software subscription, or
+              visibility report, book an appointment, purchase a software subscription, or
               contact us directly. This may include your name, email address,
               phone number, business name, billing contact details, subscription
               selection, and any message content you submit.
@@ -66,7 +66,7 @@ export default function Privacy() {
             <p>
               If you provide your mobile number and explicitly consent to
               receive text messages, we may send conversational SMS about your
-              audit request, appointments, onboarding, and service updates.
+              visibility report request, appointments, onboarding, and service updates.
               Message frequency varies. Message and data rates may apply. You
               can opt out at any time by replying STOP, and you can reply HELP
               for help.

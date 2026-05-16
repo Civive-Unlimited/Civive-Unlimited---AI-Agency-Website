@@ -50,12 +50,12 @@ const legalMeta = {
   privacy: {
     title: "Privacy Policy | Civive Unlimited",
     description:
-      "Privacy Policy for Civive Unlimited, including website, audit request, booking, email, phone, CRM, and SMS communication practices.",
+      "Privacy Policy for Civive Unlimited, including website, visibility report request, booking, email, phone, CRM, and SMS communication practices.",
   },
   terms: {
     title: "Terms of Service | Civive Unlimited",
     description:
-      "Terms of Service for using the Civive Unlimited website, requesting audits, booking appointments, and engaging Civive services.",
+      "Terms of Service for using the Civive Unlimited website, requesting reports, booking appointments, and engaging Civive services.",
   },
 };
 
@@ -133,6 +133,12 @@ export const prerenderRoutes: PrerenderRoute[] = [
     faqItems: auditPageFaqs,
   },
   {
+    path: "/free-visibility-report",
+    ...pageMeta.freeVisibilityReport,
+    schemaKind: "service",
+    serviceName: "Free Visibility Report",
+  },
+  {
     path: "/prospecting-report",
     ...pageMeta.prospectingReport,
     schemaKind: "service",
@@ -140,9 +146,10 @@ export const prerenderRoutes: PrerenderRoute[] = [
   },
   ...prospectingReportRoutes.map(report => ({
     path: `/report/${report.slug}`,
-    ...pageMeta.prospectingReport,
+    title: `${report.params.business} AI Visibility Report | Civive Unlimited`,
+    description: `AI Visibility Report for ${report.params.business}, a ${report.params.category} business in ${report.params.market}, covering local visibility, AI search, reviews, maps, directories, and lead-capture signals.`,
     schemaKind: "service" as const,
-    serviceName: "AI Search Prospecting Report",
+    serviceName: `${report.params.business} AI Visibility Report`,
   })),
   {
     path: "/visibility-system",
@@ -180,9 +187,9 @@ export const prerenderRoutes: PrerenderRoute[] = [
   ...industries.map(industry => ({
     path: `/industries/${industry.slug}`,
     title: `${industry.name} AI Search Visibility | Civive Unlimited`,
-    description: `AI Search Visibility Audit and visibility signal cleanup for ${industry.name} businesses that need clearer services, trust signals, reviews, FAQs, schema, and lead capture.`,
+    description: `Visibility Report and visibility signal cleanup for ${industry.name} businesses that need clearer services, trust signals, reviews, FAQs, schema, and lead capture.`,
     schemaKind: "industry" as const,
-    serviceName: `${industry.name} AI Search Visibility Audit`,
+    serviceName: `${industry.name} Visibility Report`,
     faqItems: getIndustryFaqs(industry),
   })),
   ...servicePages.map(service => ({

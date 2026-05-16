@@ -22,7 +22,7 @@ const systemGroups = [
   {
     title: "Lead capture",
     items: [
-      "Audit-focused contact flow",
+      "Report-focused contact flow",
       "Booking and follow-up paths",
       "CRM and automation handoff",
     ],

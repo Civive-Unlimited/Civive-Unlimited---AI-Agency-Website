@@ -11,7 +11,7 @@ import { pageMeta, resourceArticles, resourceTopics } from "@/content/site";
 const contentLoops = [
   {
     title: "Founder video",
-    copy: "A practical breakdown from the Civive build, an audit observation, or a visibility cleanup decision.",
+    copy: "A practical breakdown from the Civive build, a report observation, or a visibility cleanup decision.",
   },
   {
     title: "Search article",
@@ -31,8 +31,8 @@ export default function ResourcesPage() {
         <PageHero
           eyebrow="Resources and Insights"
           title="The content engine for AI search, local visibility, and the Civive build."
-          copy="This hub is the foundation for topical authority. It is designed to turn real work into articles, YouTube topics, social posts, founder notes, audit education, and future sales enablement."
-          primaryCta={{ label: "Get an AI Search Visibility Audit", href: "/contact" }}
+          copy="This hub is the foundation for topical authority. It is designed to turn real work into articles, YouTube topics, social posts, founder notes, report education, and future sales enablement."
+          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
           secondaryCta={{
             label: "Read the public build",
             href: "/build-in-public",
@@ -52,8 +52,8 @@ export default function ResourcesPage() {
           <div className="grid gap-12 lg:grid-cols-[0.68fr_1.32fr] lg:gap-16">
             <SectionHeader
               eyebrow="Published resources"
-              title="Start with the buyer-intent resources that support the audit."
-              copy="These pages are intentionally tied to checklist, comparison, cost, alternative, best-fit, mistakes, scope, and implementation intent so they support the commercial audit page instead of becoming a random blog."
+              title="Start with the buyer-intent resources that support the report."
+              copy="These pages are intentionally tied to checklist, comparison, cost, alternative, best-fit, mistakes, scope, and implementation intent so they support the commercial report page instead of becoming a random blog."
             />
             <div className="grid gap-4">
               {resourceArticles.map(article => (
@@ -138,7 +138,7 @@ export default function ResourcesPage() {
         </AuthoritySection>
 
         <FinalCta
-          title="Use the audit to create the first useful content map."
+          title="Use the report to create the first useful content map."
           copy="The same questions that expose weak visibility signals can become service pages, FAQs, articles, videos, and social proof-of-work notes."
         />
       </AuthorityShell>

@@ -12,10 +12,10 @@ export default function FreeToolsSection() {
   const tools = [
     {
       icon: Search,
-      title: "AI Business Audit",
+      title: "Visibility Report",
       description: "Get a full health report on your online presence in 60 seconds. We'll show you your visibility grade (A-F), where your business info is wrong across the web, which directories you're missing from, and how you stack up against your top 3 local competitors.",
       highlight: "Most businesses are shocked by what they find.",
-      cta: "Get Your Free Audit",
+      cta: "Get Your Free Visibility Report",
     },
     {
       icon: ClipboardCheck,

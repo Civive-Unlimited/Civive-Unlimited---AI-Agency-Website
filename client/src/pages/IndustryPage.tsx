@@ -37,9 +37,9 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
 
   const industryImplementationLinks = [
     {
-      title: "Start with the AI Search Visibility Audit",
+      title: "Start with the Visibility Report",
       href: "/ai-search-audit",
-      copy: `Use the audit to inspect the ${industry.shortName} site's public facts, service pages, schema opportunities, Google profile alignment, reviews, FAQs, and contact path before creating more content.`,
+      copy: `Use the report to inspect the ${industry.shortName} site's public facts, service pages, schema opportunities, Google profile alignment, reviews, FAQs, and contact path before creating more content.`,
     },
     {
       title: "Build the visibility system after the gaps are clear",
@@ -67,7 +67,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
     <>
       <Seo
         title={`${industry.name} AI Search Visibility | Civive Unlimited`}
-        description={`AI Search Visibility Audit and visibility signal cleanup for ${industry.name} businesses that need clearer services, trust signals, reviews, FAQs, schema, and lead capture.`}
+        description={`Visibility Report and visibility signal cleanup for ${industry.name} businesses that need clearer services, trust signals, reviews, FAQs, schema, and lead capture.`}
         path={`/industries/${industry.slug}`}
       />
       <AuthorityShell>
@@ -80,7 +80,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
             </>
           }
           copy={industry.intro}
-          primaryCta={{ label: "Get an AI Search Visibility Audit", href: auditContactHref }}
+          primaryCta={{ label: "Get Your Free Visibility Report", href: auditContactHref }}
           secondaryCta={{ label: "View all industries", href: "/industries" }}
         >
           <div className="border-y border-white/[0.08] py-7">
@@ -254,7 +254,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
             <SectionHeader
               eyebrow="What Civive reviews"
               title={`A practical fix path for ${industry.name}.`}
-              copy="The audit identifies the highest-leverage cleanup work first, then maps what should become service pages, FAQs, schema, profile updates, or lead-system improvements."
+              copy="The report identifies the highest-leverage cleanup work first, then maps what should become service pages, FAQs, schema, profile updates, or lead-system improvements."
             />
             <EditorialList
               items={toItems(
@@ -326,9 +326,9 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
 
         <FinalCta
           title={`See what AI search can understand about your ${industry.shortName} business now.`}
-          copy="The audit starts with the real public signals already online, then turns the gaps into a priority map."
+          copy="The report starts with the real public signals already online, then turns the gaps into a priority map."
           primaryCta={{
-            label: `Audit my ${industry.shortName} visibility`,
+            label: `Report my ${industry.shortName} visibility`,
             href: auditContactHref,
           }}
           secondaryCta={{

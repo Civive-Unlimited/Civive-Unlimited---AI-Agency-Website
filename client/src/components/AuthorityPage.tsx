@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { useLocation } from "wouter";
+import { site } from "@/content/site";
 import {
   getBreadcrumbsForPath,
   getRelatedPagesForPath,
@@ -27,6 +28,16 @@ type SectionHeaderProps = {
   title: ReactNode;
   copy?: string;
 };
+
+function resolveRevenueCtaHref(cta: { label: string; href: string }) {
+  if (!/^\/contact(?:\?|$)/.test(cta.href)) return cta.href;
+
+  if (/(book|call|schedule|appointment)/i.test(cta.label)) {
+    return site.reviewBookingUrl;
+  }
+
+  return site.visibilityReportRequestUrl;
+}
 
 export function AuthorityShell({ children }: { children: ReactNode }) {
   const [location] = useLocation();
@@ -88,12 +99,12 @@ function AuthorityBreadcrumbs({
 }
 
 function relatedActionLabel(path: string, title: string) {
-  if (path === "/ai-search-audit") return "Read the AI Search Audit";
+  if (path === "/ai-search-audit") return "Read the Visibility Report";
   if (path === "/visibility-system") return "Explore the visibility system";
   if (path === "/civive-os") return "Explore CiviveOS";
   if (path === "/civive-os-offer") return "Compare CiviveOS plans";
   if (path === "/ai-receptionist") return "Compare AI receptionist fit";
-  if (path === "/contact") return "Request the audit";
+  if (path === "/contact") return "Request the report";
   if (path.startsWith("/resources/")) return "Read the resource";
   if (path === "/resources") return "Open the resource hub";
   if (path === "/industries") return "Browse industries";
@@ -116,7 +127,7 @@ function RelatedAuthorityPages({
         <SectionHeader
           eyebrow="Related authority paths"
           title="Continue through the pages that support this decision."
-          copy="These internal links connect the audit, visibility system, CiviveOS, AI receptionist, resources, proof, and conversion paths so buyers and crawlers can follow the topic cleanly."
+          copy="These internal links connect the report, visibility system, CiviveOS, AI receptionist, resources, proof, and conversion paths so buyers and crawlers can follow the topic cleanly."
         />
         <div className="grid gap-3 sm:grid-cols-2">
           {items.map(item => (
@@ -175,7 +186,7 @@ export function PageHero({
               <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
                 {primaryCta && (
                   <a
-                    href={primaryCta.href}
+                    href={resolveRevenueCtaHref(primaryCta)}
                     className="homepage-primary-button inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
                   >
                     {primaryCta.label}
@@ -184,7 +195,7 @@ export function PageHero({
                 )}
                 {secondaryCta && (
                   <a
-                    href={secondaryCta.href}
+                    href={resolveRevenueCtaHref(secondaryCta)}
                     className="inline-flex items-center justify-center gap-2 rounded-full px-2 py-4 text-sm font-medium text-white/70 transition-colors hover:text-white"
                   >
                     {secondaryCta.label}
@@ -283,7 +294,7 @@ export function FinalCta({
   title,
   copy,
   primaryCta = {
-    label: "Get an AI Search Visibility Audit",
+    label: "Get Your Free Visibility Report",
     href: "/contact",
   },
   secondaryCta = {
@@ -315,14 +326,14 @@ export function FinalCta({
         </p>
         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           <a
-            href={primaryCta.href}
+            href={resolveRevenueCtaHref(primaryCta)}
             className="homepage-primary-button inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
           >
             {primaryCta.label}
             <ArrowRight className="h-4 w-4" />
           </a>
           <a
-            href={secondaryCta.href}
+            href={resolveRevenueCtaHref(secondaryCta)}
             className="inline-flex items-center justify-center gap-2 rounded-full px-2 py-4 text-sm font-medium text-white/70 transition-colors hover:text-white"
           >
             {secondaryCta.label}

@@ -66,7 +66,7 @@ export default function ServicePage({ slug }: { slug?: string }) {
                 href="/ai-search-audit"
                 className="transition-colors hover:text-white"
               >
-                AI Search Visibility Audit
+                Visibility Report
               </a>
               <a
                 href="/ai-agency-springfield-mo"
@@ -116,7 +116,7 @@ export default function ServicePage({ slug }: { slug?: string }) {
             <SectionHeader
               eyebrow="Related services"
               title="Internal paths that support this service."
-              copy="These links connect the service page back to the audit, homepage, Springfield service area, and related implementation pages."
+              copy="These links connect the service page back to the report, homepage, Springfield service area, and related implementation pages."
             />
             <div className="grid gap-4 sm:grid-cols-2">
               <a
@@ -136,10 +136,10 @@ export default function ServicePage({ slug }: { slug?: string }) {
                 className="group border-y border-white/[0.08] py-6 transition-colors hover:border-white/[0.22]"
               >
                 <h2 className="text-xl font-semibold text-white/92 group-hover:text-white">
-                  AI Search Visibility Audit
+                  Visibility Report
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-white/58">
-                  Use the audit to find the right fix order before building more
+                  Use the report to find the right fix order before building more
                   pages or automation.
                 </p>
               </a>
@@ -191,7 +191,7 @@ export default function ServicePage({ slug }: { slug?: string }) {
           copy="Bring the website, Google Business Profile, service area, and the services that matter most. Civive will help map the fastest practical fix."
           primaryCta={{ label: service.primaryCta, href: "/contact" }}
           secondaryCta={{
-            label: "Read the audit page",
+            label: "Read the report page",
             href: "/ai-search-audit",
           }}
         />

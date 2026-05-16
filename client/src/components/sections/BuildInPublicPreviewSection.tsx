@@ -25,7 +25,7 @@ export default function BuildInPublicPreviewSection() {
               </h2>
               <p className="mt-6 text-base leading-7 text-white/64 sm:text-lg">
                 Civive is early by design, so the trust layer is not fake client
-                logos. It is the public process: this site, the audit structure,
+                logos. It is the public process: this site, the report structure,
                 the content engine, the schema plan, the assistant, and the lead
                 path being built in the open.
               </p>

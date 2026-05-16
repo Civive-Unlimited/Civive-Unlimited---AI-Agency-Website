@@ -7,6 +7,7 @@ import {
 
 const DRY_RUN_MODE_HEADER = "x-civive-lead-mode";
 const DRY_RUN_TOKEN_HEADER = "x-civive-lead-dry-run-token";
+const MAX_BODY_BYTES = 32 * 1024;
 
 function sendJson(res, statusCode, payload) {
   res.statusCode = statusCode;
@@ -17,9 +18,26 @@ function sendJson(res, statusCode, payload) {
 async function readRequestBody(req) {
   if (req.body && typeof req.body === "object") return req.body;
 
+  const contentLength = Number(req.headers["content-length"] || 0);
+  if (contentLength > MAX_BODY_BYTES) {
+    const error = new Error("Request body is too large.");
+    error.status = 413;
+    error.statusCode = 413;
+    throw error;
+  }
+
   const chunks = [];
+  let totalBytes = 0;
   for await (const chunk of req) {
-    chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+    const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+    totalBytes += buffer.length;
+    if (totalBytes > MAX_BODY_BYTES) {
+      const error = new Error("Request body is too large.");
+      error.status = 413;
+      error.statusCode = 413;
+      throw error;
+    }
+    chunks.push(buffer);
   }
 
   const rawBody = Buffer.concat(chunks).toString("utf8");

@@ -15,7 +15,12 @@ export const site = {
   location: seoConfig.location.label,
   serviceArea: seoConfig.areaServed,
   founder: seoConfig.founder,
-  primaryOffer: "AI Search Visibility Audit",
+  primaryOffer: "Visibility Report",
+  visibilityReportRequestUrl:
+    "https://get.civiveunlimited.com/ai-search-audit-2338",
+  reviewBookingUrl: "https://get.civiveunlimited.com/book-audit-review-4694",
+  visibilityReportThankYouUrl:
+    "https://get.civiveunlimited.com/audit-requested-7111",
 };
 
 export const areasServed = [
@@ -44,11 +49,11 @@ export type CoreService = {
 
 export const coreServices: CoreService[] = [
   {
-    name: "AI Search Visibility Audit",
-    serviceType: "AI Search Visibility Audit",
+    name: "Visibility Report",
+    serviceType: "Visibility Report",
     path: "/services/ai-search-visibility-audit",
     description:
-      "A plain-English audit of the public signals that help Google, Maps, ChatGPT, Gemini, Perplexity, and buyers understand a local service business.",
+      "A plain-English report of the public signals that help Google, Maps, ChatGPT, Gemini, Perplexity, and buyers understand a local service business.",
   },
   {
     name: "Google Business Profile Optimization",
@@ -158,17 +163,17 @@ export type ServicePageContent = {
 export const servicePages: ServicePageContent[] = [
   {
     slug: "ai-search-visibility-audit",
-    name: "AI Search Visibility Audit",
-    serviceName: "AI Search Visibility Audit",
-    serviceType: "AI Search Visibility Audit",
+    name: "Visibility Report",
+    serviceName: "Visibility Report",
+    serviceType: "Visibility Report",
     meta: {
-      title: "AI Search Visibility Audit | Civive Unlimited",
+      title: "Visibility Report | Civive Unlimited",
       description:
-        "Civive audits the public signals that help local service businesses show up clearly in Google, Maps, ChatGPT, Gemini, Perplexity, and buyer research.",
+        "Civive reports the public signals that help local service businesses show up clearly in Google, Maps, ChatGPT, Gemini, Perplexity, and buyer research.",
     },
-    h1: "AI Search Visibility Audit for service businesses",
+    h1: "Visibility Report for service businesses",
     intro:
-      "The audit shows what a buyer or answer engine can understand from the public footprint today, then turns the gaps into a practical fix order.",
+      "The report shows what a buyer or answer engine can understand from the public footprint today, then turns the gaps into a practical fix order.",
     problem: {
       title: "Good businesses get skipped when their public signals are unclear.",
       copy: "If the website, Google Business Profile, services, service area, reviews, schema, and lead path do not agree, search engines and AI tools have less confidence in what to recommend.",
@@ -180,7 +185,7 @@ export const servicePages: ServicePageContent[] = [
       },
       {
         title: "Service and location signals",
-        copy: "The audit maps which services need clearer pages, FAQs, internal links, schema, or Google profile alignment.",
+        copy: "The report maps which services need clearer pages, FAQs, internal links, schema, or Google profile alignment.",
       },
       {
         title: "Lead path review",
@@ -216,7 +221,7 @@ export const servicePages: ServicePageContent[] = [
       "website-design-service-businesses",
       "crm-lead-follow-up",
     ],
-    primaryCta: "Get an AI Search Visibility Audit",
+    primaryCta: "Get Your Free Visibility Report",
   },
   {
     slug: "google-business-profile-optimization",
@@ -456,7 +461,7 @@ export const servicePages: ServicePageContent[] = [
       "google-business-profile-optimization",
       "crm-lead-follow-up",
     ],
-    primaryCta: "Get an AI Search Visibility Audit",
+    primaryCta: "Get Your Free Visibility Report",
   },
   {
     slug: "review-automation",
@@ -588,7 +593,8 @@ export function getServicePage(slug?: string) {
 }
 
 export const navLinks = [
-  { href: "/ai-search-audit", label: "AI Search Audit" },
+  { href: site.visibilityReportRequestUrl, label: "Free Report" },
+  { href: "/ai-search-audit", label: "Visibility Report" },
   { href: "/visibility-system", label: "Visibility System" },
   { href: "/civive-os", label: "CiviveOS" },
   { href: "/ai-receptionist", label: "AI Receptionist" },
@@ -639,22 +645,22 @@ export const auditChecks = [
 
 export const auditPageFaqs = [
   {
-    question: "What does an AI Search Visibility Audit include?",
+    question: "What does a Visibility Report include?",
     answer:
       "It reviews entity clarity, service clarity, location and service-area signals, Google Business Profile alignment, reviews, FAQs, schema opportunities, internal links, crawlability, and the lead-capture path. The goal is a prioritized fix order, not a generic SEO score.",
   },
   {
-    question: "Who is the audit for?",
+    question: "Who is the report for?",
     answer:
       "It is built for local service businesses that need buyers, Google, answer engines, and AI tools to understand what they do, where they work, why they are credible, and how someone should contact or book them.",
   },
   {
-    question: "Does the audit guarantee AI recommendations?",
+    question: "Does the report guarantee AI recommendations?",
     answer:
-      "No. No honest provider can guarantee placement in ChatGPT, Gemini, Perplexity, Grok, or Google. The audit improves the public evidence and page structure those systems can use to understand the business.",
+      "No. No honest provider can guarantee placement in ChatGPT, Gemini, Perplexity, Grok, or Google. The report improves the public evidence and page structure those systems can use to understand the business.",
   },
   {
-    question: "What happens after the audit?",
+    question: "What happens after the report?",
     answer:
       "The next step depends on the findings. Common follow-up work includes homepage cleanup, service-page expansion, Google profile alignment, FAQ and schema implementation, internal-link improvements, review strategy, lead-capture fixes, or AI receptionist routing.",
   },
@@ -662,14 +668,14 @@ export const auditPageFaqs = [
 
 export const contactPageFaqs = [
   {
-    question: "What should I include in an audit request?",
+    question: "What should I include in a visibility report request?",
     answer:
       "Send the business name, website or Google Business Profile, service area, the services you most want to be found for, and the visibility problem you want fixed first. If you are not sure, send the site and Civive will start with the public signals.",
   },
   {
-    question: "Do I need a website before requesting an audit?",
+    question: "Do I need a website before requesting a visibility report?",
     answer:
-      "No. A website helps, but a business can start with a Google Business Profile or public footprint. The audit can identify whether the first move should be a website, service-page cleanup, profile alignment, or lead-capture work.",
+      "No. A website helps, but a business can start with a Google Business Profile or public footprint. The report can identify whether the first move should be a website, service-page cleanup, profile alignment, or lead-capture work.",
   },
   {
     question: "What happens after I submit the form?",
@@ -679,7 +685,7 @@ export const contactPageFaqs = [
   {
     question: "Can I ask about AI receptionist or lead follow-up too?",
     answer:
-      "Yes. AI search visibility and lead response are connected. If the business already gets calls, forms, or chats but loses leads through slow response, include that in the request so the audit can consider the handoff path.",
+      "Yes. AI search visibility and lead response are connected. If the business already gets calls, forms, or chats but loses leads through slow response, include that in the request so the report can consider the handoff path.",
   },
 ];
 
@@ -855,14 +861,14 @@ export const civiveOsOfferFaqs = [
       "No. Operator prepares the intake, routing, qualification, and handoff foundation, but AI receptionist and AI employee builds are separate add-ons so the business does not pay for AI before the operating base is ready.",
   },
   {
-    question: "Do the plans replace an AI Search Readiness Audit?",
+    question: "Do the plans replace a Visibility Report?",
     answer:
-      "No. The audit diagnoses visibility, entity clarity, schema, content, and conversion gaps. CiviveOS is the lead-response operating base that helps capture and follow up once the business is ready for better lead handling.",
+      "No. The report diagnoses visibility, entity clarity, schema, content, and conversion gaps. CiviveOS is the lead-response operating base that helps capture and follow up once the business is ready for better lead handling.",
   },
   {
     question: "Can a business ask which plan fits before paying?",
     answer:
-      "Yes. If the right starting point is unclear, request the audit or contact Civive first. The goal is to pick the plan based on the current lead leaks, response process, and automation readiness.",
+      "Yes. If the right starting point is unclear, request the report or contact Civive first. The goal is to pick the plan based on the current lead leaks, response process, and automation readiness.",
   },
 ];
 
@@ -878,9 +884,9 @@ export const civiveOsFaqs = [
       "CiviveOS is the operating base that catches and routes leads. An AI receptionist is an optional front desk layer that can answer, qualify, book, or escalate conversations once the business rules and handoff path are clear.",
   },
   {
-    question: "When should a business start with the audit instead?",
+    question: "When should a business start with the report instead?",
     answer:
-      "Start with the AI Search Readiness Audit when demand, public facts, service pages, reviews, schema, or local trust signals are the main constraint. Start with CiviveOS when leads already arrive but response, booking, or follow-up is leaking revenue.",
+      "Start with the Visibility Report when demand, public facts, service pages, reviews, schema, or local trust signals are the main constraint. Start with CiviveOS when leads already arrive but response, booking, or follow-up is leaking revenue.",
   },
   {
     question: "Are AI employees included in CiviveOS?",
@@ -920,7 +926,7 @@ export const visibilitySystemLayers = [
     title: "Lead capture and handoff",
     copy: "Make the path from discovery to response clean enough that a qualified lead does not disappear.",
     items: [
-      "Audit forms",
+      "Report forms",
       "Booking paths",
       "AI assistant",
       "CRM notes",
@@ -936,9 +942,9 @@ export const visibilitySystemFaqs = [
       "An AI Search Visibility System is the connected set of pages, public business facts, FAQs, schema, proof, internal links, Google profile signals, and lead-response paths that help buyers, search engines, and AI answer engines understand and trust a service business.",
   },
   {
-    question: "How is the visibility system different from the audit?",
+    question: "How is the visibility system different from the report?",
     answer:
-      "The audit diagnoses what is unclear and prioritizes the fix order. The visibility system is the implementation layer that turns those findings into stronger pages, structured answers, schema, proof, internal links, and lead capture.",
+      "The report diagnoses what is unclear and prioritizes the fix order. The visibility system is the implementation layer that turns those findings into stronger pages, structured answers, schema, proof, internal links, and lead capture.",
   },
   {
     question: "Does this replace local SEO?",
@@ -969,7 +975,7 @@ export const faqs = [
       "Civive helps service businesses such as HVAC companies, plumbers, cleaners, roofers, real estate professionals, landscapers, med spas, salons, pest control companies, auto repair shops, restoration companies, electricians, and veterinary clinics.",
   },
   {
-    question: "What is an AI Search Visibility Audit?",
+    question: "What is a Visibility Report?",
     answer:
       "It is a review of the public signals that help Google, Maps, ChatGPT, Gemini, Perplexity, and buyers understand who the business is, what it does, where it serves customers, and how people can contact it.",
   },
@@ -2105,7 +2111,7 @@ export const industryHubFaqs = [
   {
     question: "What should an industry page connect to?",
     answer:
-      "A useful industry page should connect back to the main industry hub, the AI Search Readiness Audit, the visibility system, relevant implementation resources, the lead-response layer, and the contact path. That creates a clear parent-child-sibling structure for humans and crawlers.",
+      "A useful industry page should connect back to the main industry hub, the Visibility Report, the visibility system, relevant implementation resources, the lead-response layer, and the contact path. That creates a clear parent-child-sibling structure for humans and crawlers.",
   },
 ];
 
@@ -2199,7 +2205,7 @@ export const resourceTopics = [
     slug: "entity-clarity",
     title: "Entity Clarity and Trust Signals",
     copy: "Why a business needs consistent public facts before AI systems can confidently explain it.",
-    formats: ["Audit framework", "YouTube topic", "FAQ cluster"],
+    formats: ["Report framework", "YouTube topic", "FAQ cluster"],
   },
   {
     slug: "service-page-strategy",
@@ -2227,7 +2233,7 @@ export const resourceTopics = [
     slug: "schema-structured-data",
     title: "Schema and Machine-Readable Trust",
     copy: "Where Organization, LocalBusiness, Service, FAQ, Article, and breadcrumb schema fit after the content is clear.",
-    formats: ["Technical article", "Implementation checklist", "Audit add-on"],
+    formats: ["Technical article", "Implementation checklist", "Report add-on"],
   },
   {
     slug: "lead-capture-after-discovery",
@@ -2298,7 +2304,7 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "7 min read",
     summary:
       "AI search readiness means a buyer, Google, and an answer engine can quickly understand who you are, what you do, where you work, why you can be trusted, and how to contact you. Use this checklist before creating more content.",
-    primaryCta: { label: "Get an AI Search Visibility Audit", href: "/contact" },
+    primaryCta: { label: "Get Your Free Visibility Report", href: "/contact" },
     secondaryCta: {
       label: "See the visibility system",
       href: "/visibility-system",
@@ -2326,7 +2332,7 @@ export const resourceArticles: ResourceArticle[] = [
         bullets: [
           "Core services are separated by intent instead of grouped into one generic paragraph.",
           "Urgent, problem-aware, cost, comparison, and process questions are answered where they matter.",
-          "Each major service has a clear CTA and a path back to the main audit or contact page.",
+          "Each major service has a clear CTA and a path back to the main report or contact page.",
         ],
       },
       {
@@ -2356,7 +2362,7 @@ export const resourceArticles: ResourceArticle[] = [
         copy: "Visibility without response is leakage. The site should make the next action obvious and preserve context for follow-up.",
         bullets: [
           "Forms, phone links, booking paths, and chat entry points work on mobile.",
-          "The CTA matches intent: audit for strategy, contact for implementation, receptionist for lead response.",
+          "The CTA matches intent: report for strategy, contact for implementation, receptionist for lead response.",
           "Lead context can be routed into CRM notes, tags, or follow-up workflows.",
         ],
       },
@@ -2379,7 +2385,7 @@ export const resourceArticles: ResourceArticle[] = [
       },
     ],
     relatedLinks: [
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
       { label: "AI Search Visibility System", href: "/visibility-system" },
       { label: "AI Search Visibility FAQ", href: "/faq" },
     ],
@@ -2397,7 +2403,7 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "8 min read",
     summary:
       "AI search visibility and local SEO overlap, but they are not identical. Local SEO helps a business compete in maps, organic search, and local discovery. AI search visibility asks whether answer engines can confidently summarize, compare, and recommend that business.",
-    primaryCta: { label: "Get an AI Search Visibility Audit", href: "/contact" },
+    primaryCta: { label: "Get Your Free Visibility Report", href: "/contact" },
     secondaryCta: { label: "View industry pages", href: "/industries" },
     finalCta: {
       title: "Use AI search and local SEO together.",
@@ -2452,7 +2458,7 @@ export const resourceArticles: ResourceArticle[] = [
         title: "The best order is foundation, pages, proof, then automation.",
         copy: "A service business should fix entity clarity first, then build buyer-intent pages, then add proof and supporting resources, then strengthen lead capture and follow-up.",
         bullets: [
-          "Audit the current public facts.",
+          "Report the current public facts.",
           "Clarify the homepage, core services, FAQs, schema, and sitemap.",
           "Build supporting content around buyer questions, cost, comparison, checklists, and mistakes.",
           "Connect discovery to booking, CRM, follow-up, and AI receptionist systems.",
@@ -2487,31 +2493,31 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: "ai-search-audit-cost",
-    title: "How Much Should an AI Search Readiness Audit Cost?",
+    title: "How Much Should a Visibility Report Cost?",
     description:
-      "A practical guide to AI Search Readiness Audit pricing, scope, deliverables, and what local service businesses should expect before paying for implementation.",
+      "A practical guide to Visibility Report pricing, scope, deliverables, and what local service businesses should expect before paying for implementation.",
     eyebrow: "Cost guide",
-    intent: "Cost and pricing intent for AI Search Readiness Audit services",
+    intent: "Cost and pricing intent for Visibility Report services",
     updated: "April 24, 2026",
     publishedDate: "2026-04-24",
     lastModified: "2026-04-24",
     readTime: "6 min read",
     summary:
-      "An AI Search Readiness Audit should be priced around the depth of inspection, the number of public surfaces reviewed, and whether the provider only diagnoses issues or also maps implementation. The cheapest audit is not always the best if it produces no fix order.",
-    primaryCta: { label: "Request audit pricing", href: "/contact" },
-    secondaryCta: { label: "See audit scope", href: "/ai-search-audit" },
+      "A Visibility Report should be priced around the depth of inspection, the number of public surfaces reviewed, and whether the provider only diagnoses issues or also maps implementation. The cheapest report is not always the best if it produces no fix order.",
+    primaryCta: { label: "Request report pricing", href: "/contact" },
+    secondaryCta: { label: "See report scope", href: "/ai-search-audit" },
     finalCta: {
-      title: "Price the audit around the fix order.",
+      title: "Price the report around the fix order.",
       copy: "Civive can inspect the current footprint, separate quick wins from rebuild work, and show which visibility fixes are worth paying for first.",
     },
     sections: [
       {
         eyebrow: "Direct answer",
-        title: "Audit cost depends on depth, not just page count.",
-        copy: "A useful audit reviews the business as an entity, not just a website. The price should reflect how many public surfaces are inspected and how actionable the output is.",
+        title: "Report cost depends on depth, not just page count.",
+        copy: "A useful report reviews the business as an entity, not just a website. The price should reflect how many public surfaces are inspected and how actionable the output is.",
         bullets: [
           "Light scans can identify obvious issues but usually miss implementation priority.",
-          "Deeper audits review homepage clarity, service pages, Google profile alignment, reviews, FAQs, schema, sitemap, robots, internal links, and lead capture.",
+          "Deeper reports review homepage clarity, service pages, Google profile alignment, reviews, FAQs, schema, sitemap, robots, internal links, and lead capture.",
           "Implementation planning costs more because it turns findings into a build sequence.",
         ],
       },
@@ -2528,7 +2534,7 @@ export const resourceArticles: ResourceArticle[] = [
       },
       {
         eyebrow: "What to expect",
-        title: "A good audit should leave you knowing what to fix first.",
+        title: "A good report should leave you knowing what to fix first.",
         copy: "The output should not be a vague score. It should show what is unclear, why it matters, what page or system is affected, and what the next step should be.",
         bullets: [
           "A priority map of visibility gaps.",
@@ -2539,7 +2545,7 @@ export const resourceArticles: ResourceArticle[] = [
       },
       {
         eyebrow: "Red flags",
-        title: "Avoid audits that sell certainty they cannot prove.",
+        title: "Avoid reports that sell certainty they cannot prove.",
         copy: "No honest provider can guarantee that ChatGPT, Google, Gemini, or Perplexity will recommend a business on demand. The right promise is cleaner public evidence and a stronger implementation path.",
         bullets: [
           "Guaranteed rankings or AI answer placement.",
@@ -2550,8 +2556,8 @@ export const resourceArticles: ResourceArticle[] = [
       },
       {
         eyebrow: "Best use",
-        title: "Use the audit to avoid building the wrong pages first.",
-        copy: "The highest value is sequencing. A business may need service pages, FAQ improvements, schema, Google profile cleanup, review strategy, lead-capture fixes, or AI receptionist routing. The audit should tell you which comes first.",
+        title: "Use the report to avoid building the wrong pages first.",
+        copy: "The highest value is sequencing. A business may need service pages, FAQ improvements, schema, Google profile cleanup, review strategy, lead-capture fixes, or AI receptionist routing. The report should tell you which comes first.",
         bullets: [
           "Buyer-intent pages usually beat generic blog posts.",
           "Entity and technical cleanup should happen before heavy content expansion.",
@@ -2561,23 +2567,23 @@ export const resourceArticles: ResourceArticle[] = [
     ],
     faqs: [
       {
-        question: "Is a free AI search audit useful?",
+        question: "Is a free AI search report useful?",
         answer:
-          "A short free audit can be useful for finding obvious gaps. A paid audit should go deeper, prioritize fixes, and explain what should be implemented first.",
+          "A short free report can be useful for finding obvious gaps. A paid report should go deeper, prioritize fixes, and explain what should be implemented first.",
       },
       {
         question: "Should I pay for implementation right away?",
         answer:
-          "Not until the scope is clear. The audit should identify whether the next step is content, schema, technical cleanup, Google profile alignment, lead capture, or response automation.",
+          "Not until the scope is clear. The report should identify whether the next step is content, schema, technical cleanup, Google profile alignment, lead capture, or response automation.",
       },
       {
-        question: "Can audit pricing be standardized?",
+        question: "Can report pricing be standardized?",
         answer:
           "Some parts can be standardized, but businesses with more services, locations, old content, or CRM complexity require deeper review and more careful implementation planning.",
       },
     ],
     relatedLinks: [
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
       { label: "Contact Civive Unlimited", href: "/contact" },
       {
         label: "AI Search vs Local SEO",
@@ -2587,28 +2593,28 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: "what-does-an-ai-search-audit-include",
-    title: "What Does an AI Search Readiness Audit Include?",
+    title: "What Does a Visibility Report Include?",
     description:
-      "A clear breakdown of what an AI Search Readiness Audit should inspect, including entity clarity, services, Google Business Profile alignment, schema, content, internal links, and lead capture.",
-    eyebrow: "Audit scope",
-    intent: "Buyer intent for AI Search Readiness Audit deliverables and scope",
+      "A clear breakdown of what a Visibility Report should inspect, including entity clarity, services, Google Business Profile alignment, schema, content, internal links, and lead capture.",
+    eyebrow: "Report scope",
+    intent: "Buyer intent for Visibility Report deliverables and scope",
     updated: "April 24, 2026",
     publishedDate: "2026-04-24",
     lastModified: "2026-04-24",
     readTime: "7 min read",
     summary:
-      "An AI Search Readiness Audit should inspect whether a business is easy for buyers, Google, and answer engines to understand. The deliverable should identify unclear public facts, weak service signals, missing structured data, thin supporting content, and lead-capture leaks.",
-    primaryCta: { label: "Request an audit", href: "/contact" },
-    secondaryCta: { label: "See audit page", href: "/ai-search-audit" },
+      "A Visibility Report should inspect whether a business is easy for buyers, Google, and answer engines to understand. The deliverable should identify unclear public facts, weak service signals, missing structured data, thin supporting content, and lead-capture leaks.",
+    primaryCta: { label: "Request a visibility report", href: "/contact" },
+    secondaryCta: { label: "See report page", href: "/ai-search-audit" },
     finalCta: {
-      title: "Get the audit scope before building more pages.",
+      title: "Get the report scope before building more pages.",
       copy: "Civive can review the current public footprint and turn the findings into a practical cleanup order for search, AI answers, and lead capture.",
     },
     sections: [
       {
         eyebrow: "Direct answer",
-        title: "The audit should inspect the business as an entity.",
-        copy: "A useful AI search audit is not just a title-tag scan. It checks whether the public web can understand the business, the offer, the audience, the service area, the proof, and the next step.",
+        title: "The report should inspect the business as an entity.",
+        copy: "A useful AI search report is not just a title-tag scan. It checks whether the public web can understand the business, the offer, the audience, the service area, the proof, and the next step.",
         bullets: [
           "Business name, phone, email, location, canonical domain, and social profiles are consistent.",
           "The homepage clearly explains who the business helps and what it does.",
@@ -2618,18 +2624,18 @@ export const resourceArticles: ResourceArticle[] = [
       },
       {
         eyebrow: "Service clarity",
-        title: "The audit should separate services by search intent.",
-        copy: "A service list is not enough. The audit should identify which services deserve their own pages, which can stay grouped, and which buyer questions need direct answers.",
+        title: "The report should separate services by search intent.",
+        copy: "A service list is not enough. The report should identify which services deserve their own pages, which can stay grouped, and which buyer questions need direct answers.",
         bullets: [
           "Core service pages are mapped to commercial, problem, comparison, cost, and FAQ intent.",
           "Weak or duplicate pages are flagged for improvement, merge, redirect, or noindex decisions.",
-          "Internal links move visitors from supporting education into the commercial audit or contact path.",
+          "Internal links move visitors from supporting education into the commercial report or contact path.",
         ],
       },
       {
         eyebrow: "Machine context",
-        title: "The audit should review technical SEO and schema together.",
-        copy: "Clean schema cannot rescue unclear content, and good content should not be hidden behind messy technical signals. The audit should evaluate both as one search surface.",
+        title: "The report should review technical SEO and schema together.",
+        copy: "Clean schema cannot rescue unclear content, and good content should not be hidden behind messy technical signals. The report should evaluate both as one search surface.",
         bullets: [
           "Canonical tags, robots meta, sitemap, robots.txt, status codes, and public crawlability.",
           "Organization, WebSite, WebPage, BreadcrumbList, Service, FAQPage, and Article JSON-LD where visible content supports it.",
@@ -2639,8 +2645,8 @@ export const resourceArticles: ResourceArticle[] = [
       {
         eyebrow: "Authority depth",
         title:
-          "The audit should identify the content cluster, not just one page.",
-        copy: "Topical authority comes from a connected map: homepage, commercial pages, pillars, subpillars, resources, proof, and conversion pages. The audit should show where the map is missing.",
+          "The report should identify the content cluster, not just one page.",
+        copy: "Topical authority comes from a connected map: homepage, commercial pages, pillars, subpillars, resources, proof, and conversion pages. The report should show where the map is missing.",
         bullets: [
           "Buyer-intent pages that should exist before generic blog posts.",
           "Supporting articles that answer checklist, comparison, alternative, cost, mistake, and how-to searches.",
@@ -2649,8 +2655,8 @@ export const resourceArticles: ResourceArticle[] = [
       },
       {
         eyebrow: "Revenue path",
-        title: "The audit should include lead capture and follow-up risk.",
-        copy: "Visibility is only useful if a qualified buyer can take action. The audit should check whether forms, calls, booking, chat, CRM routing, and follow-up preserve the visitor's intent.",
+        title: "The report should include lead capture and follow-up risk.",
+        copy: "Visibility is only useful if a qualified buyer can take action. The report should check whether forms, calls, booking, chat, CRM routing, and follow-up preserve the visitor's intent.",
         bullets: [
           "Mobile CTAs and forms are easy to find and use.",
           "Phone, email, booking, and contact routes are consistent.",
@@ -2660,25 +2666,25 @@ export const resourceArticles: ResourceArticle[] = [
     ],
     faqs: [
       {
-        question: "Is an AI search audit different from a website audit?",
+        question: "Is an AI search report different from a website report?",
         answer:
           "Yes. It includes website checks, but it also reviews whether the business is understandable across public facts, services, reviews, profiles, schema, FAQs, answer formatting, and conversion paths.",
       },
       {
-        question: "Should the audit include implementation recommendations?",
+        question: "Should the report include implementation recommendations?",
         answer:
           "Yes. The most valuable output is the fix order: what to clean up first, which pages matter, which claims need proof, and which lead-capture gaps waste demand.",
       },
       {
-        question: "Should the audit create schema automatically?",
+        question: "Should the report create schema automatically?",
         answer:
           "Not blindly. Schema should be recommended or implemented only when the visible page supports the claim. Unsupported schema creates trust and indexing risk.",
       },
     ],
     relatedLinks: [
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
       {
-        label: "AI Search Audit Cost",
+        label: "Visibility Report Cost",
         href: "/resources/ai-search-audit-cost",
       },
       {
@@ -2689,18 +2695,18 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: "ai-search-audit-alternatives",
-    title: "AI Search Audit Alternatives for Local Service Businesses",
+    title: "Visibility Report Alternatives for Local Service Businesses",
     description:
-      "Compare AI Search Readiness Audit alternatives, including DIY cleanup, traditional local SEO, Google Business Profile optimization, content strategy, and conversion automation.",
+      "Compare Visibility Report alternatives, including DIY cleanup, traditional local SEO, Google Business Profile optimization, content strategy, and conversion automation.",
     eyebrow: "Alternatives",
     intent:
-      "Alternative intent for businesses comparing AI search audit options",
+      "Alternative intent for businesses comparing AI search report options",
     updated: "April 24, 2026",
     publishedDate: "2026-04-24",
     lastModified: "2026-04-24",
     readTime: "8 min read",
     summary:
-      "The best alternative to an AI Search Readiness Audit depends on the business problem. Some companies need DIY public-fact cleanup, some need local SEO, some need Google Business Profile work, and some need lead-capture automation before more visibility.",
+      "The best alternative to a Visibility Report depends on the business problem. Some companies need DIY public-fact cleanup, some need local SEO, some need Google Business Profile work, and some need lead-capture automation before more visibility.",
     primaryCta: { label: "Compare your options", href: "/contact" },
     secondaryCta: {
       label: "See the visibility system",
@@ -2714,12 +2720,12 @@ export const resourceArticles: ResourceArticle[] = [
       {
         eyebrow: "Direct answer",
         title: "Alternatives work when they match the bottleneck.",
-        copy: "An audit is useful when the business does not know what to fix first. If the problem is already obvious, a narrower alternative may be enough.",
+        copy: "A report is useful when the business does not know what to fix first. If the problem is already obvious, a narrower alternative may be enough.",
         bullets: [
           "Use DIY cleanup when public facts are wrong or inconsistent.",
           "Use local SEO when rankings, location pages, and Google Business Profile signals are the main gap.",
           "Use conversion automation when leads are already coming in but response is slow or inconsistent.",
-          "Use a full audit when service clarity, schema, content, profiles, and lead capture are tangled together.",
+          "Use a full report when service clarity, schema, content, profiles, and lead capture are tangled together.",
         ],
       },
       {
@@ -2750,7 +2756,7 @@ export const resourceArticles: ResourceArticle[] = [
         bullets: [
           "Prioritize cost, comparison, alternative, checklist, mistakes, and implementation intent.",
           "Avoid generic posts that do not support a commercial page.",
-          "Use internal links to move readers toward the audit, relevant service page, or contact path.",
+          "Use internal links to move readers toward the report, relevant service page, or contact path.",
         ],
       },
       {
@@ -2777,13 +2783,13 @@ export const resourceArticles: ResourceArticle[] = [
           "Maybe. A strong local SEO agency is useful for rankings, profile optimization, reviews, local pages, and citations. Make sure the work also improves entity clarity, answer formatting, schema, and conversion paths.",
       },
       {
-        question: "When is an AI search audit worth it?",
+        question: "When is an AI search report worth it?",
         answer:
           "It is worth it when the business has several overlapping problems and needs a clear fix order before paying for pages, schema, profile cleanup, or automation.",
       },
     ],
     relatedLinks: [
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
       {
         label: "AI Search vs Local SEO",
         href: "/resources/ai-search-vs-local-seo",
@@ -2793,30 +2799,30 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: "best-ai-search-audit-for-service-businesses",
-    title: "Best AI Search Audit for Service Businesses: How to Choose",
+    title: "Best Visibility Report for Service Businesses: How to Choose",
     description:
-      "How local service businesses should choose an AI search audit provider without falling for fake certainty, shallow scans, unsupported schema, or generic SEO reports.",
+      "How local service businesses should choose an AI search report provider without falling for fake certainty, shallow scans, unsupported schema, or generic SEO reports.",
     eyebrow: "Best-fit guide",
-    intent: "Best provider intent for choosing an AI Search Readiness Audit",
+    intent: "Best provider intent for choosing a Visibility Report",
     updated: "April 24, 2026",
     publishedDate: "2026-04-24",
     lastModified: "2026-04-24",
     readTime: "8 min read",
     summary:
-      "The best AI search audit provider for a service business is the one that connects public visibility signals to revenue action: clearer services, trustworthy proof, crawlable structure, valid schema, and a lead path that actually works.",
-    primaryCta: { label: "Ask Civive to audit it", href: "/contact" },
-    secondaryCta: { label: "See audit scope", href: "/ai-search-audit" },
+      "The best AI search report provider for a service business is the one that connects public visibility signals to revenue action: clearer services, trustworthy proof, crawlable structure, valid schema, and a lead path that actually works.",
+    primaryCta: { label: "Ask Civive to report it", href: "/contact" },
+    secondaryCta: { label: "See report scope", href: "/ai-search-audit" },
     finalCta: {
       title: "Pick the provider who can turn findings into action.",
-      copy: "Civive focuses the audit on practical signal cleanup, buyer-intent pages, schema that matches visible content, and lead paths that support revenue.",
+      copy: "Civive focuses the report on practical signal cleanup, buyer-intent pages, schema that matches visible content, and lead paths that support revenue.",
     },
     sections: [
       {
         eyebrow: "Direct answer",
-        title: "The best audit is specific, honest, and implementation-ready.",
+        title: "The best report is specific, honest, and implementation-ready.",
         copy: "A strong provider does not promise guaranteed AI recommendations. They show what public evidence is unclear, what machines can and cannot parse, and what should be fixed first.",
         bullets: [
-          "The audit maps findings to pages, profiles, schema, and conversion paths.",
+          "The report maps findings to pages, profiles, schema, and conversion paths.",
           "The provider refuses fake reviews, fake locations, fake awards, and unsupported structured data.",
           "The output gives a fix order, not only a score.",
         ],
@@ -2824,7 +2830,7 @@ export const resourceArticles: ResourceArticle[] = [
       {
         eyebrow: "Selection criteria",
         title: "Choose a provider who understands local service intent.",
-        copy: "HVAC, plumbing, roofing, med spas, law firms, restoration, and other local services do not win with generic AI content. The audit should understand urgent, local, trust-heavy buyer behavior.",
+        copy: "HVAC, plumbing, roofing, med spas, law firms, restoration, and other local services do not win with generic AI content. The report should understand urgent, local, trust-heavy buyer behavior.",
         bullets: [
           "They separate service, problem, cost, comparison, emergency, local, and FAQ intent.",
           "They understand Google Business Profile, reviews, service areas, and conversion friction.",
@@ -2834,7 +2840,7 @@ export const resourceArticles: ResourceArticle[] = [
       {
         eyebrow: "Deliverables",
         title: "Look for a clear fix order and page map.",
-        copy: "The best audit should tell the business what to improve, merge, create, noindex, or support with internal links. It should not be a pile of disconnected observations.",
+        copy: "The best report should tell the business what to improve, merge, create, noindex, or support with internal links. It should not be a pile of disconnected observations.",
         bullets: [
           "Homepage and core service clarity recommendations.",
           "Schema, sitemap, robots, canonical, and metadata checks.",
@@ -2857,7 +2863,7 @@ export const resourceArticles: ResourceArticle[] = [
         title: "The right provider should improve both ranking and response.",
         copy: "Search visibility creates opportunity. A serious provider should also care about whether the business can answer, book, and follow up with the lead after the click or recommendation.",
         bullets: [
-          "The audit supports local SEO, AI-search clarity, and conversion.",
+          "The report supports local SEO, AI-search clarity, and conversion.",
           "Implementation can include pages, schema, profile cleanup, and automation.",
           "The work can be reused across future content, sales assets, and client delivery systems.",
         ],
@@ -2865,7 +2871,7 @@ export const resourceArticles: ResourceArticle[] = [
     ],
     faqs: [
       {
-        question: "Who needs an AI search audit provider?",
+        question: "Who needs an AI search report provider?",
         answer:
           "A provider is useful when the business has unclear services, thin pages, inconsistent public facts, weak schema, poor internal links, or lead-response gaps that require a prioritized plan.",
       },
@@ -2877,17 +2883,17 @@ export const resourceArticles: ResourceArticle[] = [
       {
         question: "Can the same provider implement the fixes?",
         answer:
-          "Yes, if they can show the implementation path clearly. The audit should make it obvious whether the next step is content, technical cleanup, profile alignment, schema, or lead response automation.",
+          "Yes, if they can show the implementation path clearly. The report should make it obvious whether the next step is content, technical cleanup, profile alignment, schema, or lead response automation.",
       },
     ],
     relatedLinks: [
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
       {
-        label: "What the audit includes",
+        label: "What the report includes",
         href: "/resources/what-does-an-ai-search-audit-include",
       },
       {
-        label: "Audit alternatives",
+        label: "Report alternatives",
         href: "/resources/ai-search-audit-alternatives",
       },
     ],
@@ -2923,7 +2929,7 @@ export const resourceArticles: ResourceArticle[] = [
         bullets: [
           "Name the service categories buyers actually search for.",
           "Explain who each service is for and what problem it solves.",
-          "Connect each major service to a contact, booking, quote, or audit path.",
+          "Connect each major service to a contact, booking, quote, or report path.",
         ],
       },
       {
@@ -2989,7 +2995,7 @@ export const resourceArticles: ResourceArticle[] = [
         label: "AI Search Readiness Checklist",
         href: "/resources/ai-search-readiness-checklist",
       },
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
       { label: "Visibility System", href: "/visibility-system" },
     ],
   },
@@ -3013,7 +3019,7 @@ export const resourceArticles: ResourceArticle[] = [
     },
     finalCta: {
       title: "Turn the implementation plan into a build sequence.",
-      copy: "Civive can use the audit to decide which signals to fix first, which pages to create, and where automation should support the new demand.",
+      copy: "Civive can use the report to decide which signals to fix first, which pages to create, and where automation should support the new demand.",
     },
     sections: [
       {
@@ -3029,7 +3035,7 @@ export const resourceArticles: ResourceArticle[] = [
       {
         eyebrow: "Step 2",
         title: "Strengthen the commercial pages first.",
-        copy: "The homepage, audit page, main service pages, industry pages, and contact page should be clear before supporting content expands.",
+        copy: "The homepage, report page, main service pages, industry pages, and contact page should be clear before supporting content expands.",
         bullets: [
           "Each commercial page gets one primary intent and one conversion goal.",
           "Add direct-answer intros, decision criteria, FAQs, proof where real, and clear CTAs.",
@@ -3086,7 +3092,7 @@ export const resourceArticles: ResourceArticle[] = [
     ],
     relatedLinks: [
       { label: "Visibility System", href: "/visibility-system" },
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
       { label: "CiviveOS", href: "/civive-os" },
     ],
   },
@@ -3105,7 +3111,7 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "8 min read",
     summary:
       "No provider can honestly guarantee a business will be recommended by ChatGPT, Gemini, Grok, Perplexity, or Google. What a service business can do is make its public evidence clearer, more consistent, and easier for those systems to understand.",
-    primaryCta: { label: "Get an AI Search Visibility Audit", href: "/contact" },
+    primaryCta: { label: "Get Your Free Visibility Report", href: "/contact" },
     secondaryCta: {
       label: "See the visibility system",
       href: "/visibility-system",
@@ -3140,12 +3146,12 @@ export const resourceArticles: ResourceArticle[] = [
       {
         eyebrow: "What to fix first",
         title: "Strengthen the pages AI tools would use as source material.",
-        copy: "The strongest first move is usually not publishing more articles. It is improving the pages that explain the business: homepage, service pages, industry pages, audit or offer pages, contact page, FAQs, and public profiles. Supporting resources should then answer the questions buyers and AI systems ask before choosing a provider.",
+        copy: "The strongest first move is usually not publishing more articles. It is improving the pages that explain the business: homepage, service pages, industry pages, report or offer pages, contact page, FAQs, and public profiles. Supporting resources should then answer the questions buyers and AI systems ask before choosing a provider.",
         bullets: [
           "Use direct-answer intros that define the service and who it helps.",
           "Add decision criteria, cost context, process details, and mistake warnings where appropriate.",
           "Publish FAQs that answer real buyer questions and support FAQ schema only when visible.",
-          "Link support articles back to the audit, visibility system, industry hub, and contact path.",
+          "Link support articles back to the report, visibility system, industry hub, and contact path.",
         ],
       },
       {
@@ -3165,7 +3171,7 @@ export const resourceArticles: ResourceArticle[] = [
         title: "Do not win the answer and lose the lead.",
         copy: "Better visibility creates more opportunities only if the visitor can act. AI-answer and Google traffic should land on pages with clear CTAs, working phone links, useful forms, and a follow-up path that preserves context.",
         bullets: [
-          "Match the CTA to the page intent: audit for diagnosis, contact for implementation, receptionist for response leakage.",
+          "Match the CTA to the page intent: report for diagnosis, contact for implementation, receptionist for response leakage.",
           "Make phone, form, and booking actions easy on mobile.",
           "Route lead context into CRM notes, tags, pipelines, or follow-up when possible.",
           "Use missed-call recovery or AI receptionist support when response speed is the bottleneck.",
@@ -3191,7 +3197,7 @@ export const resourceArticles: ResourceArticle[] = [
       },
     ],
     relatedLinks: [
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
       { label: "Visibility System", href: "/visibility-system" },
       {
         label: "AI Search Implementation Plan",
@@ -3202,19 +3208,19 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: "ai-search-audit-for-home-service-businesses",
-    title: "AI Search Audit for Home Service Businesses",
+    title: "Visibility Report for Home Service Businesses",
     description:
       "How HVAC, plumbing, roofing, cleaning, restoration, pest control, landscaping, and other home service companies should approach AI search readiness.",
     eyebrow: "Home services",
     intent:
-      "Buyer and industry-fit intent for home service businesses evaluating an AI search audit",
+      "Buyer and industry-fit intent for home service businesses evaluating an AI search report",
     updated: "April 28, 2026",
     publishedDate: "2026-04-28",
     lastModified: "2026-04-28",
     readTime: "8 min read",
     summary:
-      "Home service businesses need AI search readiness because buyers often ask urgent, local, problem-aware questions. The audit should connect service clarity, service-area signals, proof, reviews, FAQs, schema, and fast response.",
-    primaryCta: { label: "Audit my home service visibility", href: "/contact" },
+      "Home service businesses need AI search readiness because buyers often ask urgent, local, problem-aware questions. The report should connect service clarity, service-area signals, proof, reviews, FAQs, schema, and fast response.",
+    primaryCta: { label: "Report my home service visibility", href: "/contact" },
     secondaryCta: {
       label: "See all industries",
       href: "/industries",
@@ -3236,10 +3242,10 @@ export const resourceArticles: ResourceArticle[] = [
         ],
       },
       {
-        eyebrow: "Audit scope",
+        eyebrow: "Report scope",
         title:
-          "The audit should test whether buyers can understand the offer quickly.",
-        copy: "For home services, the first audit layer is clarity: what the business does, which jobs it wants, where it works, how someone contacts it, and what proof supports the choice. If those facts are scattered, AI systems and buyers have to work too hard.",
+          "The report should test whether buyers can understand the offer quickly.",
+        copy: "For home services, the first report layer is clarity: what the business does, which jobs it wants, where it works, how someone contacts it, and what proof supports the choice. If those facts are scattered, AI systems and buyers have to work too hard.",
         bullets: [
           "Homepage and main service pages explain the core jobs in direct language.",
           "Industry and service pages answer cost, timing, process, warranty, and readiness questions where appropriate.",
@@ -3276,7 +3282,7 @@ export const resourceArticles: ResourceArticle[] = [
         title: "Visibility should connect to fast lead response.",
         copy: "Home service leads decay quickly. If the business improves visibility but misses calls, delays form response, or loses after-hours requests, the SEO work produces leakage instead of revenue.",
         bullets: [
-          "Use click-to-call and request-audit CTAs in the visible page flow.",
+          "Use click-to-call and request-report CTAs in the visible page flow.",
           "Prepare CRM notes, tags, or fields for service type, urgency, location, and preferred contact method.",
           "Add missed-call recovery or AI receptionist support when response speed is hurting close rates.",
           "Review the contact path after every major SEO or content expansion.",
@@ -3286,9 +3292,9 @@ export const resourceArticles: ResourceArticle[] = [
     faqs: [
       {
         question:
-          "Which home service businesses benefit most from an AI search audit?",
+          "Which home service businesses benefit most from an AI search report?",
         answer:
-          "Businesses with service-area demand, urgent calls, unclear service pages, inconsistent Google profile signals, weak FAQs, or slow lead response usually benefit most because the audit connects visibility to buyer action.",
+          "Businesses with service-area demand, urgent calls, unclear service pages, inconsistent Google profile signals, weak FAQs, or slow lead response usually benefit most because the report connects visibility to buyer action.",
       },
       {
         question: "Should a home service company create city pages?",
@@ -3303,7 +3309,7 @@ export const resourceArticles: ResourceArticle[] = [
     ],
     relatedLinks: [
       { label: "Industries Civive serves", href: "/industries" },
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
       {
         label: "AI Search Readiness Checklist",
         href: "/resources/ai-search-readiness-checklist",
@@ -3342,7 +3348,7 @@ export const resourceArticles: ResourceArticle[] = [
         copy: "A service page should not be a catch-all brochure. It should answer one primary search intent, explain the service in buyer language, and move the visitor toward the right next step. That clarity also helps search engines and answer engines classify the page.",
         bullets: [
           "Primary topic: the specific service or problem the page targets.",
-          "Business goal: call, quote, booking, audit request, or consultation.",
+          "Business goal: call, quote, booking, visibility report request, or consultation.",
           "Topical role: commercial page, subpillar, local page, or support page.",
           "Entity purpose: connect the brand to a real service, audience, location, and proof.",
         ],
@@ -3354,7 +3360,7 @@ export const resourceArticles: ResourceArticle[] = [
         bullets: [
           "H1: the service name and buyer context.",
           "Intro: what the service is, who it helps, and when to use it.",
-          "CTA: call, book, request an audit, or contact depending on the offer.",
+          "CTA: call, book, request a visibility report, or contact depending on the offer.",
           "Trust: real reviews, credentials, guarantees, process details, or examples only when visible and accurate.",
         ],
       },
@@ -3390,7 +3396,7 @@ export const resourceArticles: ResourceArticle[] = [
           "Link up to the pillar or main offer page.",
           "Link sideways to related services, industries, and comparison resources.",
           "Link down to FAQs, templates, checklists, and implementation resources.",
-          "Link forward to contact, booking, audit, or lead-response pages.",
+          "Link forward to contact, booking, report, or lead-response pages.",
         ],
       },
       {
@@ -3432,7 +3438,7 @@ export const resourceArticles: ResourceArticle[] = [
         href: "/resources/ai-search-implementation-plan-service-businesses",
       },
       { label: "Visibility System", href: "/visibility-system" },
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
     ],
   },
   {
@@ -3449,7 +3455,7 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "8 min read",
     summary:
       "Google Business Profile is one of the clearest public evidence surfaces for a local service business. AI search readiness improves when the profile, website, reviews, categories, services, and contact path all agree.",
-    primaryCta: { label: "Audit my public signals", href: "/contact" },
+    primaryCta: { label: "Report my public signals", href: "/contact" },
     secondaryCta: {
       label: "Compare AI search and local SEO",
       href: "/resources/ai-search-vs-local-seo",
@@ -3479,7 +3485,7 @@ export const resourceArticles: ResourceArticle[] = [
           "Map each high-value service to a visible page or section on the website.",
           "Use buyer language for urgent, seasonal, maintenance, repair, replacement, or consultation needs.",
           "Avoid stuffing categories or services that the business does not actively provide.",
-          "Link service resources back to the audit, visibility system, and contact path.",
+          "Link service resources back to the report, visibility system, and contact path.",
         ],
       },
       {
@@ -3535,7 +3541,7 @@ export const resourceArticles: ResourceArticle[] = [
       },
     ],
     relatedLinks: [
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
       { label: "Visibility System", href: "/visibility-system" },
       {
         label: "AI Search vs Local SEO",
@@ -3669,7 +3675,7 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "9 min read",
     summary:
       "Schema helps machines understand visible content. It should reinforce accurate business facts, page purpose, services, FAQs, breadcrumbs, and articles. It should not invent reviews, ratings, awards, clients, locations, or proof.",
-    primaryCta: { label: "Audit my schema and pages", href: "/contact" },
+    primaryCta: { label: "Report my schema and pages", href: "/contact" },
     secondaryCta: {
       label: "See visibility mistakes",
       href: "/resources/ai-search-visibility-mistakes",
@@ -3769,7 +3775,7 @@ export const resourceArticles: ResourceArticle[] = [
         href: "/resources/ai-search-visibility-mistakes",
       },
       {
-        label: "What the audit includes",
+        label: "What the report includes",
         href: "/resources/what-does-an-ai-search-audit-include",
       },
       {
@@ -3781,19 +3787,19 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: "ai-search-audit-patterns-by-industry",
-    title: "AI Search Audit Patterns by Industry",
+    title: "Visibility Report Patterns by Industry",
     description:
-      "Common AI search audit patterns for HVAC, plumbing, roofing, restoration, med spas, law firms, real estate teams, and other local service businesses.",
-    eyebrow: "Audit patterns",
+      "Common AI search report patterns for HVAC, plumbing, roofing, restoration, med spas, law firms, real estate teams, and other local service businesses.",
+    eyebrow: "Report patterns",
     intent:
-      "Proof-adjacent and method-comparison intent for buyers evaluating AI search audit use cases across service industries",
+      "Proof-adjacent and method-comparison intent for buyers evaluating AI search report use cases across service industries",
     updated: "April 28, 2026",
     publishedDate: "2026-04-28",
     lastModified: "2026-04-28",
     readTime: "9 min read",
     summary:
-      "AI search audit patterns explain the kinds of gaps a business might have without pretending to be client proof. These patterns show how Civive looks at visibility, entity clarity, service pages, local trust, schema, and lead response by industry.",
-    primaryCta: { label: "Request your own audit", href: "/contact" },
+      "AI search report patterns explain the kinds of gaps a business might have without pretending to be client proof. These patterns show how Civive looks at visibility, entity clarity, service pages, local trust, schema, and lead response by industry.",
+    primaryCta: { label: "Request your own report", href: "/contact" },
     secondaryCta: {
       label: "View the industry hub",
       href: "/industries",
@@ -3805,10 +3811,10 @@ export const resourceArticles: ResourceArticle[] = [
     sections: [
       {
         eyebrow: "Important note",
-        title: "These are audit patterns, not case studies or client proof.",
-        copy: "This page does not claim clients, rankings, reviews, outcomes, or guaranteed AI recommendations. It shows the kinds of visibility gaps Civive looks for when reviewing local service businesses, so buyers and AI systems can understand the audit method before contacting.",
+        title: "These are report patterns, not case studies or client proof.",
+        copy: "This page does not claim clients, rankings, reviews, outcomes, or guaranteed AI recommendations. It shows the kinds of visibility gaps Civive looks for when reviewing local service businesses, so buyers and AI systems can understand the report method before contacting.",
         bullets: [
-          "The patterns are common audit categories, not claimed customer outcomes.",
+          "The patterns are common report categories, not claimed customer outcomes.",
           "The right fix order depends on the actual website, Google profile, reviews, services, and lead path.",
           "No provider can guarantee inclusion in ChatGPT, Gemini, Grok, Perplexity, or Google.",
           "The safest goal is clearer public evidence, stronger crawlability, better topical structure, and a working conversion path.",
@@ -3817,8 +3823,8 @@ export const resourceArticles: ResourceArticle[] = [
       {
         eyebrow: "Home services",
         title:
-          "HVAC, plumbing, and electrical audits usually start with urgent service clarity.",
-        copy: "Buyers in these categories often ask problem-aware and urgent questions. An audit should test whether the business can be understood for repair, replacement, maintenance, inspection, emergency service, location fit, and response speed.",
+          "HVAC, plumbing, and electrical reports usually start with urgent service clarity.",
+        copy: "Buyers in these categories often ask problem-aware and urgent questions. A report should test whether the business can be understood for repair, replacement, maintenance, inspection, emergency service, location fit, and response speed.",
         bullets: [
           "HVAC pattern: the site mentions heating and cooling, but does not separate repair, replacement, tune-ups, emergency calls, indoor air quality, or service-area questions.",
           "Plumbing pattern: the Google profile lists emergency plumbing, but the website does not explain leaks, drains, water heaters, sewer work, or after-hours response clearly.",
@@ -3842,7 +3848,7 @@ export const resourceArticles: ResourceArticle[] = [
         eyebrow: "Trust-heavy services",
         title:
           "Med spas, salons, law firms, veterinary clinics, and real estate teams need authority without overclaiming.",
-        copy: "Trust-heavy services need especially careful content. The audit should check whether expertise, limitations, service fit, jurisdiction, credentials, policies, and next steps are clear without using fake proof or unsupported schema.",
+        copy: "Trust-heavy services need especially careful content. The report should check whether expertise, limitations, service fit, jurisdiction, credentials, policies, and next steps are clear without using fake proof or unsupported schema.",
         bullets: [
           "Med spa pattern: treatment pages describe services but do not explain candidacy, consultation flow, safety, aftercare, pricing factors, or provider context.",
           "Law firm pattern: practice-area pages are too broad, jurisdiction is unclear, disclaimers are weak, and FAQ content does not match real matter types.",
@@ -3853,8 +3859,8 @@ export const resourceArticles: ResourceArticle[] = [
       {
         eyebrow: "Local ecosystem",
         title:
-          "The audit should compare the website with Google Business Profile and public listings.",
-        copy: "AI search visibility is not only the website. A strong audit checks whether the business name, phone, website, services, categories, location, service area, reviews, hours, and public descriptions tell the same story across the ecosystem.",
+          "The report should compare the website with Google Business Profile and public listings.",
+        copy: "AI search visibility is not only the website. A strong report checks whether the business name, phone, website, services, categories, location, service area, reviews, hours, and public descriptions tell the same story across the ecosystem.",
         bullets: [
           "Profile categories should match real services and website content.",
           "Reviews can reveal service themes, but should not be faked or marked up with unsupported schema.",
@@ -3864,12 +3870,12 @@ export const resourceArticles: ResourceArticle[] = [
       },
       {
         eyebrow: "Fix order",
-        title: "The strongest audit ends with a prioritized build sequence.",
-        copy: "A useful audit should not hand the business a vague score. It should identify what to fix first, what to create next, what to avoid, and how better visibility should turn into calls, forms, bookings, or follow-up.",
+        title: "The strongest report ends with a prioritized build sequence.",
+        copy: "A useful report should not hand the business a vague score. It should identify what to fix first, what to create next, what to avoid, and how better visibility should turn into calls, forms, bookings, or follow-up.",
         bullets: [
           "First: entity consistency, crawlability, metadata, canonicals, sitemap, robots, and visible contact paths.",
           "Second: homepage, commercial pages, service pages, industry pages, and Google profile alignment.",
-          "Third: FAQs, schema, internal links, audit patterns, templates, and supporting resources.",
+          "Third: FAQs, schema, internal links, report patterns, templates, and supporting resources.",
           "Fourth: CRM handoff, missed-call recovery, AI receptionist routing, and follow-up when lead response is the revenue leak.",
         ],
       },
@@ -3878,15 +3884,15 @@ export const resourceArticles: ResourceArticle[] = [
       {
         question: "Are these real client case studies?",
         answer:
-          "No. These are audit patterns and common visibility gaps, not claimed client results. Real case studies should only be published when the proof, permission, and visible evidence exist.",
+          "No. These are report patterns and common visibility gaps, not claimed client results. Real case studies should only be published when the proof, permission, and visible evidence exist.",
       },
       {
-        question: "Why show audit patterns if they are not case studies?",
+        question: "Why show report patterns if they are not case studies?",
         answer:
-          "Audit patterns help buyers and AI systems understand the method, common problems, and likely fix categories without inventing proof or making unsupported ranking claims.",
+          "Report patterns help buyers and AI systems understand the method, common problems, and likely fix categories without inventing proof or making unsupported ranking claims.",
       },
       {
-        question: "What should an AI search audit pattern avoid?",
+        question: "What should an AI search report pattern avoid?",
         answer:
           "It should avoid fake reviews, fake clients, fake rankings, guaranteed AI recommendations, fake locations, fake awards, unsupported schema, and vague advice that does not lead to a prioritized fix order.",
       },
@@ -3894,9 +3900,9 @@ export const resourceArticles: ResourceArticle[] = [
     relatedLinks: [
       { label: "Prospecting report format", href: "/prospecting-report" },
       { label: "Industries Civive serves", href: "/industries" },
-      { label: "AI Search Readiness Audit", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-audit" },
       {
-        label: "Home service audit guide",
+        label: "Home service report guide",
         href: "/resources/ai-search-audit-for-home-service-businesses",
       },
       {
@@ -3915,12 +3921,12 @@ export const buildLog = [
   {
     date: "April 2026",
     title: "Repositioned the front door around AI Search Readiness.",
-    copy: "The homepage moved from a broad AI receptionist angle into a sharper audit offer: will ChatGPT, Gemini, Perplexity, Grok, and buyers understand who to call?",
+    copy: "The homepage moved from a broad AI receptionist angle into a sharper report offer: will ChatGPT, Gemini, Perplexity, Grok, and buyers understand who to call?",
   },
   {
     date: "April 2026",
     title: "Connected the site to a real lead path.",
-    copy: "The contact flow now sends audit requests into CiviveOS, tags the lead, adds context, and creates a pipeline opportunity instead of leaving the form isolated.",
+    copy: "The contact flow now sends visibility report requests into CiviveOS, tags the lead, adds context, and creates a pipeline opportunity instead of leaving the form isolated.",
   },
   {
     date: "Now",
@@ -3942,9 +3948,14 @@ export const pageMeta = {
   },
   audit: {
     title:
-      "AI Search Visibility Audit for Service Businesses | Civive Unlimited",
+      "Visibility Report for Service Businesses | Civive Unlimited",
     description:
-      "A practical AI Search Visibility Audit for service businesses that need clearer public facts, service pages, schema, FAQs, Google profile alignment, and lead capture.",
+      "A practical Visibility Report for service businesses that need clearer public facts, service pages, schema, FAQs, Google profile alignment, and lead capture.",
+  },
+  freeVisibilityReport: {
+    title: "Get Your Free Visibility Report | Civive Unlimited",
+    description:
+      "Get a free visibility report from Civive Unlimited and see what is helping or hurting your local visibility across Google, Maps, reviews, directories, and AI search.",
   },
   prospectingReport: {
     title: "AI Search Prospecting Report | Civive Unlimited",
@@ -3974,7 +3985,7 @@ export const pageMeta = {
   faq: {
     title: "AI Search Visibility FAQ | Civive Unlimited",
     description:
-      "Answers to common questions about AI search visibility, local SEO, answer engines, schema, reviews, FAQs, and AI Search Readiness Audits.",
+      "Answers to common questions about AI search visibility, local SEO, answer engines, schema, reviews, FAQs, and Visibility Reports.",
   },
   resources: {
     title: "AI Search Resources and Insights | Civive Unlimited",
@@ -3987,9 +3998,9 @@ export const pageMeta = {
       "How Civive Unlimited is applying its AI visibility system to itself first and documenting the process in public.",
   },
   contact: {
-    title: "Request an AI Search Visibility Audit | Civive Unlimited",
+    title: "Request a Visibility Report | Civive Unlimited",
     description:
-      "Request an AI Search Visibility Audit from Civive Unlimited and send the business, website or Google profile, service area, and visibility problem to inspect first.",
+      "Request a Visibility Report from Civive Unlimited and send the business, website or Google profile, service area, and visibility problem to inspect first.",
   },
   receptionist: {
     title: "AI Receptionist for Service Businesses | Missed-Call Recovery",

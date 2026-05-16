@@ -22,12 +22,12 @@ export default function AuditChecksSection() {
             className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16"
           >
             <div className="max-w-xl">
-              <p className="homepage-eyebrow">What the audit checks</p>
+              <p className="homepage-eyebrow">What the report checks</p>
               <h2 className="mt-5 text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-5xl">
                 The public signals that decide whether you are easy to recommend.
               </h2>
               <p className="mt-6 text-base leading-7 text-white/64 sm:text-lg">
-                The audit is not a vague AI report. It looks at the real places where
+                The visibility report is not a vague AI report. It looks at the real places where
                 buyers, Google, maps, voice assistants, and answer engines try to
                 understand your business.
               </p>
@@ -35,7 +35,7 @@ export default function AuditChecksSection() {
                 href="/ai-search-audit"
                 className="mt-9 inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
               >
-                See the audit page
+                See the report page
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>

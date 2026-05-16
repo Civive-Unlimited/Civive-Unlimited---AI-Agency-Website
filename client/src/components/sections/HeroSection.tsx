@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import scottFounderPhoto from "@/assets/scott-berry-founder.webp";
 import { site } from "@/content/site";
+import { trackWebsiteEvent } from "@/lib/tracking";
 
 const trustSignals = [
   "AI search clarity",
@@ -145,7 +146,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5 }}
             className="max-w-3xl"
           >
-            <p className="homepage-eyebrow max-w-[36rem] text-[#9fdcff]">
+            <p className="homepage-eyebrow max-w-[40rem] text-[#9fdcff]">
               AI Search Visibility + Lead Recovery for Service Businesses
             </p>
 
@@ -153,7 +154,7 @@ export default function HeroSection() {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.04 }}
-              className="hero-tech-title mt-4 max-w-[48rem] text-balance text-[2.55rem] leading-[0.98] text-white sm:mt-5 sm:text-[4rem] lg:text-[4.75rem] xl:text-[5.1rem]"
+              className="homepage-hero-title mt-4 max-w-[50rem] text-balance text-white sm:mt-5"
             >
               Get found. Get called. Get booked.
             </motion.h1>
@@ -162,7 +163,7 @@ export default function HeroSection() {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.12 }}
-              className="hero-support-copy mt-5 max-w-[42rem] text-base leading-7 text-white/72 sm:text-[1.08rem]"
+              className="hero-support-copy mt-5 max-w-[44rem] text-lg leading-8 text-white/78 sm:text-xl"
             >
               Civive Unlimited helps local service businesses improve AI search
               visibility, Google Business Profile clarity, websites, CRM
@@ -177,16 +178,32 @@ export default function HeroSection() {
               className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
               <a
-                href="/ai-search-audit"
+                href={site.visibilityReportRequestUrl}
+                data-cta-destination={site.visibilityReportRequestUrl}
+                onClick={() =>
+                  trackWebsiteEvent("cta_click", {
+                    placement: "homepage_hero",
+                    label: "Get Free Visibility Report",
+                    destination: site.visibilityReportRequestUrl,
+                  })
+                }
                 className="homepage-primary-button inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#19c2ff]/70 sm:w-auto"
               >
                 <Search className="h-4.5 w-4.5" />
-                Get AI Visibility Audit
+                Get Free Visibility Report
                 <ArrowRight className="h-4.5 w-4.5" />
               </a>
 
               <a
                 href={site.phoneHref}
+                data-cta-destination={site.phoneHref}
+                onClick={() =>
+                  trackWebsiteEvent("cta_click", {
+                    placement: "homepage_hero",
+                    label: `Call ${site.phone}`,
+                    destination: site.phoneHref,
+                  })
+                }
                 className="homepage-secondary-button inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full border border-white/[0.14] bg-white/[0.055] px-7 py-4 text-base font-semibold text-white/88 shadow-[0_14px_38px_rgba(0,0,0,0.18)] transition-colors hover:bg-white/[0.09] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:w-auto"
               >
                 <PhoneCall className="h-4.5 w-4.5 text-[#19c2ff]" />
@@ -216,7 +233,7 @@ export default function HeroSection() {
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.58, delay: 0.1 }}
-            className="relative z-10 mx-auto flex w-full max-w-[31.5rem] flex-col gap-3.5 lg:mx-0 lg:justify-self-end"
+            className="relative z-10 mx-auto flex w-full max-w-[33rem] flex-col gap-3.5 lg:mx-0 lg:justify-self-end"
             aria-label="Founder and CiviveOS command center"
           >
             <div className="premium-hover-surface founder-trust-card relative overflow-hidden rounded-[1.25rem] border border-white/[0.12] bg-[linear-gradient(145deg,rgba(255,255,255,0.1),rgba(255,255,255,0.035))] p-2.5 shadow-[0_24px_70px_rgba(0,0,0,0.32)] backdrop-blur-xl sm:p-3">
@@ -237,15 +254,15 @@ export default function HeroSection() {
 
                 <div className="flex min-w-0 flex-col justify-center py-1 pr-1">
                   <div>
-                    <h2 className="text-2xl font-bold leading-tight text-white sm:text-3xl">
+                    <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl">
                       Scott Berry
                     </h2>
-                    <p className="mt-1.5 text-sm font-semibold text-white/68">
+                    <p className="mt-2 text-base font-semibold text-white/72">
                       Founder, Civive Unlimited
                     </p>
                   </div>
 
-                  <p className="mt-4 max-w-[18rem] text-sm leading-6 text-white/72">
+                  <p className="mt-4 max-w-[19rem] text-base leading-7 text-white/76">
                     25 years in HVAC and service business operations
                   </p>
                 </div>
@@ -260,7 +277,7 @@ export default function HeroSection() {
                     <p className="homepage-eyebrow text-[#9fdcff]">
                       CiviveOS command center
                     </p>
-                    <h2 className="mt-1.5 text-[1.45rem] font-bold leading-tight text-white sm:text-2xl">
+                    <h2 className="mt-2 text-2xl font-bold leading-tight text-white sm:text-3xl">
                       Visibility turns into booked work.
                     </h2>
                   </div>
@@ -280,17 +297,17 @@ export default function HeroSection() {
                     return (
                       <div
                         key={item.label}
-                        className="command-outcome-card min-h-[4.9rem] rounded-[0.95rem] border border-white/[0.085] bg-white/[0.045] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
+                        className="command-outcome-card min-h-[5.25rem] rounded-[0.95rem] border border-white/[0.085] bg-white/[0.045] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
                       >
                         <div
                           className={`command-outcome-icon mb-2.5 flex h-7 w-7 items-center justify-center rounded-lg border ${accentClass}`}
                         >
                           <Icon className="h-3.5 w-3.5" />
                         </div>
-                        <p className="text-sm font-bold leading-snug text-white/92">
+                        <p className="text-[0.95rem] font-bold leading-snug text-white/92">
                           {item.label}
                         </p>
-                        <p className="mt-1 text-xs leading-5 text-white/50">
+                        <p className="mt-1 text-sm leading-5 text-white/56">
                           {item.detail}
                         </p>
                       </div>
