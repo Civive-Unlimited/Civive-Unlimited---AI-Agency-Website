@@ -48,7 +48,7 @@ const conversionResources = [
   {
     title: "What the report includes",
     copy: "See the public signals and deliverables Civive checks before recommending implementation.",
-    href: "/resources/what-does-an-ai-search-audit-include",
+    href: "/resources/what-does-a-visibility-report-include",
   },
   {
     title: "Implementation plan",
@@ -74,7 +74,7 @@ export default function ContactPage() {
           primaryCta={{ label: "Use the form below", href: "#contact" }}
           secondaryCta={{
             label: "See what the report checks",
-            href: "/ai-search-audit",
+            href: "/ai-search-report",
           }}
         >
           <div className="border-y border-white/[0.08] py-7">

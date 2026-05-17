@@ -322,11 +322,11 @@ for (const route of prerenderRoutes) {
 }
 
 if (issues.length) {
-  console.error("SEO guardrail audit failed:");
+  console.error("SEO guardrail check failed:");
   for (const issue of issues) console.error(`- ${issue}`);
   process.exit(1);
 }
 
 console.log(
-  `SEO guardrail audit passed for ${prerenderRoutes.length} routes and ${topicalPages.length} topical pages.`
+  `SEO guardrail check passed for ${prerenderRoutes.length} routes and ${topicalPages.length} topical pages.`
 );

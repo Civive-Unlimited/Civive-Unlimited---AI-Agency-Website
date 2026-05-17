@@ -4,6 +4,7 @@ import { pathToFileURL } from "node:url";
 
 const projectRoot = process.cwd();
 const publicDir = path.join(projectRoot, "dist", "public");
+const sourcePublicDir = path.join(projectRoot, "client", "public");
 const ssrEntry = path.join(projectRoot, "dist", "ssr", "entry-server.js");
 const templatePath = path.join(publicDir, "index.html");
 const {
@@ -115,7 +116,10 @@ function routeOutputPaths(routePath) {
   }
 
   const cleanPath = routePath.replace(/^\//, "");
-  return [path.join(publicDir, cleanPath, "index.html")];
+  return [
+    path.join(publicDir, `${cleanPath}.html`),
+    path.join(publicDir, cleanPath, "index.html"),
+  ];
 }
 
 function buildSchema(route) {
@@ -428,7 +432,7 @@ function injectApp(template, renderedHtml) {
 
 function sitemapPriority(route) {
   if (route.path === "/") return "1.0";
-  if (route.path === "/ai-search-audit") return "0.9";
+  if (route.path === "/ai-search-report") return "0.9";
   if (route.path.startsWith("/services/")) return "0.82";
   if (route.path === "/service-areas/springfield-mo") return "0.86";
   if (
@@ -566,9 +570,11 @@ async function writeCrawlFiles(routes) {
     "",
   ].join("\n");
 
-  await fs.writeFile(path.join(publicDir, "sitemap.xml"), sitemap);
-  await fs.writeFile(path.join(publicDir, "robots.txt"), robots);
-  await fs.writeFile(path.join(publicDir, "llms.txt"), llms);
+  for (const targetDir of [publicDir, sourcePublicDir]) {
+    await fs.writeFile(path.join(targetDir, "sitemap.xml"), sitemap);
+    await fs.writeFile(path.join(targetDir, "robots.txt"), robots);
+    await fs.writeFile(path.join(targetDir, "llms.txt"), llms);
+  }
 }
 
 const template = await fs.readFile(templatePath, "utf8");

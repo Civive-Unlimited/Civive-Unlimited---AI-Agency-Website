@@ -16,11 +16,9 @@ export const site = {
   serviceArea: seoConfig.areaServed,
   founder: seoConfig.founder,
   primaryOffer: "Visibility Report",
-  visibilityReportRequestUrl:
-    "https://get.civiveunlimited.com/ai-search-audit-2338",
-  reviewBookingUrl: "https://get.civiveunlimited.com/book-audit-review-4694",
-  visibilityReportThankYouUrl:
-    "https://get.civiveunlimited.com/audit-requested-7111",
+  visibilityReportRequestUrl: "/contact",
+  reviewBookingUrl: "/contact",
+  visibilityReportThankYouUrl: "/contact",
 };
 
 export const areasServed = [
@@ -51,7 +49,7 @@ export const coreServices: CoreService[] = [
   {
     name: "Visibility Report",
     serviceType: "Visibility Report",
-    path: "/services/ai-search-visibility-audit",
+    path: "/services/visibility-report",
     description:
       "A plain-English report of the public signals that help Google, Maps, ChatGPT, Gemini, Perplexity, and buyers understand a local service business.",
   },
@@ -162,7 +160,7 @@ export type ServicePageContent = {
 
 export const servicePages: ServicePageContent[] = [
   {
-    slug: "ai-search-visibility-audit",
+    slug: "visibility-report",
     name: "Visibility Report",
     serviceName: "Visibility Report",
     serviceType: "Visibility Report",
@@ -175,7 +173,8 @@ export const servicePages: ServicePageContent[] = [
     intro:
       "The report shows what a buyer or answer engine can understand from the public footprint today, then turns the gaps into a practical fix order.",
     problem: {
-      title: "Good businesses get skipped when their public signals are unclear.",
+      title:
+        "Good businesses get skipped when their public signals are unclear.",
       copy: "If the website, Google Business Profile, services, service area, reviews, schema, and lead path do not agree, search engines and AI tools have less confidence in what to recommend.",
     },
     fixes: [
@@ -237,7 +236,8 @@ export const servicePages: ServicePageContent[] = [
     intro:
       "Civive aligns the Google Business Profile with the website so Maps, local search, AI tools, and buyers see the same business facts.",
     problem: {
-      title: "Profiles lose strength when the website and GBP tell different stories.",
+      title:
+        "Profiles lose strength when the website and GBP tell different stories.",
       copy: "Wrong categories, thin services, weak descriptions, missing booking paths, inconsistent contact details, and mismatched website copy make the profile harder to trust.",
     },
     fixes: [
@@ -279,7 +279,7 @@ export const servicePages: ServicePageContent[] = [
       },
     ],
     relatedSlugs: [
-      "ai-search-visibility-audit",
+      "visibility-report",
       "review-automation",
       "website-design-service-businesses",
     ],
@@ -457,7 +457,7 @@ export const servicePages: ServicePageContent[] = [
       },
     ],
     relatedSlugs: [
-      "ai-search-visibility-audit",
+      "visibility-report",
       "google-business-profile-optimization",
       "crm-lead-follow-up",
     ],
@@ -477,7 +477,8 @@ export const servicePages: ServicePageContent[] = [
     intro:
       "Review automation helps a real customer experience turn into public trust signals that buyers, Google, Maps, and AI tools can understand.",
     problem: {
-      title: "Happy customers often stay invisible unless the follow-up is built.",
+      title:
+        "Happy customers often stay invisible unless the follow-up is built.",
       copy: "Without a clean request process, reviews arrive randomly, feedback gets missed, and public trust signals stay weaker than the service quality.",
     },
     fixes: [
@@ -594,7 +595,7 @@ export function getServicePage(slug?: string) {
 
 export const navLinks = [
   { href: site.visibilityReportRequestUrl, label: "Free Report" },
-  { href: "/ai-search-audit", label: "Visibility Report" },
+  { href: "/ai-search-report", label: "Visibility Report" },
   { href: "/visibility-system", label: "Visibility System" },
   { href: "/civive-os", label: "CiviveOS" },
   { href: "/ai-receptionist", label: "AI Receptionist" },
@@ -604,7 +605,7 @@ export const navLinks = [
   { href: "/build-in-public", label: "Build in Public" },
 ];
 
-export const auditChecks = [
+export const visibilityReportChecks = [
   {
     title: "Homepage message clarity",
     copy: "Can a buyer and an answer engine understand what you do, who you serve, and why you should be considered in one pass?",
@@ -643,7 +644,7 @@ export const auditChecks = [
   },
 ];
 
-export const auditPageFaqs = [
+export const visibilityReportFaqs = [
   {
     question: "What does a Visibility Report include?",
     answer:
@@ -2385,7 +2386,7 @@ export const resourceArticles: ResourceArticle[] = [
       },
     ],
     relatedLinks: [
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
       { label: "AI Search Visibility System", href: "/visibility-system" },
       { label: "AI Search Visibility FAQ", href: "/faq" },
     ],
@@ -2492,7 +2493,7 @@ export const resourceArticles: ResourceArticle[] = [
     ],
   },
   {
-    slug: "ai-search-audit-cost",
+    slug: "visibility-report-cost",
     title: "How Much Should a Visibility Report Cost?",
     description:
       "A practical guide to Visibility Report pricing, scope, deliverables, and what local service businesses should expect before paying for implementation.",
@@ -2505,7 +2506,7 @@ export const resourceArticles: ResourceArticle[] = [
     summary:
       "A Visibility Report should be priced around the depth of inspection, the number of public surfaces reviewed, and whether the provider only diagnoses issues or also maps implementation. The cheapest report is not always the best if it produces no fix order.",
     primaryCta: { label: "Request report pricing", href: "/contact" },
-    secondaryCta: { label: "See report scope", href: "/ai-search-audit" },
+    secondaryCta: { label: "See report scope", href: "/ai-search-report" },
     finalCta: {
       title: "Price the report around the fix order.",
       copy: "Civive can inspect the current footprint, separate quick wins from rebuild work, and show which visibility fixes are worth paying for first.",
@@ -2583,7 +2584,7 @@ export const resourceArticles: ResourceArticle[] = [
       },
     ],
     relatedLinks: [
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
       { label: "Contact Civive Unlimited", href: "/contact" },
       {
         label: "AI Search vs Local SEO",
@@ -2592,7 +2593,7 @@ export const resourceArticles: ResourceArticle[] = [
     ],
   },
   {
-    slug: "what-does-an-ai-search-audit-include",
+    slug: "what-does-a-visibility-report-include",
     title: "What Does a Visibility Report Include?",
     description:
       "A clear breakdown of what a Visibility Report should inspect, including entity clarity, services, Google Business Profile alignment, schema, content, internal links, and lead capture.",
@@ -2605,7 +2606,7 @@ export const resourceArticles: ResourceArticle[] = [
     summary:
       "A Visibility Report should inspect whether a business is easy for buyers, Google, and answer engines to understand. The deliverable should identify unclear public facts, weak service signals, missing structured data, thin supporting content, and lead-capture leaks.",
     primaryCta: { label: "Request a visibility report", href: "/contact" },
-    secondaryCta: { label: "See report page", href: "/ai-search-audit" },
+    secondaryCta: { label: "See report page", href: "/ai-search-report" },
     finalCta: {
       title: "Get the report scope before building more pages.",
       copy: "Civive can review the current public footprint and turn the findings into a practical cleanup order for search, AI answers, and lead capture.",
@@ -2682,10 +2683,10 @@ export const resourceArticles: ResourceArticle[] = [
       },
     ],
     relatedLinks: [
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
       {
         label: "Visibility Report Cost",
-        href: "/resources/ai-search-audit-cost",
+        href: "/resources/visibility-report-cost",
       },
       {
         label: "AI Search Readiness Checklist",
@@ -2694,7 +2695,7 @@ export const resourceArticles: ResourceArticle[] = [
     ],
   },
   {
-    slug: "ai-search-audit-alternatives",
+    slug: "visibility-report-alternatives",
     title: "Visibility Report Alternatives for Local Service Businesses",
     description:
       "Compare Visibility Report alternatives, including DIY cleanup, traditional local SEO, Google Business Profile optimization, content strategy, and conversion automation.",
@@ -2789,7 +2790,7 @@ export const resourceArticles: ResourceArticle[] = [
       },
     ],
     relatedLinks: [
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
       {
         label: "AI Search vs Local SEO",
         href: "/resources/ai-search-vs-local-seo",
@@ -2798,7 +2799,7 @@ export const resourceArticles: ResourceArticle[] = [
     ],
   },
   {
-    slug: "best-ai-search-audit-for-service-businesses",
+    slug: "best-visibility-report-for-service-businesses",
     title: "Best Visibility Report for Service Businesses: How to Choose",
     description:
       "How local service businesses should choose an AI search report provider without falling for fake certainty, shallow scans, unsupported schema, or generic SEO reports.",
@@ -2811,7 +2812,7 @@ export const resourceArticles: ResourceArticle[] = [
     summary:
       "The best AI search report provider for a service business is the one that connects public visibility signals to revenue action: clearer services, trustworthy proof, crawlable structure, valid schema, and a lead path that actually works.",
     primaryCta: { label: "Ask Civive to report it", href: "/contact" },
-    secondaryCta: { label: "See report scope", href: "/ai-search-audit" },
+    secondaryCta: { label: "See report scope", href: "/ai-search-report" },
     finalCta: {
       title: "Pick the provider who can turn findings into action.",
       copy: "Civive focuses the report on practical signal cleanup, buyer-intent pages, schema that matches visible content, and lead paths that support revenue.",
@@ -2887,14 +2888,14 @@ export const resourceArticles: ResourceArticle[] = [
       },
     ],
     relatedLinks: [
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
       {
         label: "What the report includes",
-        href: "/resources/what-does-an-ai-search-audit-include",
+        href: "/resources/what-does-a-visibility-report-include",
       },
       {
         label: "Report alternatives",
-        href: "/resources/ai-search-audit-alternatives",
+        href: "/resources/visibility-report-alternatives",
       },
     ],
   },
@@ -2995,7 +2996,7 @@ export const resourceArticles: ResourceArticle[] = [
         label: "AI Search Readiness Checklist",
         href: "/resources/ai-search-readiness-checklist",
       },
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
       { label: "Visibility System", href: "/visibility-system" },
     ],
   },
@@ -3092,7 +3093,7 @@ export const resourceArticles: ResourceArticle[] = [
     ],
     relatedLinks: [
       { label: "Visibility System", href: "/visibility-system" },
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
       { label: "CiviveOS", href: "/civive-os" },
     ],
   },
@@ -3197,7 +3198,7 @@ export const resourceArticles: ResourceArticle[] = [
       },
     ],
     relatedLinks: [
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
       { label: "Visibility System", href: "/visibility-system" },
       {
         label: "AI Search Implementation Plan",
@@ -3207,7 +3208,7 @@ export const resourceArticles: ResourceArticle[] = [
     ],
   },
   {
-    slug: "ai-search-audit-for-home-service-businesses",
+    slug: "visibility-report-for-home-service-businesses",
     title: "Visibility Report for Home Service Businesses",
     description:
       "How HVAC, plumbing, roofing, cleaning, restoration, pest control, landscaping, and other home service companies should approach AI search readiness.",
@@ -3220,7 +3221,10 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "8 min read",
     summary:
       "Home service businesses need AI search readiness because buyers often ask urgent, local, problem-aware questions. The report should connect service clarity, service-area signals, proof, reviews, FAQs, schema, and fast response.",
-    primaryCta: { label: "Report my home service visibility", href: "/contact" },
+    primaryCta: {
+      label: "Report my home service visibility",
+      href: "/contact",
+    },
     secondaryCta: {
       label: "See all industries",
       href: "/industries",
@@ -3309,7 +3313,7 @@ export const resourceArticles: ResourceArticle[] = [
     ],
     relatedLinks: [
       { label: "Industries Civive serves", href: "/industries" },
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
       {
         label: "AI Search Readiness Checklist",
         href: "/resources/ai-search-readiness-checklist",
@@ -3438,7 +3442,7 @@ export const resourceArticles: ResourceArticle[] = [
         href: "/resources/ai-search-implementation-plan-service-businesses",
       },
       { label: "Visibility System", href: "/visibility-system" },
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
     ],
   },
   {
@@ -3541,7 +3545,7 @@ export const resourceArticles: ResourceArticle[] = [
       },
     ],
     relatedLinks: [
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
       { label: "Visibility System", href: "/visibility-system" },
       {
         label: "AI Search vs Local SEO",
@@ -3776,7 +3780,7 @@ export const resourceArticles: ResourceArticle[] = [
       },
       {
         label: "What the report includes",
-        href: "/resources/what-does-an-ai-search-audit-include",
+        href: "/resources/what-does-a-visibility-report-include",
       },
       {
         label: "Service page template",
@@ -3786,7 +3790,7 @@ export const resourceArticles: ResourceArticle[] = [
     ],
   },
   {
-    slug: "ai-search-audit-patterns-by-industry",
+    slug: "visibility-report-patterns-by-industry",
     title: "Visibility Report Patterns by Industry",
     description:
       "Common AI search report patterns for HVAC, plumbing, roofing, restoration, med spas, law firms, real estate teams, and other local service businesses.",
@@ -3900,10 +3904,10 @@ export const resourceArticles: ResourceArticle[] = [
     relatedLinks: [
       { label: "Prospecting report format", href: "/prospecting-report" },
       { label: "Industries Civive serves", href: "/industries" },
-      { label: "Visibility Report", href: "/ai-search-audit" },
+      { label: "Visibility Report", href: "/ai-search-report" },
       {
         label: "Home service report guide",
-        href: "/resources/ai-search-audit-for-home-service-businesses",
+        href: "/resources/visibility-report-for-home-service-businesses",
       },
       {
         label: "Google Business Profile readiness",
@@ -3946,9 +3950,8 @@ export const pageMeta = {
     description:
       "Civive Unlimited is an AI agency in Springfield, MO helping service businesses with AI automation, AI receptionists, missed-call recovery, CRM follow-up, websites, Google Business Profile optimization, AI search visibility, and CiviveOS.",
   },
-  audit: {
-    title:
-      "Visibility Report for Service Businesses | Civive Unlimited",
+  visibilityReport: {
+    title: "Visibility Report for Service Businesses | Civive Unlimited",
     description:
       "A practical Visibility Report for service businesses that need clearer public facts, service pages, schema, FAQs, Google profile alignment, and lead capture.",
   },

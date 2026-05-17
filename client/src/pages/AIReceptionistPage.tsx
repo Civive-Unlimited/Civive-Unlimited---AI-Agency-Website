@@ -122,7 +122,7 @@ const supportLinks = [
   {
     title: "Visibility Report",
     copy: "Use the report when the business needs more demand or clearer public signals before adding automation.",
-    href: "/ai-search-audit",
+    href: "/ai-search-report",
   },
   {
     title: "CiviveOS",
@@ -145,7 +145,10 @@ export default function AIReceptionistPage() {
           eyebrow="AI receptionist and missed-call recovery"
           title="Capture, qualify, and route service leads before they cool off."
           copy="An AI receptionist is the downstream conversion layer for service businesses. It helps answer, qualify, book, route, and follow up after a buyer finds the business through AI search, Google, referrals, calls, forms, or chat."
-          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
+          primaryCta={{
+            label: "Get Your Free Visibility Report",
+            href: "/contact",
+          }}
           secondaryCta={{
             label: "Explore CiviveOS",
             href: "/civive-os",

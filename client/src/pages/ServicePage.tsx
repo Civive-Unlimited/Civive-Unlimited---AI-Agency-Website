@@ -19,20 +19,16 @@ export default function ServicePage({ slug }: { slug?: string }) {
 
   const relatedServices = service.relatedSlugs
     .map(relatedSlug => getServicePage(relatedSlug))
-    .filter(
-      (related): related is ServicePageContent => related !== undefined
-    );
+    .filter((related): related is ServicePageContent => related !== undefined);
   const localAgencyAnchorBySlug: Record<string, string> = {
     "crm-lead-follow-up":
       "AI lead follow-up automation for Springfield service businesses",
-    "missed-call-recovery":
-      "missed-call recovery from a local AI agency",
+    "missed-call-recovery": "missed-call recovery from a local AI agency",
     "google-business-profile-optimization":
       "Springfield AI visibility and Google profile support",
     "website-design-service-businesses":
       "AI systems for Springfield service businesses",
-    "review-automation":
-      "local AI agency for review and follow-up systems",
+    "review-automation": "local AI agency for review and follow-up systems",
   };
   const localAgencyAnchor =
     localAgencyAnchorBySlug[service.slug] ?? "AI agency in Springfield, MO";
@@ -63,7 +59,7 @@ export default function ServicePage({ slug }: { slug?: string }) {
                 Civive Unlimited homepage
               </a>
               <a
-                href="/ai-search-audit"
+                href="/ai-search-report"
                 className="transition-colors hover:text-white"
               >
                 Visibility Report
@@ -132,15 +128,15 @@ export default function ServicePage({ slug }: { slug?: string }) {
                 </p>
               </a>
               <a
-                href="/ai-search-audit"
+                href="/ai-search-report"
                 className="group border-y border-white/[0.08] py-6 transition-colors hover:border-white/[0.22]"
               >
                 <h2 className="text-xl font-semibold text-white/92 group-hover:text-white">
                   Visibility Report
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-white/58">
-                  Use the report to find the right fix order before building more
-                  pages or automation.
+                  Use the report to find the right fix order before building
+                  more pages or automation.
                 </p>
               </a>
               {relatedServices.map(related => (
@@ -192,7 +188,7 @@ export default function ServicePage({ slug }: { slug?: string }) {
           primaryCta={{ label: service.primaryCta, href: "/contact" }}
           secondaryCta={{
             label: "Read the report page",
-            href: "/ai-search-audit",
+            href: "/ai-search-report",
           }}
         />
       </AuthorityShell>

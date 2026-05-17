@@ -8,18 +8,21 @@ const footerGroups = [
     title: "Report",
     links: [
       {
-        href: "/services/ai-search-visibility-audit",
+        href: "/services/visibility-report",
         label: "Visibility Report",
       },
-      { href: "/ai-search-audit", label: "Report details" },
-      { href: site.visibilityReportRequestUrl, label: "Free visibility report" },
+      { href: "/ai-search-report", label: "Report details" },
+      {
+        href: site.visibilityReportRequestUrl,
+        label: "Free visibility report",
+      },
       { href: "/contact", label: "Contact Civive" },
       {
-        href: "/resources/what-does-an-ai-search-audit-include",
+        href: "/resources/what-does-a-visibility-report-include",
         label: "What the report includes",
       },
       {
-        href: "/resources/ai-search-audit-cost",
+        href: "/resources/visibility-report-cost",
         label: "AI search report cost",
       },
     ],
@@ -102,9 +105,9 @@ export default function Footer() {
             </div>
 
             <p className="mt-5 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
-              {footerDescription} Built to make your website, Google
-              profile, reviews, schema, and lead capture easier for buyers and
-              AI tools to understand.
+              {footerDescription} Built to make your website, Google profile,
+              reviews, schema, and lead capture easier for buyers and AI tools
+              to understand.
             </p>
 
             <div className="mt-5 grid gap-3 text-sm text-muted-foreground">
@@ -175,7 +178,9 @@ export default function Footer() {
           <p>
             &copy; {currentYear} {site.name}. All rights reserved.
           </p>
-          <p>AI Search Visibility for Service Businesses - {site.serviceArea}</p>
+          <p>
+            AI Search Visibility for Service Businesses - {site.serviceArea}
+          </p>
         </div>
       </div>
     </footer>

@@ -14,7 +14,7 @@ const whatCiviveDoes = [
   {
     title: "AI search visibility",
     copy: "Make the business easier for Google, Maps, ChatGPT, Gemini, Perplexity, and buyers to understand.",
-    href: "/ai-search-audit",
+    href: "/ai-search-report",
   },
   {
     title: "AI automation",
@@ -64,7 +64,7 @@ const workWithCiviveOptions = [
     title: "Set Up + Handoff",
     copy: "Civive can set up the core visibility, follow-up, receptionist, review, and automation systems, then show you or your team how to use them. This is for owners who want help getting everything in place but still want control of the system after launch.",
     cta: "Start With an Report",
-    href: "/ai-search-audit",
+    href: "/ai-search-report",
   },
   {
     title: "CiviveOS",
@@ -217,10 +217,7 @@ const credibility = [
 export default function AIAgencySpringfieldPage() {
   return (
     <>
-      <Seo
-        {...pageMeta.aiAgencySpringfield}
-        path="/ai-agency-springfield-mo"
-      />
+      <Seo {...pageMeta.aiAgencySpringfield} path="/ai-agency-springfield-mo" />
       <AuthorityShell>
         <PageHero
           eyebrow="Springfield AI agency"
@@ -251,9 +248,9 @@ export default function AIAgencySpringfieldPage() {
               <p>Civive supports all three.</p>
               <p>
                 We can help build the visibility, follow-up, receptionist,
-                website, review, and automation systems for you, set them up
-                and show your team how to use them, or give you CiviveOS so you
-                can work through the system yourself.
+                website, review, and automation systems for you, set them up and
+                show your team how to use them, or give you CiviveOS so you can
+                work through the system yourself.
               </p>
               <p>
                 The goal is simple: get found, respond faster, stop losing
@@ -327,15 +324,15 @@ export default function AIAgencySpringfieldPage() {
               </div>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 <a
-                  href="/ai-search-audit"
+                  href="/ai-search-report"
                   className="group border-y border-white/[0.08] py-6 transition-colors hover:border-white/[0.22]"
                 >
                   <h3 className="text-xl font-semibold text-white/92 group-hover:text-white">
                     Visibility Report
                   </h3>
                   <p className="mt-3 text-sm leading-6 text-white/58">
-                    Find the signals that make your business easier or harder
-                    to recommend.
+                    Find the signals that make your business easier or harder to
+                    recommend.
                   </p>
                 </a>
                 <a

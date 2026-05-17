@@ -99,7 +99,7 @@ function AuthorityBreadcrumbs({
 }
 
 function relatedActionLabel(path: string, title: string) {
-  if (path === "/ai-search-audit") return "Read the Visibility Report";
+  if (path === "/ai-search-report") return "Read the Visibility Report";
   if (path === "/visibility-system") return "Explore the visibility system";
   if (path === "/civive-os") return "Explore CiviveOS";
   if (path === "/civive-os-offer") return "Compare CiviveOS plans";

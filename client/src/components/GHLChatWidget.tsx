@@ -61,7 +61,7 @@ type SpeechRecognitionConstructor = new () => SpeechRecognitionInstance;
 type ChatCta = {
   label: string;
   href: string;
-  icon: "audit" | "call" | "text" | "book";
+  icon: "report" | "call" | "text" | "book";
 };
 
 type ChatMessage = {
@@ -80,7 +80,7 @@ const initialMessages: ChatMessage[] = [
       {
         label: "Free report",
         href: site.visibilityReportRequestUrl,
-        icon: "audit",
+        icon: "report",
       },
       {
         label: "Text Civive",
@@ -99,9 +99,9 @@ const promptChips = [
 ];
 
 const iconByCta: Record<ChatCta["icon"], typeof Search> = {
-  audit: Search,
   book: CalendarCheck2,
   call: PhoneCall,
+  report: Search,
   text: MessageCircle,
 };
 
@@ -139,7 +139,7 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
         {
           label: "Missed-call recovery",
           href: "/services/missed-call-recovery",
-          icon: "audit",
+          icon: "report",
         },
         { label: `Call ${site.phone}`, href: site.phoneHref, icon: "call" },
       ],
@@ -153,7 +153,7 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
         {
           label: "AI receptionist",
           href: "/services/ai-receptionist",
-          icon: "audit",
+          icon: "report",
         },
         { label: "Book a review", href: site.reviewBookingUrl, icon: "book" },
       ],
@@ -164,8 +164,12 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
     return {
       text: "The cleanest starting point is the report because it shows whether the next paid work should be visibility cleanup, website/service pages, Google profile work, missed-call recovery, or CiviveOS setup.",
       ctas: [
-        { label: "CiviveOS plans", href: "/civive-os-offer", icon: "audit" },
-        { label: "Free report", href: site.visibilityReportRequestUrl, icon: "book" },
+        { label: "CiviveOS plans", href: "/civive-os-offer", icon: "report" },
+        {
+          label: "Free report",
+          href: site.visibilityReportRequestUrl,
+          icon: "book",
+        },
       ],
     };
   }
@@ -177,9 +181,13 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
         {
           label: "GBP optimization",
           href: "/services/google-business-profile-optimization",
-          icon: "audit",
+          icon: "report",
         },
-        { label: "Free report", href: site.visibilityReportRequestUrl, icon: "book" },
+        {
+          label: "Free report",
+          href: site.visibilityReportRequestUrl,
+          icon: "book",
+        },
       ],
     };
   }
@@ -191,23 +199,35 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
         {
           label: "Schema guide",
           href: "/resources/schema-for-ai-search-local-businesses",
-          icon: "audit",
+          icon: "report",
         },
-        { label: "Free report", href: site.visibilityReportRequestUrl, icon: "book" },
+        {
+          label: "Free report",
+          href: site.visibilityReportRequestUrl,
+          icon: "book",
+        },
       ],
     };
   }
 
-  if (/(chatgpt|gemini|perplexity|grok|ai search|find|found|show up|rank|visibility|recommend)/.test(lower)) {
+  if (
+    /(chatgpt|gemini|perplexity|grok|ai search|find|found|show up|rank|visibility|recommend)/.test(
+      lower
+    )
+  ) {
     return {
       text: "AI search visibility starts with whether public systems can understand who the business is, what it does, where it works, why it should be trusted, and how a buyer should take the next step.",
       ctas: [
         {
           label: "Visibility Report",
-          href: "/ai-search-audit",
-          icon: "audit",
+          href: "/ai-search-report",
+          icon: "report",
         },
-        { label: "Free report", href: site.visibilityReportRequestUrl, icon: "book" },
+        {
+          label: "Free report",
+          href: site.visibilityReportRequestUrl,
+          icon: "book",
+        },
       ],
     };
   }
@@ -215,7 +235,11 @@ function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
   return {
     text: "Start with the business goal: get found, get called, or get booked. Civive can inspect the public footprint, identify the highest-leverage gap, and map the next fix without inventing proof or adding noise.",
     ctas: [
-      { label: "Free report", href: site.visibilityReportRequestUrl, icon: "audit" },
+      {
+        label: "Free report",
+        href: site.visibilityReportRequestUrl,
+        icon: "report",
+      },
       { label: `Call ${site.phone}`, href: site.phoneHref, icon: "call" },
     ],
   };
@@ -327,7 +351,9 @@ export default function GHLChatWidget() {
     };
 
     recognition.onerror = () => {
-      setVoiceStatus("I could not hear that clearly. Type it or try the mic again.");
+      setVoiceStatus(
+        "I could not hear that clearly. Type it or try the mic again."
+      );
       setIsListening(false);
     };
 
@@ -454,7 +480,10 @@ export default function GHLChatWidget() {
                   aria-label="Ask Civive AI"
                 />
                 <div className="flex items-center justify-between gap-3">
-                  <p className="min-h-5 text-xs text-white/42" aria-live="polite">
+                  <p
+                    className="min-h-5 text-xs text-white/42"
+                    aria-live="polite"
+                  >
                     {voiceStatus ?? " "}
                   </p>
                   <div className="flex items-center gap-2">

@@ -45,7 +45,7 @@ const implementationSequence = [
   {
     title: "Diagnose the weak signal",
     copy: "Use the report to identify whether the issue is entity clarity, service depth, local proof, schema, reviews, or the lead path.",
-    href: "/ai-search-audit",
+    href: "/ai-search-report",
   },
   {
     title: "Clarify the money pages",
@@ -84,7 +84,7 @@ const connectedPages = [
   {
     title: "Visibility Report",
     copy: "Start here when the weak signals need to be diagnosed and prioritized.",
-    href: "/ai-search-audit",
+    href: "/ai-search-report",
   },
   {
     title: "CiviveOS",
@@ -117,8 +117,11 @@ export default function VisibilitySystemPage() {
           eyebrow="AI Search Visibility System"
           title="AI Search Visibility System for service businesses that need cleaner signals and better lead capture."
           copy="The report finds the weak signals. The visibility system fixes them through clearer messaging, service structure, public proof, schema-ready content, internal links, and a cleaner lead path."
-          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
-          secondaryCta={{ label: "See the report", href: "/ai-search-audit" }}
+          primaryCta={{
+            label: "Get Your Free Visibility Report",
+            href: "/contact",
+          }}
+          secondaryCta={{ label: "See the report", href: "/ai-search-report" }}
         >
           <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
             {visibilitySystemLayers.map((layer, index) => (

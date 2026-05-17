@@ -9,15 +9,15 @@
     "build:client": "vite build",
     "build:ssr": "vite build --ssr src/entry-server.tsx --outDir ../dist/ssr",
     "prerender": "node scripts/prerender.mjs",
-    "audit:ai-search": "node scripts/audit-ai-search-readiness.mjs",
-    "audit:seo-links": "node scripts/audit-ai-search-readiness.mjs",
-    "audit:seo-guardrails": "node scripts/audit-seo-guardrails.mjs",
-    "audit:seo-live": "node scripts/audit-live-seo-smoke.mjs",
-    "audit:lead-contract": "node scripts/lead-api-contract-smoke.mjs",
-    "audit:track-contract": "node scripts/track-api-contract-smoke.mjs",
+    "check:ai-search": "node scripts/check-ai-search-readiness.mjs",
+    "check:seo-links": "node scripts/check-ai-search-readiness.mjs",
+    "check:seo-guardrails": "node scripts/check-seo-guardrails.mjs",
+    "check:seo-live": "node scripts/check-live-seo-smoke.mjs",
+    "check:lead-contract": "node scripts/lead-api-contract-smoke.mjs",
+    "check:track-contract": "node scripts/track-api-contract-smoke.mjs",
     "submit:indexnow": "node scripts/submit-indexnow.mjs",
     "submit:indexnow:dry": "node scripts/submit-indexnow.mjs --dry-run --skip-key-check",
-    "release:seo": "pnpm run build && pnpm run audit:ai-search && pnpm run audit:seo-guardrails && pnpm run audit:lead-contract && pnpm run audit:track-contract",
+    "release:seo": "pnpm run build && pnpm run check:ai-search && pnpm run check:seo-guardrails && pnpm run check:lead-contract && pnpm run check:track-contract",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "format": "prettier --write ."
@@ -86,8 +86,7 @@
     "tsx": "^4.19.1",
     "tw-animate-css": "^1.4.0",
     "typescript": "5.6.3",
-    "vite": "^7.3.3",
-    "vite-plugin-manus-runtime": "^0.0.57"
+    "vite": "^7.3.3"
   },
   "packageManager": "pnpm@10.33.4",
   "pnpm": {

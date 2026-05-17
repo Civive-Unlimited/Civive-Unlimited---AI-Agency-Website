@@ -183,7 +183,7 @@ export default async function handler(req, res) {
 
     return sendJson(res, 200, {
       ok: true,
-      message: "Your AI Search Audit request was sent.",
+      message: "Your Visibility Report request was sent.",
       contactId: result.contactId,
       opportunityId: result.opportunityId,
       warnings: result.warnings,

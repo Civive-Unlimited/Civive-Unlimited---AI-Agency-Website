@@ -15,7 +15,8 @@ const springfieldProblems = [
     copy: "Owners can show up when someone already knows them, but lose demand when buyers search by service, area, problem, or urgency.",
   },
   {
-    title: "The Google Business Profile and website do not reinforce each other",
+    title:
+      "The Google Business Profile and website do not reinforce each other",
     copy: "Categories, services, descriptions, contact paths, and local language need to match so Google, Maps, and buyers get the same signal.",
   },
   {
@@ -63,7 +64,10 @@ export default function SpringfieldServiceAreaPage() {
           eyebrow="Springfield, Missouri"
           title="AI Search Visibility and Lead Automation for Springfield Service Businesses"
           copy="Civive Unlimited helps Springfield service businesses make their website, Google Business Profile, service pages, reviews, schema, calls, forms, booking, and follow-up easier for buyers and AI tools to understand."
-          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
+          primaryCta={{
+            label: "Get Your Free Visibility Report",
+            href: "/contact",
+          }}
           secondaryCta={{ label: "Book a Call", href: "/contact" }}
         >
           <div className="border-y border-white/[0.08] py-7">
@@ -78,7 +82,7 @@ export default function SpringfieldServiceAreaPage() {
                 Civive Unlimited
               </a>
               <a
-                href="/ai-search-audit"
+                href="/ai-search-report"
                 className="transition-colors hover:text-white"
               >
                 Visibility Report

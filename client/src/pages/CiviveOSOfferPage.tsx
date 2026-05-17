@@ -31,7 +31,7 @@ const decisionChecks = [
   {
     title: "Should visibility be fixed first?",
     copy: "If the business is not getting enough qualified demand, start with the Visibility Report before buying a larger operating base.",
-    href: "/ai-search-audit",
+    href: "/ai-search-report",
   },
 ];
 
@@ -75,7 +75,7 @@ const supportLinks = [
   {
     title: "Visibility Report",
     copy: "Use the report first when demand, public facts, or search visibility are the bigger constraint.",
-    href: "/ai-search-audit",
+    href: "/ai-search-report",
   },
 ];
 
@@ -244,8 +244,8 @@ export default function CiviveOSOfferPage() {
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/64">
               If you already know the business needs a cleaner operating base,
-              compare the plans above. If the biggest leak is unclear, request
-              a visibility report conversation first.
+              compare the plans above. If the biggest leak is unclear, request a
+              visibility report conversation first.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <a

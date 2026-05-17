@@ -87,7 +87,7 @@ const decisionPath = [
   {
     title: "Start with the report when demand is unclear",
     copy: "If the public footprint is vague, the site is thin, or the business does not know why AI or Google would recommend it, diagnose the visibility problem first.",
-    href: "/ai-search-audit",
+    href: "/ai-search-report",
   },
   {
     title: "Use the visibility system when the public signals need cleanup",
@@ -109,7 +109,7 @@ const supportLinks = [
   {
     title: "Visibility Report",
     copy: "Diagnose whether the first bottleneck is demand, clarity, trust, or response.",
-    href: "/ai-search-audit",
+    href: "/ai-search-report",
   },
   {
     title: "AI Search Implementation Plan",
@@ -138,15 +138,15 @@ export default function CiviveOSPage() {
           }}
           secondaryCta={{
             label: "Start with Visibility Report",
-            href: "/ai-search-audit",
+            href: "/ai-search-report",
           }}
         >
           <div className="border-y border-white/[0.08] py-7">
             <p className="homepage-eyebrow">Direct answer</p>
             <div className="mt-5 space-y-4 text-sm leading-6 text-white/72">
               <p>
-                Use CiviveOS when the business already gets calls, forms,
-                chats, or booking requests and the main leak is slow response,
+                Use CiviveOS when the business already gets calls, forms, chats,
+                or booking requests and the main leak is slow response,
                 scattered handoff, weak review movement, or no clear follow-up.
               </p>
               <p>

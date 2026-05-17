@@ -7,7 +7,7 @@ const DEFAULT_NEW_LEAD_STAGE_ID = "9c9f4f77-658f-4c67-8143-fee9604b4ac8";
 
 const WEBSITE_LEAD_TAGS = [
   "website-lead",
-  "ai-search-audit",
+  "visibility-report",
   "civive-unlimited",
 ];
 const DRY_RUN_CONTACT_ID = "dry-run-contact-id";
@@ -110,7 +110,7 @@ function buildContactPayload(lead, config) {
     email: lead.email,
     phone: lead.phone || undefined,
     companyName: lead.companyName,
-    source: "Civive website - AI Search Audit",
+    source: "Civive website - Visibility Report",
   };
 }
 
@@ -120,7 +120,7 @@ function buildOpportunityPayload(contactId, lead, config) {
     contactId,
     pipelineId: config.pipelineId,
     pipelineStageId: config.pipelineStageId,
-    name: `${lead.companyName} - AI Search Audit`,
+    name: `${lead.companyName} - Visibility Report`,
     status: "open",
     monetaryValue: 0,
     source: "Civive website",
@@ -148,7 +148,7 @@ export function validateWebsiteLead(input) {
       input.sourcePage || input.source_page || input.page,
       300
     ),
-    offer: cleanString(input.offer || "ai-search-readiness-audit", 120),
+    offer: cleanString(input.offer || "ai-search-visibility-report", 120),
     honey: cleanString(input._honey || input.honey, 120),
   };
 
@@ -172,7 +172,7 @@ export function validateWebsiteLead(input) {
 
 function buildLeadNote(lead) {
   const lines = [
-    "Website AI Search Audit request",
+    "Website Visibility Report request",
     "",
     `Name: ${lead.fullName}`,
     `Business: ${lead.companyName}`,

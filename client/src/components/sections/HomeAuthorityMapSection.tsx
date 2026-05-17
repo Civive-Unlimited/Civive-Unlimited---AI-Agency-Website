@@ -15,7 +15,7 @@ const authorityPaths = [
     title: "Diagnose the visibility problem",
     eyebrow: "Report",
     copy: "Use the Visibility Report when the business needs a fix order for public facts, services, reviews, FAQs, schema, links, and lead capture.",
-    href: "/services/ai-search-visibility-audit",
+    href: "/services/visibility-report",
     cta: "Read the report path",
   },
   {

@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import AIReceptionistPage from "@/pages/AIReceptionistPage";
 import AIAgencySpringfieldPage from "@/pages/AIAgencySpringfieldPage";
-import AuditPage from "@/pages/AuditPage";
+import VisibilityReportPage from "@/pages/VisibilityReportPage";
 import BuildInPublicPage from "@/pages/BuildInPublicPage";
 import ContactPage from "@/pages/ContactPage";
 import CiviveOSPage from "@/pages/CiviveOSPage";
@@ -47,7 +47,7 @@ function Router() {
         path={"/ai-agency-springfield-mo"}
         component={AIAgencySpringfieldPage}
       />
-      <Route path={"/ai-search-audit"} component={AuditPage} />
+      <Route path={"/ai-search-report"} component={VisibilityReportPage} />
       <Route
         path={"/free-visibility-report"}
         component={FreeVisibilityReportPage}

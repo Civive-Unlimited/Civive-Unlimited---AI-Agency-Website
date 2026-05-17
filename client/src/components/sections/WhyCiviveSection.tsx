@@ -59,7 +59,7 @@ export default function WhyCiviveSection() {
               </p>
 
               <a
-                href="/ai-search-audit"
+                href="/ai-search-report"
                 className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
               >
                 Get the visibility report

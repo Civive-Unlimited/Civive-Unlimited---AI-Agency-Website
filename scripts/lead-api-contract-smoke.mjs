@@ -20,7 +20,7 @@ const validLeadPayload = {
   message:
     "We want AI assistants and local buyers to understand our emergency HVAC service areas.",
   smsConsent: true,
-  offer: "ai-search-readiness-audit",
+  offer: "ai-search-visibility-report",
   sourcePage: "https://www.civiveunlimited.com/contact",
 };
 
@@ -109,22 +109,22 @@ try {
   );
   assert(
     dryRun.payload.highLevelPreview.contactPayload.source ===
-      "Civive website - AI Search Audit",
+      "Civive website - Visibility Report",
     "HighLevel contact payload source should match the website offer."
   );
   assert(
-    dryRun.payload.highLevelPreview.tags.includes("ai-search-audit"),
-    "HighLevel preview should include the AI Search Audit tag."
+    dryRun.payload.highLevelPreview.tags.includes("visibility-report"),
+    "HighLevel preview should include the Visibility Report tag."
   );
   assert(
     dryRun.payload.highLevelPreview.note.includes(
-      "Website AI Search Audit request"
+      "Website Visibility Report request"
     ),
-    "HighLevel preview should include the audit note body."
+    "HighLevel preview should include the report note body."
   );
   assert(
     dryRun.payload.highLevelPreview.opportunityPayload.name ===
-      "Parker Heating and Air - AI Search Audit",
+      "Parker Heating and Air - Visibility Report",
     "HighLevel preview should include the expected opportunity name."
   );
   assert(

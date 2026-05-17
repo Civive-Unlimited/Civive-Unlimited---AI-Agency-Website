@@ -192,7 +192,7 @@ const industryRoutePaths = prerenderRoutes
   .filter(route => route.schemaKind === "industry")
   .map(route => route.path);
 const industrySupportHrefs = [
-  "/ai-search-audit",
+  "/ai-search-report",
   "/visibility-system",
   "/resources/ai-search-implementation-plan-service-businesses",
   "/ai-receptionist",
@@ -224,16 +224,20 @@ for (const route of prerenderRoutes) {
     continue;
   }
 
-  const routeHtmlPath =
+  const cleanUrlHtmlPath =
     route.path === "/"
       ? path.join(publicDir, "index.html")
       : path.join(publicDir, `${route.path.replace(/^\//, "")}.html`);
   if (route.path !== "/") {
     try {
-      await fs.access(routeHtmlPath);
-      issues.push(`${route.path}: duplicate .html output exists`);
+      const cleanUrlHtml = await fs.readFile(cleanUrlHtmlPath, "utf8");
+      if (cleanUrlHtml !== html) {
+        issues.push(
+          `${route.path}: clean URL .html output does not match index output`
+        );
+      }
     } catch {
-      // Expected: canonical index.html routes only.
+      issues.push(`${route.path}: missing clean URL .html output`);
     }
   }
 
@@ -527,7 +531,7 @@ for (const route of prerenderRoutes) {
 
 const homeHtml = await fs.readFile(routeOutputPath("/"), "utf8");
 for (const requiredHref of [
-  "/ai-search-audit",
+  "/ai-search-report",
   "/visibility-system",
   "/civive-os",
   "/civive-os-offer",
@@ -547,7 +551,7 @@ compareSets(
 );
 
 if (issues.length) {
-  console.error("AI search readiness audit failed:");
+  console.error("AI search readiness check failed:");
   for (const issue of issues) {
     console.error(`- ${issue}`);
   }
@@ -555,5 +559,5 @@ if (issues.length) {
 }
 
 console.log(
-  `AI search readiness audit passed for ${prerenderRoutes.length} prerendered routes.`
+  `AI search readiness check passed for ${prerenderRoutes.length} prerendered routes.`
 );

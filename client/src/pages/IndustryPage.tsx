@@ -33,12 +33,12 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
   const relatedIndustries = getRelatedIndustries(industry.slug);
   const industryFaqs = getIndustryFaqs(industry);
   const authorityBrief = getIndustryAuthorityBrief(industry);
-  const auditContactHref = `/contact?intent=ai-search-audit&industry=${industry.slug}`;
+  const auditContactHref = `/contact?intent=visibility-report&industry=${industry.slug}`;
 
   const industryImplementationLinks = [
     {
       title: "Start with the Visibility Report",
-      href: "/ai-search-audit",
+      href: "/ai-search-report",
       copy: `Use the report to inspect the ${industry.shortName} site's public facts, service pages, schema opportunities, Google profile alignment, reviews, FAQs, and contact path before creating more content.`,
     },
     {
@@ -80,7 +80,10 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
             </>
           }
           copy={industry.intro}
-          primaryCta={{ label: "Get Your Free Visibility Report", href: auditContactHref }}
+          primaryCta={{
+            label: "Get Your Free Visibility Report",
+            href: auditContactHref,
+          }}
           secondaryCta={{ label: "View all industries", href: "/industries" }}
         >
           <div className="border-y border-white/[0.08] py-7">

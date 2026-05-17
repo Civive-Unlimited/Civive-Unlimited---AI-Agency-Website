@@ -2,6 +2,12 @@ const MAX_EVENT_NAME_LENGTH = 80;
 const MAX_METADATA_KEYS = 30;
 const MAX_METADATA_VALUE_LENGTH = 500;
 const MAX_BODY_BYTES = 16 * 1024;
+const REDACTED_VALUE = "[redacted]";
+const SENSITIVE_KEY_PATTERN =
+  /(email|e-mail|phone|name|token|key|secret|password|pass|auth|code|session|cookie|contact|lead|message)/i;
+const EMAIL_PATTERN = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
+const PHONE_PATTERN =
+  /(?:\+?1[\s.-]?)?(?:\(?\d{3}\)?[\s.-]?)\d{3}[\s.-]?\d{4}\b/g;
 
 function sendJson(res, statusCode, payload) {
   res.statusCode = statusCode;
@@ -49,6 +55,37 @@ function cleanString(value, maxLength) {
   return String(value).trim().slice(0, maxLength);
 }
 
+function redactString(value, maxLength) {
+  return cleanString(value, maxLength)
+    .replace(EMAIL_PATTERN, REDACTED_VALUE)
+    .replace(PHONE_PATTERN, REDACTED_VALUE);
+}
+
+function cleanUrl(value, maxLength) {
+  const rawValue = cleanString(value, maxLength);
+  if (!rawValue) return "";
+
+  try {
+    const parsed = new URL(rawValue, "https://www.civiveunlimited.com");
+
+    for (const key of Array.from(parsed.searchParams.keys())) {
+      if (SENSITIVE_KEY_PATTERN.test(key)) {
+        parsed.searchParams.set(key, REDACTED_VALUE);
+      }
+    }
+
+    const cleaned = parsed.toString();
+    return rawValue.startsWith("http")
+      ? redactString(cleaned, maxLength)
+      : redactString(
+          `${parsed.pathname}${parsed.search}${parsed.hash}`,
+          maxLength
+        );
+  } catch {
+    return redactString(rawValue, maxLength);
+  }
+}
+
 function cleanMetadata(metadata) {
   if (!metadata || typeof metadata !== "object" || Array.isArray(metadata)) {
     return {};
@@ -59,7 +96,9 @@ function cleanMetadata(metadata) {
       .slice(0, MAX_METADATA_KEYS)
       .map(([key, value]) => [
         cleanString(key, 80),
-        cleanString(value, MAX_METADATA_VALUE_LENGTH),
+        SENSITIVE_KEY_PATTERN.test(key)
+          ? REDACTED_VALUE
+          : redactString(value, MAX_METADATA_VALUE_LENGTH),
       ])
       .filter(([key]) => key)
   );
@@ -92,9 +131,9 @@ export default async function handler(req, res) {
 
     const event = {
       eventName,
-      path: cleanString(body.path, 240),
-      url: cleanString(body.url, 500),
-      referrer: cleanString(body.referrer, 500),
+      path: cleanUrl(body.path, 240),
+      url: cleanUrl(body.url, 500),
+      referrer: cleanUrl(body.referrer, 500),
       metadata: cleanMetadata(body.metadata),
       receivedAt: new Date().toISOString(),
     };

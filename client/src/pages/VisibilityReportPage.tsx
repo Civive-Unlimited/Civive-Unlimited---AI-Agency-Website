@@ -7,7 +7,12 @@ import {
   SectionHeader,
 } from "@/components/AuthorityPage";
 import Seo from "@/components/Seo";
-import { auditChecks, auditPageFaqs, pageMeta, site } from "@/content/site";
+import {
+  pageMeta,
+  site,
+  visibilityReportChecks,
+  visibilityReportFaqs,
+} from "@/content/site";
 
 const processSteps = [
   {
@@ -94,17 +99,17 @@ const objectionHandlers = [
   {
     title: "Can I do this myself?",
     copy: "Some public-fact cleanup can be DIY. The report is useful when the issues overlap and you need a fix order before paying for content, schema, profile cleanup, or automation.",
-    href: "/resources/ai-search-audit-alternatives",
+    href: "/resources/visibility-report-alternatives",
   },
   {
     title: "What does it cost?",
     copy: "Cost depends on footprint depth, number of services and locations, public profile complexity, and whether implementation planning is included.",
-    href: "/resources/ai-search-audit-cost",
+    href: "/resources/visibility-report-cost",
   },
   {
     title: "How do I choose a provider?",
     copy: "Choose someone who can connect visibility signals to real business outcomes without fake reviews, unsupported schema, or guaranteed AI placement claims.",
-    href: "/resources/best-ai-search-audit-for-service-businesses",
+    href: "/resources/best-visibility-report-for-service-businesses",
   },
 ];
 
@@ -117,7 +122,7 @@ const supportResources = [
   {
     title: "What the report includes",
     copy: "A deeper breakdown of the surfaces and deliverables the report should inspect.",
-    href: "/resources/what-does-an-ai-search-audit-include",
+    href: "/resources/what-does-a-visibility-report-include",
   },
   {
     title: "AI search readiness checklist",
@@ -136,10 +141,10 @@ const supportResources = [
   },
 ];
 
-export default function AuditPage() {
+export default function VisibilityReportPage() {
   return (
     <>
-      <Seo {...pageMeta.audit} path="/ai-search-audit" />
+      <Seo {...pageMeta.visibilityReport} path="/ai-search-report" />
       <AuthorityShell>
         <PageHero
           eyebrow="Visibility Report"
@@ -150,7 +155,10 @@ export default function AuditPage() {
             </>
           }
           copy="A practical report for service businesses that want ChatGPT, Gemini, Perplexity, Grok, voice search, and real buyers to understand who they are, what they do, where they work, and why they should be trusted."
-          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
+          primaryCta={{
+            label: "Get Your Free Visibility Report",
+            href: "/contact",
+          }}
           secondaryCta={{
             label: "Explore the system",
             href: "/visibility-system",
@@ -159,8 +167,8 @@ export default function AuditPage() {
           <div className="border-y border-white/[0.08] py-7">
             <p className="homepage-eyebrow">Direct answer</p>
             <p className="mt-5 text-sm leading-6 text-white/72">
-              A Visibility Report finds the public signals that help or
-              hurt recommendation confidence, then turns them into a prioritized
+              A Visibility Report finds the public signals that help or hurt
+              recommendation confidence, then turns them into a prioritized
               implementation map for search, AI answers, and lead capture.
             </p>
             <div className="mt-7 grid gap-3 text-sm text-white/62 sm:grid-cols-3">
@@ -194,9 +202,7 @@ export default function AuditPage() {
                   <h2 className="text-sm font-medium uppercase tracking-[0.16em] text-white/42">
                     {item.title}
                   </h2>
-                  <p className="text-sm leading-6 text-white/72">
-                    {item.copy}
-                  </p>
+                  <p className="text-sm leading-6 text-white/72">{item.copy}</p>
                 </div>
               ))}
             </div>
@@ -221,7 +227,7 @@ export default function AuditPage() {
               title="The report looks where recommendation confidence is created."
               copy="Good businesses get skipped when their public evidence is hard to parse. The report turns that invisible problem into a visible fix list."
             />
-            <EditorialList items={auditChecks} />
+            <EditorialList items={visibilityReportChecks} />
           </div>
         </AuthoritySection>
 
@@ -263,7 +269,8 @@ export default function AuditPage() {
             <div>
               <p className="homepage-eyebrow">What it is</p>
               <h2 className="mt-5 text-3xl font-semibold text-white sm:text-4xl">
-                A visibility report for AI search, local search, and buyer trust.
+                A visibility report for AI search, local search, and buyer
+                trust.
               </h2>
               <p className="mt-5 text-base leading-7 text-white/64">
                 Civive reviews the business as a public entity: message,
@@ -316,7 +323,7 @@ export default function AuditPage() {
               copy="These questions are visible on-page and included in JSON-LD only because the answers are actually present here."
             />
             <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
-              {auditPageFaqs.map(faq => (
+              {visibilityReportFaqs.map(faq => (
                 <div key={faq.question} className="py-7">
                   <h2 className="text-xl font-medium text-white/92">
                     {faq.question}

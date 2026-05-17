@@ -1,7 +1,7 @@
 import {
   aiAgencySpringfieldFaqs,
   aiReceptionistFaqs,
-  auditPageFaqs,
+  visibilityReportFaqs,
   contactPageFaqs,
   civiveOsFaqs,
   civiveOsOfferFaqs,
@@ -83,7 +83,7 @@ export const prerenderRoutes: PrerenderRoute[] = [
       },
       {
         name: "AI search visibility",
-        path: "/ai-search-audit",
+        path: "/ai-search-report",
         description:
           "AI search visibility cleanup for business facts, services, Google profile alignment, schema, and lead capture.",
       },
@@ -126,11 +126,11 @@ export const prerenderRoutes: PrerenderRoute[] = [
     ],
   },
   {
-    path: "/ai-search-audit",
-    ...pageMeta.audit,
+    path: "/ai-search-report",
+    ...pageMeta.visibilityReport,
     schemaKind: "service",
     serviceName: site.primaryOffer,
-    faqItems: auditPageFaqs,
+    faqItems: visibilityReportFaqs,
   },
   {
     path: "/free-visibility-report",

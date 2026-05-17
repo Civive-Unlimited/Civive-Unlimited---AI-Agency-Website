@@ -30,7 +30,7 @@ const industryPillarLinks = [
     copy: "See how Civive supports Springfield service businesses with AI visibility, automation, receptionist setup, CRM follow up, and lead recovery.",
   },
   {
-    href: "/ai-search-audit",
+    href: "/ai-search-report",
     label: "Visibility Report",
     copy: "Diagnose the public facts, schema, FAQs, service pages, reviews, and lead path first.",
   },
@@ -70,8 +70,11 @@ export default function IndustriesPage() {
           eyebrow="Industries for AI Search Visibility"
           title="AI search visibility pages for local service businesses where trust and timing decide the call."
           copy="Civive helps service-based and trust-dependent businesses make their public signals easier for Google, ChatGPT, Gemini, Perplexity, Grok, maps, and buyers to understand. Each industry page explains the questions, proof, skipped-signal risks, and conversion paths that matter for that category."
-          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
-          secondaryCta={{ label: "See the report", href: "/ai-search-audit" }}
+          primaryCta={{
+            label: "Get Your Free Visibility Report",
+            href: "/contact",
+          }}
+          secondaryCta={{ label: "See the report", href: "/ai-search-report" }}
         >
           <div className="border-y border-white/[0.08] py-7">
             <p className="homepage-eyebrow">Direct answer</p>
