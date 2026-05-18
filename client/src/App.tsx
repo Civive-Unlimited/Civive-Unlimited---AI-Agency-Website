@@ -1,33 +1,42 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import AIReceptionistPage from "@/pages/AIReceptionistPage";
-import AIAgencySpringfieldPage from "@/pages/AIAgencySpringfieldPage";
-import VisibilityReportPage from "@/pages/VisibilityReportPage";
-import BuildInPublicPage from "@/pages/BuildInPublicPage";
-import ContactPage from "@/pages/ContactPage";
-import CiviveOSPage from "@/pages/CiviveOSPage";
-import CiviveOSOfferPage from "@/pages/CiviveOSOfferPage";
-import FAQPage from "@/pages/FAQPage";
-import FreeVisibilityReportPage from "@/pages/FreeVisibilityReportPage";
-import IndustriesPage from "@/pages/IndustriesPage";
-import IndustryPage from "@/pages/IndustryPage";
-import NotFound from "@/pages/NotFound";
-import ProspectingReportPage from "@/pages/ProspectingReportPage";
-import ResourceArticlePage from "@/pages/ResourceArticlePage";
-import ResourcesPage from "@/pages/ResourcesPage";
-import ServicePage from "@/pages/ServicePage";
-import SpringfieldServiceAreaPage from "@/pages/SpringfieldServiceAreaPage";
-import VisibilitySystemPage from "@/pages/VisibilitySystemPage";
+import { lazy, Suspense, useEffect } from "react";
 import { Route, Switch, useLocation } from "wouter";
-import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import GHLChatWidget from "./components/GHLChatWidget";
+
+const AIReceptionistPage = lazy(() => import("@/pages/AIReceptionistPage"));
+const AIAgencySpringfieldPage = lazy(
+  () => import("@/pages/AIAgencySpringfieldPage")
+);
+const VisibilityReportPage = lazy(() => import("@/pages/VisibilityReportPage"));
+const BuildInPublicPage = lazy(() => import("@/pages/BuildInPublicPage"));
+const ContactPage = lazy(() => import("@/pages/ContactPage"));
+const CiviveOSPage = lazy(() => import("@/pages/CiviveOSPage"));
+const CiviveOSOfferPage = lazy(() => import("@/pages/CiviveOSOfferPage"));
+const FAQPage = lazy(() => import("@/pages/FAQPage"));
+const FreeVisibilityReportPage = lazy(
+  () => import("@/pages/FreeVisibilityReportPage")
+);
+const IndustriesPage = lazy(() => import("@/pages/IndustriesPage"));
+const IndustryPage = lazy(() => import("@/pages/IndustryPage"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+const ProspectingReportPage = lazy(
+  () => import("@/pages/ProspectingReportPage")
+);
+const ResourceArticlePage = lazy(() => import("@/pages/ResourceArticlePage"));
+const ResourcesPage = lazy(() => import("@/pages/ResourcesPage"));
+const ServicePage = lazy(() => import("@/pages/ServicePage"));
+const SpringfieldServiceAreaPage = lazy(
+  () => import("@/pages/SpringfieldServiceAreaPage")
+);
+const VisibilitySystemPage = lazy(() => import("@/pages/VisibilitySystemPage"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Terms = lazy(() => import("./pages/Terms"));
 
 function RouteScrollReset() {
   const [location] = useLocation();
@@ -96,7 +105,9 @@ function App() {
           <Toaster />
           <Navigation />
           <RouteScrollReset />
-          <Router />
+          <Suspense fallback={null}>
+            <Router />
+          </Suspense>
           <Footer />
           <GHLChatWidget />
         </TooltipProvider>

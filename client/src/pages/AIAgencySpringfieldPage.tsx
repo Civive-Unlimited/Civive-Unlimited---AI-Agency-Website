@@ -63,7 +63,7 @@ const workWithCiviveOptions = [
   {
     title: "Set Up + Handoff",
     copy: "Civive can set up the core visibility, follow-up, receptionist, review, and automation systems, then show you or your team how to use them. This is for owners who want help getting everything in place but still want control of the system after launch.",
-    cta: "Start With an Report",
+    cta: "Start With a Report",
     href: "/ai-search-report",
   },
   {

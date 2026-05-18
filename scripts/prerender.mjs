@@ -580,7 +580,7 @@ async function writeCrawlFiles(routes) {
 const template = await fs.readFile(templatePath, "utf8");
 
 for (const route of prerenderRoutes) {
-  const html = injectApp(injectHead(template, route), render(route.path));
+  const html = injectApp(injectHead(template, route), await render(route.path));
 
   for (const outputPath of routeOutputPaths(route.path)) {
     await fs.mkdir(path.dirname(outputPath), { recursive: true });
