@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
+import { site } from "@/content/site";
 
 const processSteps = [
   {
@@ -25,13 +26,6 @@ const processSteps = [
       "If AI cannot clearly understand what you do, where you serve, and why customers trust you, it may recommend a competitor before you ever know the lead existed.",
   },
 ];
-
-const scrollToContact = () => {
-  const element = document.querySelector("#contact");
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
 
 export default function ResultsSection() {
   const ref = useRef(null);
@@ -77,7 +71,9 @@ export default function ResultsSection() {
                 <div
                   key={step.number}
                   className={`grid gap-5 py-6 sm:grid-cols-[5rem_minmax(0,1fr)] sm:gap-8 sm:py-8 ${
-                    index < processSteps.length - 1 ? "border-b border-white/[0.08]" : ""
+                    index < processSteps.length - 1
+                      ? "border-b border-white/[0.08]"
+                      : ""
                   }`}
                 >
                   <div>
@@ -106,16 +102,16 @@ export default function ResultsSection() {
             transition={{ duration: 0.45, delay: 0.16 }}
             className="mt-10 flex flex-col gap-4 border-t border-white/[0.08] pt-6 sm:flex-row sm:items-center sm:justify-between"
           >
-            <button
-              onClick={scrollToContact}
+            <a
+              href={site.visibilityReportRequestUrl}
               className="inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
             >
-              Check your AI visibility
+              Get your free visibility report
               <ArrowRight className="h-4 w-4" />
-            </button>
+            </a>
 
             <p className="text-sm text-white/58">
-              One audit. Clear fixes. No guessing.
+              One report. Clear fixes. No guessing.
             </p>
           </motion.div>
         </div>

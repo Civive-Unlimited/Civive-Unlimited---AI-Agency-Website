@@ -17,6 +17,48 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes("node_modules")) {
+            return undefined;
+          }
+
+          if (
+            /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/.test(id)
+          ) {
+            return "vendor-react";
+          }
+
+          if (id.includes("framer-motion")) {
+            return "vendor-motion";
+          }
+
+          if (id.includes("recharts") || /[\\/]node_modules[\\/]d3-/.test(id)) {
+            return "vendor-charts";
+          }
+
+          if (
+            id.includes("@radix-ui") ||
+            id.includes("lucide-react") ||
+            id.includes("cmdk") ||
+            id.includes("vaul") ||
+            id.includes("sonner") ||
+            id.includes("next-themes") ||
+            id.includes("react-hook-form") ||
+            id.includes("wouter") ||
+            id.includes("streamdown") ||
+            id.includes("input-otp") ||
+            id.includes("react-day-picker") ||
+            id.includes("embla-carousel-react")
+          ) {
+            return "vendor-ui";
+          }
+
+          return undefined;
+        },
+      },
+    },
   },
   server: {
     port: 3000,

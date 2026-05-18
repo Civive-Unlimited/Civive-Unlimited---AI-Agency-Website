@@ -1,13 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { useRef, useState } from "react";
-import { faqs } from "@/content/site";
+import { homepageFaqs } from "@/content/site";
 
 export default function FAQSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const homepageFaqs = faqs.slice(0, 8);
 
   return (
     <section
@@ -43,7 +42,11 @@ export default function FAQSection() {
                 initial={false}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.45, delay: 0.08 + index * 0.04 }}
-                className={isOpen ? "bg-[linear-gradient(180deg,rgba(18,12,28,0.1),rgba(10,12,20,0.02))]" : ""}
+                className={
+                  isOpen
+                    ? "bg-[linear-gradient(180deg,rgba(18,12,28,0.1),rgba(10,12,20,0.02))]"
+                    : ""
+                }
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -88,7 +91,7 @@ export default function FAQSection() {
           transition={{ duration: 0.45, delay: 0.28 }}
           className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground"
         >
-          Have a business-specific visibility question? Bring it to the audit.
+          Have a business-specific visibility question? Bring it to the visibility report.
           We will walk through what is helping you, what is hurting you, and
           what to fix first.
         </motion.p>

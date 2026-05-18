@@ -25,13 +25,6 @@ const principles = [
   },
 ];
 
-const scrollToContact = () => {
-  const element = document.querySelector("#contact");
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
 export default function WhyCiviveSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -65,13 +58,13 @@ export default function WhyCiviveSection() {
                 options before anyone clicks.
               </p>
 
-              <button
-                onClick={scrollToContact}
+              <a
+                href="/ai-search-report"
                 className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
               >
-                Get the readiness audit
+                Get the visibility report
                 <ArrowRight className="h-4 w-4" />
-              </button>
+              </a>
             </motion.div>
 
             <motion.div
@@ -84,7 +77,9 @@ export default function WhyCiviveSection() {
                 <div
                   key={item.number}
                   className={`grid gap-4 py-6 sm:grid-cols-[4.5rem_minmax(0,1fr)] sm:gap-6 sm:py-7 ${
-                    index < principles.length - 1 ? "border-b border-white/[0.08]" : ""
+                    index < principles.length - 1
+                      ? "border-b border-white/[0.08]"
+                      : ""
                   }`}
                 >
                   <p className="text-[0.72rem] uppercase tracking-[0.22em] text-white/40">

@@ -4,6 +4,14 @@ import { Router } from "wouter";
 import App from "./App";
 import { prerenderRoutes } from "./prerender-routes";
 
+export { buildAssetUrl, buildCanonicalUrl, seoConfig } from "./content/seo";
+export {
+  coreServices,
+  industries,
+  relatedIndustrySlugsBySlug,
+  servicePages,
+} from "./content/site";
+export { topicalPages } from "./content/topical-map";
 export { prerenderRoutes };
 
 export function render(path: string) {
@@ -11,7 +19,7 @@ export function render(path: string) {
     let html = "";
     const stream = new PassThrough();
 
-    stream.on("data", (chunk) => {
+    stream.on("data", chunk => {
       html += chunk.toString();
     });
     stream.on("end", () => resolve(html));
@@ -28,7 +36,7 @@ export function render(path: string) {
         onError(error) {
           reject(error);
         },
-      },
+      }
     );
   });
 }

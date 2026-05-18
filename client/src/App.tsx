@@ -1,29 +1,52 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { lazy, Suspense } from "react";
-import { Route, Switch } from "wouter";
+import { lazy, Suspense, useEffect } from "react";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import Home from "./pages/Home";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import GHLChatWidget from "./components/GHLChatWidget";
-import Home from "./pages/Home";
 
-const AIAgencySpringfieldPage = lazy(() => import("@/pages/AIAgencySpringfieldPage"));
-const AuditPage = lazy(() => import("@/pages/AuditPage"));
-const VisibilitySystemPage = lazy(() => import("@/pages/VisibilitySystemPage"));
-const IndustriesPage = lazy(() => import("@/pages/IndustriesPage"));
-const IndustryPage = lazy(() => import("@/pages/IndustryPage"));
-const FAQPage = lazy(() => import("@/pages/FAQPage"));
-const ResourcesPage = lazy(() => import("@/pages/ResourcesPage"));
+const AIReceptionistPage = lazy(() => import("@/pages/AIReceptionistPage"));
+const AIAgencySpringfieldPage = lazy(
+  () => import("@/pages/AIAgencySpringfieldPage")
+);
+const VisibilityReportPage = lazy(() => import("@/pages/VisibilityReportPage"));
 const BuildInPublicPage = lazy(() => import("@/pages/BuildInPublicPage"));
+const ContactPage = lazy(() => import("@/pages/ContactPage"));
 const CiviveOSPage = lazy(() => import("@/pages/CiviveOSPage"));
 const CiviveOSOfferPage = lazy(() => import("@/pages/CiviveOSOfferPage"));
-const ContactPage = lazy(() => import("@/pages/ContactPage"));
-const AIReceptionistPage = lazy(() => import("@/pages/AIReceptionistPage"));
+const FAQPage = lazy(() => import("@/pages/FAQPage"));
+const FreeVisibilityReportPage = lazy(
+  () => import("@/pages/FreeVisibilityReportPage")
+);
+const IndustriesPage = lazy(() => import("@/pages/IndustriesPage"));
+const IndustryPage = lazy(() => import("@/pages/IndustryPage"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+const ProspectingReportPage = lazy(
+  () => import("@/pages/ProspectingReportPage")
+);
+const ResourceArticlePage = lazy(() => import("@/pages/ResourceArticlePage"));
+const ResourcesPage = lazy(() => import("@/pages/ResourcesPage"));
+const ServicePage = lazy(() => import("@/pages/ServicePage"));
+const SpringfieldServiceAreaPage = lazy(
+  () => import("@/pages/SpringfieldServiceAreaPage")
+);
+const VisibilitySystemPage = lazy(() => import("@/pages/VisibilitySystemPage"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
-const NotFound = lazy(() => import("@/pages/NotFound"));
+
+function RouteScrollReset() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [location]);
+
+  return null;
+}
 
 function Router() {
   return (
@@ -33,13 +56,33 @@ function Router() {
         path={"/ai-agency-springfield-mo"}
         component={AIAgencySpringfieldPage}
       />
-      <Route path={"/ai-search-audit"} component={AuditPage} />
+      <Route path={"/ai-search-report"} component={VisibilityReportPage} />
+      <Route
+        path={"/free-visibility-report"}
+        component={FreeVisibilityReportPage}
+      />
+      <Route path={"/prospecting-report"}>
+        {() => <ProspectingReportPage />}
+      </Route>
+      <Route path={"/report/:slug"}>
+        {params => <ProspectingReportPage slug={params.slug} />}
+      </Route>
       <Route path={"/visibility-system"} component={VisibilitySystemPage} />
       <Route path={"/industries"} component={IndustriesPage} />
       <Route path={"/industries/:slug"}>
-        {(params) => <IndustryPage slug={params.slug} />}
+        {params => <IndustryPage slug={params.slug} />}
       </Route>
+      <Route path={"/services/:slug"}>
+        {params => <ServicePage slug={params.slug} />}
+      </Route>
+      <Route
+        path={"/service-areas/springfield-mo"}
+        component={SpringfieldServiceAreaPage}
+      />
       <Route path={"/faq"} component={FAQPage} />
+      <Route path={"/resources/:slug"}>
+        {params => <ResourceArticlePage slug={params.slug} />}
+      </Route>
       <Route path={"/resources"} component={ResourcesPage} />
       <Route path={"/build-in-public"} component={BuildInPublicPage} />
       <Route path={"/civive-os"} component={CiviveOSPage} />
@@ -61,6 +104,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Navigation />
+          <RouteScrollReset />
           <Suspense fallback={null}>
             <Router />
           </Suspense>

@@ -7,14 +7,14 @@ import {
   SectionHeader,
 } from "@/components/AuthorityPage";
 import Seo from "@/components/Seo";
-import { aiAgencySpringfieldFaqs, pageMeta } from "@/content/site";
+import { aiAgencySpringfieldFaqs, pageMeta, site } from "@/content/site";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const whatCiviveDoes = [
   {
     title: "AI search visibility",
     copy: "Make the business easier for Google, Maps, ChatGPT, Gemini, Perplexity, and buyers to understand.",
-    href: "/ai-search-audit",
+    href: "/ai-search-report",
   },
   {
     title: "AI automation",
@@ -24,27 +24,27 @@ const whatCiviveDoes = [
   {
     title: "AI receptionist setup",
     copy: "Help service businesses answer, qualify, route, and document more leads without pretending AI should handle everything.",
-    href: "/ai-receptionist",
+    href: "/services/ai-receptionist",
   },
   {
     title: "Missed-call recovery",
     copy: "Text back quickly after missed calls, capture the need, and keep the lead from going cold.",
-    href: "/visibility-system",
+    href: "/services/missed-call-recovery",
   },
   {
     title: "CRM and lead follow-up automation",
     copy: "Organize contacts, opportunities, reminders, estimate follow up, booking handoff, and pipeline movement.",
-    href: "/civive-os",
+    href: "/services/crm-lead-follow-up",
   },
   {
     title: "Google Business Profile optimization",
     copy: "Clean up categories, services, descriptions, photos, reviews, Q&A, service areas, and website alignment.",
-    href: "/ai-search-audit",
+    href: "/services/google-business-profile-optimization",
   },
   {
     title: "Service business websites",
     copy: "Build pages that explain who the business helps, where it works, what it does, why it is trusted, and how to contact it.",
-    href: "/visibility-system",
+    href: "/services/website-design-service-businesses",
   },
   {
     title: "Review automation and CiviveOS",
@@ -57,18 +57,18 @@ const workWithCiviveOptions = [
   {
     title: "Done For You AI Growth Systems",
     copy: "Civive can help build and improve the systems your business needs to get found, capture leads, answer faster, follow up, request reviews, and book more jobs. This is for service businesses that want the work handled instead of trying to figure everything out alone.",
-    cta: "Request an AI Growth Audit",
-    href: "/contact",
+    cta: "Request a Visibility Report",
+    href: site.visibilityReportRequestUrl,
   },
   {
     title: "Set Up + Handoff",
     copy: "Civive can set up the core visibility, follow-up, receptionist, review, and automation systems, then show you or your team how to use them. This is for owners who want help getting everything in place but still want control of the system after launch.",
-    cta: "Start With an Audit",
-    href: "/ai-search-audit",
+    cta: "Start With a Report",
+    href: "/ai-search-report",
   },
   {
     title: "CiviveOS",
-    copy: "CiviveOS gives service business owners the tools, audits, templates, workflows, and guidance to work through their visibility and lead systems themselves. This is for owners who want to subscribe to the system and use Civive's tools to improve their website, Google Business Profile, follow-up, reviews, and AI readiness.",
+    copy: "CiviveOS gives service business owners the tools, reports, templates, workflows, and guidance to work through their visibility and lead systems themselves. This is for owners who want to subscribe to the system and use Civive’s tools to improve their website, Google Business Profile, follow-up, reviews, and AI readiness.",
     cta: "Explore CiviveOS",
     href: "/civive-os",
   },
@@ -88,7 +88,7 @@ const automationItems = [
   {
     title: "Missed-call text back",
     copy: "Respond quickly when a local buyer calls and no one can answer.",
-    href: "/visibility-system",
+    href: "/services/missed-call-recovery",
   },
   {
     title: "Lead routing",
@@ -101,7 +101,7 @@ const automationItems = [
   {
     title: "Review requests and CRM reminders",
     copy: "Turn completed work and stale opportunities into clear next actions.",
-    href: "/civive-os",
+    href: "/services/crm-lead-follow-up",
   },
   {
     title: "Pipeline automation",
@@ -166,7 +166,7 @@ const bigCompanySystems = [
 
 const processSteps = [
   {
-    title: "Audit your visibility",
+    title: "Report your visibility",
     copy: "Start with the website, Google Business Profile, services, service area, content, schema, and lead path.",
   },
   {
@@ -217,17 +217,14 @@ const credibility = [
 export default function AIAgencySpringfieldPage() {
   return (
     <>
-      <Seo
-        {...pageMeta.aiAgencySpringfield}
-        path="/ai-agency-springfield-mo"
-      />
+      <Seo {...pageMeta.aiAgencySpringfield} path="/ai-agency-springfield-mo" />
       <AuthorityShell>
         <PageHero
           eyebrow="Springfield AI agency"
           title="AI Agency in Springfield, MO for Service Businesses"
           copy="Civive Unlimited is an AI agency in Springfield, Missouri helping service businesses get found online, capture more leads, respond faster, and book more jobs with AI search visibility, AI receptionists, missed-call recovery, CRM automation, websites, Google Business Profile improvements, and CiviveOS."
           primaryCta={{
-            label: "Request an AI Growth Audit",
+            label: "Request a Visibility Report",
             href: "/contact",
           }}
           secondaryCta={{
@@ -245,15 +242,15 @@ export default function AIAgencySpringfieldPage() {
               </h2>
               <p>
                 Some business owners want the work done for them. Some want the
-                system set up and handed over. Others want the tools, audits,
+                system set up and handed over. Others want the tools, reports,
                 templates, and workflows to run the system themselves.
               </p>
               <p>Civive supports all three.</p>
               <p>
                 We can help build the visibility, follow-up, receptionist,
-                website, review, and automation systems for you, set them up
-                and show your team how to use them, or give you CiviveOS so you
-                can work through the system yourself.
+                website, review, and automation systems for you, set them up and
+                show your team how to use them, or give you CiviveOS so you can
+                work through the system yourself.
               </p>
               <p>
                 The goal is simple: get found, respond faster, stop losing
@@ -327,15 +324,15 @@ export default function AIAgencySpringfieldPage() {
               </div>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 <a
-                  href="/ai-search-audit"
+                  href="/ai-search-report"
                   className="group border-y border-white/[0.08] py-6 transition-colors hover:border-white/[0.22]"
                 >
                   <h3 className="text-xl font-semibold text-white/92 group-hover:text-white">
-                    AI Search Visibility Audit
+                    Visibility Report
                   </h3>
                   <p className="mt-3 text-sm leading-6 text-white/58">
-                    Find the signals that make your business easier or harder
-                    to recommend.
+                    Find the signals that make your business easier or harder to
+                    recommend.
                   </p>
                 </a>
                 <a
@@ -387,8 +384,8 @@ export default function AIAgencySpringfieldPage() {
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
                 {[
                   ["/ai-receptionist", "AI receptionist"],
-                  ["/ai-receptionist", "AI receptionist setup"],
-                  ["/visibility-system", "Missed-call recovery"],
+                  ["/services/ai-receptionist", "AI receptionist setup"],
+                  ["/services/missed-call-recovery", "Missed-call recovery"],
                 ].map(([href, label]) => (
                   <a
                     key={href}
@@ -423,7 +420,7 @@ export default function AIAgencySpringfieldPage() {
               </div>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 <a
-                  href="/ai-search-audit"
+                  href="/services/google-business-profile-optimization"
                   className="group border-y border-white/[0.08] py-6 transition-colors hover:border-white/[0.22]"
                 >
                   <h3 className="text-xl font-semibold text-white/92 group-hover:text-white">
@@ -435,7 +432,7 @@ export default function AIAgencySpringfieldPage() {
                   </p>
                 </a>
                 <a
-                  href="/industries"
+                  href="/service-areas/springfield-mo"
                   className="group border-y border-white/[0.08] py-6 transition-colors hover:border-white/[0.22]"
                 >
                   <h3 className="text-xl font-semibold text-white/92 group-hover:text-white">
@@ -469,7 +466,7 @@ export default function AIAgencySpringfieldPage() {
                 ))}
               </div>
               <a
-                href="/visibility-system"
+                href="/services/website-design-service-businesses"
                 className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-white/78 transition-colors hover:text-white"
               >
                 Website design for service businesses
@@ -572,9 +569,9 @@ export default function AIAgencySpringfieldPage() {
 
         <FinalCta
           title="Ready to make your business easier to find and faster to respond?"
-          copy="Start with an AI Growth Audit. Civive will look at the public signals, lead path, follow up gaps, and the systems that can help turn more demand into booked jobs."
+          copy="Start with a Visibility Report. Civive will look at the public signals, lead path, follow up gaps, and the systems that can help turn more demand into booked jobs."
           primaryCta={{
-            label: "Request an AI Growth Audit",
+            label: "Request a Visibility Report",
             href: "/contact",
           }}
           secondaryCta={{

@@ -119,7 +119,7 @@ I want top-tier work, clean thinking, no slop, and no excuses.
   - Vite reads env files from the repo root via `envDir`; keep `.env` and related env files at the project root, not under `client/`.
   - Vite aliases `@` to `client/src`, `@shared` to `shared`, and `@assets` to `attached_assets`; preserve those imports when moving files.
 - Repo conventions:
-  - `client/public` is the source of truth for shipped static files, including the committed `__manus__/debug-collector.js`; do not edit generated files under `dist/` directly.
+  - `client/public` is the source of truth for shipped static files; do not ship temporary debug collectors, private session assets, or generated files under `dist/` directly.
   - `components.json` is configured for shadcn with `client/src/index.css` and `@/` aliases; keep generated UI work aligned to that setup.
   - `pnpm` uses a committed patch at `patches/wouter@3.7.1.patch`; if `wouter` changes, review and refresh the patch instead of dropping `patchedDependencies`.
 

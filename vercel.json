@@ -2,5 +2,91 @@
   "buildCommand": "pnpm install && pnpm run build",
   "outputDirectory": "dist/public",
   "framework": "vite",
-  "installCommand": "pnpm install"
+  "cleanUrls": true,
+  "installCommand": "pnpm install",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/ai-search-audit",
+      "destination": "https://www.civiveunlimited.com/ai-search-report",
+      "permanent": true
+    },
+    {
+      "source": "/services/ai-search-visibility-audit",
+      "destination": "https://www.civiveunlimited.com/services/visibility-report",
+      "permanent": true
+    },
+    {
+      "source": "/resources/ai-search-audit-cost",
+      "destination": "https://www.civiveunlimited.com/resources/visibility-report-cost",
+      "permanent": true
+    },
+    {
+      "source": "/resources/what-does-an-ai-search-audit-include",
+      "destination": "https://www.civiveunlimited.com/resources/what-does-a-visibility-report-include",
+      "permanent": true
+    },
+    {
+      "source": "/resources/ai-search-audit-alternatives",
+      "destination": "https://www.civiveunlimited.com/resources/visibility-report-alternatives",
+      "permanent": true
+    },
+    {
+      "source": "/resources/best-ai-search-audit-for-service-businesses",
+      "destination": "https://www.civiveunlimited.com/resources/best-visibility-report-for-service-businesses",
+      "permanent": true
+    },
+    {
+      "source": "/resources/ai-search-audit-for-home-service-businesses",
+      "destination": "https://www.civiveunlimited.com/resources/visibility-report-for-home-service-businesses",
+      "permanent": true
+    },
+    {
+      "source": "/resources/ai-search-audit-patterns-by-industry",
+      "destination": "https://www.civiveunlimited.com/resources/visibility-report-patterns-by-industry",
+      "permanent": true
+    },
+    {
+      "source": "/resources/ai-search-audit-examples-by-industry",
+      "destination": "https://www.civiveunlimited.com/resources/visibility-report-patterns-by-industry",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "civiveunlimited.com"
+        }
+      ],
+      "destination": "https://www.civiveunlimited.com/$1",
+      "permanent": true
+    }
+  ]
 }
