@@ -11,6 +11,9 @@ const WEBSITE_LEAD_TAGS = [
   "civive-unlimited",
 ];
 const DRY_RUN_CONTACT_ID = "dry-run-contact-id";
+const REDACTED_VALUE = "[redacted]";
+const SENSITIVE_QUERY_KEY_PATTERN =
+  /(email|e-mail|phone|name|token|key|secret|password|pass|auth|code|session|cookie|contact|lead|message)/i;
 
 function cleanString(value, maxLength = 500) {
   if (typeof value !== "string") return "";
@@ -20,6 +23,27 @@ function cleanString(value, maxLength = 500) {
 function cleanMultiline(value, maxLength = 1200) {
   if (typeof value !== "string") return "";
   return value.trim().replace(/\r\n/g, "\n").slice(0, maxLength);
+}
+
+function cleanSourcePage(value, maxLength = 300) {
+  const rawValue = cleanString(value, maxLength);
+  if (!rawValue) return "";
+
+  try {
+    const parsed = new URL(rawValue, "https://www.civiveunlimited.com");
+    for (const key of Array.from(parsed.searchParams.keys())) {
+      if (SENSITIVE_QUERY_KEY_PATTERN.test(key)) {
+        parsed.searchParams.set(key, REDACTED_VALUE);
+      }
+    }
+
+    const cleaned = rawValue.startsWith("http")
+      ? parsed.toString()
+      : `${parsed.pathname}${parsed.search}${parsed.hash}`;
+    return cleaned.slice(0, maxLength);
+  } catch {
+    return rawValue;
+  }
 }
 
 function splitName(fullName) {
@@ -144,7 +168,7 @@ export function validateWebsiteLead(input) {
     ),
     message: cleanMultiline(input.message, 1200),
     smsConsent: Boolean(input.smsConsent || input.sms_consent === "on"),
-    sourcePage: cleanString(
+    sourcePage: cleanSourcePage(
       input.sourcePage || input.source_page || input.page,
       300
     ),
@@ -314,19 +338,19 @@ export async function sendWebsiteLeadToHighLevel(lead, env = process.env) {
       config.token
     );
   } catch (error) {
-    sideEffects.warnings.push(`Tagging failed: ${error.message}`);
+    sideEffects.warnings.push("Tagging was delayed.");
   }
 
   try {
     sideEffects.note = await addContactNote(contactId, lead, config.token);
   } catch (error) {
-    sideEffects.warnings.push(`Contact note failed: ${error.message}`);
+    sideEffects.warnings.push("Contact note was delayed.");
   }
 
   try {
     sideEffects.opportunity = await createOpportunity(contactId, lead, config);
   } catch (error) {
-    sideEffects.warnings.push(`Opportunity creation failed: ${error.message}`);
+    sideEffects.warnings.push("Opportunity creation was delayed.");
   }
 
   return {
