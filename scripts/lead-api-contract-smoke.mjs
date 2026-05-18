@@ -91,7 +91,11 @@ try {
 
   const dryRun = await callLeadApi({
     headers: { "x-civive-lead-mode": "dry-run" },
-    body: validLeadPayload,
+    body: {
+      ...validLeadPayload,
+      sourcePage:
+        "https://www.civiveunlimited.com/contact?email=jordan@example.com&token=secret-token&utm_campaign=spring",
+    },
   });
   assert(dryRun.statusCode === 200, "Dry-run request should return 200.");
   assert(dryRun.payload.ok === true, "Dry-run request should be ok.");
@@ -121,6 +125,17 @@ try {
       "Website Visibility Report request"
     ),
     "HighLevel preview should include the report note body."
+  );
+  assert(
+    dryRun.payload.highLevelPreview.note.includes("email=%5Bredacted%5D"),
+    "HighLevel preview should redact sensitive source-page query values."
+  );
+  assert(
+    !dryRun.payload.highLevelPreview.note.includes("secret-token") &&
+      !dryRun.payload.highLevelPreview.note.includes(
+        "email=jordan@example.com"
+      ),
+    "HighLevel preview should not keep raw sensitive source-page query values."
   );
   assert(
     dryRun.payload.highLevelPreview.opportunityPayload.name ===
@@ -221,6 +236,7 @@ try {
         checked: [
           "authorized dry-run lead contract",
           "HighLevel payload preview without writes",
+          "sensitive source-page query redaction",
           "email validation",
           "malformed JSON handling",
           "oversized request rejection",

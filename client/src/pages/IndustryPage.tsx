@@ -33,7 +33,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
   const relatedIndustries = getRelatedIndustries(industry.slug);
   const industryFaqs = getIndustryFaqs(industry);
   const authorityBrief = getIndustryAuthorityBrief(industry);
-  const auditContactHref = `/contact?intent=visibility-report&industry=${industry.slug}`;
+  const reportContactHref = `/contact?intent=visibility-report&industry=${industry.slug}`;
 
   const industryImplementationLinks = [
     {
@@ -82,7 +82,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
           copy={industry.intro}
           primaryCta={{
             label: "Get Your Free Visibility Report",
-            href: auditContactHref,
+            href: reportContactHref,
           }}
           secondaryCta={{ label: "View all industries", href: "/industries" }}
         >
@@ -332,7 +332,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
           copy="The report starts with the real public signals already online, then turns the gaps into a priority map."
           primaryCta={{
             label: `Report my ${industry.shortName} visibility`,
-            href: auditContactHref,
+            href: reportContactHref,
           }}
           secondaryCta={{
             label: "Compare all industries",
