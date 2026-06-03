@@ -160,6 +160,16 @@ try {
     "HighLevel preview should include the expected opportunity name."
   );
   assert(
+    dryRun.payload.highLevelPreview.opportunityPayload.pipelineId ===
+      "9umBLYN4N3tKH4oNEVlx",
+    "HighLevel preview should default to the Visibility Report pipeline."
+  );
+  assert(
+    dryRun.payload.highLevelPreview.opportunityPayload.pipelineStageId ===
+      "b1093f36-c4cf-4aaa-aca5-23faa4b13911",
+    "HighLevel preview should default to the Report Needed stage."
+  );
+  assert(
     !("contactId" in dryRun.payload) && !("opportunityId" in dryRun.payload),
     "Dry-run response should not expose real contact or opportunity IDs."
   );

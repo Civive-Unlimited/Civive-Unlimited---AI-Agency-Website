@@ -2,8 +2,8 @@ const HIGHLEVEL_BASE_URL = "https://services.leadconnectorhq.com";
 const HIGHLEVEL_VERSION = "2021-07-28";
 
 const DEFAULT_LOCATION_ID = "FySiQXrk1tIwqcZOlnYG";
-const DEFAULT_PIPELINE_ID = "ZX4KLBVRUOAALqNuYNS5";
-const DEFAULT_NEW_LEAD_STAGE_ID = "9c9f4f77-658f-4c67-8143-fee9604b4ac8";
+const DEFAULT_PIPELINE_ID = "9umBLYN4N3tKH4oNEVlx";
+const DEFAULT_NEW_LEAD_STAGE_ID = "b1093f36-c4cf-4aaa-aca5-23faa4b13911";
 
 const WEBSITE_LEAD_TAGS = [
   "website-lead",
