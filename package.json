@@ -15,9 +15,10 @@
     "check:seo-live": "node scripts/check-live-seo-smoke.mjs",
     "check:lead-contract": "node scripts/lead-api-contract-smoke.mjs",
     "check:track-contract": "node scripts/track-api-contract-smoke.mjs",
+    "check:outbound-tracking": "node scripts/outbound-tracking-contract-smoke.mjs",
     "submit:indexnow": "node scripts/submit-indexnow.mjs",
     "submit:indexnow:dry": "node scripts/submit-indexnow.mjs --dry-run --skip-key-check",
-    "release:seo": "pnpm run build && pnpm run check:ai-search && pnpm run check:seo-guardrails && pnpm run check:lead-contract && pnpm run check:track-contract",
+    "release:seo": "pnpm run build && pnpm run check:ai-search && pnpm run check:seo-guardrails && pnpm run check:lead-contract && pnpm run check:track-contract && pnpm run check:outbound-tracking",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "format": "prettier --write ."

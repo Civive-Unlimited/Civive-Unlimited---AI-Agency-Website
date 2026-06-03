@@ -1,4 +1,7 @@
 import { Readable } from "node:stream";
+import fs from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 import leadHandler from "../api/lead.js";
 
 const envSnapshot = {
@@ -7,7 +10,16 @@ const envSnapshot = {
   CIVIVE_LEAD_DRY_RUN: process.env.CIVIVE_LEAD_DRY_RUN,
   CIVIVE_LEAD_DRY_RUN_TOKEN: process.env.CIVIVE_LEAD_DRY_RUN_TOKEN,
   LEAD_DRY_RUN_TOKEN: process.env.LEAD_DRY_RUN_TOKEN,
+  GHL_LOCATION_API_KEY: process.env.GHL_LOCATION_API_KEY,
+  GHL_LOCATION_ID: process.env.GHL_LOCATION_ID,
+  GHL_PIPELINE_ID: process.env.GHL_PIPELINE_ID,
+  GHL_PIPELINE_STAGE_ID: process.env.GHL_PIPELINE_STAGE_ID,
+  CIVIVE_LEAD_BACKUP_DIR: process.env.CIVIVE_LEAD_BACKUP_DIR,
+  CIVIVE_LEAD_BACKUP_WEBHOOK_URL: process.env.CIVIVE_LEAD_BACKUP_WEBHOOK_URL,
+  CIVIVE_LEAD_NOTIFICATION_WEBHOOK_URL:
+    process.env.CIVIVE_LEAD_NOTIFICATION_WEBHOOK_URL,
 };
+const fetchSnapshot = globalThis.fetch;
 
 const validLeadPayload = {
   fullName: "Jordan Parker",
@@ -84,10 +96,15 @@ async function callLeadApi({
 }
 
 try {
+  const backupDir = await fs.mkdtemp(
+    path.join(os.tmpdir(), "civive-lead-contract-")
+  );
+
   process.env.NODE_ENV = "test";
   delete process.env.VERCEL_ENV;
   delete process.env.CIVIVE_LEAD_DRY_RUN_TOKEN;
   delete process.env.LEAD_DRY_RUN_TOKEN;
+  process.env.CIVIVE_LEAD_BACKUP_DIR = backupDir;
 
   const dryRun = await callLeadApi({
     headers: { "x-civive-lead-mode": "dry-run" },
@@ -229,6 +246,96 @@ try {
     "Production dry-run without token should be rejected before any write path."
   );
 
+  process.env.NODE_ENV = "test";
+  delete process.env.VERCEL_ENV;
+  process.env.GHL_LOCATION_API_KEY = "test-token-without-location-access";
+  process.env.GHL_LOCATION_ID = "test-location";
+  process.env.GHL_PIPELINE_ID = "test-pipeline";
+  process.env.GHL_PIPELINE_STAGE_ID = "test-stage";
+  process.env.CIVIVE_LEAD_BACKUP_WEBHOOK_URL =
+    "https://hooks.example.test/lead-backup";
+  process.env.CIVIVE_LEAD_NOTIFICATION_WEBHOOK_URL =
+    "https://hooks.example.test/lead-notification";
+
+  const fetchCalls = [];
+  globalThis.fetch = async (url, options = {}) => {
+    fetchCalls.push({ url: String(url), options });
+
+    if (String(url).includes("services.leadconnectorhq.com")) {
+      return {
+        ok: false,
+        status: 403,
+        async text() {
+          return JSON.stringify({
+            message: "token does not have access to this location",
+          });
+        },
+      };
+    }
+
+    return {
+      ok: true,
+      status: 200,
+      async text() {
+        return JSON.stringify({ ok: true });
+      },
+    };
+  };
+
+  const externalFailureFallback = await callLeadApi({
+    body: validLeadPayload,
+  });
+  assert(
+    externalFailureFallback.statusCode === 202,
+    "External token/access failure should return accepted fallback status."
+  );
+  assert(
+    externalFailureFallback.payload.ok === true,
+    "External token/access failure should still return ok after backup capture."
+  );
+  assert(
+    externalFailureFallback.payload.message ===
+      "Your request was received. We'll review it and follow up.",
+    "External token/access failure should return the required fallback message."
+  );
+  assert(
+    externalFailureFallback.payload.leadCaptured === true,
+    "Fallback response should confirm lead capture."
+  );
+  assert(
+    externalFailureFallback.payload.externalApiStatus === "failed",
+    "Fallback response should mark the external API as failed."
+  );
+  assert(
+    fetchCalls.some(call =>
+      String(call.url).includes("hooks.example.test/lead-notification")
+    ),
+    "Owner notification webhook should be attempted before external fallback finishes."
+  );
+
+  const backupFile = path.join(backupDir, "visibility-report-leads.ndjson");
+  const backupLines = (await fs.readFile(backupFile, "utf8"))
+    .trim()
+    .split("\n")
+    .map(line => JSON.parse(line));
+  assert(
+    backupLines.some(line => line.submissionStatus === "received"),
+    "Lead backup should include a received record before external API routing."
+  );
+  assert(
+    backupLines.some(
+      line =>
+        line.submissionStatus === "received_external_failed" &&
+        line.externalApiStatus === "failed" &&
+        line.errorMessage.includes("CiviveOS token does not have access")
+    ),
+    "Lead backup should include a safe external failure record."
+  );
+  assert(
+    backupLines.every(line => !line.errorMessage.includes("test-token")),
+    "Backup error records must not expose token values."
+  );
+
   console.log(
     JSON.stringify(
       {
@@ -243,6 +350,10 @@ try {
           "SMS consent validation",
           "honeypot handling",
           "production dry-run authorization gate",
+          "external token/access failure fallback",
+          "pre-external local backup capture",
+          "owner notification webhook attempt",
+          "safe external error recording",
         ],
       },
       null,
@@ -250,5 +361,6 @@ try {
     )
   );
 } finally {
+  globalThis.fetch = fetchSnapshot;
   restoreEnv();
 }

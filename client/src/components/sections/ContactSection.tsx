@@ -44,12 +44,36 @@ const reportRequestSignals = [
   "Whether calls, forms, booking, or follow-up are leaking leads",
 ];
 
+const defaultConfirmationMessage =
+  "Your request was received. We'll review it and follow up.";
+const defaultFormErrorMessage = `Something went wrong. Please call or text Civive at ${site.phone}.`;
+
+function safeFormErrorMessage(result: unknown) {
+  if (!result || typeof result !== "object") return defaultFormErrorMessage;
+
+  const payload = result as { errors?: string[]; message?: string };
+  const message = payload.errors?.[0] || payload.message || "";
+
+  if (
+    /token|key|secret|authorization|permission|scope|highlevel|leadconnector|civiveos/i.test(
+      message
+    )
+  ) {
+    return defaultFormErrorMessage;
+  }
+
+  return message || defaultFormErrorMessage;
+}
+
 export default function ContactSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [smsConsent, setSmsConsent] = useState(false);
+  const [confirmationMessage, setConfirmationMessage] = useState(
+    defaultConfirmationMessage
+  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -100,12 +124,10 @@ export default function ContactSection() {
           status: response.status,
         });
         setIsSubmitted(true);
-        toast.success(
-          "Visibility Report request sent. We'll follow up soon.",
-          {
-            duration: 6000,
-          }
-        );
+        setConfirmationMessage(result?.message || defaultConfirmationMessage);
+        toast.success(result?.message || defaultConfirmationMessage, {
+          duration: 6000,
+        });
         form.reset();
         setSmsConsent(false);
       } else {
@@ -115,11 +137,7 @@ export default function ContactSection() {
           destination: "/api/lead",
           status: response.status,
         });
-        toast.error(
-          result?.errors?.[0] ||
-            result?.message ||
-            `Something went wrong. Please call or text Civive at ${site.phone}.`
-        );
+        toast.error(safeFormErrorMessage(result));
       }
     } catch {
       trackWebsiteEvent("form_submit_error", {
@@ -166,9 +184,10 @@ export default function ContactSection() {
           >
             <p className="homepage-eyebrow">What happens next</p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              A practical visibility report starts with the public evidence buyers and AI
-              systems can already see. The form routes the business details into
-              the lead system so the first follow-up can stay specific.
+              A practical visibility report starts with the public evidence
+              buyers and AI systems can already see. The form routes the
+              business details into the lead system so the first follow-up can
+              stay specific.
             </p>
 
             <div className="mt-8 space-y-3 border-t border-white/[0.08] pt-6">
@@ -222,9 +241,7 @@ export default function ContactSection() {
                       {item.value}
                     </a>
                   ) : (
-                    <p className="mt-1 text-sm text-foreground">
-                      {item.value}
-                    </p>
+                    <p className="mt-1 text-sm text-foreground">{item.value}</p>
                   )}
                 </div>
               ))}
@@ -247,8 +264,7 @@ export default function ContactSection() {
                   Visibility report request received
                 </h3>
                 <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-                  Your request is in. We will follow up soon and start with the
-                  highest-impact visibility signals first.
+                  {confirmationMessage}
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
@@ -455,9 +471,9 @@ export default function ContactSection() {
                         className="text-xs leading-relaxed text-muted-foreground"
                       >
                         By checking this box, I agree to receive SMS from Civive
-                        Unlimited about my visibility report request, appointments, and
-                        updates. Message frequency varies. Msg & data rates may
-                        apply. Reply STOP to opt out.{" "}
+                        Unlimited about my visibility report request,
+                        appointments, and updates. Message frequency varies. Msg
+                        & data rates may apply. Reply STOP to opt out.{" "}
                         <a
                           href="/privacy"
                           className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline"
@@ -492,7 +508,8 @@ export default function ContactSection() {
                   </button>
 
                   <p className="text-center text-sm text-muted-foreground">
-                    Clear visibility report request. Priority fixes. No fake authority.
+                    Clear visibility report request. Priority fixes. No fake
+                    authority.
                   </p>
                 </form>
               </>

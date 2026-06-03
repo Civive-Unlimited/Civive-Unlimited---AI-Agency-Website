@@ -117,6 +117,9 @@ async function highLevelRequest(path, { method = "GET", body, token }) {
     const error = new Error(message);
     error.status = response.status;
     error.details = data;
+    error.externalService = "leadconnector";
+    error.externalPath = path.split("?")[0];
+    error.externalStatus = response.status;
     throw error;
   }
 

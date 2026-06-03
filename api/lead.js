@@ -1,5 +1,13 @@
 import { timingSafeEqual } from "node:crypto";
 import {
+  VISIBILITY_REPORT_RECEIVED_MESSAGE,
+  buildLeadCaptureRecord,
+  createLeadSubmissionId,
+  getSafeExternalErrorMessage,
+  notifyLeadOwner,
+  saveLeadCaptureRecord,
+} from "../server/leadCapture.js";
+import {
   buildWebsiteLeadSubmissionPreview,
   sendWebsiteLeadToHighLevel,
   validateWebsiteLead,
@@ -119,11 +127,32 @@ function getSafeErrorMessage(error, statusCode) {
     return "Request body must be valid JSON.";
   }
 
+  if (statusCode === 503) {
+    return "The form could not safely save your request. Please call or text Civive.";
+  }
+
   if (statusCode === 500) {
-    return "The website could not reach HighLevel. Please call or text Civive.";
+    return "The website could not safely process your request. Please call or text Civive.";
   }
 
   return errorMessage || "Request failed.";
+}
+
+async function saveStatusRecord(record, env = process.env) {
+  try {
+    await saveLeadCaptureRecord(record, env);
+  } catch (error) {
+    if (process.env.NODE_ENV !== "test") {
+      console.warn(
+        "[civive-lead]",
+        JSON.stringify({
+          submissionId: record.submissionId,
+          statusRecord: "failed",
+          message: getSafeErrorMessage(error, 500),
+        })
+      );
+    }
+  }
 }
 
 export default async function handler(req, res) {
@@ -179,15 +208,88 @@ export default async function handler(req, res) {
       });
     }
 
-    const result = await sendWebsiteLeadToHighLevel(lead);
-
-    return sendJson(res, 200, {
-      ok: true,
-      message: "Your Visibility Report request was sent.",
-      contactId: result.contactId,
-      opportunityId: result.opportunityId,
-      warnings: result.warnings,
+    const submissionId = createLeadSubmissionId();
+    const receivedRecord = buildLeadCaptureRecord(lead, {
+      submissionId,
+      request: req,
+      submissionStatus: "received",
+      externalApiStatus: "not_attempted",
+      reportStatus: "not_generated",
     });
+
+    await saveLeadCaptureRecord(receivedRecord);
+    const notification = await notifyLeadOwner(receivedRecord);
+
+    try {
+      const result = await sendWebsiteLeadToHighLevel(lead);
+      const externalApiStatus = result.warnings?.length
+        ? "completed_with_warnings"
+        : "completed";
+
+      await saveStatusRecord(
+        buildLeadCaptureRecord(lead, {
+          submissionId,
+          request: req,
+          submissionStatus: "submitted",
+          externalApiStatus,
+          reportStatus: "queued_for_review",
+        })
+      );
+
+      return sendJson(res, 200, {
+        ok: true,
+        message: VISIBILITY_REPORT_RECEIVED_MESSAGE,
+        submissionId,
+        leadCaptured: true,
+        externalApiStatus,
+        notification: {
+          attempted: notification.attempted,
+          ok: notification.ok,
+        },
+        warnings: result.warnings,
+      });
+    } catch (externalError) {
+      const safeExternalError = getSafeExternalErrorMessage(externalError);
+
+      if (process.env.NODE_ENV !== "test") {
+        console.warn(
+          "[civive-lead]",
+          JSON.stringify({
+            submissionId,
+            externalApiStatus: "failed",
+            externalService: externalError?.externalService || "leadconnector",
+            externalPath: externalError?.externalPath || "unknown",
+            externalStatus:
+              externalError?.externalStatus || externalError?.status || null,
+            message: safeExternalError,
+          })
+        );
+      }
+
+      await saveStatusRecord(
+        buildLeadCaptureRecord(lead, {
+          submissionId,
+          request: req,
+          submissionStatus: "received_external_failed",
+          externalApiStatus: "failed",
+          reportStatus: "needs_manual_review",
+          errorMessage: safeExternalError,
+        })
+      );
+
+      return sendJson(res, 202, {
+        ok: true,
+        message: VISIBILITY_REPORT_RECEIVED_MESSAGE,
+        submissionId,
+        leadCaptured: true,
+        externalApiStatus: "failed",
+        reportStatus: "needs_manual_review",
+        notification: {
+          attempted: notification.attempted,
+          ok: notification.ok,
+        },
+      });
+    }
   } catch (error) {
     const statusCode = getErrorStatus(error);
     const safeStatus = statusCode >= 400 && statusCode < 600 ? statusCode : 500;
