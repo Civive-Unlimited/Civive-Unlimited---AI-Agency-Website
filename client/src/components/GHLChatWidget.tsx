@@ -372,10 +372,10 @@ export default function GHLChatWidget() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-5 right-5 z-[60] flex h-14 w-14 items-center justify-center rounded-full border border-white/[0.16] bg-[linear-gradient(135deg,#19c2ff,#2f75ff)] text-white shadow-[0_20px_55px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#19c2ff]/70 sm:bottom-6 sm:right-6"
+        className="fixed bottom-3 left-3 right-auto z-[60] flex h-11 w-11 items-center justify-center rounded-full border border-white/[0.16] bg-[linear-gradient(135deg,#19c2ff,#2f75ff)] text-white shadow-[0_20px_55px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#19c2ff]/70 sm:bottom-6 sm:left-auto sm:right-6 sm:h-14 sm:w-14"
         aria-label="Open Civive AI chat"
       >
-        <MessageCircle className="h-6 w-6" />
+        <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
       </button>
 
       <AnimatePresence>

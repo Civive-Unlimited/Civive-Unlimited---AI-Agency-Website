@@ -1,5 +1,5 @@
 import { Globe, Mail, MapPin, Phone } from "lucide-react";
-import civiveLogo from "@/assets/civive-hero-logo.webp";
+import civiveLogo from "@/assets/civive-unlimited-approved-mark.webp";
 import { seoConfig } from "@/content/seo";
 import { areasServed, site } from "@/content/site";
 
@@ -96,8 +96,8 @@ export default function Footer() {
               <img
                 src={civiveLogo}
                 alt={site.name}
-                width={1024}
-                height={559}
+                width={512}
+                height={512}
                 className="h-9 w-9 rounded-xl border border-white/[0.12] object-cover"
                 loading="lazy"
                 decoding="async"

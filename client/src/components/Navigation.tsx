@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, MessageCircle, Menu, X } from "lucide-react";
 import { useLocation } from "wouter";
-import civiveHeaderLogo from "@/assets/civive-header-logo.webp";
+import civiveHeaderLogo from "@/assets/civive-unlimited-approved-logo.webp";
 import { navLinks, site } from "@/content/site";
 import { trackWebsiteEvent } from "@/lib/tracking";
 
@@ -91,8 +91,8 @@ export default function Navigation() {
               <img
                 src={civiveHeaderLogo}
                 alt={site.name}
-                width={546}
-                height={126}
+                width={1040}
+                height={350}
                 className="h-10 w-auto max-w-[10.5rem] object-contain transition-transform group-hover:scale-[1.01] sm:h-11 sm:max-w-[12.75rem] lg:h-[3.35rem] lg:max-w-[14.25rem] xl:h-[3.6rem] xl:max-w-[15.25rem]"
                 loading="eager"
                 fetchPriority="high"
