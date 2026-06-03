@@ -361,14 +361,15 @@ export default function ContactSection() {
                         htmlFor="phone"
                         className="mb-1.5 block text-sm text-foreground"
                       >
-                        Phone
+                        Phone *
                       </label>
                       <input
                         type="tel"
                         id="phone"
                         name="phone"
                         placeholder={site.phone}
-                        required
+                        required={true}
+                        aria-required="true"
                         className="w-full rounded-2xl border border-white/[0.08] bg-[linear-gradient(180deg,rgba(9,12,20,0.72),rgba(7,10,17,0.8))] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 transition-all focus:border-[oklch(0.36_0.07_228/0.7)] focus:outline-none focus:ring-2 focus:ring-[oklch(0.75_0.18_220)/0.24]"
                       />
                     </div>
