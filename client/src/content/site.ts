@@ -2291,6 +2291,282 @@ export type ResourceArticle = {
 
 export const resourceArticles: ResourceArticle[] = [
   {
+    slug: "hvac-replacement-calls-after-hours",
+    title:
+      "Why HVAC Companies Lose Replacement Calls After 5 PM | Civive Unlimited",
+    description:
+      "After-hours HVAC calls can hide replacement leads. Learn why voicemail loses jobs and how an AI receptionist flow can answer, qualify, book, and move calls into CiviveOS.",
+    eyebrow: "HVAC after-hours lead response",
+    intent:
+      "High-intent HVAC owner education for after-hours missed calls, hidden replacement leads, AI receptionist intake, CRM handoff, and follow-up.",
+    updated: "June 3, 2026",
+    publishedDate: "2026-06-03",
+    lastModified: "2026-06-03",
+    readTime: "10 min read",
+    summary:
+      "Some of the best HVAC replacement leads do not sound like replacement leads at first. They sound like after-hours repair calls from homeowners with old systems, repeat problems, and no patience for voicemail. Want me to check your after-hours call path? I\u2019ll show you where calls are leaking and what an AI receptionist flow should look like.",
+    primaryCta: {
+      label: "Request a call-path audit",
+      href: "/contact",
+    },
+    secondaryCta: {
+      label: "See AI receptionist setup",
+      href: "/services/ai-receptionist",
+    },
+    finalCta: {
+      title:
+        "Want me to check your after-hours call path? I\u2019ll show you where calls are leaking and what an AI receptionist flow should look like.",
+      copy: "Bring your after-hours calls, missed calls, and booking outcomes. Civive Unlimited will help map what is leaking, what should be captured, and how the AI receptionist flow should move calls into CiviveOS with follow-up.",
+    },
+    sections: [
+      {
+        eyebrow: "Direct answer",
+        title: "After-hours HVAC calls are not harmless overflow.",
+        copy: "When a homeowner calls after work, they usually have an active problem. The house is hot. The furnace will not start. The same issue is back. If the call hits voicemail, the job may already be moving to the next HVAC company on Google.",
+        bullets: [
+          "After-hours calls can hide replacement leads, missed service calls, lost estimates, and untracked revenue.",
+          "The company that answers, asks the right questions, and gives a clear next step has the first real shot at the job.",
+          "The company that sends the caller to voicemail may never know whether the call was a repair, an emergency, or a replacement conversation.",
+        ],
+      },
+      {
+        eyebrow: "Replacement signals",
+        title: "Replacement leads often start as repair calls.",
+        copy: "A normal repair call is about getting the system running. A replacement lead is about whether the system is still worth saving. The hard part is that homeowners do not always say that clearly.",
+        bullets: [
+          "The AC is not cooling again.",
+          "The system is old, but the homeowner is not sure what to do.",
+          "The unit has needed work a few times already.",
+          "The last repair was expensive.",
+          "The system runs, but the house still does not feel comfortable.",
+          "The customer asks whether it is even worth fixing.",
+        ],
+      },
+      {
+        eyebrow: "Voicemail leak",
+        title: "Voicemail asks the customer to wait.",
+        copy: "Emergency HVAC problems make people impatient. If the house is 84 degrees at 6:15 PM, the homeowner does not want uncertainty. They want a next step.",
+        bullets: [
+          "The customer calls an HVAC company after 5 PM.",
+          "The call goes to voicemail.",
+          "The customer does not know when they will hear back.",
+          "They call another company.",
+          "The other company answers or responds fast.",
+          "The appointment gets booked somewhere else.",
+          "The first company sees only a missed call.",
+        ],
+      },
+      {
+        eyebrow: "Owner visibility",
+        title: "The owner usually never sees the real loss.",
+        copy: "This is what makes the leak easy to ignore. The owner may see a missed call, the office may see a voicemail, and the team may call back the next morning. But the real outcome is often invisible.",
+        bullets: [
+          "The customer booked a repair with a competitor.",
+          "The customer scheduled a replacement estimate with another company.",
+          "The customer had an old system and needed options.",
+          "The customer came from Google Ads, so the company paid for the call and still lost it.",
+          "The customer called from Google Business Profile, but the call never made it into the CRM.",
+          "The customer was called back too late and had already moved on.",
+        ],
+      },
+      {
+        eyebrow: "Simple math",
+        title: "The missed-call value math does not need to be dramatic.",
+        copy: "The goal is not to claim every missed call is a large install. The goal is to stop treating after-hours calls like they are harmless.",
+        bullets: [
+          "12 after-hours calls in a month.",
+          "4 real service opportunities.",
+          "2 recoverable bookings with fast response.",
+          "$400 average repair ticket.",
+          "$800 in repair revenue that could be recovered.",
+          "1 possible replacement conversation every quarter.",
+        ],
+      },
+      {
+        eyebrow: "HVAC example",
+        title: "The old AC that stops cooling at 6:30 PM.",
+        copy: "A homeowner gets home from work and the house is hot. The system is 14 years old, has needed refrigerant before, and is running without keeping up. If the call is answered correctly, the intake can capture system age, prior repair history, comfort issues, and whether the homeowner wants replacement options if repair does not make sense.",
+        bullets: [
+          "The wrong path is voicemail and a next-morning callback.",
+          "The better path is answer, qualify, book, and tag the lead as repair plus possible replacement.",
+        ],
+      },
+      {
+        eyebrow: "HVAC example",
+        title: "The furnace that fails before a cold night.",
+        copy: "The right flow confirms the customer is safe, asks what the furnace is doing, checks for smells or alarms, routes true safety concerns, offers the next approved booking path, and creates a CRM record with urgency and symptoms.",
+        bullets: [
+          "A safety concern should not sit in voicemail.",
+          "A non-emergency call still needs a next step, a clean note, and follow-up if the customer does not book.",
+        ],
+      },
+      {
+        eyebrow: "HVAC example",
+        title: "The homeowner asking whether it is worth fixing.",
+        copy: "That question usually means the customer is already thinking about repair versus replacement. The intake should ask about system age, repeat repairs, comfort issues, energy bills, and whether the homeowner wants options if repair is not the best move.",
+        bullets: [
+          "That question should not be buried in a generic AC not cooling note.",
+          "It gives the HVAC company permission to route the lead correctly instead of guessing.",
+        ],
+      },
+      {
+        eyebrow: "Call flow",
+        title: "What a good after-hours call flow should do.",
+        copy: "A good after-hours HVAC flow should do the basics every time. It does not replace the office. It protects the office from starting the next day blind.",
+        bullets: [
+          "Answer the call or respond immediately.",
+          "Confirm the customer, phone number, address, and service area.",
+          "Identify the issue: cooling, heating, no heat, no AC, maintenance, quote, or possible replacement.",
+          "Ask whether the situation is urgent or unsafe.",
+          "Capture system age when possible.",
+          "Ask whether the issue has happened before.",
+          "Identify replacement signals.",
+          "Offer the next available appointment or approved after-hours path.",
+          "Escalate true emergency or safety issues based on company rules.",
+          "Put the call summary into CiviveOS.",
+          "Create the right pipeline stage or follow-up task.",
+          "Follow up if the customer does not book.",
+        ],
+      },
+      {
+        eyebrow: "AI receptionist intake",
+        title: "What an AI receptionist should ask after hours.",
+        copy: "An HVAC AI receptionist should not sound like a generic chatbot. It should ask the questions a good dispatcher would want answered before the next step.",
+        bullets: [
+          "What problem are you having with the system?",
+          "Is this heating, cooling, or both?",
+          "Is the system running at all?",
+          "How long has this been happening?",
+          "About how old is the system?",
+          "Has this issue happened before?",
+          "Have you had recent repairs on this system?",
+          "Is the home extremely hot, extremely cold, or unsafe?",
+          "Are there any unusual smells, smoke, electrical issues, or alarms?",
+          "Are you looking for repair only, or do you want options if replacement makes more sense?",
+          "What is the service address?",
+          "What is the best phone number for follow-up?",
+          "Would you like the next available appointment?",
+        ],
+      },
+      {
+        eyebrow: "CRM handoff",
+        title:
+          "The call should not die in voicemail, a transcript, or the owner's phone.",
+        copy: "A better CRM handoff makes the next morning cleaner. The office can see who called, what they needed, whether they booked, what needs follow-up, and whether the call may deserve replacement attention.",
+        bullets: [
+          "Contact name, phone number, email if available, and service address.",
+          "Lead source, call time, service type, and urgency level.",
+          "System age if mentioned and replacement signal: yes, no, or possible.",
+          "Appointment status, follow-up task, and call summary for the office or technician.",
+        ],
+      },
+      {
+        eyebrow: "Follow-up",
+        title: "If the customer does not book, the lead still needs a path.",
+        copy: "The follow-up should be fast, short, and specific to the customer's issue. It should remind the customer why they called and offer a clear next step.",
+        bullets: [
+          "Send an immediate confirmation or summary.",
+          "Create a next-morning call task for the office.",
+          "Send a reminder with the booking option.",
+          "Follow up once more with issue-specific wording.",
+          "Close the loop politely if the customer does not respond.",
+        ],
+      },
+      {
+        eyebrow: "Owner checklist",
+        title: "Check this in your business this week.",
+        copy: "Pull the last 30 days of call activity. If you cannot answer most of these questions, you do not have a clear after-hours call path. You have a phone log.",
+        bullets: [
+          "How many calls came in after 5 PM?",
+          "How many came in on weekends?",
+          "How many after-hours calls went to voicemail?",
+          "How many were called back the same night?",
+          "How many were called back the next morning?",
+          "How many became booked appointments?",
+          "How many came from Google Business Profile?",
+          "How many came from paid ads?",
+          "How many mentioned system age, repeat repairs, poor comfort, or worth fixing?",
+          "How many of those details made it into the CRM?",
+          "How many had a follow-up task?",
+          "How many were marked lost, booked, or still open?",
+        ],
+      },
+      {
+        eyebrow: "What Civive builds",
+        title:
+          "After-hours coverage that answers, qualifies, books, and tracks.",
+        copy: "Civive Unlimited builds after-hours AI receptionist and missed-call recovery flows for HVAC companies that need calls answered, qualified, booked, and tracked without adding more chaos to the office.",
+        bullets: [
+          "Answer after-hours HVAC calls.",
+          "Ask HVAC-specific intake questions.",
+          "Identify possible replacement signals.",
+          "Route urgent issues based on company rules.",
+          "Book appointments when the calendar allows.",
+          "Create contacts and opportunities in CiviveOS.",
+          "Add clean notes for the office, dispatcher, or technician.",
+          "Trigger follow-up if the customer does not book.",
+          "Show the owner where after-hours calls are being lost.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Are after-hours HVAC calls really worth answering?",
+        answer:
+          "Yes. Not every after-hours call is high value, but many are urgent and some carry replacement signals. If the call goes to voicemail, the homeowner may call another company before your office reopens.",
+      },
+      {
+        question:
+          "Should every after-hours HVAC call be treated as an emergency?",
+        answer:
+          "No. The flow should separate true emergency or safety concerns from routine repair, next-day service, maintenance, and possible replacement conversations. The goal is proper triage, not panic.",
+      },
+      {
+        question: "Can an AI receptionist book HVAC appointments after hours?",
+        answer:
+          "Yes, if the calendar rules, service rules, service area, and escalation rules are set up correctly. The AI receptionist should only book within approved company rules and should escalate calls that require human judgment.",
+      },
+      {
+        question:
+          "What questions should an AI receptionist ask for replacement signals?",
+        answer:
+          "It should ask about system age, repair history, repeat issues, comfort problems, how long the issue has been happening, and whether the homeowner wants replacement options if repair does not make sense.",
+      },
+      {
+        question: "What happens if the customer does not book on the call?",
+        answer:
+          "The call should still create a contact, lead record, call summary, and follow-up task in CiviveOS. The follow-up should reference the customer's actual issue and offer a clear next step.",
+      },
+      {
+        question: "How can an HVAC owner know if this is a problem?",
+        answer:
+          "Review after-hours calls from the last 30 days. Check how many were missed, how many received same-day or next-morning follow-up, how many booked, and how many had replacement signals. If that information is hard to find, the business likely needs better call tracking and CRM handoff.",
+      },
+    ],
+    relatedLinks: [
+      {
+        label: "AI receptionist setup",
+        href: "/services/ai-receptionist",
+      },
+      {
+        label: "Missed-call recovery",
+        href: "/services/missed-call-recovery",
+      },
+      {
+        label: "CRM lead follow-up",
+        href: "/services/crm-lead-follow-up",
+      },
+      {
+        label: "HVAC AI search visibility",
+        href: "/industries/hvac",
+      },
+      {
+        label: "Visibility Report",
+        href: "/ai-search-report",
+      },
+    ],
+  },
+  {
     slug: "ai-search-readiness-checklist",
     title:
       "AI Search Readiness Checklist for Local Service Businesses | Civive Unlimited",

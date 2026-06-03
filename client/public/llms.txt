@@ -201,6 +201,11 @@ Secondary systems: AI search visibility cleanup, service and location signal cle
   - Search intent: Real Estate Teams AI search visibility and local service business readiness
   - Topical role: Explains the buyer questions, trust signals, missing assets, and cleanup path for Real Estate Teams businesses.
   - Conversion goal: Move Real Estate operators toward a Visibility Report.
+- Why HVAC Companies Lose Replacement Calls After 5 PM: https://www.civiveunlimited.com/resources/hvac-replacement-calls-after-hours
+  - Page type: support
+  - Search intent: High-intent HVAC owner education for after-hours missed calls, hidden replacement leads, AI receptionist intake, CRM handoff, and follow-up.
+  - Topical role: Supports the Visibility Report and visibility-system pillar with hvac after-hours lead response intent content.
+  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
 - AI Search Readiness Checklist for Local Service Businesses: https://www.civiveunlimited.com/resources/ai-search-readiness-checklist
   - Page type: support
   - Search intent: Checklist intent for AI search readiness and local visibility cleanup
