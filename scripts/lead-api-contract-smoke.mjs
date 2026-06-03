@@ -138,6 +138,16 @@ try {
     "HighLevel preview should include the Visibility Report tag."
   );
   assert(
+    dryRun.payload.highLevelPreview.tags.includes(
+      "visibility report needs generated"
+    ),
+    "HighLevel preview should include the missing-report workflow tag."
+  );
+  assert(
+    dryRun.payload.highLevelPreview.tags.includes("report link missing"),
+    "HighLevel preview should include the missing report link tag."
+  );
+  assert(
     dryRun.payload.highLevelPreview.note.includes(
       "Website Visibility Report request"
     ),
@@ -209,19 +219,17 @@ try {
     "Oversized lead payloads should be rejected before parsing."
   );
 
-  const smsConsentError = await callLeadApi({
+  const missingPhoneError = await callLeadApi({
     headers: { "x-civive-lead-mode": "dry-run" },
-    body: { ...validLeadPayload, phone: "", smsConsent: true },
+    body: { ...validLeadPayload, phone: "", smsConsent: false },
   });
   assert(
-    smsConsentError.statusCode === 400,
-    "SMS consent without phone should return 400."
+    missingPhoneError.statusCode === 400,
+    "Missing phone should return 400."
   );
   assert(
-    smsConsentError.payload.errors.includes(
-      "Phone is required when SMS consent is checked."
-    ),
-    "SMS consent validation should require a phone number."
+    missingPhoneError.payload.errors.includes("Phone is required."),
+    "Visibility Report validation should require a phone number."
   );
 
   const honeypot = await callLeadApi({

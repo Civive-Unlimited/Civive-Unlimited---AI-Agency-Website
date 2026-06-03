@@ -8,6 +8,8 @@ const DEFAULT_NEW_LEAD_STAGE_ID = "b1093f36-c4cf-4aaa-aca5-23faa4b13911";
 const WEBSITE_LEAD_TAGS = [
   "website-lead",
   "visibility-report",
+  "visibility report needs generated",
+  "report link missing",
   "civive-unlimited",
 ];
 const DRY_RUN_CONTACT_ID = "dry-run-contact-id";
@@ -189,10 +191,9 @@ export function validateWebsiteLead(input) {
   if (!lead.companyName) errors.push("Business name is required.");
   if (!lead.email || !isValidEmail(lead.email))
     errors.push("A valid email is required.");
+  if (!lead.phone) errors.push("Phone is required.");
   if (!lead.website)
     errors.push("Website or Google Business Profile URL is required.");
-  if (lead.smsConsent && !lead.phone)
-    errors.push("Phone is required when SMS consent is checked.");
 
   return { lead, errors, isSpam: false };
 }
