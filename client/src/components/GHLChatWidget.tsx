@@ -3,6 +3,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type ComponentType,
   type KeyboardEvent,
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -11,15 +12,18 @@ import {
   ArrowRight,
   Bot,
   CalendarCheck2,
+  CheckCircle,
   MessageCircle,
   Mic,
   MicOff,
   PhoneCall,
+  RotateCcw,
   Search,
   Send,
   X,
 } from "lucide-react";
 import { site } from "@/content/site";
+import { trackWebsiteEvent } from "@/lib/tracking";
 
 declare global {
   interface Window {
@@ -60,8 +64,9 @@ type SpeechRecognitionConstructor = new () => SpeechRecognitionInstance;
 
 type ChatCta = {
   label: string;
-  href: string;
-  icon: "report" | "call" | "text" | "book";
+  href?: string;
+  action?: "submit" | "restart";
+  icon: "report" | "call" | "text" | "book" | "send" | "restart";
 };
 
 type ChatMessage = {
@@ -71,178 +76,177 @@ type ChatMessage = {
   ctas?: ChatCta[];
 };
 
+type IntakeStep =
+  | "context"
+  | "fullName"
+  | "companyName"
+  | "website"
+  | "serviceArea"
+  | "serviceInterest"
+  | "contact"
+  | "smsConsent"
+  | "confirm"
+  | "submitted";
+
+type LeadDraft = {
+  fullName: string;
+  companyName: string;
+  email: string;
+  phone: string;
+  website: string;
+  serviceArea: string;
+  serviceInterest: string;
+  message: string;
+  smsConsent: boolean;
+};
+
+const emptyLeadDraft: LeadDraft = {
+  fullName: "",
+  companyName: "",
+  email: "",
+  phone: "",
+  website: "",
+  serviceArea: "",
+  serviceInterest: "",
+  message: "",
+  smsConsent: false,
+};
+
 const initialMessages: ChatMessage[] = [
   {
     id: "assistant-intro",
     role: "assistant",
-    text: "I can help you sort out AI search visibility, missed calls, booking, lead follow-up, and where to start without guessing.",
-    ctas: [
-      {
-        label: "Free report",
-        href: site.visibilityReportRequestUrl,
-        icon: "report",
-      },
-      {
-        label: "Text Civive",
-        href: `sms:${site.phoneE164}`,
-        icon: "text",
-      },
-    ],
+    text: "Tell me what is going on with the business. I can collect the visibility, missed-call, booking, or follow-up request here and send Civive the details.",
   },
 ];
 
 const promptChips = [
-  "Can AI find my business?",
-  "What does the report check?",
+  "Check my AI visibility",
   "I miss calls after hours",
-  "How do I get booked?",
+  "Leads are not booking",
+  "My follow-up is messy",
 ];
 
-const iconByCta: Record<ChatCta["icon"], typeof Search> = {
-  book: CalendarCheck2,
-  call: PhoneCall,
-  report: Search,
-  text: MessageCircle,
-};
+const iconByCta: Record<ChatCta["icon"], ComponentType<{ className?: string }>> =
+  {
+    book: CalendarCheck2,
+    call: PhoneCall,
+    report: Search,
+    restart: RotateCcw,
+    send: Send,
+    text: MessageCircle,
+  };
 
 function normalizeInput(input: string) {
   return input.trim().replace(/\s+/g, " ");
 }
 
-function buildAssistantReply(input: string): Omit<ChatMessage, "id" | "role"> {
-  const lower = input.toLowerCase();
+function makeId(prefix: string) {
+  return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+}
 
-  if (/(book|schedule|calendar|appointment|call me|talk|consult)/.test(lower)) {
+function extractEmail(input: string) {
+  return input.match(/[^\s@]+@[^\s@]+\.[^\s@]+/)?.[0]?.toLowerCase() || "";
+}
+
+function extractPhone(input: string) {
+  const phone = input.match(/(?:\+?1[\s.-]?)?(?:\(?\d{3}\)?[\s.-]?)\d{3}[\s.-]?\d{4}\b/)?.[0];
+  return phone ? phone.trim() : "";
+}
+
+function includesYes(input: string) {
+  return /\b(yes|yep|yeah|sure|ok|okay|agree|consent|send|submit)\b/i.test(
+    input
+  );
+}
+
+function includesNo(input: string) {
+  return /\b(no|nope|not now|do not|don't|dont|skip)\b/i.test(input);
+}
+
+function buildSummary(draft: LeadDraft) {
+  return [
+    `Business: ${draft.companyName}`,
+    `Name: ${draft.fullName}`,
+    `Website/GBP: ${draft.website}`,
+    `Area: ${draft.serviceArea || "not provided"}`,
+    `Main issue: ${draft.serviceInterest || draft.message}`,
+    `Contact: ${draft.email} / ${draft.phone}`,
+    `SMS consent: ${draft.smsConsent ? "yes" : "no"}`,
+  ].join("\n");
+}
+
+function getNextQuestion(step: IntakeStep, draft: LeadDraft): ChatMessage {
+  if (step === "fullName") {
     return {
-      text: `Best next step is to request the report or call ${site.phone}. Bring the business name, website or Google profile, service area, and where leads are leaking.`,
+      id: makeId("assistant"),
+      role: "assistant",
+      text: "Got it. What is your name?",
+    };
+  }
+
+  if (step === "companyName") {
+    return {
+      id: makeId("assistant"),
+      role: "assistant",
+      text: "What is the business name?",
+    };
+  }
+
+  if (step === "website") {
+    return {
+      id: makeId("assistant"),
+      role: "assistant",
+      text: "Send the website or Google Business Profile link so I can attach the public footprint.",
+    };
+  }
+
+  if (step === "serviceArea") {
+    return {
+      id: makeId("assistant"),
+      role: "assistant",
+      text: "What city or service area should Civive look at first?",
+    };
+  }
+
+  if (step === "serviceInterest") {
+    return {
+      id: makeId("assistant"),
+      role: "assistant",
+      text: "What feels most broken right now: getting found, missed calls, booking, reviews, website clarity, or follow-up?",
+    };
+  }
+
+  if (step === "contact") {
+    return {
+      id: makeId("assistant"),
+      role: "assistant",
+      text: "What email and phone should Civive use to follow up? You can send both in one message.",
+    };
+  }
+
+  if (step === "smsConsent") {
+    return {
+      id: makeId("assistant"),
+      role: "assistant",
+      text: "Can Civive text you about this request and appointment updates? Reply yes or no. Message frequency varies. Reply STOP to opt out.",
+    };
+  }
+
+  if (step === "confirm") {
+    return {
+      id: makeId("assistant"),
+      role: "assistant",
+      text: `Here is what I am about to send:\n\n${buildSummary(draft)}\n\nIf this looks right, send it to Civive.`,
       ctas: [
-        { label: "Book a review", href: site.reviewBookingUrl, icon: "book" },
+        { label: "Send to Civive", action: "submit", icon: "send" },
+        { label: "Start over", action: "restart", icon: "restart" },
         { label: `Call ${site.phone}`, href: site.phoneHref, icon: "call" },
       ],
     };
   }
 
-  if (/(text|sms|message)/.test(lower)) {
-    return {
-      text: "You can text Civive directly from your phone. Send the website or Google profile plus the main problem: visibility, missed calls, booking, reviews, or follow-up.",
-      ctas: [
-        { label: "Text Civive", href: `sms:${site.phoneE164}`, icon: "text" },
-        { label: "Contact page", href: "/contact", icon: "book" },
-      ],
-    };
-  }
-
-  if (/(missed|call|phone|voicemail|after hours|answer)/.test(lower)) {
-    return {
-      text: "If calls are getting missed, the first fix is usually a faster response path: missed-call text back, intake questions, routing rules, booking handoff, and CRM notes so the lead does not go cold.",
-      ctas: [
-        {
-          label: "Missed-call recovery",
-          href: "/services/missed-call-recovery",
-          icon: "report",
-        },
-        { label: `Call ${site.phone}`, href: site.phoneHref, icon: "call" },
-      ],
-    };
-  }
-
-  if (/(receptionist|voice|front desk|chatbot|intake|qualify)/.test(lower)) {
-    return {
-      text: "An AI receptionist makes sense when the business already has real calls, forms, chats, or booking requests to protect. The rules matter first: what to answer, what to collect, when to book, and when to escalate.",
-      ctas: [
-        {
-          label: "AI receptionist",
-          href: "/services/ai-receptionist",
-          icon: "report",
-        },
-        { label: "Book a review", href: site.reviewBookingUrl, icon: "book" },
-      ],
-    };
-  }
-
-  if (/(price|pricing|cost|package|plan|budget)/.test(lower)) {
-    return {
-      text: "The cleanest starting point is the report because it shows whether the next paid work should be visibility cleanup, website/service pages, Google profile work, missed-call recovery, or CiviveOS setup.",
-      ctas: [
-        { label: "CiviveOS plans", href: "/civive-os-offer", icon: "report" },
-        {
-          label: "Free report",
-          href: site.visibilityReportRequestUrl,
-          icon: "book",
-        },
-      ],
-    };
-  }
-
-  if (/(google|gbp|business profile|maps|local seo|reviews)/.test(lower)) {
-    return {
-      text: "For Google and Maps, Civive checks whether the profile, website, categories, services, service area, reviews, calls, and booking path all describe the same real business clearly.",
-      ctas: [
-        {
-          label: "GBP optimization",
-          href: "/services/google-business-profile-optimization",
-          icon: "report",
-        },
-        {
-          label: "Free report",
-          href: site.visibilityReportRequestUrl,
-          icon: "book",
-        },
-      ],
-    };
-  }
-
-  if (/(schema|faq|structured|sitemap|robots|llms|crawl)/.test(lower)) {
-    return {
-      text: "For AI search and SEO, schema has to match visible content. Civive checks Organization, service, FAQ, article, breadcrumb, canonical, sitemap, robots, and llms.txt coverage without adding fake proof.",
-      ctas: [
-        {
-          label: "Schema guide",
-          href: "/resources/schema-for-ai-search-local-businesses",
-          icon: "report",
-        },
-        {
-          label: "Free report",
-          href: site.visibilityReportRequestUrl,
-          icon: "book",
-        },
-      ],
-    };
-  }
-
-  if (
-    /(chatgpt|gemini|perplexity|grok|ai search|find|found|show up|rank|visibility|recommend)/.test(
-      lower
-    )
-  ) {
-    return {
-      text: "AI search visibility starts with whether public systems can understand who the business is, what it does, where it works, why it should be trusted, and how a buyer should take the next step.",
-      ctas: [
-        {
-          label: "Visibility Report",
-          href: "/ai-search-report",
-          icon: "report",
-        },
-        {
-          label: "Free report",
-          href: site.visibilityReportRequestUrl,
-          icon: "book",
-        },
-      ],
-    };
-  }
-
-  return {
-    text: "Start with the business goal: get found, get called, or get booked. Civive can inspect the public footprint, identify the highest-leverage gap, and map the next fix without inventing proof or adding noise.",
-    ctas: [
-      {
-        label: "Free report",
-        href: site.visibilityReportRequestUrl,
-        icon: "report",
-      },
-      { label: `Call ${site.phone}`, href: site.phoneHref, icon: "call" },
-    ],
-  };
+  return initialMessages[0];
 }
 
 function openExternalLink(href: string) {
@@ -254,19 +258,19 @@ export default function GHLChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [draft, setDraft] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
+  const [leadDraft, setLeadDraft] = useState<LeadDraft>(emptyLeadDraft);
+  const [intakeStep, setIntakeStep] = useState<IntakeStep>("context");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [voiceStatus, setVoiceStatus] = useState<string | null>(null);
   const messageListRef = useRef<HTMLDivElement | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
 
-  const canSend = useMemo(() => normalizeInput(draft).length > 0, [draft]);
-  const normalizedLocation = location.replace(/\/$/, "") || "/";
-  const shouldHideChat = normalizedLocation === "/free-visibility-report";
-
-  useEffect(() => {
-    if (shouldHideChat) setIsOpen(false);
-  }, [shouldHideChat]);
+  const canSend = useMemo(
+    () => normalizeInput(draft).length > 0 && !isSubmitting,
+    [draft, isSubmitting]
+  );
 
   useEffect(() => {
     const handleOpenChat = () => {
@@ -290,35 +294,254 @@ export default function GHLChatWidget() {
     return () => recognitionRef.current?.abort();
   }, []);
 
-  if (shouldHideChat) {
-    return null;
-  }
+  useEffect(() => {
+    trackWebsiteEvent("chat_widget_visible", {
+      path: location,
+      mode: "assistant_intake",
+    });
+  }, [location]);
+
+  const resetIntake = () => {
+    setLeadDraft(emptyLeadDraft);
+    setIntakeStep("context");
+    setDraft("");
+    setVoiceStatus(null);
+    setIsSubmitting(false);
+    setMessages([
+      {
+        ...initialMessages[0],
+        id: makeId("assistant"),
+      },
+    ]);
+    window.setTimeout(() => textareaRef.current?.focus(), 80);
+  };
+
+  const appendAssistantMessage = (message: ChatMessage) => {
+    setMessages(current => [...current, message]);
+  };
+
+  const submitLeadRequest = async (payload: LeadDraft) => {
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    appendAssistantMessage({
+      id: makeId("assistant"),
+      role: "assistant",
+      text: "Sending the request now...",
+    });
+
+    trackWebsiteEvent("assistant_lead_submit", {
+      form: "ai-assistant-intake",
+      offer: "ai-assistant-visibility-report",
+      destination: "/api/lead",
+    });
+
+    try {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: payload.fullName,
+          companyName: payload.companyName,
+          email: payload.email,
+          phone: payload.phone,
+          website: payload.website,
+          serviceArea: payload.serviceArea,
+          serviceInterest: payload.serviceInterest,
+          message: payload.message,
+          smsConsent: payload.smsConsent,
+          offer: "ai-assistant-visibility-report",
+          sourcePage: window.location.href,
+        }),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (response.ok && result?.ok) {
+        const confirmationText =
+          "Your request was received. Civive will review it and follow up.";
+
+        setIntakeStep("submitted");
+        appendAssistantMessage({
+          id: makeId("assistant"),
+          role: "assistant",
+          text: confirmationText,
+          ctas: [
+            { label: "Start another request", action: "restart", icon: "restart" },
+            { label: `Call ${site.phone}`, href: site.phoneHref, icon: "call" },
+          ],
+        });
+        return;
+      }
+
+      appendAssistantMessage({
+        id: makeId("assistant"),
+        role: "assistant",
+        text: `I could not safely send that request through the site. Please call or text Civive at ${site.phone}.`,
+        ctas: [
+          { label: `Call ${site.phone}`, href: site.phoneHref, icon: "call" },
+          { label: "Text Civive", href: `sms:${site.phoneE164}`, icon: "text" },
+        ],
+      });
+    } catch {
+      appendAssistantMessage({
+        id: makeId("assistant"),
+        role: "assistant",
+        text: `Network error. Please call or text Civive at ${site.phone}.`,
+        ctas: [
+          { label: `Call ${site.phone}`, href: site.phoneHref, icon: "call" },
+          { label: "Text Civive", href: `sms:${site.phoneE164}`, icon: "text" },
+        ],
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const advanceIntake = (input: string) => {
+    let nextDraft = { ...leadDraft };
+    let nextStep: IntakeStep = intakeStep;
+    let assistantMessage: ChatMessage | null = null;
+    let shouldSubmit = false;
+
+    if (intakeStep === "submitted") {
+      resetIntake();
+      nextDraft = { ...emptyLeadDraft, message: input };
+      nextStep = "fullName";
+      assistantMessage = getNextQuestion(nextStep, nextDraft);
+    } else if (intakeStep === "context") {
+      nextDraft.message = input;
+      nextStep = "fullName";
+      assistantMessage = getNextQuestion(nextStep, nextDraft);
+    } else if (intakeStep === "fullName") {
+      if (input.length < 2) {
+        assistantMessage = {
+          id: makeId("assistant"),
+          role: "assistant",
+          text: "Send the name Civive should use for this request.",
+        };
+      } else {
+        nextDraft.fullName = input;
+        nextStep = "companyName";
+        assistantMessage = getNextQuestion(nextStep, nextDraft);
+      }
+    } else if (intakeStep === "companyName") {
+      if (input.length < 2) {
+        assistantMessage = {
+          id: makeId("assistant"),
+          role: "assistant",
+          text: "Send the business name so the request is not anonymous.",
+        };
+      } else {
+        nextDraft.companyName = input;
+        nextStep = "website";
+        assistantMessage = getNextQuestion(nextStep, nextDraft);
+      }
+    } else if (intakeStep === "website") {
+      if (input.length < 4) {
+        assistantMessage = {
+          id: makeId("assistant"),
+          role: "assistant",
+          text: "Send a website, Google profile link, or public business page.",
+        };
+      } else {
+        nextDraft.website = input;
+        nextStep = "serviceArea";
+        assistantMessage = getNextQuestion(nextStep, nextDraft);
+      }
+    } else if (intakeStep === "serviceArea") {
+      nextDraft.serviceArea = input;
+      nextStep = "serviceInterest";
+      assistantMessage = getNextQuestion(nextStep, nextDraft);
+    } else if (intakeStep === "serviceInterest") {
+      nextDraft.serviceInterest = input;
+      nextStep = "contact";
+      assistantMessage = getNextQuestion(nextStep, nextDraft);
+    } else if (intakeStep === "contact") {
+      const email = extractEmail(input);
+      const phone = extractPhone(input);
+
+      if (email) nextDraft.email = email;
+      if (phone) nextDraft.phone = phone;
+
+      if (!nextDraft.email || !nextDraft.phone) {
+        assistantMessage = {
+          id: makeId("assistant"),
+          role: "assistant",
+          text: "I still need both an email and a phone number before I can send this request.",
+        };
+      } else {
+        nextStep = "smsConsent";
+        assistantMessage = getNextQuestion(nextStep, nextDraft);
+      }
+    } else if (intakeStep === "smsConsent") {
+      nextDraft.smsConsent = includesYes(input) && !includesNo(input);
+      nextStep = "confirm";
+      assistantMessage = getNextQuestion(nextStep, nextDraft);
+    } else if (intakeStep === "confirm") {
+      if (includesYes(input)) {
+        shouldSubmit = true;
+        assistantMessage = {
+          id: makeId("assistant"),
+          role: "assistant",
+          text: "Confirmed.",
+        };
+      } else {
+        resetIntake();
+        return;
+      }
+    }
+
+    setLeadDraft(nextDraft);
+    setIntakeStep(nextStep);
+    if (assistantMessage) appendAssistantMessage(assistantMessage);
+    if (shouldSubmit) void submitLeadRequest(nextDraft);
+  };
 
   const submitMessage = (rawInput = draft) => {
     const input = normalizeInput(rawInput);
-    if (!input) return;
+    if (!input || isSubmitting) return;
 
     const visitorMessage: ChatMessage = {
-      id: `visitor-${Date.now()}`,
+      id: makeId("visitor"),
       role: "visitor",
       text: input,
     };
-    const reply = buildAssistantReply(input);
-    const assistantMessage: ChatMessage = {
-      id: `assistant-${Date.now()}`,
-      role: "assistant",
-      ...reply,
-    };
 
-    setMessages(current => [...current, visitorMessage, assistantMessage]);
+    setMessages(current => [...current, visitorMessage]);
     setDraft("");
     setVoiceStatus(null);
+    window.setTimeout(() => advanceIntake(input), 0);
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key !== "Enter" || event.shiftKey) return;
     event.preventDefault();
     submitMessage();
+  };
+
+  const handleCtaClick = (cta: ChatCta) => {
+    if (cta.action === "restart") {
+      resetIntake();
+      return;
+    }
+
+    if (cta.action === "submit") {
+      setMessages(current => [
+        ...current,
+        {
+          id: makeId("visitor"),
+          role: "visitor",
+          text: "Send this to Civive.",
+        },
+      ]);
+      void submitLeadRequest(leadDraft);
+      return;
+    }
+
+    if (cta.href) {
+      openExternalLink(cta.href);
+    }
   };
 
   const toggleVoiceInput = () => {
@@ -371,9 +594,16 @@ export default function GHLChatWidget() {
     <>
       <button
         type="button"
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          setIsOpen(true);
+          trackWebsiteEvent("chat_open", {
+            placement: "floating_button",
+            label: "Open Civive AI",
+            destination: "civive:open-chat",
+          });
+        }}
         className="fixed bottom-3 left-3 right-auto z-[60] flex h-11 w-11 items-center justify-center rounded-full border border-white/[0.16] bg-[linear-gradient(135deg,#19c2ff,#2f75ff)] text-white shadow-[0_20px_55px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#19c2ff]/70 sm:bottom-6 sm:left-auto sm:right-6 sm:h-14 sm:w-14"
-        aria-label="Open Civive AI chat"
+        aria-label="Open Civive AI assistant"
       >
         <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
       </button>
@@ -420,7 +650,7 @@ export default function GHLChatWidget() {
                   className={`flex ${message.role === "visitor" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[88%] rounded-2xl px-4 py-3 text-sm leading-6 ${
+                    className={`max-w-[88%] whitespace-pre-line rounded-2xl px-4 py-3 text-sm leading-6 ${
                       message.role === "visitor"
                         ? "bg-[#19c2ff] text-[#03101c]"
                         : "border border-white/[0.08] bg-white/[0.045] text-white/78"
@@ -432,19 +662,18 @@ export default function GHLChatWidget() {
                         {message.ctas.map(cta => {
                           const Icon = iconByCta[cta.icon];
                           return (
-                            <a
-                              key={`${message.id}-${cta.href}`}
-                              href={cta.href}
-                              onClick={event => {
-                                event.preventDefault();
-                                openExternalLink(cta.href);
-                              }}
-                              className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.1] bg-white/[0.07] px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/[0.12]"
+                            <button
+                              key={`${message.id}-${cta.label}`}
+                              type="button"
+                              onClick={() => handleCtaClick(cta)}
+                              className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.1] bg-white/[0.07] px-3 py-2 text-left text-xs font-semibold text-white transition-colors hover:bg-white/[0.12]"
                             >
                               <Icon className="h-3.5 w-3.5 text-[#9fdcff]" />
                               {cta.label}
-                              <ArrowRight className="h-3.5 w-3.5" />
-                            </a>
+                              {cta.href ? (
+                                <ArrowRight className="h-3.5 w-3.5" />
+                              ) : null}
+                            </button>
                           );
                         })}
                       </div>
@@ -452,6 +681,14 @@ export default function GHLChatWidget() {
                   </div>
                 </div>
               ))}
+              {isSubmitting ? (
+                <div className="flex justify-start">
+                  <div className="inline-flex items-center gap-2 rounded-2xl border border-white/[0.08] bg-white/[0.045] px-4 py-3 text-sm text-white/70">
+                    <CheckCircle className="h-4 w-4 text-[#9fdcff]" />
+                    Working...
+                  </div>
+                </div>
+              ) : null}
             </div>
 
             <div className="border-t border-white/[0.08] px-4 py-4">
@@ -475,9 +712,10 @@ export default function GHLChatWidget() {
                   onChange={event => setDraft(event.target.value)}
                   onKeyDown={handleKeyDown}
                   rows={2}
-                  className="min-h-[3rem] w-full resize-none bg-transparent px-2 py-2 text-sm leading-6 text-white outline-none placeholder:text-white/38"
-                  placeholder="Ask about visibility, missed calls, booking, or AI reception."
-                  aria-label="Ask Civive AI"
+                  disabled={isSubmitting}
+                  className="min-h-[3rem] w-full resize-none bg-transparent px-2 py-2 text-sm leading-6 text-white outline-none placeholder:text-white/38 disabled:opacity-60"
+                  placeholder="Tell Civive AI what is leaking: visibility, calls, booking, or follow-up."
+                  aria-label="Talk to Civive AI"
                 />
                 <div className="flex items-center justify-between gap-3">
                   <p
@@ -490,6 +728,7 @@ export default function GHLChatWidget() {
                     <button
                       type="button"
                       onClick={toggleVoiceInput}
+                      disabled={isSubmitting}
                       className={`inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#19c2ff]/70 ${
                         isListening
                           ? "border-[#19c2ff]/60 bg-[#19c2ff]/18 text-[#9fdcff]"
