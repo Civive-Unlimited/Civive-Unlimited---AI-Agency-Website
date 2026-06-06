@@ -10,7 +10,14 @@ const envSnapshot = {
   CIVIVE_LEAD_DRY_RUN: process.env.CIVIVE_LEAD_DRY_RUN,
   CIVIVE_LEAD_DRY_RUN_TOKEN: process.env.CIVIVE_LEAD_DRY_RUN_TOKEN,
   LEAD_DRY_RUN_TOKEN: process.env.LEAD_DRY_RUN_TOKEN,
+  GHL_TARGET_LOCATION_API_KEY: process.env.GHL_TARGET_LOCATION_API_KEY,
+  HIGHLEVEL_TARGET_LOCATION_TOKEN:
+    process.env.HIGHLEVEL_TARGET_LOCATION_TOKEN,
   GHL_LOCATION_API_KEY: process.env.GHL_LOCATION_API_KEY,
+  HIGHLEVEL_LOCATION_TOKEN: process.env.HIGHLEVEL_LOCATION_TOKEN,
+  HIGHLEVEL_TOKEN: process.env.HIGHLEVEL_TOKEN,
+  GHL_API_KEY: process.env.GHL_API_KEY,
+  HIGHLEVEL_API_KEY: process.env.HIGHLEVEL_API_KEY,
   GHL_LOCATION_ID: process.env.GHL_LOCATION_ID,
   GHL_PIPELINE_ID: process.env.GHL_PIPELINE_ID,
   GHL_PIPELINE_STAGE_ID: process.env.GHL_PIPELINE_STAGE_ID,
@@ -266,7 +273,93 @@ try {
 
   process.env.NODE_ENV = "test";
   delete process.env.VERCEL_ENV;
+  process.env.GHL_TARGET_LOCATION_API_KEY = "test-target-location-token";
+  process.env.HIGHLEVEL_TARGET_LOCATION_TOKEN =
+    "test-secondary-target-location-token";
+  process.env.GHL_LOCATION_API_KEY = "test-stale-location-token";
+  process.env.HIGHLEVEL_LOCATION_TOKEN = "test-stale-highlevel-token";
+  process.env.GHL_API_KEY = "test-general-token";
+  process.env.HIGHLEVEL_TOKEN = "test-highlevel-token";
+  process.env.HIGHLEVEL_API_KEY = "test-highlevel-api-key";
+  process.env.GHL_LOCATION_ID = "test-location";
+  process.env.GHL_PIPELINE_ID = "test-pipeline";
+  process.env.GHL_PIPELINE_STAGE_ID = "test-stage";
+  delete process.env.CIVIVE_LEAD_BACKUP_WEBHOOK_URL;
+  delete process.env.CIVIVE_LEAD_NOTIFICATION_WEBHOOK_URL;
+
+  const tokenPrecedenceCalls = [];
+  globalThis.fetch = async (url, options = {}) => {
+    tokenPrecedenceCalls.push({ url: String(url), options });
+
+    if (String(url).includes("/contacts/upsert")) {
+      return {
+        ok: true,
+        status: 200,
+        async text() {
+          return JSON.stringify({ contact: { id: "contact-token-test" } });
+        },
+      };
+    }
+
+    if (String(url).includes("/opportunities/search")) {
+      return {
+        ok: true,
+        status: 200,
+        async text() {
+          return JSON.stringify({ opportunities: [] });
+        },
+      };
+    }
+
+    if (String(url).includes("services.leadconnectorhq.com")) {
+      return {
+        ok: true,
+        status: 200,
+        async text() {
+          return JSON.stringify({ opportunity: { id: "opportunity-token-test" } });
+        },
+      };
+    }
+
+    return {
+      ok: true,
+      status: 200,
+      async text() {
+        return JSON.stringify({ ok: true });
+      },
+    };
+  };
+
+  const tokenPrecedence = await callLeadApi({
+    body: validLeadPayload,
+  });
+  assert(
+    tokenPrecedence.statusCode === 200,
+    "Target-location token precedence should allow a clean lead API response."
+  );
+  const leadConnectorCalls = tokenPrecedenceCalls.filter(call =>
+    String(call.url).includes("services.leadconnectorhq.com")
+  );
+  assert(
+    leadConnectorCalls.length > 0,
+    "Token precedence check should call LeadConnector."
+  );
+  assert(
+    leadConnectorCalls.every(
+      call =>
+        call.options?.headers?.Authorization ===
+        "Bearer test-target-location-token"
+    ),
+    "LeadConnector requests should prefer GHL_TARGET_LOCATION_API_KEY over stale legacy tokens."
+  );
+
+  delete process.env.GHL_TARGET_LOCATION_API_KEY;
+  delete process.env.HIGHLEVEL_TARGET_LOCATION_TOKEN;
+  delete process.env.GHL_API_KEY;
+  delete process.env.HIGHLEVEL_TOKEN;
+  delete process.env.HIGHLEVEL_API_KEY;
   process.env.GHL_LOCATION_API_KEY = "test-token-without-location-access";
+  delete process.env.HIGHLEVEL_LOCATION_TOKEN;
   process.env.GHL_LOCATION_ID = "test-location";
   process.env.GHL_PIPELINE_ID = "test-pipeline";
   process.env.GHL_PIPELINE_STAGE_ID = "test-stage";
@@ -368,6 +461,7 @@ try {
           "SMS consent validation",
           "honeypot handling",
           "production dry-run authorization gate",
+          "target-location token precedence",
           "external token/access failure fallback",
           "pre-external local backup capture",
           "owner notification webhook attempt",

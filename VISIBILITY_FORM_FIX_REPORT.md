@@ -11,7 +11,7 @@ When the configured server token did not have access to the configured location 
 - The visitor could see a raw token/access error instead of a clean confirmation.
 - The lead could be lost because there was no guaranteed backup record before the external CRM/report call.
 
-The likely live root cause is a server-side CiviveOS token/location permission mismatch for the configured `GHL_LOCATION_API_KEY` and `GHL_LOCATION_ID`, not a frontend token exposure issue. Tokens are still server-side only.
+The live root cause was a server-side CiviveOS token selection mismatch: the working keeper token is configured under the target-location names used by the local MCP connector, while the website was preferring the stale legacy `GHL_LOCATION_API_KEY` value. Tokens are still server-side only.
 
 Because side-effect calls for tags, notes, and opportunities were already caught as warnings, a raw visitor-facing `token does not have access` error had to come from the required contact write path. The primary failing endpoint class is `POST /contacts/upsert` against `https://services.leadconnectorhq.com`.
 
@@ -93,7 +93,8 @@ Production should also configure `CIVIVE_LEAD_BACKUP_WEBHOOK_URL` for durable st
 
 Server-only:
 
-- `GHL_LOCATION_API_KEY`
+- `GHL_TARGET_LOCATION_API_KEY` or `HIGHLEVEL_TARGET_LOCATION_TOKEN`
+- `GHL_LOCATION_API_KEY` as a legacy fallback only
 - `GHL_LOCATION_ID`
 - `GHL_PIPELINE_ID`
 - `GHL_PIPELINE_STAGE_ID`
@@ -143,4 +144,4 @@ The lead contract specifically verifies:
 
 ## Remaining production action
 
-The code now protects the lead even when CiviveOS routing fails, but production still needs a valid `GHL_LOCATION_API_KEY` that has access to location `FySiQXrk1tIwqcZOlnYG`, plus a durable `CIVIVE_LEAD_BACKUP_WEBHOOK_URL` and `CIVIVE_LEAD_NOTIFICATION_WEBHOOK_URL`.
+The code now protects the lead even when CiviveOS routing fails, and the website should prefer a valid target-location token that has access to location `FySiQXrk1tIwqcZOlnYG`. Production still needs durable `CIVIVE_LEAD_BACKUP_WEBHOOK_URL` and `CIVIVE_LEAD_NOTIFICATION_WEBHOOK_URL` values for storage/notification outside serverless `/tmp`.

@@ -73,10 +73,13 @@ function isValidEmail(email) {
 function getHighLevelConfig(env = process.env) {
   return {
     token:
+      env.GHL_TARGET_LOCATION_API_KEY ||
+      env.HIGHLEVEL_TARGET_LOCATION_TOKEN ||
+      env.GHL_API_KEY ||
+      env.HIGHLEVEL_TOKEN ||
+      env.HIGHLEVEL_API_KEY ||
       env.GHL_LOCATION_API_KEY ||
       env.HIGHLEVEL_LOCATION_TOKEN ||
-      env.HIGHLEVEL_TOKEN ||
-      env.GHL_API_KEY ||
       "",
     locationId:
       env.GHL_LOCATION_ID ||
