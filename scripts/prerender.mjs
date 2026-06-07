@@ -504,6 +504,13 @@ function sitemapChangefreq(route) {
 
 async function writeCrawlFiles(routes) {
   const llmsPages = topicalPages.filter(page => page.includeInLlms !== false);
+  const publicProfileLines = seoConfig.socialLinks?.length
+    ? [
+        "Public profiles:",
+        ...seoConfig.socialLinks.map(link => `${link.label}: ${link.href}`),
+        "",
+      ]
+    : [];
   const sitemap = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -576,6 +583,7 @@ async function writeCrawlFiles(routes) {
     `Area served: ${seoConfig.areaServed}`,
     `Last updated: ${seoConfig.defaultLastModified}`,
     "",
+    ...publicProfileLines,
     "## What Civive Does",
     "",
     "Civive Unlimited helps local service businesses become easier for Google, AI search engines, answer engines, and buyers to understand, trust, contact, and follow up with.",

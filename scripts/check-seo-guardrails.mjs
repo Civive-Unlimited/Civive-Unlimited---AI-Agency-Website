@@ -152,12 +152,14 @@ const topicalByPath = new Map(topicalPages.map(page => [page.path, page]));
 const siteDomain = seoConfig.canonicalDomain;
 const sitemap = await fs.readFile(path.join(publicDir, "sitemap.xml"), "utf8");
 const robotsTxt = await fs.readFile(path.join(publicDir, "robots.txt"), "utf8");
+const llmsTxt = await fs.readFile(path.join(publicDir, "llms.txt"), "utf8");
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(
   match => match[1]
 );
 const expectedSitemapUrls = prerenderRoutes.map(route =>
   buildCanonicalUrl(route.path)
 );
+const expectedSocialProfileUrls = seoConfig.socialLinks.map(link => link.href);
 const expectedRobotsTxt = [
   "User-agent: *",
   "Allow: /",
@@ -198,6 +200,23 @@ compareSets("sitemap route set", expectedSitemapUrls, sitemapUrls, issues);
 
 if (robotsTxt.replace(/\r\n/g, "\n") !== expectedRobotsTxt) {
   issues.push("robots.txt does not match the approved crawler policy");
+}
+
+if (!expectedSocialProfileUrls.length) {
+  issues.push("seoConfig.socialLinks is empty");
+}
+
+compareSets(
+  "seoConfig socialProfiles",
+  expectedSocialProfileUrls,
+  seoConfig.socialProfiles,
+  issues
+);
+
+for (const link of seoConfig.socialLinks) {
+  if (!llmsTxt.includes(`${link.label}: ${link.href}`)) {
+    issues.push(`llms.txt missing public profile ${link.label}`);
+  }
 }
 
 if (new Set(sitemapUrls).size !== sitemapUrls.length) {
@@ -247,6 +266,27 @@ for (const route of prerenderRoutes) {
   const webPageNode = graphNodeOfType(graph, "WebPage");
   const hrefs = extractHrefs(html, siteDomain);
   const topicalPage = topicalByPath.get(route.path);
+
+  for (const link of seoConfig.socialLinks) {
+    if (!html.includes(`href="${link.href}"`)) {
+      issues.push(`${route.path}: missing footer social href ${link.label}`);
+    }
+  }
+
+  for (const entityType of ["Organization", "ProfessionalService"]) {
+    const entityNode = graphNodeOfType(graph, entityType);
+    if (!entityNode?.sameAs) {
+      issues.push(`${route.path}: schema ${entityType} missing sameAs`);
+      continue;
+    }
+
+    compareSets(
+      `${route.path}: schema ${entityType} sameAs`,
+      expectedSocialProfileUrls,
+      entityNode.sameAs,
+      issues
+    );
+  }
 
   if (canonical !== buildCanonicalUrl(route.path)) {
     issues.push(`${route.path}: canonical does not match final URL`);

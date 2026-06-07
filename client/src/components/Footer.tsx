@@ -1,7 +1,32 @@
-import { Globe, Mail, MapPin, Phone } from "lucide-react";
+import {
+  ExternalLink,
+  Facebook,
+  Github,
+  Globe,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Music2,
+  Phone,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 import civiveLogo from "@/assets/civive-unlimited-approved-mark.webp";
 import { seoConfig } from "@/content/seo";
 import { areasServed, site } from "@/content/site";
+
+const socialIcons = {
+  LinkedIn: Linkedin,
+  Facebook,
+  Instagram,
+  YouTube: Youtube,
+  TikTok: Music2,
+  Reddit: MessageCircle,
+  X: Twitter,
+  GitHub: Github,
+} as const;
 
 const footerGroups = [
   {
@@ -146,6 +171,32 @@ export default function Footer() {
                 </span>
               </div>
             </div>
+
+            {seoConfig.socialLinks.length ? (
+              <div className="mt-7">
+                <p className="homepage-eyebrow">Public profiles</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {seoConfig.socialLinks.map(link => {
+                    const SocialIcon = socialIcons[link.label];
+
+                    return (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${site.name} on ${link.label}`}
+                        className="inline-flex h-9 items-center gap-2 rounded-md border border-white/[0.1] px-3 text-sm text-muted-foreground transition-colors hover:border-white/[0.22] hover:text-white"
+                      >
+                        <SocialIcon className="h-4 w-4 text-[oklch(0.75_0.18_220)]" />
+                        <span>{link.label}</span>
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : null}
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

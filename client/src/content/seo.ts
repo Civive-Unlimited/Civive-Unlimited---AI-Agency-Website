@@ -1,3 +1,38 @@
+export const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/scottberryciviveunlimited/",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/civiveunlimited/",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/scottberry702",
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@ScottBerry702",
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@civive_unlimited",
+  },
+  {
+    label: "Reddit",
+    href: "https://www.reddit.com/user/civive-unltd/",
+  },
+  {
+    label: "X",
+    href: "https://x.com/civiveunltd",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/CIVIVEUNLTD",
+  },
+] as const;
+
 export const seoConfig = {
   brandName: "Civive Unlimited",
   legalName: "Civive Unlimited",
@@ -35,7 +70,8 @@ export const seoConfig = {
   areaServed: "Springfield, MO and Missouri service businesses",
   areaServedPlaces: ["Springfield, MO", "Missouri", "Local service businesses"],
   priceRange: "$$",
-  socialProfiles: [] as string[],
+  socialLinks,
+  socialProfiles: socialLinks.map(link => link.href),
   knowsAbout: [
     "AI Search Visibility",
     "Generative Engine Optimization",
