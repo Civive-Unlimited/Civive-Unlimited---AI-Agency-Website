@@ -65,6 +65,10 @@ function graphNodeOfType(graph, typeName) {
   return graph.find(node => nodeHasType(node, typeName));
 }
 
+function isIndustryRoute(route) {
+  return route.path.startsWith("/industries/");
+}
+
 function stripBrand(title) {
   return title
     .replace(new RegExp(`\\s*\\|\\s*${seoConfig.brandName}\\s*$`, "i"), "")
@@ -188,8 +192,11 @@ const industryChildPaths = topicalPages
 const industryContentPaths = industries.map(
   industry => `/industries/${industry.slug}`
 );
+const industryByPath = new Map(
+  industries.map(industry => [`/industries/${industry.slug}`, industry])
+);
 const industryRoutePaths = prerenderRoutes
-  .filter(route => route.schemaKind === "industry")
+  .filter(isIndustryRoute)
   .map(route => route.path);
 const industrySupportHrefs = [
   "/ai-search-report",
@@ -212,6 +219,41 @@ compareSets(
   industryChildPaths,
   issues
 );
+
+for (const industryPath of industryContentPaths) {
+  const industry = industryByPath.get(industryPath);
+  const route = prerenderRoutes.find(route => route.path === industryPath);
+
+  if (!route || !industry) continue;
+
+  if (route.schemaKind !== "service") {
+    issues.push(`${route.path}: industry route schemaKind must be service`);
+  }
+
+  const expectedServiceName = `${industry.name} AI Search Visibility`;
+  if (route.serviceName !== expectedServiceName) {
+    issues.push(
+      `${route.path}: industry Service name should be ${expectedServiceName}`
+    );
+  }
+
+  if (!route.faqItems?.length) {
+    issues.push(`${route.path}: industry route is missing FAQ items`);
+    continue;
+  }
+
+  const faqQuestions = new Set(route.faqItems.map(faq => faq.question));
+  for (const requiredQuestion of [
+    `How do buyers compare ${industry.shortName} providers?`,
+    `What objections should ${industry.shortName} pages answer?`,
+  ]) {
+    if (!faqQuestions.has(requiredQuestion)) {
+      issues.push(
+        `${route.path}: industry FAQ items missing ${requiredQuestion}`
+      );
+    }
+  }
+}
 
 for (const route of prerenderRoutes) {
   const outputPath = routeOutputPath(route.path);
@@ -448,13 +490,10 @@ for (const route of prerenderRoutes) {
           );
         }
       }
-      if (
-        (route.schemaKind === "service" || route.schemaKind === "industry") &&
-        !hasGraphType(graph, "Service")
-      ) {
+      if (route.schemaKind === "service" && !hasGraphType(graph, "Service")) {
         issues.push(`${route.path}: schema missing Service`);
       }
-      if (route.schemaKind === "service" || route.schemaKind === "industry") {
+      if (route.schemaKind === "service") {
         if (!serviceNode) {
           issues.push(`${route.path}: schema missing route Service node`);
         } else {
@@ -492,7 +531,7 @@ for (const route of prerenderRoutes) {
         }
       }
       if (route.faqItems?.length) {
-        if (route.schemaKind === "industry" && route.faqItems.length < 8) {
+        if (isIndustryRoute(route) && route.faqItems.length < 8) {
           issues.push(`${route.path}: expected at least 8 industry FAQs`);
         }
         if (!hasGraphType(graph, "FAQPage")) {

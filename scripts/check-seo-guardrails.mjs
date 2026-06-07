@@ -143,12 +143,20 @@ async function assertFreshGeneratedOutput(issues) {
   }
 }
 
-const { buildCanonicalUrl, prerenderRoutes, seoConfig, topicalPages } =
-  await import(pathToFileURL(ssrEntry));
+const {
+  buildCanonicalUrl,
+  industries,
+  prerenderRoutes,
+  seoConfig,
+  topicalPages,
+} = await import(pathToFileURL(ssrEntry));
 
 const issues = [];
 const routeByPath = new Map(prerenderRoutes.map(route => [route.path, route]));
 const topicalByPath = new Map(topicalPages.map(page => [page.path, page]));
+const industryByPath = new Map(
+  industries.map(industry => [`/industries/${industry.slug}`, industry])
+);
 const siteDomain = seoConfig.canonicalDomain;
 const sitemap = await fs.readFile(path.join(publicDir, "sitemap.xml"), "utf8");
 const robotsTxt = await fs.readFile(path.join(publicDir, "robots.txt"), "utf8");
@@ -266,6 +274,36 @@ for (const route of prerenderRoutes) {
   const webPageNode = graphNodeOfType(graph, "WebPage");
   const hrefs = extractHrefs(html, siteDomain);
   const topicalPage = topicalByPath.get(route.path);
+  const industry = industryByPath.get(route.path);
+
+  if (industry) {
+    if (route.schemaKind !== "service") {
+      issues.push(`${route.path}: industry route schemaKind must be service`);
+    }
+
+    const expectedServiceName = `${industry.name} AI Search Visibility`;
+    if (route.serviceName !== expectedServiceName) {
+      issues.push(
+        `${route.path}: industry Service name should be ${expectedServiceName}`
+      );
+    }
+
+    if (!route.faqItems?.length) {
+      issues.push(`${route.path}: industry route is missing FAQ items`);
+    } else {
+      const faqQuestions = new Set(route.faqItems.map(faq => faq.question));
+      for (const requiredQuestion of [
+        `How do buyers compare ${industry.shortName} providers?`,
+        `What objections should ${industry.shortName} pages answer?`,
+      ]) {
+        if (!faqQuestions.has(requiredQuestion)) {
+          issues.push(
+            `${route.path}: industry FAQ items missing ${requiredQuestion}`
+          );
+        }
+      }
+    }
+  }
 
   for (const link of seoConfig.socialLinks) {
     if (!html.includes(`href="${link.href}"`)) {

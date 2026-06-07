@@ -322,10 +322,7 @@ function buildSchema(route) {
     );
   }
 
-  if (
-    (route.schemaKind === "service" || route.schemaKind === "industry") &&
-    route.serviceName
-  ) {
+  if (route.schemaKind === "service" && route.serviceName) {
     const serviceSchema = {
       "@type": "Service",
       "@id": serviceId,

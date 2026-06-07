@@ -24,7 +24,7 @@ export type PrerenderRoute = {
   title: string;
   description: string;
   type?: "website" | "article";
-  schemaKind?: "webpage" | "faq" | "service" | "industry" | "article";
+  schemaKind?: "webpage" | "faq" | "service" | "article";
   serviceName?: string;
   serviceType?: string;
   faqItems?: Array<{ question: string; answer: string }>;
@@ -188,8 +188,8 @@ export const prerenderRoutes: PrerenderRoute[] = [
     path: `/industries/${industry.slug}`,
     title: `${industry.name} AI Search Visibility | Civive Unlimited`,
     description: `Visibility Report and visibility signal cleanup for ${industry.name} businesses that need clearer services, trust signals, reviews, FAQs, schema, and lead capture.`,
-    schemaKind: "industry" as const,
-    serviceName: `${industry.name} Visibility Report`,
+    schemaKind: "service" as const,
+    serviceName: `${industry.name} AI Search Visibility`,
     faqItems: getIndustryFaqs(industry),
   })),
   ...servicePages.map(service => ({
