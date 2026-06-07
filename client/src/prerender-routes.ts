@@ -6,6 +6,7 @@ import {
   civiveOsFaqs,
   civiveOsOfferFaqs,
   civiveOsOfferSchemaOffers,
+  buildLog,
   faqs,
   getIndustryFaqs,
   homepageFaqs,
@@ -44,7 +45,26 @@ export type PrerenderRoute = {
   robots?: string;
   datePublished?: string;
   lastModified?: string;
+  dependencies?: string[];
+  proficiencies?: string[];
+  articleSections?: Array<{
+    eyebrow?: string;
+    title: string;
+    copy: string;
+    bullets?: string[];
+  }>;
 };
+
+const editorialSchemaDependencies = [
+  "Schema JSON-LD",
+  "Vercel Analytics",
+  "LLM Scraping Engines",
+];
+
+const editorialSchemaProficiencies = [
+  "Generative Engine Optimization",
+  "AI Search Engine Optimization",
+];
 
 const legalMeta = {
   privacy: {
@@ -229,8 +249,23 @@ export const prerenderRoutes: PrerenderRoute[] = [
     faqItems: article.faqs,
     datePublished: article.publishedDate,
     lastModified: article.lastModified,
+    dependencies: editorialSchemaDependencies,
+    proficiencies: editorialSchemaProficiencies,
+    articleSections: article.sections,
   })),
-  { path: "/build-in-public", ...pageMeta.build },
+  {
+    path: "/build-in-public",
+    ...pageMeta.build,
+    type: "article",
+    schemaKind: "article",
+    dependencies: editorialSchemaDependencies,
+    proficiencies: editorialSchemaProficiencies,
+    articleSections: buildLog.map(log => ({
+      eyebrow: log.date,
+      title: log.title,
+      copy: log.copy,
+    })),
+  },
   {
     path: "/contact",
     ...pageMeta.contact,

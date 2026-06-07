@@ -20,6 +20,15 @@ const {
 const siteDomain = seoConfig.canonicalDomain;
 const defaultImageUrl = buildAssetUrl(seoConfig.defaultOgImagePath);
 const defaultLogoUrl = buildAssetUrl(seoConfig.defaultLogoPath);
+const defaultEditorialDependencies = [
+  "Schema JSON-LD",
+  "Vercel Analytics",
+  "LLM Scraping Engines",
+];
+const defaultEditorialProficiencies = [
+  "Generative Engine Optimization",
+  "AI Search Engine Optimization",
+];
 
 const managedHeadPatterns = [
   /<title>.*?<\/title>\s*/is,
@@ -63,6 +72,66 @@ function schemaSlug(value) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
+}
+
+function isEditorialTrainingRoute(route) {
+  return (
+    route.path.startsWith("/resources/") ||
+    route.path === "/build-in-public" ||
+    route.path.startsWith("/build-in-public/")
+  );
+}
+
+function buildHowToSteps(route) {
+  return (route.articleSections ?? [])
+    .filter(section => section.title || section.copy)
+    .map((section, index) => {
+      const directions = (section.bullets ?? []).filter(Boolean);
+      const step = {
+        "@type": "HowToStep",
+        position: index + 1,
+        name: section.title,
+        text: [section.copy, ...directions].filter(Boolean).join(" "),
+      };
+
+      if (section.eyebrow) {
+        step.alternateName = section.eyebrow;
+      }
+
+      if (directions.length) {
+        step.itemListElement = directions.map((direction, directionIndex) => ({
+          "@type": "HowToDirection",
+          position: directionIndex + 1,
+          text: direction,
+        }));
+      }
+
+      return step;
+    });
+}
+
+function buildEditorialTrainingFields(route) {
+  const dependencies = route.dependencies?.length
+    ? route.dependencies
+    : defaultEditorialDependencies;
+  const proficiencies = route.proficiencies?.length
+    ? route.proficiencies
+    : defaultEditorialProficiencies;
+  const step = buildHowToSteps(route);
+
+  return {
+    dependencies,
+    proficiencies,
+    tool: dependencies.map(name => ({
+      "@type": "HowToTool",
+      name,
+    })),
+    about: proficiencies.map(name => ({
+      "@type": "DefinedTerm",
+      name,
+    })),
+    ...(step.length ? { step } : {}),
+  };
 }
 
 function buildCoreServiceOfferCatalog(providerId, offerCatalogId) {
@@ -370,8 +439,11 @@ function buildSchema(route) {
       webPage.mainEntity = { "@id": articleId };
     }
 
-    graph.push({
-      "@type": "Article",
+    const isEditorialTrainingArticle = isEditorialTrainingRoute(route);
+    const articleSchema = {
+      "@type": isEditorialTrainingArticle
+        ? ["TechArticle", "HowTo"]
+        : "Article",
       "@id": articleId,
       headline: stripBrand(route.title),
       description: route.description,
@@ -385,7 +457,13 @@ function buildSchema(route) {
         seoConfig.defaultLastModified,
       dateModified: route.lastModified ?? seoConfig.defaultLastModified,
       inLanguage: "en-US",
-    });
+    };
+
+    if (isEditorialTrainingArticle) {
+      Object.assign(articleSchema, buildEditorialTrainingFields(route));
+    }
+
+    graph.push(articleSchema);
   }
 
   return {

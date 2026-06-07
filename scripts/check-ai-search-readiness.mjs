@@ -69,6 +69,14 @@ function isIndustryRoute(route) {
   return route.path.startsWith("/industries/");
 }
 
+function isEditorialTrainingRoute(route) {
+  return (
+    route.path.startsWith("/resources/") ||
+    route.path === "/build-in-public" ||
+    route.path.startsWith("/build-in-public/")
+  );
+}
+
 function stripBrand(title) {
   return title
     .replace(new RegExp(`\\s*\\|\\s*${seoConfig.brandName}\\s*$`, "i"), "")
@@ -450,6 +458,13 @@ for (const route of prerenderRoutes) {
       const routeUrl = absoluteUrl(route.path);
       const webPageNode = graphNodeOfType(graph, "WebPage");
       const breadcrumbNode = graphNodeOfType(graph, "BreadcrumbList");
+      const articleNode = graph.find(
+        node =>
+          (nodeHasType(node, "Article") ||
+            nodeHasType(node, "TechArticle") ||
+            nodeHasType(node, "HowTo")) &&
+          node["@id"] === `${routeUrl}#article`
+      );
       const serviceNode = graph.find(
         node =>
           nodeHasType(node, "Service") && node["@id"] === `${routeUrl}#service`
@@ -512,8 +527,56 @@ for (const route of prerenderRoutes) {
           }
         }
       }
-      if (route.type === "article" && !hasGraphType(graph, "Article")) {
-        issues.push(`${route.path}: schema missing Article`);
+      if (route.type === "article") {
+        if (!articleNode) {
+          issues.push(`${route.path}: schema missing route article node`);
+        } else if (isEditorialTrainingRoute(route)) {
+          if (!nodeHasType(articleNode, "TechArticle")) {
+            issues.push(`${route.path}: schema missing TechArticle type`);
+          }
+          if (!nodeHasType(articleNode, "HowTo")) {
+            issues.push(`${route.path}: schema missing HowTo type`);
+          }
+          for (const dependency of [
+            "Schema JSON-LD",
+            "Vercel Analytics",
+            "LLM Scraping Engines",
+          ]) {
+            if (!(articleNode.dependencies ?? []).includes(dependency)) {
+              issues.push(
+                `${route.path}: editorial schema missing dependency ${dependency}`
+              );
+            }
+          }
+          for (const proficiency of [
+            "Generative Engine Optimization",
+            "AI Search Engine Optimization",
+          ]) {
+            if (!(articleNode.proficiencies ?? []).includes(proficiency)) {
+              issues.push(
+                `${route.path}: editorial schema missing proficiency ${proficiency}`
+              );
+            }
+          }
+          if (!Array.isArray(articleNode.step) || !articleNode.step.length) {
+            issues.push(`${route.path}: editorial schema missing HowTo steps`);
+          } else {
+            for (const [index, step] of articleNode.step.entries()) {
+              if (step["@type"] !== "HowToStep") {
+                issues.push(
+                  `${route.path}: editorial schema step ${index + 1} is not HowToStep`
+                );
+              }
+              if (!step.name || !step.text) {
+                issues.push(
+                  `${route.path}: editorial schema step ${index + 1} missing name or text`
+                );
+              }
+            }
+          }
+        } else if (!nodeHasType(articleNode, "Article")) {
+          issues.push(`${route.path}: schema missing Article`);
+        }
       }
       if (route.path === "/industries") {
         const itemListNode = graphNodeOfType(graph, "ItemList");

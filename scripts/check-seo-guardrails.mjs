@@ -75,6 +75,14 @@ function graphNodeOfType(graph, typeName) {
   return graph.find(node => nodeHasType(node, typeName));
 }
 
+function isEditorialTrainingRoute(route) {
+  return (
+    route.path.startsWith("/resources/") ||
+    route.path === "/build-in-public" ||
+    route.path.startsWith("/build-in-public/")
+  );
+}
+
 function compareSets(label, expected, actual, issues) {
   const expectedSet = new Set(expected);
   const actualSet = new Set(actual);
@@ -272,6 +280,13 @@ for (const route of prerenderRoutes) {
   );
   const graph = schemaText ? (JSON.parse(schemaText)["@graph"] ?? []) : [];
   const webPageNode = graphNodeOfType(graph, "WebPage");
+  const articleNode = graph.find(
+    node =>
+      (nodeHasType(node, "Article") ||
+        nodeHasType(node, "TechArticle") ||
+        nodeHasType(node, "HowTo")) &&
+      node["@id"] === `${buildCanonicalUrl(route.path)}#article`
+  );
   const hrefs = extractHrefs(html, siteDomain);
   const topicalPage = topicalByPath.get(route.path);
   const industry = industryByPath.get(route.path);
@@ -342,6 +357,45 @@ for (const route of prerenderRoutes) {
   ]) {
     if (!value.startsWith(siteDomain)) {
       issues.push(`${route.path}: ${label} is not on canonical domain`);
+    }
+  }
+
+  if (route.type === "article") {
+    if (!articleNode) {
+      issues.push(`${route.path}: schema missing route article node`);
+    } else if (isEditorialTrainingRoute(route)) {
+      if (!nodeHasType(articleNode, "TechArticle")) {
+        issues.push(`${route.path}: schema missing TechArticle type`);
+      }
+      if (!nodeHasType(articleNode, "HowTo")) {
+        issues.push(`${route.path}: schema missing HowTo type`);
+      }
+      for (const dependency of [
+        "Schema JSON-LD",
+        "Vercel Analytics",
+        "LLM Scraping Engines",
+      ]) {
+        if (!(articleNode.dependencies ?? []).includes(dependency)) {
+          issues.push(
+            `${route.path}: editorial schema missing dependency ${dependency}`
+          );
+        }
+      }
+      for (const proficiency of [
+        "Generative Engine Optimization",
+        "AI Search Engine Optimization",
+      ]) {
+        if (!(articleNode.proficiencies ?? []).includes(proficiency)) {
+          issues.push(
+            `${route.path}: editorial schema missing proficiency ${proficiency}`
+          );
+        }
+      }
+      if (!Array.isArray(articleNode.step) || !articleNode.step.length) {
+        issues.push(`${route.path}: editorial schema missing HowTo steps`);
+      }
+    } else if (!nodeHasType(articleNode, "Article")) {
+      issues.push(`${route.path}: schema missing Article`);
     }
   }
 
