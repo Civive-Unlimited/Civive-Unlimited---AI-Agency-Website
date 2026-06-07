@@ -1,5 +1,9 @@
+import path from "node:path";
+import { pathToFileURL } from "node:url";
+
 const canonicalDomain = "https://www.civiveunlimited.com";
 const apexDomain = "https://civiveunlimited.com";
+const ssrEntry = path.join(process.cwd(), "dist", "ssr", "entry-server.js");
 const expectedRobotsTxt = [
   "User-agent: *",
   "Allow: /",
@@ -64,7 +68,39 @@ function nodeHasType(node, typeName) {
     : nodeType === typeName;
 }
 
+async function loadLocalRouteContract() {
+  try {
+    return await import(pathToFileURL(ssrEntry));
+  } catch (error) {
+    fail(
+      `Unable to load ${ssrEntry}. Run pnpm run build before pnpm run check:seo-live. ${error.message}`
+    );
+  }
+}
+
+function parseLlmsUrls(text) {
+  return new Set(
+    [
+      ...text.matchAll(
+        /https:\/\/www\.civiveunlimited\.com(?:\/[A-Za-z0-9._~:/?#[\]@!$&'()*+,;=%-]*)?/g
+      ),
+    ].map(match => match[0].replace(/[),.;]+$/g, ""))
+  );
+}
+
 const issues = [];
+const { buildCanonicalUrl, prerenderRoutes, topicalPages } =
+  await loadLocalRouteContract();
+const llmsTopicalPageByPath = new Map(
+  topicalPages.map(page => [page.path, page])
+);
+const expectedLlmsRouteUrls = prerenderRoutes
+  .filter(
+    route => llmsTopicalPageByPath.get(route.path)?.includeInLlms !== false
+  )
+  .filter(route => llmsTopicalPageByPath.has(route.path))
+  .map(route => buildCanonicalUrl(route.path));
+const expectedLlmsRouteUrlSet = new Set(expectedLlmsRouteUrls);
 
 const pageChecks = [
   { path: "/", requireFaq: true },
@@ -148,11 +184,24 @@ for (const assetPath of ["/sitemap.xml", "/robots.txt", "/llms.txt"]) {
         issues.push(`/sitemap.xml: missing ${required}`);
     }
   }
-  if (
-    assetPath === "/llms.txt" &&
-    !text.includes(`${canonicalDomain}/industries/hvac`)
-  ) {
-    issues.push("/llms.txt: missing industry child URL");
+  if (assetPath === "/llms.txt") {
+    const llmsUrls = parseLlmsUrls(text);
+
+    if (!expectedLlmsRouteUrls.length) {
+      issues.push("/llms.txt: local LLMS route contract resolved to zero URLs");
+    }
+
+    for (const expectedUrl of expectedLlmsRouteUrls) {
+      if (!llmsUrls.has(expectedUrl)) {
+        issues.push(`/llms.txt: missing route URL ${expectedUrl}`);
+      }
+    }
+
+    for (const url of llmsUrls) {
+      if (!expectedLlmsRouteUrlSet.has(url)) {
+        issues.push(`/llms.txt: unexpected canonical route URL ${url}`);
+      }
+    }
   }
 }
 
@@ -188,5 +237,5 @@ if (issues.length) {
 }
 
 console.log(
-  "Live SEO smoke passed for canonical domain, crawl files, and sample industry pages."
+  `Live SEO smoke passed for canonical domain, crawl files, sample industry pages, and ${expectedLlmsRouteUrls.length} llms.txt route URLs.`
 );
