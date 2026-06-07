@@ -65,6 +65,32 @@ function schemaSlug(value) {
     .replace(/^-|-$/g, "");
 }
 
+function buildCoreServiceOfferCatalog(providerId, offerCatalogId) {
+  return {
+    "@type": "OfferCatalog",
+    "@id": offerCatalogId,
+    name: "Core Civive Unlimited services",
+    itemListElement: coreServices.map((service, index) => ({
+      "@type": "Offer",
+      position: index + 1,
+      url: absoluteUrl(service.path),
+      itemOffered: {
+        "@type": "Service",
+        "@id": `${absoluteUrl(service.path)}#service-${schemaSlug(service.name)}`,
+        name: service.name,
+        description: service.description,
+        serviceType: service.serviceType,
+        provider: { "@id": providerId },
+        areaServed: buildAreaServed(),
+        audience: {
+          "@type": "BusinessAudience",
+          audienceType: "local service businesses",
+        },
+      },
+    })),
+  };
+}
+
 function buildPostalAddress() {
   return {
     "@type": "PostalAddress",
@@ -127,11 +153,14 @@ function buildSchema(route) {
   const organizationId = `${siteDomain}/#organization`;
   const localBusinessId = `${siteDomain}/#localbusiness`;
   const websiteId = `${siteDomain}/#website`;
+  const offerCatalogId = `${siteDomain}/#core-services`;
   const webpageId = `${url}#webpage`;
   const breadcrumbId = `${url}#breadcrumb`;
   const serviceId = `${url}#service`;
   const articleId = `${url}#article`;
   const itemListId = `${url}#itemlist`;
+  const homepageOfferCatalogRef =
+    route.path === "/" ? { "@id": offerCatalogId } : undefined;
   const breadcrumbItems = buildBreadcrumbItems(route);
   const faqMainEntity = route.faqItems?.length
     ? route.faqItems.map(faq => ({
@@ -194,6 +223,9 @@ function buildSchema(route) {
         areaServed: buildAreaServed(),
         availableLanguage: "English",
       },
+      ...(homepageOfferCatalogRef
+        ? { hasOfferCatalog: homepageOfferCatalogRef }
+        : {}),
       knowsAbout: seoConfig.knowsAbout,
       ...(seoConfig.socialProfiles.length
         ? { sameAs: seoConfig.socialProfiles }
@@ -221,6 +253,9 @@ function buildSchema(route) {
         areaServed: buildAreaServed(),
         availableLanguage: "English",
       },
+      ...(homepageOfferCatalogRef
+        ? { hasOfferCatalog: homepageOfferCatalogRef }
+        : {}),
       ...(seoConfig.socialProfiles.length
         ? { sameAs: seoConfig.socialProfiles }
         : {}),
@@ -267,6 +302,8 @@ function buildSchema(route) {
   }
 
   if (route.path === "/") {
+    graph.push(buildCoreServiceOfferCatalog(localBusinessId, offerCatalogId));
+
     graph.push(
       ...coreServices.map(service => ({
         "@type": "Service",
@@ -545,6 +582,8 @@ async function writeCrawlFiles(routes) {
     "",
     "Primary offer: Visibility Report.",
     "Secondary systems: AI search visibility cleanup, service and location signal cleanup, AI receptionist, lead capture, booking, CRM handoff, follow-up automation, and CiviveOS.",
+    "Target audience: local service businesses, especially companies that need clearer public facts, stronger lead capture, faster follow-up, and cleaner booking paths.",
+    "Core frameworks: AI Search Visibility, Generative Engine Optimization (GEO), Lead Recovery Systems, entity and NAP cleanup, schema, Google Business Profile clarity, service-area signal cleanup, and CiviveOS lead-response operations.",
     "",
     "## Best Pages To Understand The Offer",
     "",

@@ -27,7 +27,7 @@ export const seoConfig = {
   defaultDescription:
     "Civive Unlimited helps local service businesses improve AI search visibility, Google Business Profile clarity, websites, CRM automation, missed-call recovery, AI receptionist setup, reviews, and lead follow-up.",
   businessDescription:
-    "Civive Unlimited helps local service businesses improve AI search visibility, Google Business Profile clarity, websites, CRM automation, missed-call recovery, AI receptionist setup, review automation, and lead follow-up systems.",
+    "Civive Unlimited helps local service businesses improve AI Search Visibility, Generative Engine Optimization (GEO), Lead Recovery Systems, entity and NAP cleanup, schema, Google Business Profile clarity, service-area signal cleanup, websites, CRM automation, missed-call recovery, AI receptionist setup, review automation, and lead follow-up systems.",
   defaultOgImagePath: "/og-image.jpg",
   defaultLogoPath: "/favicon.png",
   defaultRobots: "index, follow, max-image-preview:large",
@@ -37,7 +37,10 @@ export const seoConfig = {
   priceRange: "$$",
   socialProfiles: [] as string[],
   knowsAbout: [
-    "AI search visibility",
+    "AI Search Visibility",
+    "Generative Engine Optimization",
+    "AI search optimization",
+    "Lead Recovery Systems",
     "answer engine optimization",
     "Google Business Profile optimization",
     "local SEO cleanup",

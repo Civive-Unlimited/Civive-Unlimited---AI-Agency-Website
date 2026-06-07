@@ -23,6 +23,8 @@ Civive Unlimited helps local service businesses become easier for Google, AI sea
 
 Primary offer: Visibility Report.
 Secondary systems: AI search visibility cleanup, service and location signal cleanup, AI receptionist, lead capture, booking, CRM handoff, follow-up automation, and CiviveOS.
+Target audience: local service businesses, especially companies that need clearer public facts, stronger lead capture, faster follow-up, and cleaner booking paths.
+Core frameworks: AI Search Visibility, Generative Engine Optimization (GEO), Lead Recovery Systems, entity and NAP cleanup, schema, Google Business Profile clarity, service-area signal cleanup, and CiviveOS lead-response operations.
 
 ## Best Pages To Understand The Offer
 

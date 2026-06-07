@@ -169,9 +169,15 @@ if (
 const htmlDuplicate = await fetch(`${canonicalDomain}/industries/hvac.html`, {
   redirect: "manual",
 });
-if (htmlDuplicate.status !== 404) {
+const htmlDuplicateLocation = htmlDuplicate.headers.get("location");
+const htmlDuplicateIsCleanUrlRedirect =
+  htmlDuplicate.status === 308 &&
+  ["/industries/hvac", `${canonicalDomain}/industries/hvac`].includes(
+    htmlDuplicateLocation
+  );
+if (htmlDuplicate.status !== 404 && !htmlDuplicateIsCleanUrlRedirect) {
   issues.push(
-    `/industries/hvac.html expected 404, got ${htmlDuplicate.status}`
+    `/industries/hvac.html expected 404 or clean URL redirect, got ${htmlDuplicate.status} ${htmlDuplicateLocation}`
   );
 }
 
