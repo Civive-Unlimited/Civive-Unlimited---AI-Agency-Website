@@ -32,7 +32,7 @@ const coreTopicalPages: TopicalPage[] = [
     topicalRole:
       "Defines the entity, audience, primary Visibility Report offer, and next step.",
     conversionGoal:
-      "Move qualified local service businesses toward the visibility report request.",
+      "Move qualified local service businesses toward the fit check request.",
     relatedPaths: [
       "/ai-agency-springfield-mo",
       "/ai-search-report",
@@ -65,7 +65,7 @@ const coreTopicalPages: TopicalPage[] = [
     topicalRole:
       "Main local commercial landing page for Civive Unlimited as a Springfield AI agency for service businesses.",
     conversionGoal:
-      "Move Springfield service business owners toward an AI Growth Visibility report request.",
+      "Move Springfield service business owners toward an AI Growth Fit check request.",
     parentPath: "/",
     relatedPaths: [
       "/service-areas/springfield-mo",
@@ -310,7 +310,7 @@ const coreTopicalPages: TopicalPage[] = [
     topicalRole:
       "Clarifies the commercial offer for lead response, booking, reviews, follow-up, and AI front desk support.",
     conversionGoal:
-      "Convert qualified visitors into a plan discussion or visibility report request.",
+      "Convert qualified visitors into a plan discussion or fit check request.",
     parentPath: "/civive-os",
     relatedPaths: [
       "/civive-os",
@@ -326,7 +326,7 @@ const coreTopicalPages: TopicalPage[] = [
     label: "Contact",
     title: "Contact Civive Unlimited",
     pageType: "conversion",
-    searchIntent: "Contact, booking, and visibility report request intent",
+    searchIntent: "Contact, booking, and fit check request intent",
     topicalRole:
       "Primary conversion page for report and implementation requests.",
     conversionGoal:
@@ -353,7 +353,7 @@ const serviceTopicalPages: TopicalPage[] = servicePages.map(service => ({
   searchIntent: `${service.name} buyer intent for local service businesses`,
   topicalRole: `Commercial service page explaining Civive's ${service.name.toLowerCase()} work, local fit, deliverables, and related services.`,
   conversionGoal:
-    "Move qualified service business owners toward a visibility report request or call.",
+    "Move qualified service business owners toward a fit check request or call.",
   parentPath: "/",
   relatedPaths: Array.from(
     new Set([
@@ -430,7 +430,7 @@ const articleTopicalPages: TopicalPage[] = resourceArticles.map(article => ({
   searchIntent: article.intent,
   topicalRole: `Supports the Visibility Report and visibility-system pillar with ${article.eyebrow.toLowerCase()} intent content.`,
   conversionGoal:
-    "Move readers from education into a visibility report request, visibility-system review, or contact path.",
+    "Move readers from education into a fit check request, visibility-system review, or contact path.",
   parentPath: "/resources",
   relatedPaths: Array.from(
     new Set([

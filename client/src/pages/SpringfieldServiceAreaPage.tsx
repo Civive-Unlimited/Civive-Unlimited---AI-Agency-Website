@@ -65,7 +65,7 @@ export default function SpringfieldServiceAreaPage() {
           title="AI Search Visibility and Lead Automation for Springfield Service Businesses"
           copy="Civive Unlimited helps Springfield service businesses make their website, Google Business Profile, service pages, reviews, schema, calls, forms, booking, and follow-up easier for buyers and AI tools to understand."
           primaryCta={{
-            label: "Get Your Free Visibility Report",
+            label: "Get a Free Fit Check",
             href: "/contact",
           }}
           secondaryCta={{ label: "Book a Call", href: "/contact" }}
@@ -222,7 +222,7 @@ export default function SpringfieldServiceAreaPage() {
           title="Make the Springfield signals match the business people can actually hire."
           copy="Send the website, Google Business Profile, service area, and the services that matter most. Civive will map what to clean up first."
           primaryCta={{
-            label: "Get Your Free Visibility Report",
+            label: "Get a Free Fit Check",
             href: "/contact",
           }}
           secondaryCta={{ label: "Book a Call", href: "/contact" }}

@@ -81,7 +81,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
           }
           copy={industry.intro}
           primaryCta={{
-            label: "Get Your Free Visibility Report",
+            label: "Get a Free Fit Check",
             href: reportContactHref,
           }}
           secondaryCta={{ label: "View all industries", href: "/industries" }}

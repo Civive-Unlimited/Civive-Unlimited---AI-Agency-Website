@@ -70,7 +70,7 @@ const legalMeta = {
   privacy: {
     title: "Privacy Policy | Civive Unlimited",
     description:
-      "Privacy Policy for Civive Unlimited, including website, visibility report request, booking, email, phone, CRM, and SMS communication practices.",
+      "Privacy Policy for Civive Unlimited, including website, fit check request, booking, email, phone, CRM, and SMS communication practices.",
   },
   terms: {
     title: "Terms of Service | Civive Unlimited",
@@ -173,7 +173,7 @@ export const prerenderRoutes: PrerenderRoute[] = [
     path: "/free-visibility-report",
     ...pageMeta.freeVisibilityReport,
     schemaKind: "service",
-    serviceName: "Free Visibility Report",
+    serviceName: "Free Fit Check",
   },
   {
     path: "/prospecting-report",

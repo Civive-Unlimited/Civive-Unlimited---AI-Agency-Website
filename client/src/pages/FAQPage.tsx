@@ -18,7 +18,7 @@ export default function FAQPage() {
           eyebrow="AI Search Visibility FAQ"
           title="Plain answers to the questions business owners are starting to ask."
           copy="AI search visibility overlaps with SEO, but it is not just another keyword tactic. These answers explain how clarity, trust, structure, reviews, schema, and lead capture fit together."
-          primaryCta={{ label: "Get Your Free Visibility Report", href: "/contact" }}
+          primaryCta={{ label: "Get a Free Fit Check", href: "/contact" }}
           secondaryCta={{ label: "Read resources", href: "/resources" }}
         />
 
@@ -29,7 +29,12 @@ export default function FAQPage() {
               title="Built for search intent, voice search, and real decision-making."
               copy="These are written in the same shape buyers and operators use when they ask ChatGPT, Google, or a trusted advisor what matters."
             />
-            <EditorialList items={faqs.map((faq) => ({ title: faq.question, copy: faq.answer }))} />
+            <EditorialList
+              items={faqs.map(faq => ({
+                title: faq.question,
+                copy: faq.answer,
+              }))}
+            />
           </div>
         </AuthoritySection>
 

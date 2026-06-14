@@ -42,12 +42,12 @@ Core frameworks: AI Search Visibility, Generative Engine Optimization (GEO), Lea
   - Page type: homepage
   - Search intent: Brand, offer, and service overview
   - Topical role: Defines the entity, audience, primary Visibility Report offer, and next step.
-  - Conversion goal: Move qualified local service businesses toward the visibility report request.
+  - Conversion goal: Move qualified local service businesses toward the fit check request.
 - AI Agency Springfield MO: https://www.civiveunlimited.com/ai-agency-springfield-mo
   - Page type: commercial
   - Search intent: Local buyer intent for an AI agency, AI marketing agency, AI consulting, and AI automation agency in Springfield, MO
   - Topical role: Main local commercial landing page for Civive Unlimited as a Springfield AI agency for service businesses.
-  - Conversion goal: Move Springfield service business owners toward an AI Growth Visibility report request.
+  - Conversion goal: Move Springfield service business owners toward an AI Growth Fit check request.
 - Visibility Report: https://www.civiveunlimited.com/ai-search-report
   - Page type: commercial
   - Search intent: Buyer intent for AI search, AEO, local SEO, and visibility report help
@@ -102,47 +102,47 @@ Core frameworks: AI Search Visibility, Generative Engine Optimization (GEO), Lea
   - Page type: commercial
   - Search intent: Pricing, package, and buying intent for CiviveOS
   - Topical role: Clarifies the commercial offer for lead response, booking, reviews, follow-up, and AI front desk support.
-  - Conversion goal: Convert qualified visitors into a plan discussion or visibility report request.
+  - Conversion goal: Convert qualified visitors into a plan discussion or fit check request.
 - Contact Civive Unlimited: https://www.civiveunlimited.com/contact
   - Page type: conversion
-  - Search intent: Contact, booking, and visibility report request intent
+  - Search intent: Contact, booking, and fit check request intent
   - Topical role: Primary conversion page for report and implementation requests.
   - Conversion goal: Capture a qualified lead with enough context for follow-up.
 - Visibility Report: https://www.civiveunlimited.com/services/visibility-report
   - Page type: commercial
   - Search intent: Visibility Report buyer intent for local service businesses
   - Topical role: Commercial service page explaining Civive's visibility report work, local fit, deliverables, and related services.
-  - Conversion goal: Move qualified service business owners toward a visibility report request or call.
+  - Conversion goal: Move qualified service business owners toward a fit check request or call.
 - Google Business Profile Optimization: https://www.civiveunlimited.com/services/google-business-profile-optimization
   - Page type: commercial
   - Search intent: Google Business Profile Optimization buyer intent for local service businesses
   - Topical role: Commercial service page explaining Civive's google business profile optimization work, local fit, deliverables, and related services.
-  - Conversion goal: Move qualified service business owners toward a visibility report request or call.
+  - Conversion goal: Move qualified service business owners toward a fit check request or call.
 - AI Receptionist: https://www.civiveunlimited.com/services/ai-receptionist
   - Page type: commercial
   - Search intent: AI Receptionist buyer intent for local service businesses
   - Topical role: Commercial service page explaining Civive's ai receptionist work, local fit, deliverables, and related services.
-  - Conversion goal: Move qualified service business owners toward a visibility report request or call.
+  - Conversion goal: Move qualified service business owners toward a fit check request or call.
 - Missed Call Recovery: https://www.civiveunlimited.com/services/missed-call-recovery
   - Page type: commercial
   - Search intent: Missed Call Recovery buyer intent for local service businesses
   - Topical role: Commercial service page explaining Civive's missed call recovery work, local fit, deliverables, and related services.
-  - Conversion goal: Move qualified service business owners toward a visibility report request or call.
+  - Conversion goal: Move qualified service business owners toward a fit check request or call.
 - Website Design for Service Businesses: https://www.civiveunlimited.com/services/website-design-service-businesses
   - Page type: commercial
   - Search intent: Website Design for Service Businesses buyer intent for local service businesses
   - Topical role: Commercial service page explaining Civive's website design for service businesses work, local fit, deliverables, and related services.
-  - Conversion goal: Move qualified service business owners toward a visibility report request or call.
+  - Conversion goal: Move qualified service business owners toward a fit check request or call.
 - Review Automation: https://www.civiveunlimited.com/services/review-automation
   - Page type: commercial
   - Search intent: Review Automation buyer intent for local service businesses
   - Topical role: Commercial service page explaining Civive's review automation work, local fit, deliverables, and related services.
-  - Conversion goal: Move qualified service business owners toward a visibility report request or call.
+  - Conversion goal: Move qualified service business owners toward a fit check request or call.
 - CRM and Lead Follow-Up: https://www.civiveunlimited.com/services/crm-lead-follow-up
   - Page type: commercial
   - Search intent: CRM and Lead Follow-Up buyer intent for local service businesses
   - Topical role: Commercial service page explaining Civive's crm and lead follow-up work, local fit, deliverables, and related services.
-  - Conversion goal: Move qualified service business owners toward a visibility report request or call.
+  - Conversion goal: Move qualified service business owners toward a fit check request or call.
 - Springfield Service Businesses: https://www.civiveunlimited.com/service-areas/springfield-mo
   - Page type: commercial
   - Search intent: Local buyer intent for AI search visibility, Google Business Profile optimization, CRM automation, missed-call recovery, review automation, and lead follow-up in Springfield, MO
@@ -222,82 +222,82 @@ Core frameworks: AI Search Visibility, Generative Engine Optimization (GEO), Lea
   - Page type: support
   - Search intent: High-intent HVAC owner education for after-hours missed calls, hidden replacement leads, AI receptionist intake, CRM handoff, and follow-up.
   - Topical role: Supports the Visibility Report and visibility-system pillar with hvac after-hours lead response intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - AI Search Readiness Checklist for Local Service Businesses: https://www.civiveunlimited.com/resources/ai-search-readiness-checklist
   - Page type: support
   - Search intent: Checklist intent for AI search readiness and local visibility cleanup
   - Topical role: Supports the Visibility Report and visibility-system pillar with checklist intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - AI Search vs Local SEO: What Service Businesses Need to Know: https://www.civiveunlimited.com/resources/ai-search-vs-local-seo
   - Page type: support
   - Search intent: Comparison intent for AI search visibility versus local SEO
   - Topical role: Supports the Visibility Report and visibility-system pillar with comparison intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - How Much Should a Visibility Report Cost?: https://www.civiveunlimited.com/resources/visibility-report-cost
   - Page type: support
   - Search intent: Cost and pricing intent for Visibility Report services
   - Topical role: Supports the Visibility Report and visibility-system pillar with cost guide intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - What Does a Visibility Report Include?: https://www.civiveunlimited.com/resources/what-does-a-visibility-report-include
   - Page type: support
   - Search intent: Buyer intent for Visibility Report deliverables and scope
   - Topical role: Supports the Visibility Report and visibility-system pillar with report scope intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - Visibility Report Alternatives for Local Service Businesses: https://www.civiveunlimited.com/resources/visibility-report-alternatives
   - Page type: support
   - Search intent: Alternative intent for businesses comparing AI search report options
   - Topical role: Supports the Visibility Report and visibility-system pillar with alternatives intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - Best Visibility Report for Service Businesses: How to Choose: https://www.civiveunlimited.com/resources/best-visibility-report-for-service-businesses
   - Page type: support
   - Search intent: Best provider intent for choosing a Visibility Report
   - Topical role: Supports the Visibility Report and visibility-system pillar with best-fit guide intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - AI Search Visibility Mistakes Local Businesses Should Avoid: https://www.civiveunlimited.com/resources/ai-search-visibility-mistakes
   - Page type: support
   - Search intent: Mistakes intent for AI search visibility and local service business SEO
   - Topical role: Supports the Visibility Report and visibility-system pillar with mistakes intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - AI Search Implementation Plan for Service Businesses: https://www.civiveunlimited.com/resources/ai-search-implementation-plan-service-businesses
   - Page type: support
   - Search intent: How-to and implementation intent for AI search visibility systems
   - Topical role: Supports the Visibility Report and visibility-system pillar with implementation intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - How Local Service Businesses Can Become Easier for ChatGPT to Recommend: https://www.civiveunlimited.com/resources/chatgpt-business-recommendations-local-service-businesses
   - Page type: support
   - Search intent: AI-answer visibility intent for local service businesses that want to be easier for AI tools to understand and cite
   - Topical role: Supports the Visibility Report and visibility-system pillar with ai recommendations intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - Visibility Report for Home Service Businesses: https://www.civiveunlimited.com/resources/visibility-report-for-home-service-businesses
   - Page type: support
   - Search intent: Buyer and industry-fit intent for home service businesses evaluating an AI search report
   - Topical role: Supports the Visibility Report and visibility-system pillar with home services intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - AI Search Visibility Service Page Template: https://www.civiveunlimited.com/resources/ai-search-visibility-service-page-template
   - Page type: support
   - Search intent: Template and tool intent for service businesses improving a page for AI search visibility
   - Topical role: Supports the Visibility Report and visibility-system pillar with template intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - Google Business Profile AI Search Readiness for Local Businesses: https://www.civiveunlimited.com/resources/google-business-profile-ai-search-readiness
   - Page type: support
   - Search intent: Buyer and implementation intent for Google Business Profile cleanup as part of AI search readiness
   - Topical role: Supports the Visibility Report and visibility-system pillar with google profile intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - Location Pages for AI Search Without Doorway Page Risk: https://www.civiveunlimited.com/resources/location-pages-ai-search-without-doorway-pages
   - Page type: support
   - Search intent: Risk-aware local SEO and AI search intent for building location pages without doorway spam
   - Topical role: Supports the Visibility Report and visibility-system pillar with local pages intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - Schema for AI Search and Local Service Businesses: https://www.civiveunlimited.com/resources/schema-for-ai-search-local-businesses
   - Page type: support
   - Search intent: Technical SEO and implementation intent for local business schema that supports AI search visibility
   - Topical role: Supports the Visibility Report and visibility-system pillar with schema intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 - Visibility Report Patterns by Industry: https://www.civiveunlimited.com/resources/visibility-report-patterns-by-industry
   - Page type: support
   - Search intent: Proof-adjacent and method-comparison intent for buyers evaluating AI search report use cases across service industries
   - Topical role: Supports the Visibility Report and visibility-system pillar with report patterns intent content.
-  - Conversion goal: Move readers from education into a visibility report request, visibility-system review, or contact path.
+  - Conversion goal: Move readers from education into a fit check request, visibility-system review, or contact path.
 
 ## Crawling And Citation Guidance
 

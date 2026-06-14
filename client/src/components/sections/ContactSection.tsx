@@ -261,7 +261,7 @@ export default function ContactSection() {
                   <CheckCircle className="h-7 w-7" />
                 </div>
                 <h3 className="mt-5 text-3xl font-semibold text-foreground">
-                  Visibility report request received
+                  Fit check request received
                 </h3>
                 <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
                   {confirmationMessage}
@@ -472,9 +472,9 @@ export default function ContactSection() {
                         className="text-xs leading-relaxed text-muted-foreground"
                       >
                         By checking this box, I agree to receive SMS from Civive
-                        Unlimited about my visibility report request,
-                        appointments, and updates. Message frequency varies. Msg
-                        & data rates may apply. Reply STOP to opt out.{" "}
+                        Unlimited about my fit check request, appointments, and
+                        updates. Message frequency varies. Msg & data rates may
+                        apply. Reply STOP to opt out.{" "}
                         <a
                           href="/privacy"
                           className="text-[oklch(0.75_0.18_220)] hover:text-[oklch(0.78_0.08_230)] hover:underline"
@@ -504,13 +504,13 @@ export default function ContactSection() {
                         Sending...
                       </>
                     ) : (
-                      "Get Your Free Visibility Report"
+                      "Get a Free Fit Check"
                     )}
                   </button>
 
                   <p className="text-center text-sm text-muted-foreground">
-                    Clear visibility report request. Priority fixes. No fake
-                    authority.
+                    Free fit check first. Paid audits include the findings and
+                    first fix.
                   </p>
                 </form>
               </>

@@ -39,7 +39,7 @@ const footerGroups = [
       { href: "/ai-search-report", label: "Report details" },
       {
         href: site.visibilityReportRequestUrl,
-        label: "Free visibility report",
+        label: "Free fit check",
       },
       { href: "/contact", label: "Contact Civive" },
       {

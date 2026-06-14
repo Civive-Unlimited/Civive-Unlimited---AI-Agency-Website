@@ -6,8 +6,10 @@ import civiveHeaderLogo from "@/assets/civive-unlimited-approved-logo.webp";
 import { navLinks, site } from "@/content/site";
 import { trackWebsiteEvent } from "@/lib/tracking";
 
-const actionNavLabels = new Set(["Free Report"]);
+const actionNavLabels = new Set(["Free Fit Check"]);
 const compactNavLabels = new Set(["FAQ", "Resources", "Build in Public"]);
+const paidAuditPath = "/ai-search-trust-audit";
+const paidAuditCheckoutUrl = "https://buy.stripe.com/aFa9AU4Jz7ZQ1Aebgpebu0K";
 const primaryNavLinks = navLinks.filter(
   link => !compactNavLabels.has(link.label) && !actionNavLabels.has(link.label)
 );
@@ -18,6 +20,18 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const isPaidAuditPage = location === paidAuditPath;
+  const navCta = isPaidAuditPage
+    ? {
+        href: paidAuditCheckoutUrl,
+        label: "Start $99 Audit",
+        mobileLabel: "Start the $99 Audit",
+      }
+    : {
+        href: site.visibilityReportRequestUrl,
+        label: "Free Fit Check",
+        mobileLabel: "Get a Free Fit Check",
+      };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -173,20 +187,20 @@ export default function Navigation() {
                 Ask AI
               </button>
               <a
-                href={site.visibilityReportRequestUrl}
-                data-cta-destination={site.visibilityReportRequestUrl}
+                href={navCta.href}
+                data-cta-destination={navCta.href}
                 onClick={e => {
                   e.preventDefault();
                   trackWebsiteEvent("cta_click", {
                     placement: "desktop_navigation",
-                    label: "Free Report",
-                    destination: site.visibilityReportRequestUrl,
+                    label: navCta.label,
+                    destination: navCta.href,
                   });
-                  navigateTo(site.visibilityReportRequestUrl);
+                  navigateTo(navCta.href);
                 }}
                 className="homepage-secondary-button inline-flex items-center whitespace-nowrap rounded-full border border-white/[0.13] bg-white/[0.055] px-4 py-2.5 text-sm font-medium text-white/92 transition-colors hover:bg-white/[0.1] xl:px-5"
               >
-                Free Report
+                {navCta.label}
               </a>
             </div>
 
@@ -229,23 +243,23 @@ export default function Navigation() {
               ))}
 
               <motion.a
-                href={site.visibilityReportRequestUrl}
-                data-cta-destination={site.visibilityReportRequestUrl}
+                href={navCta.href}
+                data-cta-destination={navCta.href}
                 onClick={e => {
                   e.preventDefault();
                   trackWebsiteEvent("cta_click", {
                     placement: "mobile_navigation",
-                    label: "Get Your Free Visibility Report",
-                    destination: site.visibilityReportRequestUrl,
+                    label: navCta.mobileLabel,
+                    destination: navCta.href,
                   });
-                  navigateTo(site.visibilityReportRequestUrl);
+                  navigateTo(navCta.href);
                 }}
                 className="mt-3 w-64 rounded-full border border-white/[0.12] bg-white/[0.05] py-4 text-center text-base font-medium text-white transition-colors hover:bg-white/[0.1]"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.08 }}
               >
-                Get Your Free Visibility Report
+                {navCta.mobileLabel}
               </motion.a>
 
               <motion.button

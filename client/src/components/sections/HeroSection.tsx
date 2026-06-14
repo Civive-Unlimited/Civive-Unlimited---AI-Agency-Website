@@ -183,14 +183,14 @@ export default function HeroSection() {
                 onClick={() =>
                   trackWebsiteEvent("cta_click", {
                     placement: "homepage_hero",
-                    label: "Get Free Visibility Report",
+                    label: "Get a Free Fit Check",
                     destination: site.visibilityReportRequestUrl,
                   })
                 }
                 className="homepage-primary-button inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full px-7 py-4 text-base font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#19c2ff]/70 sm:w-auto"
               >
                 <Search className="h-4.5 w-4.5" />
-                Get Free Visibility Report
+                Get a Free Fit Check
                 <ArrowRight className="h-4.5 w-4.5" />
               </a>
 

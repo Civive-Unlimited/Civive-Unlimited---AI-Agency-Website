@@ -71,7 +71,7 @@ export default function IndustriesPage() {
           title="AI search visibility pages for local service businesses where trust and timing decide the call."
           copy="Civive helps service-based and trust-dependent businesses make their public signals easier for Google, ChatGPT, Gemini, Perplexity, Grok, maps, and buyers to understand. Each industry page explains the questions, proof, skipped-signal risks, and conversion paths that matter for that category."
           primaryCta={{
-            label: "Get Your Free Visibility Report",
+            label: "Get a Free Fit Check",
             href: "/contact",
           }}
           secondaryCta={{ label: "See the report", href: "/ai-search-report" }}
