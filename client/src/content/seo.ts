@@ -38,9 +38,9 @@ export const seoConfig = {
   legalName: "Civive Unlimited",
   canonicalDomain: "https://www.civiveunlimited.com",
   website: "https://www.civiveunlimited.com",
-  phone: "(417) 386-2441",
-  phoneE164: "+14173862441",
-  phoneHref: "tel:+14173862441",
+  phone: "(417) 952-6435",
+  phoneE164: "+14179526435",
+  phoneHref: "tel:+14179526435",
   email: "ceo@civiveunlimited.com",
   founder: "Scott Berry",
   address: {

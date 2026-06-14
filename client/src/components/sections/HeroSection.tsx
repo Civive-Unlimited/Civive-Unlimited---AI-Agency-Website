@@ -207,7 +207,7 @@ export default function HeroSection() {
                 className="homepage-secondary-button inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full border border-white/[0.14] bg-white/[0.055] px-7 py-4 text-base font-semibold text-white/88 shadow-[0_14px_38px_rgba(0,0,0,0.18)] transition-colors hover:bg-white/[0.09] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:w-auto"
               >
                 <PhoneCall className="h-4.5 w-4.5 text-[#19c2ff]" />
-                Call 417-386-2441
+                Call {site.phone}
               </a>
             </motion.div>
 
