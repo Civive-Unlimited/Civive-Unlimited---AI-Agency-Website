@@ -313,7 +313,10 @@ for (const route of prerenderRoutes) {
   }
   if (canonical !== absoluteUrl(route.path))
     issues.push(`${route.path}: canonical mismatch`);
-  if (!sitemap.includes(`<loc>${absoluteUrl(route.path)}</loc>`))
+  if (
+    !route.robots?.toLowerCase().includes("noindex") &&
+    !sitemap.includes(`<loc>${absoluteUrl(route.path)}</loc>`)
+  )
     issues.push(`${route.path}: missing from sitemap`);
   if (!schemaText) issues.push(`${route.path}: missing JSON-LD schema`);
   if (title) {
@@ -435,7 +438,7 @@ for (const route of prerenderRoutes) {
     if (!pathname.startsWith("/")) continue;
     if (
       pathname.startsWith("/assets/") ||
-      /\.(?:css|js|mjs|png|jpg|jpeg|svg|webp|ico|txt|xml|json|woff2?)$/i.test(
+      /\.(?:css|js|mjs|html|png|jpg|jpeg|svg|webp|ico|txt|xml|json|woff2?)$/i.test(
         pathname
       )
     ) {

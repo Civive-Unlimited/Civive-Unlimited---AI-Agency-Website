@@ -58,6 +58,11 @@ Core frameworks: AI Search Visibility, Generative Engine Optimization (GEO), Lea
   - Search intent: Purchase intent for a short paid AI search, visibility, and trust leak audit
   - Topical role: Branded checkout front door for the paid public-source trust leak audit.
   - Conversion goal: Move ready buyers into the secure Stripe checkout for the $99 audit.
+- AI Search and Trust Leak Field Kit: https://www.civiveunlimited.com/ai-search-trust-leak-field-kit
+  - Page type: commercial
+  - Search intent: Purchase intent for a practical AI search and public trust leak training kit
+  - Topical role: Paid knowledge product that helps local service owners self-diagnose public trust, AI-search clarity, and lead-path leaks before bigger implementation work.
+  - Conversion goal: Move interested buyers into the live Stripe audit bundle and give Mason a lower-friction sales bridge.
 - AI Search Visibility System: https://www.civiveunlimited.com/visibility-system
   - Page type: pillar
   - Search intent: Solution intent for improving AI search and local recommendation readiness

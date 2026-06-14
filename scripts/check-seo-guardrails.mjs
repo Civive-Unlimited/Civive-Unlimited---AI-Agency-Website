@@ -172,9 +172,9 @@ const llmsTxt = await fs.readFile(path.join(publicDir, "llms.txt"), "utf8");
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(
   match => match[1]
 );
-const expectedSitemapUrls = prerenderRoutes.map(route =>
-  buildCanonicalUrl(route.path)
-);
+const expectedSitemapUrls = prerenderRoutes
+  .filter(route => !route.robots?.toLowerCase().includes("noindex"))
+  .map(route => buildCanonicalUrl(route.path));
 const expectedSocialProfileUrls = seoConfig.socialLinks.map(link => link.href);
 const expectedRobotsTxt = [
   "User-agent: *",

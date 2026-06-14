@@ -19,6 +19,10 @@ export const site = {
   visibilityReportRequestUrl: "/contact",
   reviewBookingUrl: "/contact",
   visibilityReportThankYouUrl: "/contact",
+  fieldKitCheckoutUrl: "https://buy.stripe.com/aFa9AU4Jz7ZQ1Aebgpebu0K",
+  fieldKitDownloadUrl: "/downloads/ai-search-trust-leak-field-kit.html",
+  fieldKitPageUrl: "/ai-search-trust-leak-field-kit",
+  fieldKitThankYouUrl: "/ai-search-trust-leak-field-kit/thank-you",
 };
 
 export const areasServed = [
@@ -595,6 +599,7 @@ export function getServicePage(slug?: string) {
 
 export const navLinks = [
   { href: site.visibilityReportRequestUrl, label: "See If $99 Audit Fits" },
+  { href: "/ai-search-trust-leak-field-kit", label: "Field Kit" },
   { href: "/ai-search-report", label: "Visibility Report" },
   { href: "/visibility-system", label: "Visibility System" },
   { href: "/civive-os", label: "CiviveOS" },
@@ -664,6 +669,29 @@ export const visibilityReportFaqs = [
     question: "What happens after the report?",
     answer:
       "The next step depends on the findings. Common follow-up work includes homepage cleanup, service-page expansion, Google profile alignment, FAQ and schema implementation, internal-link improvements, review strategy, lead-capture fixes, or AI receptionist routing.",
+  },
+];
+
+export const fieldKitFaqs = [
+  {
+    question: "What is the AI Search and Trust Leak Field Kit?",
+    answer:
+      "It is a practical training and worksheet kit for local service businesses that want to inspect their website, Google profile, reviews, service pages, AI-search clarity, and lead path before paying for larger implementation work.",
+  },
+  {
+    question: "Is this the same as the $99 audit?",
+    answer:
+      "No. The field kit is the self-serve training layer. The $99 audit is Civive's public-source review and first-fix recommendation. The current live checkout bundles the field kit with the $99 audit so the buyer gets the map and the outside read.",
+  },
+  {
+    question: "Who should buy it?",
+    answer:
+      "It fits owner-operated service businesses that want to understand why buyers or AI tools may struggle to trust, summarize, or contact them. It is useful before buying ads, content, SEO, a website rebuild, or automation.",
+  },
+  {
+    question: "Does it guarantee rankings or AI recommendations?",
+    answer:
+      "No. The field kit helps owners find confusing public signals and lead-path friction. It does not promise rankings, AI placement, reviews, leads, or booked jobs.",
   },
 ];
 
@@ -4241,6 +4269,16 @@ export const pageMeta = {
     description:
       "A $99 public-source audit for local businesses that checks website clarity, Google profile signals, reviews, booking path, service area, and AI search readability.",
   },
+  fieldKit: {
+    title: "AI Search and Trust Leak Field Kit | Civive Unlimited",
+    description:
+      "A practical field kit for local service businesses to inspect AI-search clarity, public trust signals, reviews, service pages, and lead-path leaks before buying bigger fixes.",
+  },
+  fieldKitThankYou: {
+    title: "AI Search and Trust Leak Field Kit Download | Civive Unlimited",
+    description:
+      "Download and use the Civive AI Search and Trust Leak Field Kit after purchase.",
+  },
   prospectingReport: {
     title: "AI Search Prospecting Report | Civive Unlimited",
     description:
@@ -4282,7 +4320,7 @@ export const pageMeta = {
       "How Civive Unlimited is applying its AI visibility system to itself first and documenting the process in public.",
   },
   contact: {
-    title: "See If the $99 Audit Fits | Civive Unlimited",
+    title: "Contact Civive Unlimited | Audit Fit Request",
     description:
       "Ask Civive to review the business, website or Google profile, service area, and visibility problem before sending the $99 audit checkout link.",
   },

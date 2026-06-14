@@ -578,6 +578,9 @@ function sitemapChangefreq(route) {
 }
 
 async function writeCrawlFiles(routes) {
+  const indexableRoutes = routes.filter(
+    route => !route.robots?.toLowerCase().includes("noindex")
+  );
   const llmsPages = topicalPages.filter(page => page.includeInLlms !== false);
   const publicProfileLines = seoConfig.socialLinks?.length
     ? [
@@ -589,7 +592,7 @@ async function writeCrawlFiles(routes) {
   const sitemap = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...routes.map(route =>
+    ...indexableRoutes.map(route =>
       [
         "  <url>",
         `    <loc>${escapeHtml(absoluteUrl(route.path))}</loc>`,

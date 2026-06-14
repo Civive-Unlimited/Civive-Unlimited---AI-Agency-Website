@@ -8,6 +8,7 @@ import {
   civiveOsOfferSchemaOffers,
   buildLog,
   faqs,
+  fieldKitFaqs,
   getIndustryFaqs,
   homepageFaqs,
   industries,
@@ -168,6 +169,29 @@ export const prerenderRoutes: PrerenderRoute[] = [
           "A short public-source audit covering website clarity, profile signals, reviews, booking path, service area, and AI search readability.",
       },
     ],
+  },
+  {
+    path: "/ai-search-trust-leak-field-kit",
+    ...pageMeta.fieldKit,
+    schemaKind: "service",
+    serviceName: "AI Search and Trust Leak Field Kit",
+    serviceType: "Digital field kit and public-source audit bundle",
+    faqItems: fieldKitFaqs,
+    offerCatalog: [
+      {
+        name: "AI Search and Trust Leak Field Kit plus $99 Audit",
+        price: "99",
+        priceCurrency: "USD",
+        url: "https://buy.stripe.com/aFa9AU4Jz7ZQ1Aebgpebu0K",
+        description:
+          "A self-serve AI search and trust leak field kit bundled with Civive's public-source first-fix audit read.",
+      },
+    ],
+  },
+  {
+    path: "/ai-search-trust-leak-field-kit/thank-you",
+    ...pageMeta.fieldKitThankYou,
+    robots: "noindex,follow",
   },
   {
     path: "/free-visibility-report",

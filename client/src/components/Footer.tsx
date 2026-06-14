@@ -38,6 +38,14 @@ const footerGroups = [
       },
       { href: "/ai-search-report", label: "Report details" },
       {
+        href: "/ai-search-trust-audit",
+        label: "$99 Audit",
+      },
+      {
+        href: "/ai-search-trust-leak-field-kit",
+        label: "Field Kit",
+      },
+      {
         href: site.visibilityReportRequestUrl,
         label: "See if audit fits",
       },
@@ -92,6 +100,10 @@ const footerGroups = [
       {
         href: "/resources/ai-search-implementation-plan-service-businesses",
         label: "Implementation plan",
+      },
+      {
+        href: "/ai-search-trust-leak-field-kit",
+        label: "AI search field kit",
       },
     ],
   },

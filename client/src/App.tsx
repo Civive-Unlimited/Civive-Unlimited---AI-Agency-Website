@@ -13,6 +13,12 @@ const AIReceptionistPage = lazy(() => import("@/pages/AIReceptionistPage"));
 const AISearchTrustAuditPage = lazy(
   () => import("@/pages/AISearchTrustAuditPage")
 );
+const AISearchTrustLeakFieldKitPage = lazy(
+  () => import("@/pages/AISearchTrustLeakFieldKitPage")
+);
+const AISearchTrustLeakFieldKitThankYouPage = lazy(
+  () => import("@/pages/AISearchTrustLeakFieldKitThankYouPage")
+);
 const AIAgencySpringfieldPage = lazy(
   () => import("@/pages/AIAgencySpringfieldPage")
 );
@@ -63,6 +69,14 @@ function Router() {
       <Route
         path={"/ai-search-trust-audit"}
         component={AISearchTrustAuditPage}
+      />
+      <Route
+        path={"/ai-search-trust-leak-field-kit"}
+        component={AISearchTrustLeakFieldKitPage}
+      />
+      <Route
+        path={"/ai-search-trust-leak-field-kit/thank-you"}
+        component={AISearchTrustLeakFieldKitThankYouPage}
       />
       <Route
         path={"/free-visibility-report"}

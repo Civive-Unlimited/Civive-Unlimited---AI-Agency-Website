@@ -37,6 +37,7 @@ const coreTopicalPages: TopicalPage[] = [
       "/ai-agency-springfield-mo",
       "/ai-search-report",
       "/ai-search-trust-audit",
+      "/ai-search-trust-leak-field-kit",
       "/visibility-system",
       "/services/visibility-report",
       "/services/google-business-profile-optimization",
@@ -102,6 +103,7 @@ const coreTopicalPages: TopicalPage[] = [
       "/resources/schema-for-ai-search-local-businesses",
       "/resources/visibility-report-patterns-by-industry",
       "/ai-search-trust-audit",
+      "/ai-search-trust-leak-field-kit",
       "/visibility-system",
       "/services/visibility-report",
       "/services/google-business-profile-optimization",
@@ -124,9 +126,33 @@ const coreTopicalPages: TopicalPage[] = [
     parentPath: "/ai-search-report",
     relatedPaths: [
       "/ai-search-report",
+      "/ai-search-trust-leak-field-kit",
       "/visibility-system",
       "/resources/what-does-a-visibility-report-include",
       "/resources/visibility-report-cost",
+      "/resources/google-business-profile-ai-search-readiness",
+      "/contact",
+    ],
+    includeInLlms: true,
+  },
+  {
+    path: "/ai-search-trust-leak-field-kit",
+    label: "Field Kit",
+    title: "AI Search and Trust Leak Field Kit",
+    pageType: "commercial",
+    searchIntent:
+      "Purchase intent for a practical AI search and public trust leak training kit",
+    topicalRole:
+      "Paid knowledge product that helps local service owners self-diagnose public trust, AI-search clarity, and lead-path leaks before bigger implementation work.",
+    conversionGoal:
+      "Move interested buyers into the live Stripe audit bundle and give Mason a lower-friction sales bridge.",
+    parentPath: "/ai-search-report",
+    relatedPaths: [
+      "/ai-search-trust-audit",
+      "/ai-search-report",
+      "/visibility-system",
+      "/resources/ai-search-readiness-checklist",
+      "/resources/ai-search-implementation-plan-service-businesses",
       "/resources/google-business-profile-ai-search-readiness",
       "/contact",
     ],
@@ -146,6 +172,7 @@ const coreTopicalPages: TopicalPage[] = [
     parentPath: "/",
     relatedPaths: [
       "/ai-search-report",
+      "/ai-search-trust-leak-field-kit",
       "/resources",
       "/resources/ai-search-visibility-service-page-template",
       "/resources/schema-for-ai-search-local-businesses",

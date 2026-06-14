@@ -122,6 +122,7 @@ I want top-tier work, clean thinking, no slop, and no excuses.
   - `client/public` is the source of truth for shipped static files; do not ship temporary debug collectors, private session assets, or generated files under `dist/` directly.
   - `components.json` is configured for shadcn with `client/src/index.css` and `@/` aliases; keep generated UI work aligned to that setup.
   - `pnpm` uses a committed patch at `patches/wouter@3.7.1.patch`; if `wouter` changes, review and refresh the patch instead of dropping `patchedDependencies`.
+  - Productized offer pages must wire route, prerender metadata, topical map, footer/nav entry points, and a short docs note together. Keep checkout links in `client/src/content/site.ts` or the relevant page content, and never wire Stripe test-mode links into public routes.
 
 ## Skills
 

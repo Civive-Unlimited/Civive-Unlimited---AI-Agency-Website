@@ -7,7 +7,12 @@ import { navLinks, site } from "@/content/site";
 import { trackWebsiteEvent } from "@/lib/tracking";
 
 const actionNavLabels = new Set(["See If $99 Audit Fits"]);
-const compactNavLabels = new Set(["FAQ", "Resources", "Build in Public"]);
+const compactNavLabels = new Set([
+  "Field Kit",
+  "FAQ",
+  "Resources",
+  "Build in Public",
+]);
 const paidAuditPath = "/ai-search-trust-audit";
 const paidAuditCheckoutUrl = "https://buy.stripe.com/aFa9AU4Jz7ZQ1Aebgpebu0K";
 const primaryNavLinks = navLinks.filter(
