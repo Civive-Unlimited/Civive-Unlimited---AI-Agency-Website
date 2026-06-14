@@ -4236,6 +4236,11 @@ export const pageMeta = {
     description:
       "Get a free visibility report from Civive Unlimited and see what is helping or hurting your local visibility across Google, Maps, reviews, directories, and AI search.",
   },
+  aiSearchTrustAudit: {
+    title: "$99 AI Search and Trust Leak Audit | Civive Unlimited",
+    description:
+      "A $99 public-source audit for local businesses that checks website clarity, Google profile signals, reviews, booking path, service area, and AI search readability.",
+  },
   prospectingReport: {
     title: "AI Search Prospecting Report | Civive Unlimited",
     description:

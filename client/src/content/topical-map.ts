@@ -36,6 +36,7 @@ const coreTopicalPages: TopicalPage[] = [
     relatedPaths: [
       "/ai-agency-springfield-mo",
       "/ai-search-report",
+      "/ai-search-trust-audit",
       "/visibility-system",
       "/services/visibility-report",
       "/services/google-business-profile-optimization",
@@ -100,6 +101,7 @@ const coreTopicalPages: TopicalPage[] = [
       "/resources/google-business-profile-ai-search-readiness",
       "/resources/schema-for-ai-search-local-businesses",
       "/resources/visibility-report-patterns-by-industry",
+      "/ai-search-trust-audit",
       "/visibility-system",
       "/services/visibility-report",
       "/services/google-business-profile-optimization",
@@ -107,6 +109,28 @@ const coreTopicalPages: TopicalPage[] = [
       "/contact",
       "/industries",
     ],
+  },
+  {
+    path: "/ai-search-trust-audit",
+    label: "$99 Audit",
+    title: "AI Search and Trust Leak Audit",
+    pageType: "commercial",
+    searchIntent:
+      "Purchase intent for a short paid AI search, visibility, and trust leak audit",
+    topicalRole:
+      "Branded checkout front door for the paid public-source trust leak audit.",
+    conversionGoal:
+      "Move ready buyers into the secure Stripe checkout for the $99 audit.",
+    parentPath: "/ai-search-report",
+    relatedPaths: [
+      "/ai-search-report",
+      "/visibility-system",
+      "/resources/what-does-a-visibility-report-include",
+      "/resources/visibility-report-cost",
+      "/resources/google-business-profile-ai-search-readiness",
+      "/contact",
+    ],
+    includeInLlms: true,
   },
   {
     path: "/visibility-system",

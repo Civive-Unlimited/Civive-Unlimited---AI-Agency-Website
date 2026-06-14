@@ -53,6 +53,11 @@ Core frameworks: AI Search Visibility, Generative Engine Optimization (GEO), Lea
   - Search intent: Buyer intent for AI search, AEO, local SEO, and visibility report help
   - Topical role: Primary commercial entry point for diagnosing visibility, entity, schema, and lead-capture gaps.
   - Conversion goal: Get the visitor to request a visibility report.
+- AI Search and Trust Leak Audit: https://www.civiveunlimited.com/ai-search-trust-audit
+  - Page type: commercial
+  - Search intent: Purchase intent for a short paid AI search, visibility, and trust leak audit
+  - Topical role: Branded checkout front door for the paid public-source trust leak audit.
+  - Conversion goal: Move ready buyers into the secure Stripe checkout for the $99 audit.
 - AI Search Visibility System: https://www.civiveunlimited.com/visibility-system
   - Page type: pillar
   - Search intent: Solution intent for improving AI search and local recommendation readiness

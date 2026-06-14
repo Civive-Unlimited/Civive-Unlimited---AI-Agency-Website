@@ -232,12 +232,17 @@ export function SectionHeader({ eyebrow, title, copy }: SectionHeaderProps) {
 export function AuthoritySection({
   children,
   className = "",
+  id,
 }: {
   children: ReactNode;
   className?: string;
+  id?: string;
 }) {
   return (
-    <section className={`relative overflow-hidden py-16 sm:py-20 ${className}`}>
+    <section
+      id={id}
+      className={`relative overflow-hidden py-16 sm:py-20 ${className}`}
+    >
       <div className="container relative z-10 mx-auto px-4">{children}</div>
       <div className="homepage-section-divider" />
     </section>

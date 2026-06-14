@@ -153,6 +153,23 @@ export const prerenderRoutes: PrerenderRoute[] = [
     faqItems: visibilityReportFaqs,
   },
   {
+    path: "/ai-search-trust-audit",
+    ...pageMeta.aiSearchTrustAudit,
+    schemaKind: "service",
+    serviceName: "AI Search and Trust Leak Audit",
+    serviceType: "Public-source visibility and trust audit",
+    offerCatalog: [
+      {
+        name: "AI Search and Trust Leak Audit",
+        price: "99",
+        priceCurrency: "USD",
+        url: "https://buy.stripe.com/aFa9AU4Jz7ZQ1Aebgpebu0K",
+        description:
+          "A short public-source audit covering website clarity, profile signals, reviews, booking path, service area, and AI search readability.",
+      },
+    ],
+  },
+  {
     path: "/free-visibility-report",
     ...pageMeta.freeVisibilityReport,
     schemaKind: "service",

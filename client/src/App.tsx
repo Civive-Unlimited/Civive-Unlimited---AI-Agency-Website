@@ -10,6 +10,9 @@ import Footer from "./components/Footer";
 import GHLChatWidget from "./components/GHLChatWidget";
 
 const AIReceptionistPage = lazy(() => import("@/pages/AIReceptionistPage"));
+const AISearchTrustAuditPage = lazy(
+  () => import("@/pages/AISearchTrustAuditPage")
+);
 const AIAgencySpringfieldPage = lazy(
   () => import("@/pages/AIAgencySpringfieldPage")
 );
@@ -57,6 +60,10 @@ function Router() {
         component={AIAgencySpringfieldPage}
       />
       <Route path={"/ai-search-report"} component={VisibilityReportPage} />
+      <Route
+        path={"/ai-search-trust-audit"}
+        component={AISearchTrustAuditPage}
+      />
       <Route
         path={"/free-visibility-report"}
         component={FreeVisibilityReportPage}
