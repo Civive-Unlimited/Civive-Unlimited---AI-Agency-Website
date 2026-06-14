@@ -57,7 +57,7 @@ const workWithCiviveOptions = [
   {
     title: "Done For You AI Growth Systems",
     copy: "Civive can help build and improve the systems your business needs to get found, capture leads, answer faster, follow up, request reviews, and book more jobs. This is for service businesses that want the work handled instead of trying to figure everything out alone.",
-    cta: "Request a Fit Check",
+    cta: "See If the $99 Audit Fits",
     href: site.visibilityReportRequestUrl,
   },
   {
@@ -224,7 +224,7 @@ export default function AIAgencySpringfieldPage() {
           title="AI Agency in Springfield, MO for Service Businesses"
           copy="Civive Unlimited is an AI agency in Springfield, Missouri helping service businesses get found online, capture more leads, respond faster, and book more jobs with AI search visibility, AI receptionists, missed-call recovery, CRM automation, websites, Google Business Profile improvements, and CiviveOS."
           primaryCta={{
-            label: "Request a Fit Check",
+            label: "See If the $99 Audit Fits",
             href: "/contact",
           }}
           secondaryCta={{
@@ -571,7 +571,7 @@ export default function AIAgencySpringfieldPage() {
           title="Ready to make your business easier to find and faster to respond?"
           copy="Start with a Visibility Report. Civive will look at the public signals, lead path, follow up gaps, and the systems that can help turn more demand into booked jobs."
           primaryCta={{
-            label: "Request a Fit Check",
+            label: "See If the $99 Audit Fits",
             href: "/contact",
           }}
           secondaryCta={{

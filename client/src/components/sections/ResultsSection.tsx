@@ -106,7 +106,7 @@ export default function ResultsSection() {
               href={site.visibilityReportRequestUrl}
               className="inline-flex items-center gap-2 text-sm font-medium text-white/86 transition-colors hover:text-white"
             >
-              Get a free fit check
+              See if the $99 audit fits
               <ArrowRight className="h-4 w-4" />
             </a>
 

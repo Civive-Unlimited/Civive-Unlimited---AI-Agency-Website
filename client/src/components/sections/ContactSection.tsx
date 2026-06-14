@@ -6,9 +6,9 @@ import { site } from "@/content/site";
 import { trackWebsiteEvent } from "@/lib/tracking";
 
 const nextSteps = [
-  "We review the public facts, service language, Google profile, schema, and lead path you send.",
-  "We separate visibility issues from website, profile, content, schema, or response-speed issues.",
-  "We map the next fixes so the business knows what to clean up before building more pages or automation.",
+  "We do a short public-source pre-check from the business name, service area, website, or Google profile.",
+  "If the $99 audit can produce useful findings, we send the paid audit link and what we need next.",
+  "If a different problem should come first, we say that instead so you do not buy the wrong thing.",
 ];
 
 const contactInfo = [
@@ -38,14 +38,14 @@ const contactInfo = [
 ];
 
 const reportRequestSignals = [
-  "Website or Google profile URL",
+  "Business name and website or Google profile",
   "Service area and top services",
-  "What you want AI and buyers to understand",
-  "Whether calls, forms, booking, or follow-up are leaking leads",
+  "What feels unclear to buyers or AI tools",
+  "Whether calls, forms, booking, or follow-up are also leaking leads",
 ];
 
 const defaultConfirmationMessage =
-  "Your request was received. We'll review it and follow up.";
+  "Your request was received. We'll review the public footprint and follow up with the right next step.";
 const defaultFormErrorMessage = `Something went wrong. Please call or text Civive at ${site.phone}.`;
 
 function safeFormErrorMessage(result: unknown) {
@@ -86,7 +86,7 @@ export default function ContactSection() {
     const sourcePage = window.location.href;
 
     trackWebsiteEvent("form_submit", {
-      form: "ai-search-visibility-report",
+      form: "ai-search-audit-fit-check",
       offer,
       destination: "/api/lead",
       sourcePage,
@@ -118,7 +118,7 @@ export default function ContactSection() {
 
       if (response.ok && result?.ok) {
         trackWebsiteEvent("form_submit_success", {
-          form: "ai-search-visibility-report",
+          form: "ai-search-audit-fit-check",
           offer,
           destination: "/api/lead",
           status: response.status,
@@ -132,7 +132,7 @@ export default function ContactSection() {
         setSmsConsent(false);
       } else {
         trackWebsiteEvent("form_submit_error", {
-          form: "ai-search-visibility-report",
+          form: "ai-search-audit-fit-check",
           offer,
           destination: "/api/lead",
           status: response.status,
@@ -141,7 +141,7 @@ export default function ContactSection() {
       }
     } catch {
       trackWebsiteEvent("form_submit_error", {
-        form: "ai-search-visibility-report",
+        form: "ai-search-audit-fit-check",
         offer,
         destination: "/api/lead",
         status: "network-error",
@@ -169,9 +169,9 @@ export default function ContactSection() {
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-3xl text-center"
         >
-          <p className="homepage-eyebrow">Visibility Report</p>
+          <p className="homepage-eyebrow">$99 audit pre-check</p>
           <h2 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl md:text-5xl">
-            Send the context Civive needs to find the first visibility gap.
+            See if the $99 audit is worth doing before you pay.
           </h2>
         </motion.div>
 
@@ -184,10 +184,9 @@ export default function ContactSection() {
           >
             <p className="homepage-eyebrow">What happens next</p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              A practical visibility report starts with the public evidence
-              buyers and AI systems can already see. The form routes the
-              business details into the lead system so the first follow-up can
-              stay specific.
+              This short pre-check helps us avoid selling an audit when there is
+              not enough public evidence or when another issue is the better
+              first move.
             </p>
 
             <div className="mt-8 space-y-3 border-t border-white/[0.08] pt-6">
@@ -261,7 +260,7 @@ export default function ContactSection() {
                   <CheckCircle className="h-7 w-7" />
                 </div>
                 <h3 className="mt-5 text-3xl font-semibold text-foreground">
-                  Fit check request received
+                  Audit fit request received
                 </h3>
                 <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
                   {confirmationMessage}
@@ -277,11 +276,12 @@ export default function ContactSection() {
               <>
                 <div className="border-b border-white/[0.08] pb-5">
                   <h3 className="text-2xl font-semibold text-foreground">
-                    Request your Visibility Report
+                    Check audit fit first
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Send enough context to inspect the public signals, then
-                    Civive can follow up around the highest-impact fix order.
+                    Send the basic business details. If the audit makes sense,
+                    Civive will follow up with the $99 audit link and the next
+                    details needed.
                   </p>
                 </div>
 
@@ -301,7 +301,7 @@ export default function ContactSection() {
                   <input
                     type="hidden"
                     name="offer"
-                    value="ai-search-visibility-report"
+                    value="ai-search-audit-fit-check"
                   />
 
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -472,7 +472,7 @@ export default function ContactSection() {
                         className="text-xs leading-relaxed text-muted-foreground"
                       >
                         By checking this box, I agree to receive SMS from Civive
-                        Unlimited about my fit check request, appointments, and
+                        Unlimited about my audit fit request, appointments, and
                         updates. Message frequency varies. Msg & data rates may
                         apply. Reply STOP to opt out.{" "}
                         <a
@@ -504,13 +504,13 @@ export default function ContactSection() {
                         Sending...
                       </>
                     ) : (
-                      "Get a Free Fit Check"
+                      "See If the $99 Audit Fits"
                     )}
                   </button>
 
                   <p className="text-center text-sm text-muted-foreground">
-                    Free fit check first. Paid audits include the findings and
-                    first fix.
+                    No report is delivered in this free step. The $99 audit
+                    includes the findings and first fix.
                   </p>
                 </form>
               </>

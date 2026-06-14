@@ -81,7 +81,7 @@ export default function IndustryPage({ slug }: IndustryPageProps) {
           }
           copy={industry.intro}
           primaryCta={{
-            label: "Get a Free Fit Check",
+            label: "See If the $99 Audit Fits",
             href: reportContactHref,
           }}
           secondaryCta={{ label: "View all industries", href: "/industries" }}

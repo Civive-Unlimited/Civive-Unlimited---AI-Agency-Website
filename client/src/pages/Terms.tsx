@@ -48,7 +48,7 @@ export default function Terms() {
             </h2>
             <p>
               If you provide your phone number and opt in, you agree that Civive
-              Unlimited may send you conversational SMS regarding your fit check
+              Unlimited may send you conversational SMS regarding your audit fit
               request, appointments, onboarding, and service-related updates.
               Message frequency varies. Message and data rates may apply.
               Consent to receive SMS is not a condition of purchase. You may opt

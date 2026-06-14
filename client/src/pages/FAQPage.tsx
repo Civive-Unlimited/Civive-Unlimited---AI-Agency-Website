@@ -18,7 +18,7 @@ export default function FAQPage() {
           eyebrow="AI Search Visibility FAQ"
           title="Plain answers to the questions business owners are starting to ask."
           copy="AI search visibility overlaps with SEO, but it is not just another keyword tactic. These answers explain how clarity, trust, structure, reviews, schema, and lead capture fit together."
-          primaryCta={{ label: "Get a Free Fit Check", href: "/contact" }}
+          primaryCta={{ label: "See If the $99 Audit Fits", href: "/contact" }}
           secondaryCta={{ label: "Read resources", href: "/resources" }}
         />
 

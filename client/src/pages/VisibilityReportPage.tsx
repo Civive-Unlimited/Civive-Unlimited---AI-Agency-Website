@@ -156,7 +156,7 @@ export default function VisibilityReportPage() {
           }
           copy="A practical report for service businesses that want ChatGPT, Gemini, Perplexity, Grok, voice search, and real buyers to understand who they are, what they do, where they work, and why they should be trusted."
           primaryCta={{
-            label: "Get a Free Fit Check",
+            label: "See If the $99 Audit Fits",
             href: "/contact",
           }}
           secondaryCta={{

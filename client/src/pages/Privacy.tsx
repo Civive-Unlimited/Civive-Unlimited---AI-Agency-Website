@@ -67,7 +67,7 @@ export default function Privacy() {
             <p>
               If you provide your mobile number and explicitly consent to
               receive text messages, we may send conversational SMS about your
-              fit check request, appointments, onboarding, and service updates.
+              audit fit request, appointments, onboarding, and service updates.
               Message frequency varies. Message and data rates may apply. You
               can opt out at any time by replying STOP, and you can reply HELP
               for help.

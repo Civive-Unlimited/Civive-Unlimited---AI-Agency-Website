@@ -146,7 +146,7 @@ export default function AIReceptionistPage() {
           title="Capture, qualify, and route service leads before they cool off."
           copy="An AI receptionist is the downstream conversion layer for service businesses. It helps answer, qualify, book, route, and follow up after a buyer finds the business through AI search, Google, referrals, calls, forms, or chat."
           primaryCta={{
-            label: "Get a Free Fit Check",
+            label: "See If the $99 Audit Fits",
             href: "/contact",
           }}
           secondaryCta={{

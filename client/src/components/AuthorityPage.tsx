@@ -104,7 +104,7 @@ function relatedActionLabel(path: string, title: string) {
   if (path === "/civive-os") return "Explore CiviveOS";
   if (path === "/civive-os-offer") return "Compare CiviveOS plans";
   if (path === "/ai-receptionist") return "Compare AI receptionist fit";
-  if (path === "/contact") return "Request the fit check";
+  if (path === "/contact") return "Check audit fit first";
   if (path.startsWith("/resources/")) return "Read the resource";
   if (path === "/resources") return "Open the resource hub";
   if (path === "/industries") return "Browse industries";
@@ -299,7 +299,7 @@ export function FinalCta({
   title,
   copy,
   primaryCta = {
-    label: "Get a Free Fit Check",
+    label: "See If the $99 Audit Fits",
     href: "/contact",
   },
   secondaryCta = {

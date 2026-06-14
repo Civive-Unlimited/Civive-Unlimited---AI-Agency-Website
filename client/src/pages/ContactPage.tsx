@@ -16,10 +16,10 @@ const requestPath = [
   },
   {
     title: "Civive checks the highest-impact signals first",
-    copy: "The fit check starts with business type, public footprint, service area, and whether there is enough evidence for a paid audit or a better next step.",
+    copy: "The pre-check starts with business type, public footprint, service area, and whether there is enough evidence for a useful paid audit.",
   },
   {
-    title: "You get a practical next-step conversation",
+    title: "You get the honest next step",
     copy: "The follow-up is about fit: whether the $99 audit makes sense, whether a call is better, or whether the business should wait.",
   },
 ];
@@ -31,7 +31,7 @@ const requestPrep = [
   },
   {
     title: "If you do not know the problem yet",
-    copy: "That is fine. Send the public footprint and choose Not sure yet. The fit check separates a paid audit fit from a website, profile, schema, or response problem.",
+    copy: "That is fine. Send the public footprint and choose Not sure yet. The pre-check separates a paid audit fit from a website, profile, schema, or response problem.",
   },
   {
     title: "If the lead path is the issue",
@@ -69,8 +69,8 @@ export default function ContactPage() {
       <AuthorityShell>
         <PageHero
           eyebrow="Contact Civive"
-          title="Request a free fit check before buying the audit."
-          copy="Send the business, website or Google profile, service area, and the visibility problem you want solved first. Civive will tell you whether the $99 audit, a call, or another next step fits."
+          title="See if the $99 audit fits before you pay."
+          copy="Send the business, website or Google profile, service area, and the trust or visibility problem you want solved first. Civive will tell you whether the $99 audit, a call, or another next step fits."
           primaryCta={{ label: "Use the form below", href: "#contact" }}
           secondaryCta={{
             label: "See the $99 audit",
@@ -95,8 +95,8 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
               eyebrow="Request path"
-              title="The contact page should qualify the next step, not give away the audit."
-              copy="Someone arriving here from the audit page, a comparison article, or an industry page should know what to send and why the paid audit is still the deliverable."
+              title="We check fit before sending someone to checkout."
+              copy="Someone arriving here from the audit page, a comparison article, or an industry page should know what to send, what happens next, and why the actual findings stay inside the paid audit."
             />
             <EditorialList items={requestPath} />
           </div>
@@ -106,7 +106,7 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
               eyebrow="Before you submit"
-              title="A stronger fit check creates a cleaner recommendation."
+              title="Better context creates a cleaner recommendation."
               copy="The form is intentionally simple, but the more context it carries, the easier it is to route the buyer without blurring free intake and paid findings."
             />
             <EditorialList items={requestPrep} />
@@ -131,7 +131,7 @@ export default function ContactPage() {
             <SectionHeader
               eyebrow="Contact FAQs"
               title="Short answers before you send the request."
-              copy="These answers are visible on the page and included in JSON-LD because they directly support the contact and fit-check request intent."
+              copy="These answers are visible on the page and included in JSON-LD because they directly support the contact and audit-fit request intent."
             />
             <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
               {contactPageFaqs.map(faq => (

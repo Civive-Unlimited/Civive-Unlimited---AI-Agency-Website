@@ -220,7 +220,7 @@ export const servicePages: ServicePageContent[] = [
       "website-design-service-businesses",
       "crm-lead-follow-up",
     ],
-    primaryCta: "Get a Free Fit Check",
+    primaryCta: "See If the $99 Audit Fits",
   },
   {
     slug: "google-business-profile-optimization",
@@ -461,7 +461,7 @@ export const servicePages: ServicePageContent[] = [
       "google-business-profile-optimization",
       "crm-lead-follow-up",
     ],
-    primaryCta: "Get a Free Fit Check",
+    primaryCta: "See If the $99 Audit Fits",
   },
   {
     slug: "review-automation",
@@ -594,7 +594,7 @@ export function getServicePage(slug?: string) {
 }
 
 export const navLinks = [
-  { href: site.visibilityReportRequestUrl, label: "Free Fit Check" },
+  { href: site.visibilityReportRequestUrl, label: "See If $99 Audit Fits" },
   { href: "/ai-search-report", label: "Visibility Report" },
   { href: "/visibility-system", label: "Visibility System" },
   { href: "/civive-os", label: "CiviveOS" },
@@ -669,19 +669,19 @@ export const visibilityReportFaqs = [
 
 export const contactPageFaqs = [
   {
-    question: "What should I include in a fit check request?",
+    question: "What should I include before Civive sends the audit link?",
     answer:
-      "Send the business name, website or Google Business Profile, service area, the services you most want to be found for, and the visibility problem you want fixed first. If you are not sure, send the site and Civive will tell you whether the $99 audit, a call, or another next step fits.",
+      "Send the business name, website or Google Business Profile, service area, the services you most want to be found for, and the trust or visibility problem you want fixed first. If you are not sure, send the site and Civive will tell you whether the $99 audit, a call, or another next step fits.",
   },
   {
-    question: "Do I need a website before requesting a fit check?",
+    question: "Do I need a website before asking if the audit fits?",
     answer:
-      "No. A website helps, but a business can start with a Google Business Profile or public footprint. The fit check can identify whether there is enough public evidence for the paid audit.",
+      "No. A website helps, but a business can start with a Google Business Profile or another public profile. The pre-check identifies whether there is enough public evidence for the paid audit to be useful.",
   },
   {
     question: "What happens after I submit the form?",
     answer:
-      "The request is sent into Civive's lead system with the business details and page context. Civive reviews the public footprint, follows up, and starts with the highest-impact visibility and conversion signals.",
+      "The request is sent into Civive's lead system with the business details and page context. Civive reviews the public footprint, then follows up with the $99 audit link only when the audit looks like the right next step.",
   },
   {
     question: "Can I ask about AI receptionist or lead follow-up too?",
@@ -2581,7 +2581,7 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "7 min read",
     summary:
       "AI search readiness means a buyer, Google, and an answer engine can quickly understand who you are, what you do, where you work, why you can be trusted, and how to contact you. Use this checklist before creating more content.",
-    primaryCta: { label: "Get a Free Fit Check", href: "/contact" },
+    primaryCta: { label: "See If the $99 Audit Fits", href: "/contact" },
     secondaryCta: {
       label: "See the visibility system",
       href: "/visibility-system",
@@ -2680,7 +2680,7 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "8 min read",
     summary:
       "AI search visibility and local SEO overlap, but they are not identical. Local SEO helps a business compete in maps, organic search, and local discovery. AI search visibility asks whether answer engines can confidently summarize, compare, and recommend that business.",
-    primaryCta: { label: "Get a Free Fit Check", href: "/contact" },
+    primaryCta: { label: "See If the $99 Audit Fits", href: "/contact" },
     secondaryCta: { label: "View industry pages", href: "/industries" },
     finalCta: {
       title: "Use AI search and local SEO together.",
@@ -2844,9 +2844,9 @@ export const resourceArticles: ResourceArticle[] = [
     ],
     faqs: [
       {
-        question: "Is a free AI search fit check useful?",
+        question: "Is the free pre-check useful?",
         answer:
-          "A short free fit check can help decide whether the business has enough public evidence for a paid audit. The paid audit should go deeper, prioritize fixes, and explain what should be implemented first.",
+          "Yes, if it stays focused. The free pre-check decides whether the business has enough public evidence for the $99 audit to be useful. The paid audit goes deeper, prioritizes fixes, and explains what should be implemented first.",
       },
       {
         question: "Should I pay for implementation right away?",
@@ -3388,7 +3388,7 @@ export const resourceArticles: ResourceArticle[] = [
     readTime: "8 min read",
     summary:
       "No provider can honestly guarantee a business will be recommended by ChatGPT, Gemini, Grok, Perplexity, or Google. What a service business can do is make its public evidence clearer, more consistent, and easier for those systems to understand.",
-    primaryCta: { label: "Get a Free Fit Check", href: "/contact" },
+    primaryCta: { label: "See If the $99 Audit Fits", href: "/contact" },
     secondaryCta: {
       label: "See the visibility system",
       href: "/visibility-system",
@@ -3628,7 +3628,7 @@ export const resourceArticles: ResourceArticle[] = [
         copy: "A service page should not be a catch-all brochure. It should answer one primary search intent, explain the service in buyer language, and move the visitor toward the right next step. That clarity also helps search engines and answer engines classify the page.",
         bullets: [
           "Primary topic: the specific service or problem the page targets.",
-          "Business goal: call, quote, booking, fit check request, or consultation.",
+          "Business goal: call, quote, booking, audit fit request, or consultation.",
           "Topical role: commercial page, subpillar, local page, or support page.",
           "Entity purpose: connect the brand to a real service, audience, location, and proof.",
         ],
@@ -4206,7 +4206,7 @@ export const buildLog = [
   {
     date: "April 2026",
     title: "Connected the site to a real lead path.",
-    copy: "The contact flow now sends fit check requests into CiviveOS, tags the lead, adds context, and creates a pipeline opportunity instead of leaving the form isolated.",
+    copy: "The contact flow now sends audit fit requests into CiviveOS, tags the lead, adds context, and creates a pipeline opportunity instead of leaving the form isolated.",
   },
   {
     date: "Now",
@@ -4232,9 +4232,9 @@ export const pageMeta = {
       "A practical Visibility Report for service businesses that need clearer public facts, service pages, schema, FAQs, Google profile alignment, and lead capture.",
   },
   freeVisibilityReport: {
-    title: "Get a Free Fit Check | Civive Unlimited",
+    title: "See If the $99 Audit Fits | Civive Unlimited",
     description:
-      "Get a free fit check from Civive Unlimited to see whether the $99 AI Search and Trust Leak Audit, a call, or another next step fits the business.",
+      "Send the business name, website or Google profile, and service area so Civive can check whether the $99 AI Search and Trust Leak Audit is the right next step before checkout.",
   },
   aiSearchTrustAudit: {
     title: "$99 AI Search and Trust Leak Audit | Civive Unlimited",
@@ -4282,9 +4282,9 @@ export const pageMeta = {
       "How Civive Unlimited is applying its AI visibility system to itself first and documenting the process in public.",
   },
   contact: {
-    title: "Request a Free Fit Check | Civive Unlimited",
+    title: "See If the $99 Audit Fits | Civive Unlimited",
     description:
-      "Request a free fit check from Civive Unlimited and send the business, website or Google profile, service area, and visibility problem to route first.",
+      "Ask Civive to review the business, website or Google profile, service area, and visibility problem before sending the $99 audit checkout link.",
   },
   receptionist: {
     title: "AI Receptionist for Service Businesses | Missed-Call Recovery",

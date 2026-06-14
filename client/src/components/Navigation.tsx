@@ -6,7 +6,7 @@ import civiveHeaderLogo from "@/assets/civive-unlimited-approved-logo.webp";
 import { navLinks, site } from "@/content/site";
 import { trackWebsiteEvent } from "@/lib/tracking";
 
-const actionNavLabels = new Set(["Free Fit Check"]);
+const actionNavLabels = new Set(["See If $99 Audit Fits"]);
 const compactNavLabels = new Set(["FAQ", "Resources", "Build in Public"]);
 const paidAuditPath = "/ai-search-trust-audit";
 const paidAuditCheckoutUrl = "https://buy.stripe.com/aFa9AU4Jz7ZQ1Aebgpebu0K";
@@ -29,8 +29,8 @@ export default function Navigation() {
       }
     : {
         href: site.visibilityReportRequestUrl,
-        label: "Free Fit Check",
-        mobileLabel: "Get a Free Fit Check",
+        label: "See If $99 Audit Fits",
+        mobileLabel: "See If the $99 Audit Fits",
       };
 
   useEffect(() => {

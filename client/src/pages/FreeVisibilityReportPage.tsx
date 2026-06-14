@@ -14,9 +14,9 @@ export default function FreeVisibilityReportPage() {
       <Seo {...pageMeta.freeVisibilityReport} path="/free-visibility-report" />
       <AuthorityShell>
         <PageHero
-          eyebrow="Free Fit Check"
-          title="Find out whether the $99 audit is the right first move."
-          copy="Send the business name, website or Google profile, service area, and the main visibility problem. Civive will check fit and point you to the right next step without giving away the paid audit."
+          eyebrow="$99 Audit Fit Check"
+          title="See if the $99 audit fits before you pay."
+          copy="Send the business name, website or Google profile, service area, and the main trust or visibility problem. Civive does a short public-source pre-check first. If the audit can produce useful findings, we send the paid link. If not, we tell you the better next step."
           primaryCta={{ label: "Use the form below", href: "#contact" }}
           secondaryCta={{
             label: "See the $99 audit",
@@ -26,15 +26,16 @@ export default function FreeVisibilityReportPage() {
           <div className="border-y border-white/[0.08] py-7">
             <p className="homepage-eyebrow">Direct answer</p>
             <p className="mt-5 text-sm leading-6 text-white/72">
-              The free fit check is intake. It helps decide whether the business
-              fits the $99 AI Search and Trust Leak Audit, a call, or no offer.
+              This free step is not a report. It is a quick fit check so we do
+              not sell the $99 AI Search and Trust Leak Audit when there is not
+              enough public evidence, or when another problem should come first.
               The paid audit is where the 3 to 5 findings and first fix are
               delivered.
             </p>
             <div className="mt-7 grid gap-3 text-sm text-white/62 sm:grid-cols-3">
-              <p>Business fit</p>
-              <p>Public source fit</p>
-              <p>Right next step</p>
+              <p>Enough public evidence</p>
+              <p>$99 audit fit</p>
+              <p>Honest next step</p>
             </div>
           </div>
         </PageHero>
@@ -43,8 +44,8 @@ export default function FreeVisibilityReportPage() {
           <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr] lg:gap-16">
             <SectionHeader
               eyebrow="What to send"
-              title="A useful fit check gives enough context to route the buyer cleanly."
-              copy="The strongest request includes the website or Google Business Profile, the service area, the services the business sells, and where the current trust or lead path feels weak."
+              title="The better the context, the more honest the recommendation."
+              copy="The strongest request gives enough public context to decide whether a paid audit can create value, without turning the free step into the paid deliverable."
             />
             <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
               {[

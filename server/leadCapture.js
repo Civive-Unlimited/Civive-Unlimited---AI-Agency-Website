@@ -120,7 +120,7 @@ export function buildLeadCaptureRecord(
     phone: cleanString(lead.phone, 40),
     website: cleanString(lead.website, 240),
     message: cleanMultiline(lead.message, 1200),
-    requestType: cleanString(lead.offer || "ai-search-visibility-report", 120),
+    requestType: cleanString(lead.offer || "ai-search-audit-fit-check", 120),
     serviceArea: cleanString(lead.serviceArea, 180),
     serviceInterest: cleanString(lead.serviceInterest, 180),
     smsConsent: Boolean(lead.smsConsent),

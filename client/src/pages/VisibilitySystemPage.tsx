@@ -118,7 +118,7 @@ export default function VisibilitySystemPage() {
           title="AI Search Visibility System for service businesses that need cleaner signals and better lead capture."
           copy="The report finds the weak signals. The visibility system fixes them through clearer messaging, service structure, public proof, schema-ready content, internal links, and a cleaner lead path."
           primaryCta={{
-            label: "Get a Free Fit Check",
+            label: "See If the $99 Audit Fits",
             href: "/contact",
           }}
           secondaryCta={{ label: "See the report", href: "/ai-search-report" }}

@@ -152,7 +152,7 @@ function buildOpportunityPayload(contactId, lead, config) {
     contactId,
     pipelineId: config.pipelineId,
     pipelineStageId: config.pipelineStageId,
-    name: `${lead.companyName} - Visibility Report`,
+    name: `${lead.companyName} - Audit Fit Check`,
     status: "open",
     monetaryValue: 0,
     source: "Civive website",
@@ -180,7 +180,7 @@ export function validateWebsiteLead(input) {
       input.sourcePage || input.source_page || input.page,
       300
     ),
-    offer: cleanString(input.offer || "ai-search-visibility-report", 120),
+    offer: cleanString(input.offer || "ai-search-audit-fit-check", 120),
     honey: cleanString(input._honey || input.honey, 120),
   };
 
@@ -203,7 +203,7 @@ export function validateWebsiteLead(input) {
 
 function buildLeadNote(lead) {
   const lines = [
-    "Website Visibility Report request",
+    "AI Search Audit fit request",
     "",
     `Name: ${lead.fullName}`,
     `Business: ${lead.companyName}`,
