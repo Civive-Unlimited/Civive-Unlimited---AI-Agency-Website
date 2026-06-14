@@ -20,7 +20,7 @@ export const site = {
   reviewBookingUrl: "/contact",
   visibilityReportThankYouUrl: "/contact",
   fieldKitCheckoutUrl: "https://buy.stripe.com/aFa9AU4Jz7ZQ1Aebgpebu0K",
-  fieldKitDownloadUrl: "/downloads/ai-search-trust-leak-field-kit.html",
+  fieldKitDownloadUrl: "/downloads/ai-search-trust-leak-field-kit",
   fieldKitPageUrl: "/ai-search-trust-leak-field-kit",
   fieldKitThankYouUrl: "/ai-search-trust-leak-field-kit/thank-you",
 };

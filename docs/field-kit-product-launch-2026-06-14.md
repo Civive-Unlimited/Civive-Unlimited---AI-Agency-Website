@@ -4,7 +4,7 @@
 
 - Added the public product page at `/ai-search-trust-leak-field-kit`.
 - Added the noindex fulfillment page at `/ai-search-trust-leak-field-kit/thank-you`.
-- Added the printable field kit artifact at `/downloads/ai-search-trust-leak-field-kit.html`.
+- Added the printable field kit artifact at `/downloads/ai-search-trust-leak-field-kit`.
 - Added prerender metadata, FAQ schema, offer schema, topical-map wiring, navigation, and footer links.
 
 ## Current checkout path
@@ -37,4 +37,3 @@ pnpm run build
 pnpm run check:ai-search
 pnpm run check:seo-guardrails
 ```
-
