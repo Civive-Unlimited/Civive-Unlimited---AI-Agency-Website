@@ -122,7 +122,7 @@ export default function AISearchTrustLeakFieldKitPage() {
           title="A practical kit for finding the public trust leaks before bigger fixes."
           copy="Built for local service owners who want to understand why buyers, Google, and AI tools may hesitate before calling. The $189 bundle includes the field kit, worksheets, prompt pack, fix order, and Civive's public-source first-fix audit read."
           primaryCta={{
-            label: `Request the ${fieldKitBundlePrice} bundle`,
+            label: `Buy the ${fieldKitBundlePrice} bundle`,
             href: site.fieldKitCheckoutUrl,
           }}
           secondaryCta={{
@@ -150,7 +150,7 @@ export default function AISearchTrustLeakFieldKitPage() {
                   </p>
                 </div>
                 <span className="rounded-full border border-[#19c2ff]/30 bg-[#19c2ff]/10 px-3 py-1 text-xs font-semibold text-[#bcecff]">
-                  Checkout by request
+                  Live Stripe checkout
                 </span>
               </div>
             </div>
@@ -170,7 +170,7 @@ export default function AISearchTrustLeakFieldKitPage() {
               ))}
             </div>
             <CheckoutButton
-              label={`Request ${fieldKitBundlePrice} checkout`}
+              label={`Buy ${fieldKitBundlePrice} bundle`}
               placement="field_kit_hero_card"
               className="mt-7 w-full sm:w-full"
             />
@@ -276,8 +276,8 @@ export default function AISearchTrustLeakFieldKitPage() {
               },
               {
                 icon: CreditCard,
-                title: "Secure checkout after fit check",
-                copy: "Use the request path so Civive can confirm there is enough public evidence and send the correct $189 checkout for this bundle.",
+                title: "Secure Stripe checkout",
+                copy: "The live checkout sells the $189 bundle directly while Mason still uses the fit gate before sharing raw checkout links in replies.",
               },
             ].map(item => {
               const Icon = item.icon;
@@ -334,7 +334,7 @@ export default function AISearchTrustLeakFieldKitPage() {
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <CheckoutButton
-                label={`Request the ${fieldKitBundlePrice} bundle`}
+                label={`Buy the ${fieldKitBundlePrice} bundle`}
                 placement="field_kit_final_cta"
               />
               <a

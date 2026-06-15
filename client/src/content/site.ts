@@ -19,7 +19,7 @@ export const site = {
   visibilityReportRequestUrl: "/contact",
   reviewBookingUrl: "/contact",
   visibilityReportThankYouUrl: "/contact",
-  fieldKitCheckoutUrl: "/contact",
+  fieldKitCheckoutUrl: "https://buy.stripe.com/28EaEYfodcg6ceS4S1ebu0M",
   fieldKitDownloadUrl: "/downloads/ai-search-trust-leak-field-kit",
   fieldKitPageUrl: "/ai-search-trust-leak-field-kit",
   fieldKitThankYouUrl: "/ai-search-trust-leak-field-kit/thank-you",

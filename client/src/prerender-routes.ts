@@ -80,6 +80,9 @@ const legalMeta = {
   },
 };
 
+const toAbsoluteUrl = (href: string) =>
+  href.startsWith("http") ? href : `${site.website}${href}`;
+
 export const prerenderRoutes: PrerenderRoute[] = [
   { path: "/", ...pageMeta.home, faqItems: homepageFaqs },
   {
@@ -182,7 +185,7 @@ export const prerenderRoutes: PrerenderRoute[] = [
         name: "AI Search and Trust Leak Field Kit plus Public Trust Audit",
         price: "189",
         priceCurrency: "USD",
-        url: `${site.website}${site.fieldKitCheckoutUrl}`,
+        url: toAbsoluteUrl(site.fieldKitCheckoutUrl),
         description:
           "A self-serve AI search and trust leak field kit bundled with Civive's public-source first-fix audit read.",
       },
