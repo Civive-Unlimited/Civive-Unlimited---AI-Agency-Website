@@ -145,7 +145,7 @@ const coreTopicalPages: TopicalPage[] = [
     topicalRole:
       "Paid knowledge product that helps local service owners self-diagnose public trust, AI-search clarity, and lead-path leaks before bigger implementation work.",
     conversionGoal:
-      "Move interested buyers into the live Stripe audit bundle and give Mason a lower-friction sales bridge.",
+      "Move interested buyers into the $189 field kit and public-source audit bundle and give Mason a lower-friction sales bridge.",
     parentPath: "/ai-search-report",
     relatedPaths: [
       "/ai-search-trust-audit",

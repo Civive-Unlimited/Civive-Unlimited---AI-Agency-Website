@@ -22,6 +22,8 @@ import {
   Sparkles,
 } from "lucide-react";
 
+const fieldKitBundlePrice = "$189";
+
 const kitModules = [
   {
     title: "Public trust path map",
@@ -55,8 +57,8 @@ const outcomes = [
     copy: "Before paying for ads, SEO, content, a new website, or automation, the owner gets a cleaner order for what should be fixed first.",
   },
   {
-    title: "Make the $99 audit sharper",
-    copy: "When the buyer also purchases the audit, the field kit gives them the same language Civive uses to explain the findings.",
+    title: "Turn the audit into a first-fix plan",
+    copy: "The buyer gets the field kit language first, then Civive adds the outside read and the first fix that should happen next.",
   },
 ];
 
@@ -66,7 +68,8 @@ const deliverables = [
   "A service-page template for the questions buyers and AI tools need answered.",
   "A prompt pack for checking how AI tools summarize the business.",
   "A 7-day fix order for the first cleanup pass.",
-  "Plain-language examples Mason can use when explaining the leak to prospects.",
+  "A Civive public-source audit read on the website, profile, reviews, service pages, and lead path.",
+  "A first-fix recommendation the owner can act on before buying bigger implementation work.",
 ];
 
 const fitSignals = [
@@ -85,11 +88,14 @@ function CheckoutButton({
   placement: string;
   className?: string;
 }) {
+  const isExternalCheckout = site.fieldKitCheckoutUrl.startsWith("http");
+  const Icon = isExternalCheckout ? ExternalLink : ArrowRight;
+
   return (
     <a
       href={site.fieldKitCheckoutUrl}
-      target="_blank"
-      rel="noreferrer"
+      target={isExternalCheckout ? "_blank" : undefined}
+      rel={isExternalCheckout ? "noreferrer" : undefined}
       data-cta-destination={site.fieldKitCheckoutUrl}
       onClick={() =>
         trackWebsiteEvent("cta_click", {
@@ -101,7 +107,7 @@ function CheckoutButton({
       className={`homepage-primary-button inline-flex w-full max-w-full items-center justify-center gap-2 rounded-full px-7 py-4 text-center text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 sm:w-auto ${className}`}
     >
       {label}
-      <ExternalLink className="h-4 w-4" aria-hidden="true" />
+      <Icon className="h-4 w-4" aria-hidden="true" />
     </a>
   );
 }
@@ -114,9 +120,9 @@ export default function AISearchTrustLeakFieldKitPage() {
         <PageHero
           eyebrow="AI Search and Trust Leak Field Kit"
           title="A practical kit for finding the public trust leaks before bigger fixes."
-          copy="Built for local service owners who want to understand why buyers, Google, and AI tools may hesitate before calling. The live checkout bundles the field kit with the $99 public-source audit so the buyer gets the self-serve map and Civive's first-fix read."
+          copy="Built for local service owners who want to understand why buyers, Google, and AI tools may hesitate before calling. The $189 bundle includes the field kit, worksheets, prompt pack, fix order, and Civive's public-source first-fix audit read."
           primaryCta={{
-            label: "Get the kit with the $99 audit",
+            label: `Request the ${fieldKitBundlePrice} bundle`,
             href: site.fieldKitCheckoutUrl,
           }}
           secondaryCta={{
@@ -128,28 +134,30 @@ export default function AISearchTrustLeakFieldKitPage() {
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#19c2ff]/70 to-transparent" />
             <p className="homepage-eyebrow">Instant-use training asset</p>
             <h2 className="mt-4 text-2xl font-semibold text-white">
-              Field Kit + $99 Audit
+              Field Kit + Public Trust Audit
             </h2>
             <p className="mt-4 text-sm leading-6 text-white/66">
-              The field kit gives the owner the checklist, worksheets, prompts,
-              and fix order. The audit adds Civive's outside read on the public
-              footprint.
+              A practical training asset plus Civive's outside read on the
+              public footprint. The owner gets both the inspection map and the
+              recommended first fix.
             </p>
             <div className="mt-7 border-y border-white/[0.08] py-6">
               <div className="flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:items-end sm:text-left">
                 <div>
-                  <p className="text-sm text-white/58">Current live bundle</p>
-                  <p className="mt-2 text-5xl font-semibold text-white">$99</p>
+                  <p className="text-sm text-white/58">Bundle price</p>
+                  <p className="mt-2 text-5xl font-semibold text-white">
+                    {fieldKitBundlePrice}
+                  </p>
                 </div>
                 <span className="rounded-full border border-[#19c2ff]/30 bg-[#19c2ff]/10 px-3 py-1 text-xs font-semibold text-[#bcecff]">
-                  Stripe checkout
+                  Checkout by request
                 </span>
               </div>
             </div>
             <div className="grid gap-3 text-sm text-white/66">
               {[
-                "AI search and trust checklist",
-                "Buyer-path worksheet",
+                "Printable field kit and worksheets",
+                "AI search prompt pack and fix order",
                 "Civive first-fix audit read",
               ].map(item => (
                 <div key={item} className="flex items-center gap-3">
@@ -162,7 +170,7 @@ export default function AISearchTrustLeakFieldKitPage() {
               ))}
             </div>
             <CheckoutButton
-              label="Buy through Stripe"
+              label={`Request ${fieldKitBundlePrice} checkout`}
               placement="field_kit_hero_card"
               className="mt-7 w-full sm:w-full"
             />
@@ -268,8 +276,8 @@ export default function AISearchTrustLeakFieldKitPage() {
               },
               {
                 icon: CreditCard,
-                title: "Live Stripe checkout",
-                copy: "The active checkout starts the paid audit bundle while the standalone low-ticket link waits for live Stripe setup.",
+                title: "Secure checkout after fit check",
+                copy: "Use the request path so Civive can confirm there is enough public evidence and send the correct $189 checkout for this bundle.",
               },
             ].map(item => {
               const Icon = item.icon;
@@ -320,12 +328,13 @@ export default function AISearchTrustLeakFieldKitPage() {
               Give the owner the map, then add the outside read.
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/64">
-              The field kit helps the buyer understand the leak. The $99 audit
-              gives them Civive's first-fix recommendation from public sources.
+              The field kit helps the buyer understand the leak. The $189
+              package adds Civive's first-fix recommendation from public
+              sources.
             </p>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
               <CheckoutButton
-                label="Get the kit with the $99 audit"
+                label={`Request the ${fieldKitBundlePrice} bundle`}
                 placement="field_kit_final_cta"
               />
               <a

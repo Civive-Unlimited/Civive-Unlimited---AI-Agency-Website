@@ -179,10 +179,10 @@ export const prerenderRoutes: PrerenderRoute[] = [
     faqItems: fieldKitFaqs,
     offerCatalog: [
       {
-        name: "AI Search and Trust Leak Field Kit plus $99 Audit",
-        price: "99",
+        name: "AI Search and Trust Leak Field Kit plus Public Trust Audit",
+        price: "189",
         priceCurrency: "USD",
-        url: "https://buy.stripe.com/aFa9AU4Jz7ZQ1Aebgpebu0K",
+        url: `${site.website}${site.fieldKitCheckoutUrl}`,
         description:
           "A self-serve AI search and trust leak field kit bundled with Civive's public-source first-fix audit read.",
       },

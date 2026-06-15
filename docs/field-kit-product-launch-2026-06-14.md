@@ -7,18 +7,20 @@
 - Added the printable field kit artifact at `/downloads/ai-search-trust-leak-field-kit`.
 - Added prerender metadata, FAQ schema, offer schema, topical-map wiring, navigation, and footer links.
 
-## Current checkout path
+## Current sales path
 
-- The public page uses the existing live $99 AI Search and Trust Leak Audit checkout:
-  `https://buy.stripe.com/aFa9AU4Jz7ZQ1Aebgpebu0K`
-- Public copy positions the field kit as bundled with the $99 audit until a live standalone field-kit checkout exists.
+- The Field Kit + Public Trust Audit bundle is priced at `$189`.
+- The bundle includes the printable field kit, 24-point checklist, buyer-path worksheet, AI-search prompt pack, service-page clarity worksheet, 7-day fix order, Civive public-source audit read, and one first-fix recommendation.
+- Do not route this bundle to the old `$99` audit checkout.
+- The public page routes to contact until a live `$189` Stripe Payment Link is connected.
 
 ## Stripe note
 
 - A `$29` standalone Field Kit product, price, and Payment Link were created only in Stripe test mode during implementation.
 - Those test-mode objects were deactivated and were not wired into the website.
 - Do not share test-mode Stripe links.
-- To sell the field kit as a standalone low-ticket product later, create a live Payment Link and replace `site.fieldKitCheckoutUrl` in `client/src/content/site.ts`.
+- The connected Stripe app tool failed with `Unknown tool: create_product` when trying to create the live `$189` bundle link.
+- To sell the field kit bundle as instant checkout, create a live `$189` Payment Link and replace `site.fieldKitCheckoutUrl` in `client/src/content/site.ts`.
 
 ## Mason handoff
 

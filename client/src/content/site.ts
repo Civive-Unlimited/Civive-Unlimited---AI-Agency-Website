@@ -19,7 +19,7 @@ export const site = {
   visibilityReportRequestUrl: "/contact",
   reviewBookingUrl: "/contact",
   visibilityReportThankYouUrl: "/contact",
-  fieldKitCheckoutUrl: "https://buy.stripe.com/aFa9AU4Jz7ZQ1Aebgpebu0K",
+  fieldKitCheckoutUrl: "/contact",
   fieldKitDownloadUrl: "/downloads/ai-search-trust-leak-field-kit",
   fieldKitPageUrl: "/ai-search-trust-leak-field-kit",
   fieldKitThankYouUrl: "/ai-search-trust-leak-field-kit/thank-you",
@@ -681,7 +681,7 @@ export const fieldKitFaqs = [
   {
     question: "Is this the same as the $99 audit?",
     answer:
-      "No. The field kit is the self-serve training layer. The $99 audit is Civive's public-source review and first-fix recommendation. The current live checkout bundles the field kit with the $99 audit so the buyer gets the map and the outside read.",
+      "No. The $99 audit is the basic public-source review. The $189 field kit bundle adds the self-serve training asset, worksheets, prompts, fix order, and Civive's outside read so the owner gets both the map and the first-fix recommendation.",
   },
   {
     question: "Who should buy it?",
@@ -697,9 +697,9 @@ export const fieldKitFaqs = [
 
 export const contactPageFaqs = [
   {
-    question: "What should I include before Civive sends the audit link?",
+    question: "What should I include before Civive sends the $189 bundle checkout?",
     answer:
-      "Send the business name, website or Google Business Profile, service area, the services you most want to be found for, and the trust or visibility problem you want fixed first. If you are not sure, send the site and Civive will tell you whether the $99 audit, a call, or another next step fits.",
+      "Send the business name, website or Google Business Profile, service area, the services you most want to be found for, and the trust or visibility problem you want fixed first. If you are not sure, send the site and Civive will tell you whether the $189 bundle, the basic $99 audit, a call, or another next step fits.",
   },
   {
     question: "Do I need a website before asking if the audit fits?",
@@ -709,7 +709,7 @@ export const contactPageFaqs = [
   {
     question: "What happens after I submit the form?",
     answer:
-      "The request is sent into Civive's lead system with the business details and page context. Civive reviews the public footprint, then follows up with the $99 audit link only when the audit looks like the right next step.",
+      "The request is sent into Civive's lead system with the business details and page context. Civive reviews the public footprint, then follows up with the correct checkout only when the bundle looks like the right next step.",
   },
   {
     question: "Can I ask about AI receptionist or lead follow-up too?",

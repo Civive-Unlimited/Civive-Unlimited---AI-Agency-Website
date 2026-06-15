@@ -449,6 +449,14 @@ for (const route of prerenderRoutes) {
       continue;
     }
 
+    const cleanStaticHtmlPath = path.join(
+      publicDir,
+      `${pathname.replace(/^\//, "")}.html`
+    );
+    if (await pathExists(cleanStaticHtmlPath)) {
+      continue;
+    }
+
     if (!routePaths.has(pathname) && pathname !== "/og-image.jpg") {
       issues.push(`${route.path}: broken internal href ${href}`);
     }
