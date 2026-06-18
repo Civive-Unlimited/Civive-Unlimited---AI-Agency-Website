@@ -97,6 +97,12 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.2.8
         version: 1.2.8(@types/react-dom@19.2.1(@types/react@19.2.1))(@types/react@19.2.1)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      '@vercel/analytics':
+        specifier: ^2.0.1
+        version: 2.0.1(react@19.2.1)
+      '@vercel/speed-insights':
+        specifier: ^2.0.0
+        version: 2.0.0(react@19.2.1)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -160,7 +166,7 @@ importers:
         version: 0.5.19(tailwindcss@4.1.18)
       '@tailwindcss/vite':
         specifier: ^4.1.18
-        version: 4.1.18(vite@7.3.3(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6))
+        version: 4.1.18(vite@7.3.5(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6))
       '@types/google.maps':
         specifier: ^3.58.1
         version: 3.58.1
@@ -175,7 +181,7 @@ importers:
         version: 19.2.1(@types/react@19.2.1)
       '@vitejs/plugin-react':
         specifier: ^5.2.0
-        version: 5.2.0(vite@7.3.3(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6))
+        version: 5.2.0(vite@7.3.5(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6))
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.21(postcss@8.5.14)
@@ -201,8 +207,8 @@ importers:
         specifier: 5.6.3
         version: 5.6.3
       vite:
-        specifier: ^7.3.3
-        version: 7.3.3(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6)
+        specifier: ^7.3.5
+        version: 7.3.5(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6)
 
 packages:
 
@@ -1524,6 +1530,61 @@ packages:
   '@types/react@19.2.1':
     resolution: {integrity: sha512-1U5NQWh/GylZQ50ZMnnPjkYHEaGhg6t5i/KI0LDDh3t4E3h3T3vzm+GLY2BRzMfIjSBwzm6tginoZl5z0O/qsA==}
 
+  '@vercel/analytics@2.0.1':
+    resolution: {integrity: sha512-MTQG6V9qQrt1tsDeF+2Uoo5aPjqbVPys1xvnIftXSJYG2SrwXRHnqEvVoYID7BTruDz4lCd2Z7rM1BdkUehk2g==}
+    peerDependencies:
+      '@remix-run/react': ^2
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      nuxt: '>= 3'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@remix-run/react':
+        optional: true
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      nuxt:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
+
+  '@vercel/speed-insights@2.0.0':
+    resolution: {integrity: sha512-jwkNcrTeafWxjmWq4AHBaptSqZiJkYU5adLC9QBSqeim0GcqDMgN5Ievh8OG1rJ6W3A4l1oiP7qr9CWxGuzu3w==}
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      nuxt: '>= 3'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      nuxt:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
+
   '@vitejs/plugin-react@5.2.0':
     resolution: {integrity: sha512-YmKkfhOAi3wsB1PhJq5Scj3GXMn3WvtQ/JC0xoopuHoXSdmtdStOpFrYaT1kie2YgFBcIe64ROzMYRjCrYOdYw==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -2032,8 +2093,8 @@ packages:
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
 
-  vite@7.3.3:
-    resolution: {integrity: sha512-/4XH147Ui7OGTjg3HbdWe5arnZQSbfuRzdr9Ec7TQi5I7R+ir0Rlc9GIvD4v0XZurELqA035KVXJXpR61xhiTA==}
+  vite@7.3.5:
+    resolution: {integrity: sha512-KuOaNhcnGFN2zIPGA7wRmzF+lJA1sea7rHq17aiJ++9lzY1WWG6Jpwqwe1KNbRVPIqHmr8GLYx7jbrQcN/7/ww==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -3194,12 +3255,12 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.1.18
 
-  '@tailwindcss/vite@4.1.18(vite@7.3.3(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6))':
+  '@tailwindcss/vite@4.1.18(vite@7.3.5(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6))':
     dependencies:
       '@tailwindcss/node': 4.1.18
       '@tailwindcss/oxide': 4.1.18
       tailwindcss: 4.1.18
-      vite: 7.3.3(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6)
+      vite: 7.3.5(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6)
 
   '@types/babel__core@7.20.5':
     dependencies:
@@ -3238,7 +3299,15 @@ snapshots:
     dependencies:
       csstype: 3.1.3
 
-  '@vitejs/plugin-react@5.2.0(vite@7.3.3(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6))':
+  '@vercel/analytics@2.0.1(react@19.2.1)':
+    optionalDependencies:
+      react: 19.2.1
+
+  '@vercel/speed-insights@2.0.0(react@19.2.1)':
+    optionalDependencies:
+      react: 19.2.1
+
+  '@vitejs/plugin-react@5.2.0(vite@7.3.5(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6))':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.29.0)
@@ -3246,7 +3315,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-rc.3
       '@types/babel__core': 7.20.5
       react-refresh: 0.18.0
-      vite: 7.3.3(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6)
+      vite: 7.3.5(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6)
     transitivePeerDependencies:
       - supports-color
 
@@ -3717,7 +3786,7 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
-  vite@7.3.3(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6):
+  vite@7.3.5(@types/node@24.7.0)(jiti@2.7.0)(lightningcss@1.30.2)(tsx@4.20.6):
     dependencies:
       esbuild: 0.27.7
       fdir: 6.5.0(picomatch@4.0.4)

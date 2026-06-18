@@ -1,4 +1,4 @@
-# Visibility Form Fix Report
+# Lead Capture Hardening Report
 
 Date: 2026-06-02
 

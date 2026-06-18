@@ -11,8 +11,7 @@ const envSnapshot = {
   CIVIVE_LEAD_DRY_RUN_TOKEN: process.env.CIVIVE_LEAD_DRY_RUN_TOKEN,
   LEAD_DRY_RUN_TOKEN: process.env.LEAD_DRY_RUN_TOKEN,
   GHL_TARGET_LOCATION_API_KEY: process.env.GHL_TARGET_LOCATION_API_KEY,
-  HIGHLEVEL_TARGET_LOCATION_TOKEN:
-    process.env.HIGHLEVEL_TARGET_LOCATION_TOKEN,
+  HIGHLEVEL_TARGET_LOCATION_TOKEN: process.env.HIGHLEVEL_TARGET_LOCATION_TOKEN,
   GHL_LOCATION_API_KEY: process.env.GHL_LOCATION_API_KEY,
   HIGHLEVEL_LOCATION_TOKEN: process.env.HIGHLEVEL_LOCATION_TOKEN,
   HIGHLEVEL_TOKEN: process.env.HIGHLEVEL_TOKEN,
@@ -156,7 +155,7 @@ try {
   );
   assert(
     dryRun.payload.highLevelPreview.note.includes(
-      "Website Visibility Report request"
+      "AI Search Audit fit request"
     ),
     "HighLevel preview should include the report note body."
   );
@@ -173,7 +172,7 @@ try {
   );
   assert(
     dryRun.payload.highLevelPreview.opportunityPayload.name ===
-      "Parker Heating and Air - Visibility Report",
+      "Parker Heating and Air - Audit Fit Check",
     "HighLevel preview should include the expected opportunity name."
   );
   assert(
@@ -316,7 +315,9 @@ try {
         ok: true,
         status: 200,
         async text() {
-          return JSON.stringify({ opportunity: { id: "opportunity-token-test" } });
+          return JSON.stringify({
+            opportunity: { id: "opportunity-token-test" },
+          });
         },
       };
     }

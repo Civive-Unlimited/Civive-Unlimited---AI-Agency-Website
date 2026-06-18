@@ -17,6 +17,7 @@ Diagnose, fix, retry, use backups, and keep moving.
 Think in terms of shipping, reliability, leverage, and business value.
 
 Core priorities:
+
 1. Build real working software
 2. Keep code clean, secure, and maintainable
 3. Move fast without reckless shortcuts
@@ -60,6 +61,7 @@ Treat Vercel local, preview, and production as separate environments with separa
 Business context:
 Civive Unlimited sells AI systems and AI employees for businesses, especially home service businesses, with strengths around AI receptionist, missed-call recovery, lead automation, booking flows, follow-up systems, and GoHighLevel-style business automation.
 When building for Civive Unlimited, optimize for:
+
 - speed to revenue
 - strong demos
 - scalable systems
@@ -70,6 +72,7 @@ When building for Civive Unlimited, optimize for:
 How to respond:
 Be concise but not shallow.
 Tell me:
+
 - what you found
 - what you changed
 - what passed
@@ -77,6 +80,7 @@ Tell me:
 - what you recommend next
 
 For major tasks, always return:
+
 1. Plan
 2. Changes made
 3. Validation run
@@ -120,6 +124,7 @@ I want top-tier work, clean thinking, no slop, and no excuses.
   - Vite aliases `@` to `client/src`, `@shared` to `shared`, and `@assets` to `attached_assets`; preserve those imports when moving files.
 - Repo conventions:
   - `client/public` is the source of truth for shipped static files; do not ship temporary debug collectors, private session assets, or generated files under `dist/` directly.
+  - Keep the repo root limited to source/config entry points and `README.md`; durable audit, release, cleanup, or hardening notes belong under `docs/`.
   - `components.json` is configured for shadcn with `client/src/index.css` and `@/` aliases; keep generated UI work aligned to that setup.
   - `pnpm` uses a committed patch at `patches/wouter@3.7.1.patch`; if `wouter` changes, review and refresh the patch instead of dropping `patchedDependencies`.
   - Productized offer pages must wire route, prerender metadata, topical map, footer/nav entry points, and a short docs note together. Keep checkout links in `client/src/content/site.ts` or the relevant page content, and never wire Stripe test-mode links into public routes.
